@@ -364,6 +364,78 @@ Search for targets in CMakeLists.txt files:
 
 ---
 
+## Phase 14.5: Build Test & Additional Fixes ✅ COMPLETED
+
+**Status**: Completed 2025-10-16
+**Purpose**: Validate compilation and catch missed rebranding items
+
+### 14.5.1 Build Test Results ✅
+- [x] Clean build from scratch completed successfully
+- [x] All compilation errors identified and fixed
+- [x] Exit code: 0 (success)
+
+### 14.5.2 Third-Party Namespace Issues (6 files) ✅
+**Issue**: Files used `ryu_parquet::format` but third-party library still uses `kuzu_parquet`
+
+- [x] `src/processor/operator/persistent/reader/parquet/parquet_reader.cpp:18`
+- [x] `src/processor/operator/persistent/writer/parquet/basic_column_writer.cpp:13`
+- [x] `src/processor/operator/persistent/writer/parquet/column_writer.cpp:22`
+- [x] `src/processor/operator/persistent/writer/parquet/list_column_writer.cpp:9`
+- [x] `src/processor/operator/persistent/writer/parquet/string_column_writer.cpp:12`
+- [x] `src/processor/operator/persistent/writer/parquet/struct_column_writer.cpp:9`
+
+**Fix**: Changed `using namespace ryu_parquet::format;` → `using namespace kuzu_parquet::format;`
+**Rationale**: Third-party dependencies keep their original namespaces
+
+### 14.5.3 Test Constant References (4 files) ✅
+**Issue**: Test code referenced `KUZU_PAGE_SIZE` instead of `RYU_PAGE_SIZE`
+
+- [x] `test/storage/compression_test.cpp`
+- [x] `test/storage/compress_chunk_test.cpp`
+- [x] `test/storage/node_insertion_deletion_test.cpp`
+- [x] `test/api/system_config_test.cpp`
+
+**Fix**: Replaced all `KUZU_PAGE_SIZE` → `RYU_PAGE_SIZE`
+
+### 14.5.4 Test Helper Constants (1 file) ✅
+**Issue**: Test helper used old constant names
+
+- [x] `test/include/test_helper/test_helper.h:42` - `KUZU_PAGE_SIZE` → `RYU_PAGE_SIZE`
+- [x] `test/include/test_helper/test_helper.h:67` - `KUZU_ROOT_DIRECTORY` → `RYU_ROOT_DIRECTORY`
+
+### 14.5.5 Test Implementation Files (6 files) ✅
+**Issue**: Test implementations referenced `KUZU_ROOT_DIRECTORY`
+
+- [x] `test/test_runner/test_parser.cpp:35,614`
+- [x] `test/test_runner/test_runner.cpp:84`
+- [x] `test/copy/copy_test.cpp` (multiple occurrences)
+- [x] `test/planner/cardinality_test.cpp:126,133`
+- [x] `test/transaction/wal_test.cpp`
+- [x] `test/test_helper/test_helper.cpp`
+
+**Fix**: Replaced all `KUZU_ROOT_DIRECTORY` → `RYU_ROOT_DIRECTORY`
+
+### 14.5.6 Build Script Issues (2 files) ✅
+**Issue**: Scripts referenced old header file names
+
+- [x] `scripts/collect-single-file-header.py:19` - `kuzu.h` → `ryu.h`
+- [x] `scripts/headers.txt:66-67` - Updated to `ryu.h` and `ryu_fwd.h`
+
+### 14.5.7 Key Learnings
+1. **Third-party namespaces unchanged**: External dependencies like `kuzu_parquet` retain original names
+2. **Test infrastructure not in Phase 2-7**: All test files required separate updates
+3. **Build scripts need explicit updates**: Python scripts with hardcoded paths need manual fixes
+4. **CMake variable correctly updated**: `RYU_ROOT_DIRECTORY` already defined in CMakeLists.txt
+
+### 14.5.8 Build Artifacts Verified ✅
+- [x] Static library: `build/relwithdebinfo/src/libkuzu.a` (backward compatible name)
+- [x] Shared library: `build/relwithdebinfo/src/libkuzu.dylib` (backward compatible name)
+- [x] Single file header: `build/relwithdebinfo/src/kuzu.hpp` (backward compatible name)
+
+**Note**: Library output names intentionally kept as `libkuzu.*` for backward compatibility as per hybrid naming strategy.
+
+---
+
 ## Phase 15: Test Data and Datasets
 
 ### 15.1 Test Files
@@ -566,9 +638,9 @@ rg "namespace kuzu" -l | xargs sd "namespace kuzu" "namespace ryu"
 
 **Last Updated**: 2025-10-16
 
-- **Phases Completed**: 7/20 (Major core phases complete!)
-- **Estimated Files Changed**: ~2,000+ / ~7,000+
-- **Estimated Progress**: ~60% (Core rebranding complete)
+- **Phases Completed**: 8/20 (Major core phases + build validation complete!)
+- **Estimated Files Changed**: ~2,019+ / ~7,000+
+- **Estimated Progress**: ~65% (Core rebranding + build verification complete)
 
 ### Quick Status
 - [ ] Phase 1: Documentation & Configuration Files (PARTIALLY - Root CMakeLists.txt ✅)
@@ -583,8 +655,9 @@ rg "namespace kuzu" -l | xargs sd "namespace kuzu" "namespace ryu"
 - [ ] Phase 10: Scripts & Utilities
 - [ ] Phase 11: URLs and External References
 - [ ] Phase 12: Binary and Artifact Names
-- [ ] Phase 13: Directory and File Renames
+- [x] **Phase 13: Directory and File Renames ✅ COMPLETE**
 - [ ] Phase 14: Comments and Documentation Strings
+- [x] **Phase 14.5: Build Test & Additional Fixes ✅ COMPLETE (NEW)**
 - [ ] Phase 15: Test Data and Datasets
 - [ ] Phase 16: Third-Party Dependencies
 - [ ] Phase 17: Final Verification
@@ -594,7 +667,7 @@ rg "namespace kuzu" -l | xargs sd "namespace kuzu" "namespace ryu"
 
 ## 🎉 Major Milestones Achieved
 
-### Core Rebranding Complete (60%)
+### Core Rebranding + Build Verification Complete (65%)
 The most critical and time-consuming phases are **DONE**:
 
 #### ✅ Package Systems (Phase 2)
@@ -628,7 +701,16 @@ The most critical and time-consuming phases are **DONE**:
 - **Node.js API**: TypeScript definitions renamed, C++ bindings updated
 - **WebAssembly**: Package and bindings updated
 
-### What's Left (40%)
+#### ✅ Build Testing (Phase 14.5) - **NEW**
+- **Clean build verified**: Exit code 0 (success)
+- **19 files fixed**: Third-party namespaces, test constants, build scripts
+- **Key issues caught**:
+  - Third-party `kuzu_parquet` namespace preserved
+  - Test infrastructure constants updated (`KUZU_PAGE_SIZE`, `KUZU_ROOT_DIRECTORY`)
+  - Build scripts updated (`kuzu.h` → `ryu.h`)
+- **Libraries built**: `libkuzu.a`, `libkuzu.dylib` (backward compatible names)
+
+### What's Left (35%)
 The remaining work is mostly:
 - Documentation files (markdown, READMEs)
 - Shell tool branding
