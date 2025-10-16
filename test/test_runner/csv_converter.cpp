@@ -12,9 +12,9 @@
 #include "test_helper/test_helper.h"
 #include "transaction/transaction.h"
 
-using namespace kuzu::common;
+using namespace ryu::common;
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 void CSVConverter::copySchemaFile() {
@@ -233,4 +233,4 @@ std::string CSVConverter::RelTableInfo::getConverterQuery(main::ClientContext* c
 }
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

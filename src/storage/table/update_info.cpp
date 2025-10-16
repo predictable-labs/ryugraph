@@ -8,10 +8,10 @@
 #include "storage/table/column_chunk_data.h"
 #include "transaction/transaction.h"
 
-using namespace kuzu::transaction;
-using namespace kuzu::common;
+using namespace ryu::transaction;
+using namespace ryu::common;
 
-namespace kuzu {
+namespace ryu {
 namespace storage {
 
 VectorUpdateInfo& UpdateInfo::update(MemoryManager& memoryManager, const Transaction* transaction,
@@ -296,4 +296,4 @@ void UpdateInfo::iterateScan(const Transaction* transaction, uint64_t startOffse
 }
 
 } // namespace storage
-} // namespace kuzu
+} // namespace ryu

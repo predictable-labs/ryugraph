@@ -8,8 +8,8 @@
 #include "main/db_config.h"
 #include "printer/printer_factory.h"
 
-using namespace kuzu::main;
-using namespace kuzu::common;
+using namespace ryu::main;
+using namespace ryu::common;
 
 int setConfigOutputMode(const std::string& mode, ShellConfig& shell) {
     shell.printer = PrinterFactory::getPrinter(PrinterTypeUtils::fromString(mode));
@@ -106,7 +106,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (version) {
-        std::cout << "Kuzu " << KUZU_CMAKE_VERSION << '\n';
+        std::cout << "Kuzu " << RYU_CMAKE_VERSION << '\n';
         return 0;
     }
 

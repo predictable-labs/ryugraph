@@ -3,7 +3,7 @@
 #include "common/string_utils.h"
 #include "parsed_expression.h"
 
-namespace kuzu {
+namespace ryu {
 namespace parser {
 
 class ParsedFunctionExpression : public ParsedExpression {
@@ -74,4 +74,4 @@ private:
 };
 
 } // namespace parser
-} // namespace kuzu
+} // namespace ryu

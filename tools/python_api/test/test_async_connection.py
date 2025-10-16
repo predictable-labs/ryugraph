@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-import kuzu
+import ryu
 import pyarrow as pa
 import pytest
 

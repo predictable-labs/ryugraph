@@ -11,7 +11,7 @@
 #include "resizable_buffer.h"
 #include "thrift_tools.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 class ParquetReader;
 
@@ -123,4 +123,4 @@ protected:
 };
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

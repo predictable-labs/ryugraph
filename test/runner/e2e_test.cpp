@@ -11,8 +11,8 @@
 #include "test_runner/test_parser.h"
 
 using ::testing::Test;
-using namespace kuzu::testing;
-using namespace kuzu::common;
+using namespace ryu::testing;
+using namespace ryu::common;
 
 class EndToEndTest final : public DBTest {
 public:

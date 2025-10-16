@@ -1,9 +1,9 @@
 #pragma once
 
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "graph_test/base_graph_test.h"
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 // This class starts database in on-disk mode.
@@ -43,4 +43,4 @@ public:
 };
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

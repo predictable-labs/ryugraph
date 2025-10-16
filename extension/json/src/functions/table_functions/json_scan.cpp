@@ -21,11 +21,11 @@
 #include "processor/warning_context.h"
 #include "reader/buffered_json_reader.h"
 
-namespace kuzu {
+namespace ryu {
 namespace json_extension {
 
-using namespace kuzu::function;
-using namespace kuzu::common;
+using namespace ryu::function;
+using namespace ryu::common;
 
 struct JsonScanBindData;
 
@@ -970,4 +970,4 @@ function_set JsonScan::getFunctionSet() {
 }
 
 } // namespace json_extension
-} // namespace kuzu
+} // namespace ryu

@@ -1,11 +1,11 @@
 #include "main/prepared_statement.h"
 
 #include "c_api/helpers.h"
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "common/types/value/value.h"
 
-using namespace kuzu::common;
-using namespace kuzu::main;
+using namespace ryu::common;
+using namespace ryu::main;
 
 void kuzu_prepared_statement_bind_cpp_value(kuzu_prepared_statement* prepared_statement,
     const char* param_name, std::unique_ptr<Value> value) {

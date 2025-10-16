@@ -1,13 +1,13 @@
 #include <filesystem>
 #include <fstream>
 
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "c_api_test/c_api_test.h"
 #include "gtest/gtest.h"
 
-using namespace kuzu::main;
-using namespace kuzu::testing;
-using namespace kuzu::common;
+using namespace ryu::main;
+using namespace ryu::testing;
+using namespace ryu::common;
 
 class CApiVersionTest : public CApiTest {
 public:
@@ -28,7 +28,7 @@ TEST_F(EmptyCApiVersionTest, GetVersion) {
     kuzu_database_destroy(&_database);
     auto version = kuzu_get_version();
     ASSERT_NE(version, nullptr);
-    ASSERT_STREQ(version, KUZU_CMAKE_VERSION);
+    ASSERT_STREQ(version, RYU_CMAKE_VERSION);
     kuzu_destroy_string(version);
 }
 

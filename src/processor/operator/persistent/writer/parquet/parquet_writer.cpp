@@ -9,11 +9,11 @@
 #include "protocol/TCompactProtocol.h"
 #include "storage/buffer_manager/memory_manager.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
-using namespace kuzu_parquet::format;
-using namespace kuzu::common;
+using namespace ryu_parquet::format;
+using namespace ryu::common;
 
 ParquetWriter::ParquetWriter(std::string fileName, std::vector<common::LogicalType> types,
     std::vector<std::string> columnNames, kuzu_parquet::format::CompressionCodec::type codec,
@@ -301,4 +301,4 @@ void ParquetWriter::finalize() {
 }
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

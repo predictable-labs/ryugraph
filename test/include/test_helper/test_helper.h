@@ -5,9 +5,9 @@
 #include "common/file_system/file_system.h"
 #include "common/string_utils.h"
 #include "common/system_config.h"
-#include "main/kuzu.h"
+#include "main/ryu.h"
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 struct TestQueryConfig {
@@ -134,4 +134,4 @@ public:
 };
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

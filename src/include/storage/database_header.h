@@ -5,7 +5,7 @@
 #include "common/types/uuid.h"
 #include "storage/page_range.h"
 
-namespace kuzu {
+namespace ryu {
 namespace storage {
 class PageManager;
 
@@ -29,4 +29,4 @@ struct DatabaseHeader {
     static std::optional<DatabaseHeader> readDatabaseHeader(common::FileInfo& dataFileInfo);
 };
 } // namespace storage
-} // namespace kuzu
+} // namespace ryu

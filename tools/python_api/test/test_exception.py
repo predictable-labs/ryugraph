@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import kuzu
+import ryu
 import pytest
 from type_aliases import ConnDB
 

@@ -32,15 +32,15 @@
 #include "common/windows_utils.h"
 #endif
 
-using namespace kuzu::parser;
-using namespace kuzu::binder;
-using namespace kuzu::common;
-using namespace kuzu::catalog;
-using namespace kuzu::planner;
-using namespace kuzu::processor;
-using namespace kuzu::transaction;
+using namespace ryu::parser;
+using namespace ryu::binder;
+using namespace ryu::common;
+using namespace ryu::catalog;
+using namespace ryu::planner;
+using namespace ryu::processor;
+using namespace ryu::transaction;
 
-namespace kuzu {
+namespace ryu {
 namespace main {
 
 ActiveQuery::ActiveQuery() : interrupted{false} {}
@@ -183,7 +183,7 @@ const main::ExtensionOption* ClientContext::getExtensionOption(std::string optio
 
 std::string ClientContext::getExtensionDir() const {
     return stringFormat("{}/.kuzu/extension/{}/{}/", clientConfig.homeDirectory,
-        KUZU_EXTENSION_VERSION, extension::getPlatform());
+        RYU_EXTENSION_VERSION, extension::getPlatform());
 }
 
 std::string ClientContext::getDatabasePath() const {
@@ -610,4 +610,4 @@ bool ClientContext::canExecuteWriteQuery() const {
 }
 
 } // namespace main
-} // namespace kuzu
+} // namespace ryu

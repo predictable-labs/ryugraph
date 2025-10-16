@@ -11,10 +11,10 @@
 #include "storage/table/compression_flush_buffer.h"
 #include <ranges>
 
-using namespace kuzu::common;
-using namespace kuzu::storage;
+using namespace ryu::common;
+using namespace ryu::storage;
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 using check_func_t = std::function<void(ColumnReadWriter*, SegmentState&, const LogicalType&)>;
@@ -677,4 +677,4 @@ TEST_F(CompressChunkTest, TestFloatBeforeInPlaceUpdateManyExceptionsNoCompress) 
 }
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

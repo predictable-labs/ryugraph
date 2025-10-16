@@ -2,14 +2,14 @@
 
 #include "rust/cxx.h"
 #ifdef KUZU_BUNDLED
-#include "main/kuzu.h"
+#include "main/ryu.h"
 #else
 #include <kuzu.hpp>
 #endif
 
-namespace kuzu_arrow {
+namespace ryu_arrow {
 
-ArrowSchema query_result_get_arrow_schema(const kuzu::main::QueryResult& result);
-ArrowArray query_result_get_next_arrow_chunk(kuzu::main::QueryResult& result, uint64_t chunkSize);
+ArrowSchema query_result_get_arrow_schema(const ryu::main::QueryResult& result);
+ArrowArray query_result_get_next_arrow_chunk(ryu::main::QueryResult& result, uint64_t chunkSize);
 
-} // namespace kuzu_arrow
+} // namespace ryu_arrow

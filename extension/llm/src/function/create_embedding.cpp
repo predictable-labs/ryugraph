@@ -16,13 +16,13 @@
 #include "providers/provider.h"
 #include "providers/voyage-ai.h"
 
-using namespace kuzu::common;
-using namespace kuzu::binder;
-using namespace kuzu::function;
-using namespace kuzu::catalog;
-using namespace kuzu::processor;
+using namespace ryu::common;
+using namespace ryu::binder;
+using namespace ryu::function;
+using namespace ryu::catalog;
+using namespace ryu::processor;
 
-namespace kuzu {
+namespace ryu {
 namespace llm_extension {
 
 class EmbeddingProviderFactory {
@@ -215,4 +215,4 @@ function_set CreateEmbedding::getFunctionSet() {
 }
 
 } // namespace llm_extension
-} // namespace kuzu
+} // namespace ryu

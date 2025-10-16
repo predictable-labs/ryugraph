@@ -7,9 +7,9 @@
 #include "function/llm_functions.h"
 #include "main/client_context.h"
 
-using namespace kuzu::common;
+using namespace ryu::common;
 
-namespace kuzu {
+namespace ryu {
 namespace llm_extension {
 
 std::shared_ptr<EmbeddingProvider> BedrockEmbedding::getInstance() {
@@ -136,4 +136,4 @@ void BedrockEmbedding::configure(const std::optional<uint64_t>& dimensions,
 }
 
 } // namespace llm_extension
-} // namespace kuzu
+} // namespace ryu

@@ -2,7 +2,7 @@
 
 #include "graph_test/base_graph_test.h"
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 class ApiTest : public BaseGraphTest {
@@ -19,4 +19,4 @@ public:
 };
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

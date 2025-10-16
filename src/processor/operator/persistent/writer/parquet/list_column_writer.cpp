@@ -3,10 +3,10 @@
 #include "common/constants.h"
 #include "common/exception/runtime.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
-using namespace kuzu_parquet::format;
+using namespace ryu_parquet::format;
 
 std::unique_ptr<ColumnWriterState> ListColumnWriter::initializeWriteState(
     kuzu_parquet::format::RowGroup& rowGroup) {
@@ -106,4 +106,4 @@ void ListColumnWriter::finalizeWrite(ColumnWriterState& writerState) {
 }
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

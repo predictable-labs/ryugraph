@@ -1,9 +1,9 @@
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "graph_test/base_graph_test.h"
 #include "gtest/gtest.h"
 
-using namespace kuzu::main;
-using namespace kuzu::testing;
+using namespace ryu::main;
+using namespace ryu::testing;
 
 // This class starts database without initializing graph.
 class APIEmptyDBTest : public BaseGraphTest {

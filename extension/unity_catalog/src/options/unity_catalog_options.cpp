@@ -4,7 +4,7 @@
 #include "main/client_context.h"
 #include "main/database.h"
 
-namespace kuzu {
+namespace ryu {
 namespace unity_catalog_extension {
 
 using namespace common;
@@ -45,4 +45,4 @@ std::string DuckDBUnityCatalogSecretManager::getSecret(main::ClientContext* cont
 }
 
 } // namespace unity_catalog_extension
-} // namespace kuzu
+} // namespace ryu

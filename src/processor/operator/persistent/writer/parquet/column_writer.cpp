@@ -16,11 +16,11 @@
 #include "snappy.h"
 #include "zstd.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
-using namespace kuzu_parquet::format;
-using namespace kuzu::common;
+using namespace ryu_parquet::format;
+using namespace ryu::common;
 
 struct ParquetInt128Operator {
     template<class SRC, class TGT>
@@ -375,4 +375,4 @@ void ColumnWriter::compressPage(common::BufferWriter& bufferedSerializer, size_t
 }
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

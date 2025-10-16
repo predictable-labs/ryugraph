@@ -5,7 +5,7 @@
 #include "parser/attach_database.h"
 #include "parser/expression/parsed_literal_expression.h"
 
-namespace kuzu {
+namespace ryu {
 namespace binder {
 
 static AttachInfo bindAttachInfo(const parser::AttachInfo& attachInfo) {
@@ -33,4 +33,4 @@ std::unique_ptr<BoundStatement> Binder::bindAttachDatabase(const parser::Stateme
 }
 
 } // namespace binder
-} // namespace kuzu
+} // namespace ryu
