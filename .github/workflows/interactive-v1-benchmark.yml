@@ -20,7 +20,7 @@ on:
 jobs:
   benchmark:
     name: interactive-v1-benchmark
-    runs-on: kuzu-self-hosted-benchmarking-xl
+    runs-on: ubuntu-latest
     env:
       SCALE_FACTOR: ${{ github.event.inputs.scale_factor }}
       NUM_THREADS: 128

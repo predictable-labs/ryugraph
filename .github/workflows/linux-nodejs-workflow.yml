@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-linux-nodejs-x86_64:
-    runs-on: kuzu-self-hosted-linux-building-x86_64
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -47,7 +47,7 @@ jobs:
           path: tools/nodejs_api/package/kuzujs-linux-x64.node
 
   build-linux-nodejs-aarch64:
-    runs-on: kuzu-self-hosted-linux-building-aarch64
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 

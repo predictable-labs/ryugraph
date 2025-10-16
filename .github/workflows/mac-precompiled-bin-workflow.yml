@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-precompiled-bin-universal:
-    runs-on: self-hosted-mac-x64
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       

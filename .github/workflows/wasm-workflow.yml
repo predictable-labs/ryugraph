@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-wasm:
-    runs-on: kuzu-self-hosted-testing
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
