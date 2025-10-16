@@ -3,10 +3,10 @@ name: CI Workflow
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
     inputs:
       auto_checkpoint:
@@ -79,6 +79,9 @@ jobs:
       GCS_SECRET_ACCESS_KEY: ${{ secrets.GCS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
 
       - name: Build
         run: make release
@@ -435,6 +438,9 @@ jobs:
       KUZU_LOCAL_EXTENSIONS: ${{ github.workspace }}/extension
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
 
       - name: Rust API test
         run: |
@@ -1157,6 +1163,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Update PostgreSQL host
         working-directory: extension/postgres/test/test_files
         env:
@@ -1257,6 +1267,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Determine NUM_THREADS
         run: |
           export NUM_THREADS=$(($(sysctl -n hw.logicalcpu) * 2 / 3))
@@ -1348,6 +1361,10 @@ jobs:
       WERROR: 0
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Install dependencies
         run: pip install rangehttpserver requests
 
