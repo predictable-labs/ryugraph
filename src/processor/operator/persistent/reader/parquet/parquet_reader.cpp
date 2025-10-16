@@ -15,7 +15,7 @@
 #include "processor/operator/persistent/reader/reader_bind_utils.h"
 #include "processor/warning_context.h"
 
-using namespace ryu_parquet::format;
+using namespace kuzu_parquet::format;
 
 namespace ryu {
 namespace processor {

@@ -9,7 +9,7 @@ namespace ryu {
 namespace processor {
 
 using namespace ryu::common;
-using namespace ryu_parquet::format;
+using namespace kuzu_parquet::format;
 
 std::size_t StringHash::operator()(const ku_string_t& k) const {
     hash_t result = 0;

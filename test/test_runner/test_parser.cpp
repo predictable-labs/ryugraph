@@ -32,7 +32,7 @@ namespace testing {
 
 TestParser::TestParser(std::string path)
     : path(std::move(path)), testGroup(std::make_unique<TestGroup>()), currentToken() {
-    variableMap.insert({"KUZU_ROOT_DIRECTORY", Value(KUZU_ROOT_DIRECTORY)});
+    variableMap.insert({"RYU_ROOT_DIRECTORY", Value(RYU_ROOT_DIRECTORY)});
     variableMap.insert({"KUZU_VERSION", Value(KUZU_VERSION)});
     variableMap.insert({"KUZU_EXPORT_DB_DIRECTORY", Value(exportDBPath)});
 }
@@ -611,7 +611,7 @@ void TestParser::parseBody() {
             loadExtensionStatement.connName = TestHelper::DEFAULT_CONN_NAME;
             loadExtensionStatement.query =
                 stringFormat("LOAD EXTENSION '{}/extension/{}/build/lib{}.kuzu_extension'",
-                    KUZU_ROOT_DIRECTORY, extensionName, extensionName);
+                    RYU_ROOT_DIRECTORY, extensionName, extensionName);
             loadExtensionStatement.logMessage = "Dynamic load extension: " + extensionName;
             loadExtensionStatement.testResultType = ResultType::OK;
             loadExtensionStatement.result.emplace_back(ResultType::OK, 0,

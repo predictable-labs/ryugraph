@@ -12,7 +12,7 @@
 namespace ryu {
 namespace processor {
 
-using namespace ryu_parquet::format;
+using namespace kuzu_parquet::format;
 using namespace ryu::common;
 
 ParquetWriter::ParquetWriter(std::string fileName, std::vector<common::LogicalType> types,
