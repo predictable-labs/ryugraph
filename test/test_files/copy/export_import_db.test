@@ -256,7 +256,7 @@ Binder exception: No file found that matches the pattern: ${KUZU_EXPORT_DB_DIREC
 -CASE ImportError
 -SKIP_WASM
 -SKIP_IN_MEM
--STATEMENT IMPORT Database "${KUZU_ROOT_DIRECTORY}/dataset/import_db_error"
+-STATEMENT IMPORT Database "${RYU_ROOT_DIRECTORY}/dataset/import_db_error"
 ---- error
 Runtime exception: Import database failed: Binder exception: Table org does not exist.
 
@@ -321,7 +321,7 @@ Binder exception: The 'SCHEMA_ONLY' option must have a BOOL value.
 -SKIP_IN_MEM
 -STATEMENT create node table Forum (id INT64, title STRING, creationDate INT64, PRIMARY KEY (id));
 ---- ok
--STATEMENT COPY Forum from "${KUZU_ROOT_DIRECTORY}/dataset/ldbc-sf01/Forum.csv";
+-STATEMENT COPY Forum from "${RYU_ROOT_DIRECTORY}/dataset/ldbc-sf01/Forum.csv";
 ---- ok
 -STATEMENT EXPORT DATABASE '${KUZU_EXPORT_DB_DIRECTORY}_quoted_delim/delim-test'(format="csv", header=true);
 ---- ok
@@ -334,7 +334,7 @@ Binder exception: The 'SCHEMA_ONLY' option must have a BOOL value.
 -SKIP_IN_MEM
 -STATEMENT CREATE NODE TABLE `mixed-newlines`(A STRING, B STRING, PRIMARY KEY(A));
 ---- ok
--STATEMENT COPY `mixed-newlines` FROM "${KUZU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
+-STATEMENT COPY `mixed-newlines` FROM "${RYU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
 ---- ok
 -STATEMENT EXPORT DATABASE '${KUZU_EXPORT_DB_DIRECTORY}_special/_multilinestring'(format="csv")
 ---- ok
