@@ -6,7 +6,7 @@
 namespace ryu {
 namespace processor {
 
-using namespace ryu_parquet::format;
+using namespace kuzu_parquet::format;
 using namespace ryu::common;
 
 std::unique_ptr<ColumnWriterState> StructColumnWriter::initializeWriteState(
