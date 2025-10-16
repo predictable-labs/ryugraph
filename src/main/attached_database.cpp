@@ -9,7 +9,7 @@
 #include "storage/storage_utils.h"
 #include "transaction/transaction_manager.h"
 
-namespace kuzu {
+namespace ryu {
 namespace main {
 
 void AttachedDatabase::invalidateCache() {
@@ -65,4 +65,4 @@ AttachedKuzuDatabase::AttachedKuzuDatabase(std::string dbPath, std::string dbNam
 }
 
 } // namespace main
-} // namespace kuzu
+} // namespace ryu

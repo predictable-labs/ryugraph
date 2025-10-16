@@ -13,7 +13,7 @@ def test_query_result_close(tmp_path: Path, build_dir: Path) -> None:
         import sys
         sys.path.append(r"{build_dir!s}")
 
-        import kuzu
+        import ryu
         db = kuzu.Database(r"{db_path!s}")
         conn = kuzu.Connection(db)
         conn.execute('''

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import kuzu
+import ryu
 import pytest
 from test_helper import KUZU_ROOT
 from conftest import get_db_file_path

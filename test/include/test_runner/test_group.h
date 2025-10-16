@@ -8,7 +8,7 @@
 
 #include "common/constants.h"
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 enum class ConcurrentStatusFlag {
@@ -115,4 +115,4 @@ struct TestGroup {
 };
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

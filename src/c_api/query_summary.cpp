@@ -2,9 +2,9 @@
 
 #include <cstdlib>
 
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 
-using namespace kuzu::main;
+using namespace ryu::main;
 
 void kuzu_query_summary_destroy(kuzu_query_summary* query_summary) {
     if (query_summary == nullptr) {

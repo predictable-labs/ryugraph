@@ -14,7 +14,7 @@
 #include "main/query_result.h"
 #include "prepared_statement.h"
 
-namespace kuzu {
+namespace ryu {
 namespace common {
 class RandomEngine;
 class TaskScheduler;
@@ -69,7 +69,7 @@ struct ActiveQuery {
  * @brief Contain client side configuration. We make profiler associated per query, so the profiler
  * is not maintained in the client context.
  */
-class KUZU_API ClientContext {
+class RYU_API ClientContext {
     friend class Connection;
     friend class EmbeddedShell;
     friend struct SpillToDiskSetting;
@@ -253,4 +253,4 @@ private:
 };
 
 } // namespace main
-} // namespace kuzu
+} // namespace ryu

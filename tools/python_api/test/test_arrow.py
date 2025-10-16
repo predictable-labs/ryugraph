@@ -9,13 +9,13 @@ from uuid import UUID
 import pytest
 
 import ground_truth
-import kuzu
+import ryu
 import polars as pl
 import pyarrow as pa
 import pytz
 from pandas import Timestamp
 from type_aliases import ConnDB
-from kuzu.constants import ID, LABEL, SRC, DST, NODES
+from ryu.constants import ID, LABEL, SRC, DST, NODES
 
 _expected_dtypes = {
     # ------------------------------------------------

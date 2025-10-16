@@ -1,11 +1,11 @@
 #include "processor/result/flat_tuple.h"
 
 #include "c_api/helpers.h"
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "common/exception/exception.h"
 
-using namespace kuzu::common;
-using namespace kuzu::processor;
+using namespace ryu::common;
+using namespace ryu::processor;
 
 void kuzu_flat_tuple_destroy(kuzu_flat_tuple* flat_tuple) {
     if (flat_tuple == nullptr) {

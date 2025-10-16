@@ -8,7 +8,7 @@
 #include "main/client_context.h"
 #include "main/database.h"
 
-namespace kuzu {
+namespace ryu {
 namespace common {
 
 VirtualFileSystem::VirtualFileSystem() : VirtualFileSystem{""} {}
@@ -136,4 +136,4 @@ VirtualFileSystem* VirtualFileSystem::GetUnsafe(const main::ClientContext& conte
 }
 
 } // namespace common
-} // namespace kuzu
+} // namespace ryu

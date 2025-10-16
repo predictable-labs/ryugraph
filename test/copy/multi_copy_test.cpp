@@ -10,7 +10,7 @@
 #include "common/system_config.h"
 #include "graph_test/private_graph_test.h"
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 class MultiCopyTest : public EmptyDBTest {
@@ -161,4 +161,4 @@ TEST_F(MultiCopyTest, MultipleNodeGroups) {
 }
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

@@ -7,11 +7,11 @@
 #include "processor/operator/persistent/writer//parquet/parquet_rle_bp_encoder.h"
 #include "processor/operator/persistent/writer/parquet/parquet_writer.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
 using namespace kuzu_parquet::format;
-using namespace kuzu::common;
+using namespace ryu::common;
 
 std::unique_ptr<ColumnWriterState> BasicColumnWriter::initializeWriteState(
     kuzu_parquet::format::RowGroup& rowGroup) {
@@ -316,4 +316,4 @@ void BasicColumnWriter::registerToRowGroup(kuzu_parquet::format::RowGroup& rowGr
 }
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

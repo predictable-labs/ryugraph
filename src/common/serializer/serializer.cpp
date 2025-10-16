@@ -2,7 +2,7 @@
 
 #include "common/assert.h"
 
-namespace kuzu {
+namespace ryu {
 namespace common {
 
 template<>
@@ -21,4 +21,4 @@ void Serializer::writeDebuggingInfo(const std::string& value) {
 }
 
 } // namespace common
-} // namespace kuzu
+} // namespace ryu

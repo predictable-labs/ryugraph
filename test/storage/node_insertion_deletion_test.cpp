@@ -2,10 +2,10 @@
 #include "common/system_config.h"
 #include "graph_test/private_graph_test.h"
 
-using namespace kuzu::common;
-using namespace kuzu::main;
-using namespace kuzu::storage;
-using namespace kuzu::testing;
+using namespace ryu::common;
+using namespace ryu::main;
+using namespace ryu::storage;
+using namespace ryu::testing;
 
 // Note: ID and nodeOffset in this test are equal for each node, so we use nodeID and nodeOffset
 // interchangeably.

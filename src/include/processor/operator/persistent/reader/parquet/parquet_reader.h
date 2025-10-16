@@ -10,7 +10,7 @@
 #include "protocol/TCompactProtocol.h"
 #include "resizable_buffer.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
 struct ParquetReaderPrefetchConfig {
@@ -117,4 +117,4 @@ struct ParquetScanFunction {
 };
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

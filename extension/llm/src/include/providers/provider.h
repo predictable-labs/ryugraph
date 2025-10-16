@@ -3,7 +3,7 @@
 #include "httplib.h"
 #include "json.hpp"
 
-namespace kuzu {
+namespace ryu {
 namespace llm_extension {
 
 class EmbeddingProvider {
@@ -24,4 +24,4 @@ public:
 };
 
 } // namespace llm_extension
-} // namespace kuzu
+} // namespace ryu

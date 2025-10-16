@@ -10,10 +10,10 @@
 
 #include "common/api.h"
 #include "common/database_lifecycle_manager.h"
-#include "kuzu_fwd.h"
+#include "ryu_fwd.h"
 #include "main/db_config.h"
 
-namespace kuzu {
+namespace ryu {
 namespace common {
 class FileSystem;
 } // namespace common
@@ -35,7 +35,7 @@ class DatabaseManager;
 /**
  * @brief Stores runtime configuration for creating or opening a Database
  */
-struct KUZU_API SystemConfig {
+struct RYU_API SystemConfig {
     /**
      * @brief Creates a SystemConfig object.
      * @param bufferPoolSize Max size of the buffer pool in bytes.
@@ -105,41 +105,41 @@ public:
      *        an in-memory database.
      * @param systemConfig System configurations (buffer pool size and max num threads).
      */
-    KUZU_API explicit Database(std::string_view databasePath,
+    RYU_API explicit Database(std::string_view databasePath,
         SystemConfig systemConfig = SystemConfig());
     /**
      * @brief Destructs the database object.
      */
-    KUZU_API ~Database();
+    RYU_API ~Database();
 
-    KUZU_API void registerFileSystem(std::unique_ptr<common::FileSystem> fs);
+    RYU_API void registerFileSystem(std::unique_ptr<common::FileSystem> fs);
 
-    KUZU_API void registerStorageExtension(std::string name,
+    RYU_API void registerStorageExtension(std::string name,
         std::unique_ptr<storage::StorageExtension> storageExtension);
 
-    KUZU_API void addExtensionOption(std::string name, common::LogicalTypeID type,
+    RYU_API void addExtensionOption(std::string name, common::LogicalTypeID type,
         common::Value defaultValue, bool isConfidential = false);
 
-    KUZU_API void addTransformerExtension(
+    RYU_API void addTransformerExtension(
         std::unique_ptr<extension::TransformerExtension> transformerExtension);
 
     std::vector<extension::TransformerExtension*> getTransformerExtensions();
 
-    KUZU_API void addBinderExtension(
+    RYU_API void addBinderExtension(
         std::unique_ptr<extension::BinderExtension> transformerExtension);
 
     std::vector<extension::BinderExtension*> getBinderExtensions();
 
-    KUZU_API void addPlannerExtension(
+    RYU_API void addPlannerExtension(
         std::unique_ptr<extension::PlannerExtension> plannerExtension);
 
     std::vector<extension::PlannerExtension*> getPlannerExtensions();
 
-    KUZU_API void addMapperExtension(std::unique_ptr<extension::MapperExtension> mapperExtension);
+    RYU_API void addMapperExtension(std::unique_ptr<extension::MapperExtension> mapperExtension);
 
     std::vector<extension::MapperExtension*> getMapperExtensions();
 
-    KUZU_API catalog::Catalog* getCatalog() { return catalog.get(); }
+    RYU_API catalog::Catalog* getCatalog() { return catalog.get(); }
 
     const DBConfig& getConfig() const { return dbConfig; }
 
@@ -201,4 +201,4 @@ private:
 };
 
 } // namespace main
-} // namespace kuzu
+} // namespace ryu

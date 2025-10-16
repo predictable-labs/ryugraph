@@ -1,6 +1,6 @@
 #include "processor/operator/persistent/reader/parquet/struct_column_reader.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
 StructColumnReader::StructColumnReader(ParquetReader& reader, common::LogicalType type,
@@ -96,4 +96,4 @@ uint64_t StructColumnReader::getGroupRowsAvailable() {
 }
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

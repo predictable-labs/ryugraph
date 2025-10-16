@@ -5,7 +5,7 @@
 #include "common/vector/value_vector.h"
 #include "parquet_types.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 class ParquetWriter;
 
@@ -106,4 +106,4 @@ protected:
 };
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

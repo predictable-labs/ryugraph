@@ -6,7 +6,7 @@
 #include "main/client_context.h"
 #include "yyjson.h"
 
-namespace kuzu {
+namespace ryu {
 namespace json_extension {
 
 class JsonMutWrapper;
@@ -77,4 +77,4 @@ std::string jsonExtractToString(const JsonWrapper& wrapper, std::string path);
 uint32_t jsonArraySize(const JsonWrapper& wrapper);
 
 } // namespace json_extension
-} // namespace kuzu
+} // namespace ryu

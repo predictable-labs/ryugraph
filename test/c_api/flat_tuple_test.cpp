@@ -1,8 +1,8 @@
 #include "c_api_test/c_api_test.h"
 
-using namespace kuzu::common;
-using namespace kuzu::main;
-using namespace kuzu::testing;
+using namespace ryu::common;
+using namespace ryu::main;
+using namespace ryu::testing;
 
 class CApiFlatTupleTest : public CApiTest {
 public:

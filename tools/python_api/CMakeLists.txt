@@ -8,7 +8,7 @@ file(GLOB SOURCE_PY
 
 pybind11_add_module(_kuzu
         SHARED
-        src_cpp/kuzu_binding.cpp
+        src_cpp/ryu_binding.cpp
         src_cpp/cached_import/py_cached_item.cpp
         src_cpp/cached_import/py_cached_import.cpp
         src_cpp/py_connection.cpp

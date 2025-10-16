@@ -10,7 +10,7 @@ python3 -m pip install kuzu
 
 Example usage:
 ```python
-import kuzu
+import ryu
 
 db = kuzu.Database("./test")
 conn = kuzu.Connection(db)

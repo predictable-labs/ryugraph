@@ -12,12 +12,12 @@
 #include "httplib.h"
 #include "json.hpp"
 
-namespace kuzu {
+namespace ryu {
 namespace neo4j_extension {
 
-using namespace kuzu::common;
-using namespace kuzu::main;
-using namespace kuzu::function;
+using namespace ryu::common;
+using namespace ryu::main;
+using namespace ryu::function;
 
 struct Neo4jMigrateBindData final : TableFuncBindData {
     std::shared_ptr<httplib::Client> client;
@@ -434,4 +434,4 @@ function_set Neo4jMigrateFunction::getFunctionSet() {
 }
 
 } // namespace neo4j_extension
-} // namespace kuzu
+} // namespace ryu

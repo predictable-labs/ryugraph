@@ -6,11 +6,11 @@ from decimal import Decimal
 from typing import Any
 from uuid import UUID
 
-import kuzu
+import ryu
 import pytz
 from pandas import Timedelta, Timestamp
 from type_aliases import ConnDB
-from kuzu.constants import ID, LABEL, SRC, DST, NODES, RELS
+from ryu.constants import ID, LABEL, SRC, DST, NODES, RELS
 
 
 def test_to_df(conn_db_readonly: ConnDB) -> None:

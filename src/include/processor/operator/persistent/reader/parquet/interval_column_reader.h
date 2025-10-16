@@ -4,7 +4,7 @@
 #include "common/types/interval_t.h"
 #include "templated_column_reader.h"
 
-namespace kuzu {
+namespace ryu {
 namespace processor {
 
 struct IntervalValueConversion {
@@ -38,4 +38,4 @@ protected:
 };
 
 } // namespace processor
-} // namespace kuzu
+} // namespace ryu

@@ -1,16 +1,16 @@
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "common/types/types.h"
 
-using namespace kuzu::common;
+using namespace ryu::common;
 
-namespace kuzu::common {
+namespace ryu::common {
 struct CAPIHelper {
     static inline LogicalType* createLogicalType(LogicalTypeID typeID,
         std::unique_ptr<ExtraTypeInfo> extraTypeInfo) {
         return new LogicalType(typeID, std::move(extraTypeInfo));
     }
 };
-} // namespace kuzu::common
+} // namespace ryu::common
 
 void kuzu_data_type_create(kuzu_data_type_id id, kuzu_logical_type* child_type,
     uint64_t num_elements_in_array, kuzu_logical_type* out_data_type) {

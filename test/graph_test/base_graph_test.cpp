@@ -9,10 +9,10 @@
 #include "spdlog/spdlog.h"
 #include "test_helper/test_helper.h"
 
-using namespace kuzu::common;
-using namespace kuzu::main;
+using namespace ryu::common;
+using namespace ryu::main;
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 void BaseGraphTest::createConns(const std::set<std::string>& connNames) {
@@ -70,4 +70,4 @@ void BaseGraphTest::initGraph(const std::string& datasetDir) const {
 }
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

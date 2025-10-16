@@ -1,8 +1,8 @@
-#include "c_api/kuzu.h"
+#include "c_api/ryu.h"
 #include "common/exception/exception.h"
-#include "main/kuzu.h"
-using namespace kuzu::main;
-using namespace kuzu::common;
+#include "main/ryu.h"
+using namespace ryu::main;
+using namespace ryu::common;
 
 kuzu_state kuzu_database_init(const char* database_path, kuzu_system_config config,
     kuzu_database* out_database) {

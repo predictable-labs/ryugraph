@@ -25,9 +25,9 @@
 #include "common/types/timestamp_t.h"
 #include "test_helper/test_helper.h"
 
-using namespace kuzu::common;
+using namespace ryu::common;
 
-namespace kuzu {
+namespace ryu {
 namespace testing {
 
 TestParser::TestParser(std::string path)
@@ -787,4 +787,4 @@ void TestParser::extractConnName(std::string& query, TestStatement& statement) {
 }
 
 } // namespace testing
-} // namespace kuzu
+} // namespace ryu

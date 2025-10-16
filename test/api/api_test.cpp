@@ -13,9 +13,9 @@
 #include "api_test/api_test.h"
 #include "common/exception/io.h"
 
-using namespace kuzu::common;
-using namespace kuzu::main;
-using namespace kuzu::testing;
+using namespace ryu::common;
+using namespace ryu::main;
+using namespace ryu::testing;
 
 static void assertMatchPersonCountStar(Connection* conn) {
     auto result = conn->query("MATCH (a:person) RETURN COUNT(*)");

@@ -27,10 +27,10 @@
 #include "utf8proc.h"
 #include "utf8proc_wrapper.h"
 
-using namespace kuzu::common;
-using namespace kuzu::utf8proc;
+using namespace ryu::common;
+using namespace ryu::utf8proc;
 
-namespace kuzu {
+namespace ryu {
 namespace main {
 
 #ifdef _WIN32
@@ -1562,4 +1562,4 @@ void EmbeddedShell::printTruncatedExecutionResult(QueryResult& queryResult) cons
 }
 
 } // namespace main
-} // namespace kuzu
+} // namespace ryu

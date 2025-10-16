@@ -18,8 +18,8 @@
 #include "processor/result/factorized_table.h"
 #include "pyarrow/pyarrow_scan.h"
 
-using namespace kuzu::common;
-using namespace kuzu;
+using namespace ryu::common;
+using namespace ryu;
 
 void PyConnection::initialize(py::handle& m) {
     py::class_<PyConnection>(m, "Connection")
@@ -125,7 +125,7 @@ static std::unique_ptr<function::ScanReplacementData> replacePythonObject(
 }
 
 PyConnection::PyConnection(PyDatabase* pyDatabase, uint64_t numThreads) {
-    storageDriver = std::make_unique<kuzu::main::StorageDriver>(pyDatabase->database.get());
+    storageDriver = std::make_unique<ryu::main::StorageDriver>(pyDatabase->database.get());
     conn = std::make_unique<Connection>(pyDatabase->database.get());
     conn->getClientContext()->addScanReplace(
         function::ScanReplacement(lookupPythonObject, replacePythonObject));

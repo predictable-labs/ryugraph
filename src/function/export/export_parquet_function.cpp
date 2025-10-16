@@ -8,7 +8,7 @@
 #include "processor/result/factorized_table.h"
 #include "storage/buffer_manager/memory_manager.h"
 
-namespace kuzu {
+namespace ryu {
 namespace function {
 
 using namespace common;
@@ -180,4 +180,4 @@ function_set ExportParquetFunction::getFunctionSet() {
 }
 
 } // namespace function
-} // namespace kuzu
+} // namespace ryu
