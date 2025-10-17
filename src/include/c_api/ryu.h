@@ -138,239 +138,239 @@ typedef struct {
     // This works for Swift bindings on Apple platforms only.
     uint32_t thread_qos;
 #endif
-} kuzu_system_config;
+} ryu_system_config;
 
 /**
- * @brief kuzu_database manages all database components.
+ * @brief ryu_database manages all database components.
  */
 typedef struct {
     void* _database;
-} kuzu_database;
+} ryu_database;
 
 /**
- * @brief kuzu_connection is used to interact with a Database instance. Each connection is
+ * @brief ryu_connection is used to interact with a Database instance. Each connection is
  * thread-safe. Multiple connections can connect to the same Database instance in a multi-threaded
  * environment.
  */
 typedef struct {
     void* _connection;
-} kuzu_connection;
+} ryu_connection;
 
 /**
- * @brief kuzu_prepared_statement is a parameterized query which can avoid planning the same query
+ * @brief ryu_prepared_statement is a parameterized query which can avoid planning the same query
  * for repeated execution.
  */
 typedef struct {
     void* _prepared_statement;
     void* _bound_values;
-} kuzu_prepared_statement;
+} ryu_prepared_statement;
 
 /**
- * @brief kuzu_query_result stores the result of a query.
+ * @brief ryu_query_result stores the result of a query.
  */
 typedef struct {
     void* _query_result;
     bool _is_owned_by_cpp;
-} kuzu_query_result;
+} ryu_query_result;
 
 /**
- * @brief kuzu_flat_tuple stores a vector of values.
+ * @brief ryu_flat_tuple stores a vector of values.
  */
 typedef struct {
     void* _flat_tuple;
     bool _is_owned_by_cpp;
-} kuzu_flat_tuple;
+} ryu_flat_tuple;
 
 /**
- * @brief kuzu_logical_type is the kuzu internal representation of data types.
+ * @brief ryu_logical_type is the ryu internal representation of data types.
  */
 typedef struct {
     void* _data_type;
-} kuzu_logical_type;
+} ryu_logical_type;
 
 /**
- * @brief kuzu_value is used to represent a value with any kuzu internal dataType.
+ * @brief ryu_value is used to represent a value with any ryu internal dataType.
  */
 typedef struct {
     void* _value;
     bool _is_owned_by_cpp;
-} kuzu_value;
+} ryu_value;
 
 /**
- * @brief kuzu internal internal_id type which stores the table_id and offset of a node/rel.
+ * @brief ryu internal internal_id type which stores the table_id and offset of a node/rel.
  */
 typedef struct {
     uint64_t table_id;
     uint64_t offset;
-} kuzu_internal_id_t;
+} ryu_internal_id_t;
 
 /**
- * @brief kuzu internal date type which stores the number of days since 1970-01-01 00:00:00 UTC.
+ * @brief ryu internal date type which stores the number of days since 1970-01-01 00:00:00 UTC.
  */
 typedef struct {
     // Days since 1970-01-01 00:00:00 UTC.
     int32_t days;
-} kuzu_date_t;
+} ryu_date_t;
 
 /**
- * @brief kuzu internal timestamp_ns type which stores the number of nanoseconds since 1970-01-01
+ * @brief ryu internal timestamp_ns type which stores the number of nanoseconds since 1970-01-01
  * 00:00:00 UTC.
  */
 typedef struct {
     // Nanoseconds since 1970-01-01 00:00:00 UTC.
     int64_t value;
-} kuzu_timestamp_ns_t;
+} ryu_timestamp_ns_t;
 
 /**
- * @brief kuzu internal timestamp_ms type which stores the number of milliseconds since 1970-01-01
+ * @brief ryu internal timestamp_ms type which stores the number of milliseconds since 1970-01-01
  * 00:00:00 UTC.
  */
 typedef struct {
     // Milliseconds since 1970-01-01 00:00:00 UTC.
     int64_t value;
-} kuzu_timestamp_ms_t;
+} ryu_timestamp_ms_t;
 
 /**
- * @brief kuzu internal timestamp_sec_t type which stores the number of seconds since 1970-01-01
+ * @brief ryu internal timestamp_sec_t type which stores the number of seconds since 1970-01-01
  * 00:00:00 UTC.
  */
 typedef struct {
     // Seconds since 1970-01-01 00:00:00 UTC.
     int64_t value;
-} kuzu_timestamp_sec_t;
+} ryu_timestamp_sec_t;
 
 /**
- * @brief kuzu internal timestamp_tz type which stores the number of microseconds since 1970-01-01
+ * @brief ryu internal timestamp_tz type which stores the number of microseconds since 1970-01-01
  * with timezone 00:00:00 UTC.
  */
 typedef struct {
     // Microseconds since 1970-01-01 00:00:00 UTC.
     int64_t value;
-} kuzu_timestamp_tz_t;
+} ryu_timestamp_tz_t;
 
 /**
- * @brief kuzu internal timestamp type which stores the number of microseconds since 1970-01-01
+ * @brief ryu internal timestamp type which stores the number of microseconds since 1970-01-01
  * 00:00:00 UTC.
  */
 typedef struct {
     // Microseconds since 1970-01-01 00:00:00 UTC.
     int64_t value;
-} kuzu_timestamp_t;
+} ryu_timestamp_t;
 
 /**
- * @brief kuzu internal interval type which stores the months, days and microseconds.
+ * @brief ryu internal interval type which stores the months, days and microseconds.
  */
 typedef struct {
     int32_t months;
     int32_t days;
     int64_t micros;
-} kuzu_interval_t;
+} ryu_interval_t;
 
 /**
- * @brief kuzu_query_summary stores the execution time, plan, compiling time and query options of a
+ * @brief ryu_query_summary stores the execution time, plan, compiling time and query options of a
  * query.
  */
 typedef struct {
     void* _query_summary;
-} kuzu_query_summary;
+} ryu_query_summary;
 
 typedef struct {
     uint64_t low;
     int64_t high;
-} kuzu_int128_t;
+} ryu_int128_t;
 
 /**
- * @brief enum class for kuzu internal dataTypes.
+ * @brief enum class for ryu internal dataTypes.
  */
 typedef enum {
-    KUZU_ANY = 0,
-    KUZU_NODE = 10,
-    KUZU_REL = 11,
-    KUZU_RECURSIVE_REL = 12,
+    RYU_ANY = 0,
+    RYU_NODE = 10,
+    RYU_REL = 11,
+    RYU_RECURSIVE_REL = 12,
     // SERIAL is a special data type that is used to represent a sequence of INT64 values that are
     // incremented by 1 starting from 0.
-    KUZU_SERIAL = 13,
+    RYU_SERIAL = 13,
     // fixed size types
-    KUZU_BOOL = 22,
-    KUZU_INT64 = 23,
-    KUZU_INT32 = 24,
-    KUZU_INT16 = 25,
-    KUZU_INT8 = 26,
-    KUZU_UINT64 = 27,
-    KUZU_UINT32 = 28,
-    KUZU_UINT16 = 29,
-    KUZU_UINT8 = 30,
-    KUZU_INT128 = 31,
-    KUZU_DOUBLE = 32,
-    KUZU_FLOAT = 33,
-    KUZU_DATE = 34,
-    KUZU_TIMESTAMP = 35,
-    KUZU_TIMESTAMP_SEC = 36,
-    KUZU_TIMESTAMP_MS = 37,
-    KUZU_TIMESTAMP_NS = 38,
-    KUZU_TIMESTAMP_TZ = 39,
-    KUZU_INTERVAL = 40,
-    KUZU_DECIMAL = 41,
-    KUZU_INTERNAL_ID = 42,
+    RYU_BOOL = 22,
+    RYU_INT64 = 23,
+    RYU_INT32 = 24,
+    RYU_INT16 = 25,
+    RYU_INT8 = 26,
+    RYU_UINT64 = 27,
+    RYU_UINT32 = 28,
+    RYU_UINT16 = 29,
+    RYU_UINT8 = 30,
+    RYU_INT128 = 31,
+    RYU_DOUBLE = 32,
+    RYU_FLOAT = 33,
+    RYU_DATE = 34,
+    RYU_TIMESTAMP = 35,
+    RYU_TIMESTAMP_SEC = 36,
+    RYU_TIMESTAMP_MS = 37,
+    RYU_TIMESTAMP_NS = 38,
+    RYU_TIMESTAMP_TZ = 39,
+    RYU_INTERVAL = 40,
+    RYU_DECIMAL = 41,
+    RYU_INTERNAL_ID = 42,
     // variable size types
-    KUZU_STRING = 50,
-    KUZU_BLOB = 51,
-    KUZU_LIST = 52,
-    KUZU_ARRAY = 53,
-    KUZU_STRUCT = 54,
-    KUZU_MAP = 55,
-    KUZU_UNION = 56,
-    KUZU_POINTER = 58,
-    KUZU_UUID = 59
-} kuzu_data_type_id;
+    RYU_STRING = 50,
+    RYU_BLOB = 51,
+    RYU_LIST = 52,
+    RYU_ARRAY = 53,
+    RYU_STRUCT = 54,
+    RYU_MAP = 55,
+    RYU_UNION = 56,
+    RYU_POINTER = 58,
+    RYU_UUID = 59
+} ryu_data_type_id;
 
 /**
- * @brief enum class for kuzu function return state.
+ * @brief enum class for ryu function return state.
  */
-typedef enum { KuzuSuccess = 0, KuzuError = 1 } kuzu_state;
+typedef enum { RyuSuccess = 0, RyuError = 1 } ryu_state;
 
 // Database
 /**
  * @brief Allocates memory and creates a ryu database instance at database_path with
- * bufferPoolSize=buffer_pool_size. Caller is responsible for calling kuzu_database_destroy() to
+ * bufferPoolSize=buffer_pool_size. Caller is responsible for calling ryu_database_destroy() to
  * release the allocated memory.
  * @param database_path The path to the database.
  * @param system_config The runtime configuration for creating or opening the database.
  * @param[out] out_database The output parameter that will hold the database instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_database_init(const char* database_path,
-    kuzu_system_config system_config, kuzu_database* out_database);
+RYU_C_API ryu_state ryu_database_init(const char* database_path,
+    ryu_system_config system_config, ryu_database* out_database);
 /**
  * @brief Destroys the ryu database instance and frees the allocated memory.
  * @param database The database instance to destroy.
  */
-RYU_C_API void kuzu_database_destroy(kuzu_database* database);
+RYU_C_API void ryu_database_destroy(ryu_database* database);
 
-RYU_C_API kuzu_system_config kuzu_default_system_config();
+RYU_C_API ryu_system_config ryu_default_system_config();
 
 // Connection
 /**
  * @brief Allocates memory and creates a connection to the database. Caller is responsible for
- * calling kuzu_connection_destroy() to release the allocated memory.
+ * calling ryu_connection_destroy() to release the allocated memory.
  * @param database The database instance to connect to.
  * @param[out] out_connection The output parameter that will hold the connection instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_init(kuzu_database* database,
-    kuzu_connection* out_connection);
+RYU_C_API ryu_state ryu_connection_init(ryu_database* database,
+    ryu_connection* out_connection);
 /**
  * @brief Destroys the connection instance and frees the allocated memory.
  * @param connection The connection instance to destroy.
  */
-RYU_C_API void kuzu_connection_destroy(kuzu_connection* connection);
+RYU_C_API void ryu_connection_destroy(ryu_connection* connection);
 /**
  * @brief Sets the maximum number of threads to use for executing queries.
  * @param connection The connection instance to set max number of threads for execution.
  * @param num_threads The maximum number of threads to use for executing queries.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_set_max_num_thread_for_exec(kuzu_connection* connection,
+RYU_C_API ryu_state ryu_connection_set_max_num_thread_for_exec(ryu_connection* connection,
     uint64_t num_threads);
 
 /**
@@ -380,7 +380,7 @@ RYU_C_API kuzu_state kuzu_connection_set_max_num_thread_for_exec(kuzu_connection
  * for executing queries.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_get_max_num_thread_for_exec(kuzu_connection* connection,
+RYU_C_API ryu_state ryu_connection_get_max_num_thread_for_exec(ryu_connection* connection,
     uint64_t* out_result);
 /**
  * @brief Executes the given query and returns the result.
@@ -389,8 +389,8 @@ RYU_C_API kuzu_state kuzu_connection_get_max_num_thread_for_exec(kuzu_connection
  * @param[out] out_query_result The output parameter that will hold the result of the query.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_query(kuzu_connection* connection, const char* query,
-    kuzu_query_result* out_query_result);
+RYU_C_API ryu_state ryu_connection_query(ryu_connection* connection, const char* query,
+    ryu_query_result* out_query_result);
 /**
  * @brief Prepares the given query and returns the prepared statement.
  * @param connection The connection instance to prepare the query.
@@ -398,8 +398,8 @@ RYU_C_API kuzu_state kuzu_connection_query(kuzu_connection* connection, const ch
  * @param[out] out_prepared_statement The output parameter that will hold the prepared statement.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_prepare(kuzu_connection* connection, const char* query,
-    kuzu_prepared_statement* out_prepared_statement);
+RYU_C_API ryu_state ryu_connection_prepare(ryu_connection* connection, const char* query,
+    ryu_prepared_statement* out_prepared_statement);
 /**
  * @brief Executes the prepared_statement using connection.
  * @param connection The connection instance to execute the prepared_statement.
@@ -407,20 +407,20 @@ RYU_C_API kuzu_state kuzu_connection_prepare(kuzu_connection* connection, const 
  * @param[out] out_query_result The output parameter that will hold the result of the query.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_execute(kuzu_connection* connection,
-    kuzu_prepared_statement* prepared_statement, kuzu_query_result* out_query_result);
+RYU_C_API ryu_state ryu_connection_execute(ryu_connection* connection,
+    ryu_prepared_statement* prepared_statement, ryu_query_result* out_query_result);
 /**
  * @brief Interrupts the current query execution in the connection.
  * @param connection The connection instance to interrupt.
  */
-RYU_C_API void kuzu_connection_interrupt(kuzu_connection* connection);
+RYU_C_API void ryu_connection_interrupt(ryu_connection* connection);
 /**
  * @brief Sets query timeout value in milliseconds for the connection.
  * @param connection The connection instance to set query timeout value.
  * @param timeout_in_ms The timeout value in milliseconds.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_connection_set_query_timeout(kuzu_connection* connection,
+RYU_C_API ryu_state ryu_connection_set_query_timeout(ryu_connection* connection,
     uint64_t timeout_in_ms);
 
 // PreparedStatement
@@ -428,20 +428,20 @@ RYU_C_API kuzu_state kuzu_connection_set_query_timeout(kuzu_connection* connecti
  * @brief Destroys the prepared statement instance and frees the allocated memory.
  * @param prepared_statement The prepared statement instance to destroy.
  */
-RYU_C_API void kuzu_prepared_statement_destroy(kuzu_prepared_statement* prepared_statement);
+RYU_C_API void ryu_prepared_statement_destroy(ryu_prepared_statement* prepared_statement);
 /**
  * @return the query is prepared successfully or not.
  */
-RYU_C_API bool kuzu_prepared_statement_is_success(kuzu_prepared_statement* prepared_statement);
+RYU_C_API bool ryu_prepared_statement_is_success(ryu_prepared_statement* prepared_statement);
 /**
  * @brief Returns the error message if the prepared statement is not prepared successfully.
- * The caller is responsible for freeing the returned string with `kuzu_destroy_string`.
+ * The caller is responsible for freeing the returned string with `ryu_destroy_string`.
  * @param prepared_statement The prepared statement instance.
  * @return the error message if the statement is not prepared successfully or null
  * if the statement is prepared successfully.
  */
-RYU_C_API char* kuzu_prepared_statement_get_error_message(
-    kuzu_prepared_statement* prepared_statement);
+RYU_C_API char* ryu_prepared_statement_get_error_message(
+    ryu_prepared_statement* prepared_statement);
 /**
  * @brief Binds the given boolean value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -449,7 +449,7 @@ RYU_C_API char* kuzu_prepared_statement_get_error_message(
  * @param value The boolean value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_bool(kuzu_prepared_statement* prepared_statement,
+RYU_C_API ryu_state ryu_prepared_statement_bind_bool(ryu_prepared_statement* prepared_statement,
     const char* param_name, bool value);
 /**
  * @brief Binds the given int64_t value to the given parameter name in the prepared statement.
@@ -458,8 +458,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_bool(kuzu_prepared_statement* 
  * @param value The int64_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_int64(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, int64_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int64(
+    ryu_prepared_statement* prepared_statement, const char* param_name, int64_t value);
 /**
  * @brief Binds the given int32_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -467,8 +467,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_int64(
  * @param value The int32_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_int32(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, int32_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int32(
+    ryu_prepared_statement* prepared_statement, const char* param_name, int32_t value);
 /**
  * @brief Binds the given int16_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -476,8 +476,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_int32(
  * @param value The int16_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_int16(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, int16_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int16(
+    ryu_prepared_statement* prepared_statement, const char* param_name, int16_t value);
 /**
  * @brief Binds the given int8_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -485,7 +485,7 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_int16(
  * @param value The int8_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_int8(kuzu_prepared_statement* prepared_statement,
+RYU_C_API ryu_state ryu_prepared_statement_bind_int8(ryu_prepared_statement* prepared_statement,
     const char* param_name, int8_t value);
 /**
  * @brief Binds the given uint64_t value to the given parameter name in the prepared statement.
@@ -494,8 +494,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_int8(kuzu_prepared_statement* 
  * @param value The uint64_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint64(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, uint64_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint64(
+    ryu_prepared_statement* prepared_statement, const char* param_name, uint64_t value);
 /**
  * @brief Binds the given uint32_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -503,8 +503,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint64(
  * @param value The uint32_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint32(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, uint32_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint32(
+    ryu_prepared_statement* prepared_statement, const char* param_name, uint32_t value);
 /**
  * @brief Binds the given uint16_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -512,8 +512,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint32(
  * @param value The uint16_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint16(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, uint16_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint16(
+    ryu_prepared_statement* prepared_statement, const char* param_name, uint16_t value);
 /**
  * @brief Binds the given int8_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -521,8 +521,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint16(
  * @param value The int8_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint8(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, uint8_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint8(
+    ryu_prepared_statement* prepared_statement, const char* param_name, uint8_t value);
 
 /**
  * @brief Binds the given double value to the given parameter name in the prepared statement.
@@ -531,8 +531,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_uint8(
  * @param value The double value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_double(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, double value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_double(
+    ryu_prepared_statement* prepared_statement, const char* param_name, double value);
 /**
  * @brief Binds the given float value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -540,8 +540,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_double(
  * @param value The float value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_float(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, float value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_float(
+    ryu_prepared_statement* prepared_statement, const char* param_name, float value);
 /**
  * @brief Binds the given date value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -549,8 +549,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_float(
  * @param value The date value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_date(kuzu_prepared_statement* prepared_statement,
-    const char* param_name, kuzu_date_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_date(ryu_prepared_statement* prepared_statement,
+    const char* param_name, ryu_date_t value);
 /**
  * @brief Binds the given timestamp_ns value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -558,8 +558,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_date(kuzu_prepared_statement* 
  * @param value The timestamp_ns value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_ns(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_timestamp_ns_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_ns(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_timestamp_ns_t value);
 /**
  * @brief Binds the given timestamp_sec value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -567,9 +567,9 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_ns(
  * @param value The timestamp_sec value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_sec(
-    kuzu_prepared_statement* prepared_statement, const char* param_name,
-    kuzu_timestamp_sec_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_sec(
+    ryu_prepared_statement* prepared_statement, const char* param_name,
+    ryu_timestamp_sec_t value);
 /**
  * @brief Binds the given timestamp_tz value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -577,8 +577,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_sec(
  * @param value The timestamp_tz value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_tz(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_timestamp_tz_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_tz(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_timestamp_tz_t value);
 /**
  * @brief Binds the given timestamp_ms value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -586,8 +586,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_tz(
  * @param value The timestamp_ms value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_ms(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_timestamp_ms_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_ms(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_timestamp_ms_t value);
 /**
  * @brief Binds the given timestamp value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -595,8 +595,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp_ms(
  * @param value The timestamp value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_timestamp_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_timestamp_t value);
 /**
  * @brief Binds the given interval value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -604,8 +604,8 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_timestamp(
  * @param value The interval value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_interval(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_interval_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_interval(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_interval_t value);
 /**
  * @brief Binds the given string value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -613,41 +613,41 @@ RYU_C_API kuzu_state kuzu_prepared_statement_bind_interval(
  * @param value The string value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_string(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, const char* value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_string(
+    ryu_prepared_statement* prepared_statement, const char* param_name, const char* value);
 /**
- * @brief Binds the given kuzu value to the given parameter name in the prepared statement.
+ * @brief Binds the given ryu value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
  * @param param_name The parameter name to bind the value.
- * @param value The kuzu value to bind.
+ * @param value The ryu value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_prepared_statement_bind_value(
-    kuzu_prepared_statement* prepared_statement, const char* param_name, kuzu_value* value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_value(
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_value* value);
 
 // QueryResult
 /**
  * @brief Destroys the given query result instance.
  * @param query_result The query result instance to destroy.
  */
-RYU_C_API void kuzu_query_result_destroy(kuzu_query_result* query_result);
+RYU_C_API void ryu_query_result_destroy(ryu_query_result* query_result);
 /**
  * @brief Returns true if the query is executed successful, false otherwise.
  * @param query_result The query result instance to check.
  */
-RYU_C_API bool kuzu_query_result_is_success(kuzu_query_result* query_result);
+RYU_C_API bool ryu_query_result_is_success(ryu_query_result* query_result);
 /**
  * @brief Returns the error message if the query is failed.
- * The caller is responsible for freeing the returned string with `kuzu_destroy_string`.
+ * The caller is responsible for freeing the returned string with `ryu_destroy_string`.
  * @param query_result The query result instance to check and return error message.
  * @return The error message if the query has failed, or null if the query is successful.
  */
-RYU_C_API char* kuzu_query_result_get_error_message(kuzu_query_result* query_result);
+RYU_C_API char* ryu_query_result_get_error_message(ryu_query_result* query_result);
 /**
  * @brief Returns the number of columns in the query result.
  * @param query_result The query result instance to return.
  */
-RYU_C_API uint64_t kuzu_query_result_get_num_columns(kuzu_query_result* query_result);
+RYU_C_API uint64_t ryu_query_result_get_num_columns(ryu_query_result* query_result);
 /**
  * @brief Returns the column name at the given index.
  * @param query_result The query result instance to return.
@@ -655,7 +655,7 @@ RYU_C_API uint64_t kuzu_query_result_get_num_columns(kuzu_query_result* query_re
  * @param[out] out_column_name The output parameter that will hold the column name.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_query_result_get_column_name(kuzu_query_result* query_result,
+RYU_C_API ryu_state ryu_query_result_get_column_name(ryu_query_result* query_result,
     uint64_t index, char** out_column_name);
 /**
  * @brief Returns the data type of the column at the given index.
@@ -664,43 +664,43 @@ RYU_C_API kuzu_state kuzu_query_result_get_column_name(kuzu_query_result* query_
  * @param[out] out_column_data_type The output parameter that will hold the column data type.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_query_result_get_column_data_type(kuzu_query_result* query_result,
-    uint64_t index, kuzu_logical_type* out_column_data_type);
+RYU_C_API ryu_state ryu_query_result_get_column_data_type(ryu_query_result* query_result,
+    uint64_t index, ryu_logical_type* out_column_data_type);
 /**
  * @brief Returns the number of tuples in the query result.
  * @param query_result The query result instance to return.
  */
-RYU_C_API uint64_t kuzu_query_result_get_num_tuples(kuzu_query_result* query_result);
+RYU_C_API uint64_t ryu_query_result_get_num_tuples(ryu_query_result* query_result);
 /**
  * @brief Returns the query summary of the query result.
  * @param query_result The query result instance to return.
  * @param[out] out_query_summary The output parameter that will hold the query summary.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_query_result_get_query_summary(kuzu_query_result* query_result,
-    kuzu_query_summary* out_query_summary);
+RYU_C_API ryu_state ryu_query_result_get_query_summary(ryu_query_result* query_result,
+    ryu_query_summary* out_query_summary);
 /**
  * @brief Returns true if we have not consumed all tuples in the query result, false otherwise.
  * @param query_result The query result instance to check.
  */
-RYU_C_API bool kuzu_query_result_has_next(kuzu_query_result* query_result);
+RYU_C_API bool ryu_query_result_has_next(ryu_query_result* query_result);
 /**
  * @brief Returns the next tuple in the query result. Throws an exception if there is no more tuple.
- * Note that to reduce resource allocation, all calls to kuzu_query_result_get_next() reuse the same
+ * Note that to reduce resource allocation, all calls to ryu_query_result_get_next() reuse the same
  * FlatTuple object. Since its contents will be overwritten, please complete processing a FlatTuple
- * or make a copy of its data before calling kuzu_query_result_get_next() again.
+ * or make a copy of its data before calling ryu_query_result_get_next() again.
  * @param query_result The query result instance to return.
  * @param[out] out_flat_tuple The output parameter that will hold the next tuple.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_query_result_get_next(kuzu_query_result* query_result,
-    kuzu_flat_tuple* out_flat_tuple);
+RYU_C_API ryu_state ryu_query_result_get_next(ryu_query_result* query_result,
+    ryu_flat_tuple* out_flat_tuple);
 /**
  * @brief Returns true if we have not consumed all query results, false otherwise. Use this function
  * for loop results of multiple query statements
  * @param query_result The query result instance to check.
  */
-RYU_C_API bool kuzu_query_result_has_next_query_result(kuzu_query_result* query_result);
+RYU_C_API bool ryu_query_result_has_next_query_result(ryu_query_result* query_result);
 /**
  * @brief Returns the next query result. Use this function to loop multiple query statements'
  * results.
@@ -708,20 +708,20 @@ RYU_C_API bool kuzu_query_result_has_next_query_result(kuzu_query_result* query_
  * @param[out] out_next_query_result The output parameter that will hold the next query result.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_query_result_get_next_query_result(kuzu_query_result* query_result,
-    kuzu_query_result* out_next_query_result);
+RYU_C_API ryu_state ryu_query_result_get_next_query_result(ryu_query_result* query_result,
+    ryu_query_result* out_next_query_result);
 
 /**
  * @brief Returns the query result as a string.
  * @param query_result The query result instance to return.
  * @return The query result as a string.
  */
-RYU_C_API char* kuzu_query_result_to_string(kuzu_query_result* query_result);
+RYU_C_API char* ryu_query_result_to_string(ryu_query_result* query_result);
 /**
  * @brief Resets the iterator of the query result to the beginning of the query result.
  * @param query_result The query result instance to reset iterator.
  */
-RYU_C_API void kuzu_query_result_reset_iterator(kuzu_query_result* query_result);
+RYU_C_API void ryu_query_result_reset_iterator(ryu_query_result* query_result);
 
 /**
  * @brief Returns the query result's schema as ArrowSchema.
@@ -732,7 +732,7 @@ RYU_C_API void kuzu_query_result_reset_iterator(kuzu_query_result* query_result)
  *
  * It is the caller's responsibility to call the release function to release the underlying data
  */
-RYU_C_API kuzu_state kuzu_query_result_get_arrow_schema(kuzu_query_result* query_result,
+RYU_C_API ryu_state ryu_query_result_get_arrow_schema(ryu_query_result* query_result,
     struct ArrowSchema* out_schema);
 
 /**
@@ -746,7 +746,7 @@ RYU_C_API kuzu_state kuzu_query_result_get_arrow_schema(kuzu_query_result* query
  *
  * It is the caller's responsibility to call the release function to release the underlying data
  */
-RYU_C_API kuzu_state kuzu_query_result_get_next_arrow_chunk(kuzu_query_result* query_result,
+RYU_C_API ryu_state ryu_query_result_get_next_arrow_chunk(ryu_query_result* query_result,
     int64_t chunk_size, struct ArrowArray* out_arrow_array);
 
 // FlatTuple
@@ -754,7 +754,7 @@ RYU_C_API kuzu_state kuzu_query_result_get_next_arrow_chunk(kuzu_query_result* q
  * @brief Destroys the given flat tuple instance.
  * @param flat_tuple The flat tuple instance to destroy.
  */
-RYU_C_API void kuzu_flat_tuple_destroy(kuzu_flat_tuple* flat_tuple);
+RYU_C_API void ryu_flat_tuple_destroy(ryu_flat_tuple* flat_tuple);
 /**
  * @brief Returns the value at index of the flat tuple.
  * @param flat_tuple The flat tuple instance to return.
@@ -762,14 +762,14 @@ RYU_C_API void kuzu_flat_tuple_destroy(kuzu_flat_tuple* flat_tuple);
  * @param[out] out_value The output parameter that will hold the value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_flat_tuple_get_value(kuzu_flat_tuple* flat_tuple, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_flat_tuple_get_value(ryu_flat_tuple* flat_tuple, uint64_t index,
+    ryu_value* out_value);
 /**
  * @brief Converts the flat tuple to a string.
  * @param flat_tuple The flat tuple instance to convert.
  * @return The flat tuple as a string.
  */
-RYU_C_API char* kuzu_flat_tuple_to_string(kuzu_flat_tuple* flat_tuple);
+RYU_C_API char* ryu_flat_tuple_to_string(ryu_flat_tuple* flat_tuple);
 
 // DataType
 // TODO(Chang): Refactor the datatype constructor to follow the cpp way of creating dataTypes.
@@ -782,194 +782,194 @@ RYU_C_API char* kuzu_flat_tuple_to_string(kuzu_flat_tuple* flat_tuple);
  * @param[out] out_type The output parameter that will hold the data type instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API void kuzu_data_type_create(kuzu_data_type_id id, kuzu_logical_type* child_type,
-    uint64_t num_elements_in_array, kuzu_logical_type* out_type);
+RYU_C_API void ryu_data_type_create(ryu_data_type_id id, ryu_logical_type* child_type,
+    uint64_t num_elements_in_array, ryu_logical_type* out_type);
 /**
  * @brief Creates a new data type instance by cloning the given data type instance.
  * @param data_type The data type instance to clone.
  * @param[out] out_type The output parameter that will hold the cloned data type instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API void kuzu_data_type_clone(kuzu_logical_type* data_type, kuzu_logical_type* out_type);
+RYU_C_API void ryu_data_type_clone(ryu_logical_type* data_type, ryu_logical_type* out_type);
 /**
  * @brief Destroys the given data type instance.
  * @param data_type The data type instance to destroy.
  */
-RYU_C_API void kuzu_data_type_destroy(kuzu_logical_type* data_type);
+RYU_C_API void ryu_data_type_destroy(ryu_logical_type* data_type);
 /**
  * @brief Returns true if the given data type is equal to the other data type, false otherwise.
  * @param data_type1 The first data type instance to compare.
  * @param data_type2 The second data type instance to compare.
  */
-RYU_C_API bool kuzu_data_type_equals(kuzu_logical_type* data_type1, kuzu_logical_type* data_type2);
+RYU_C_API bool ryu_data_type_equals(ryu_logical_type* data_type1, ryu_logical_type* data_type2);
 /**
  * @brief Returns the enum type id of the given data type.
  * @param data_type The data type instance to return.
  */
-RYU_C_API kuzu_data_type_id kuzu_data_type_get_id(kuzu_logical_type* data_type);
+RYU_C_API ryu_data_type_id ryu_data_type_get_id(ryu_logical_type* data_type);
 /**
  * @brief Returns the number of elements for array.
  * @param data_type The data type instance to return.
  * @param[out] out_result The output parameter that will hold the number of elements in the array.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_data_type_get_num_elements_in_array(kuzu_logical_type* data_type,
+RYU_C_API ryu_state ryu_data_type_get_num_elements_in_array(ryu_logical_type* data_type,
     uint64_t* out_result);
 
 // Value
 /**
  * @brief Creates a NULL value of ANY type. Caller is responsible for destroying the returned value.
  */
-RYU_C_API kuzu_value* kuzu_value_create_null();
+RYU_C_API ryu_value* ryu_value_create_null();
 /**
  * @brief Creates a value of the given data type. Caller is responsible for destroying the
  * returned value.
  * @param data_type The data type of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_null_with_data_type(kuzu_logical_type* data_type);
+RYU_C_API ryu_value* ryu_value_create_null_with_data_type(ryu_logical_type* data_type);
 /**
  * @brief Returns true if the given value is NULL, false otherwise.
  * @param value The value instance to check.
  */
-RYU_C_API bool kuzu_value_is_null(kuzu_value* value);
+RYU_C_API bool ryu_value_is_null(ryu_value* value);
 /**
  * @brief Sets the given value to NULL or not.
  * @param value The value instance to set.
  * @param is_null True if sets the value to NULL, false otherwise.
  */
-RYU_C_API void kuzu_value_set_null(kuzu_value* value, bool is_null);
+RYU_C_API void ryu_value_set_null(ryu_value* value, bool is_null);
 /**
  * @brief Creates a value of the given data type with default non-NULL value. Caller is responsible
  * for destroying the returned value.
  * @param data_type The data type of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_default(kuzu_logical_type* data_type);
+RYU_C_API ryu_value* ryu_value_create_default(ryu_logical_type* data_type);
 /**
  * @brief Creates a value with boolean type and the given bool value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The bool value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_bool(bool val_);
+RYU_C_API ryu_value* ryu_value_create_bool(bool val_);
 /**
  * @brief Creates a value with int8 type and the given int8 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The int8 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_int8(int8_t val_);
+RYU_C_API ryu_value* ryu_value_create_int8(int8_t val_);
 /**
  * @brief Creates a value with int16 type and the given int16 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The int16 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_int16(int16_t val_);
+RYU_C_API ryu_value* ryu_value_create_int16(int16_t val_);
 /**
  * @brief Creates a value with int32 type and the given int32 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The int32 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_int32(int32_t val_);
+RYU_C_API ryu_value* ryu_value_create_int32(int32_t val_);
 /**
  * @brief Creates a value with int64 type and the given int64 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The int64 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_int64(int64_t val_);
+RYU_C_API ryu_value* ryu_value_create_int64(int64_t val_);
 /**
  * @brief Creates a value with uint8 type and the given uint8 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The uint8 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_uint8(uint8_t val_);
+RYU_C_API ryu_value* ryu_value_create_uint8(uint8_t val_);
 /**
  * @brief Creates a value with uint16 type and the given uint16 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The uint16 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_uint16(uint16_t val_);
+RYU_C_API ryu_value* ryu_value_create_uint16(uint16_t val_);
 /**
  * @brief Creates a value with uint32 type and the given uint32 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The uint32 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_uint32(uint32_t val_);
+RYU_C_API ryu_value* ryu_value_create_uint32(uint32_t val_);
 /**
  * @brief Creates a value with uint64 type and the given uint64 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The uint64 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_uint64(uint64_t val_);
+RYU_C_API ryu_value* ryu_value_create_uint64(uint64_t val_);
 /**
  * @brief Creates a value with int128 type and the given int128 value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The int128 value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_int128(kuzu_int128_t val_);
+RYU_C_API ryu_value* ryu_value_create_int128(ryu_int128_t val_);
 /**
  * @brief Creates a value with float type and the given float value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The float value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_float(float val_);
+RYU_C_API ryu_value* ryu_value_create_float(float val_);
 /**
  * @brief Creates a value with double type and the given double value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The double value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_double(double val_);
+RYU_C_API ryu_value* ryu_value_create_double(double val_);
 /**
  * @brief Creates a value with internal_id type and the given internal_id value. Caller is
  * responsible for destroying the returned value.
  * @param val_ The internal_id value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_internal_id(kuzu_internal_id_t val_);
+RYU_C_API ryu_value* ryu_value_create_internal_id(ryu_internal_id_t val_);
 /**
  * @brief Creates a value with date type and the given date value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The date value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_date(kuzu_date_t val_);
+RYU_C_API ryu_value* ryu_value_create_date(ryu_date_t val_);
 /**
  * @brief Creates a value with timestamp_ns type and the given timestamp value. Caller is
  * responsible for destroying the returned value.
  * @param val_ The timestamp_ns value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_timestamp_ns(kuzu_timestamp_ns_t val_);
+RYU_C_API ryu_value* ryu_value_create_timestamp_ns(ryu_timestamp_ns_t val_);
 /**
  * @brief Creates a value with timestamp_ms type and the given timestamp value. Caller is
  * responsible for destroying the returned value.
  * @param val_ The timestamp_ms value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_timestamp_ms(kuzu_timestamp_ms_t val_);
+RYU_C_API ryu_value* ryu_value_create_timestamp_ms(ryu_timestamp_ms_t val_);
 /**
  * @brief Creates a value with timestamp_sec type and the given timestamp value. Caller is
  * responsible for destroying the returned value.
  * @param val_ The timestamp_sec value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_timestamp_sec(kuzu_timestamp_sec_t val_);
+RYU_C_API ryu_value* ryu_value_create_timestamp_sec(ryu_timestamp_sec_t val_);
 /**
  * @brief Creates a value with timestamp_tz type and the given timestamp value. Caller is
  * responsible for destroying the returned value.
  * @param val_ The timestamp_tz value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_timestamp_tz(kuzu_timestamp_tz_t val_);
+RYU_C_API ryu_value* ryu_value_create_timestamp_tz(ryu_timestamp_tz_t val_);
 /**
  * @brief Creates a value with timestamp type and the given timestamp value. Caller is responsible
  * for destroying the returned value.
  * @param val_ The timestamp value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_timestamp(kuzu_timestamp_t val_);
+RYU_C_API ryu_value* ryu_value_create_timestamp(ryu_timestamp_t val_);
 /**
  * @brief Creates a value with interval type and the given interval value. Caller is responsible
  * for destroying the returned value.
  * @param val_ The interval value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_interval(kuzu_interval_t val_);
+RYU_C_API ryu_value* ryu_value_create_interval(ryu_interval_t val_);
 /**
  * @brief Creates a value with string type and the given string value. Caller is responsible for
  * destroying the returned value.
  * @param val_ The string value of the value to create.
  */
-RYU_C_API kuzu_value* kuzu_value_create_string(const char* val_);
+RYU_C_API ryu_value* ryu_value_create_string(const char* val_);
 /**
  * @brief Creates a list value with the given number of elements and the given elements.
  * The caller needs to make sure that all elements have the same type.
@@ -981,8 +981,8 @@ RYU_C_API kuzu_value* kuzu_value_create_string(const char* val_);
  * @param[out] out_value The output parameter that will hold a pointer to the created list value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_create_list(uint64_t num_elements, kuzu_value** elements,
-    kuzu_value** out_value);
+RYU_C_API ryu_state ryu_value_create_list(uint64_t num_elements, ryu_value** elements,
+    ryu_value** out_value);
 /**
  * @brief Creates a struct value with the given number of fields and the given field names and
  * values. The caller needs to make sure that all field names are unique.
@@ -995,8 +995,8 @@ RYU_C_API kuzu_state kuzu_value_create_list(uint64_t num_elements, kuzu_value** 
  * @param[out] out_value The output parameter that will hold a pointer to the created struct value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_create_struct(uint64_t num_fields, const char** field_names,
-    kuzu_value** field_values, kuzu_value** out_value);
+RYU_C_API ryu_state ryu_value_create_struct(uint64_t num_fields, const char** field_names,
+    ryu_value** field_values, ryu_value** out_value);
 /**
  * @brief Creates a map value with the given number of fields and the given keys and values. The
  * caller needs to make sure that all keys are unique, and all keys and values have the same type.
@@ -1009,25 +1009,25 @@ RYU_C_API kuzu_state kuzu_value_create_struct(uint64_t num_fields, const char** 
  * @param[out] out_value The output parameter that will hold a pointer to the created map value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_create_map(uint64_t num_fields, kuzu_value** keys,
-    kuzu_value** values, kuzu_value** out_value);
+RYU_C_API ryu_state ryu_value_create_map(uint64_t num_fields, ryu_value** keys,
+    ryu_value** values, ryu_value** out_value);
 /**
  * @brief Creates a new value based on the given value. Caller is responsible for destroying the
  * returned value.
  * @param value The value to create from.
  */
-RYU_C_API kuzu_value* kuzu_value_clone(kuzu_value* value);
+RYU_C_API ryu_value* ryu_value_clone(ryu_value* value);
 /**
  * @brief Copies the other value to the value.
  * @param value The value to copy to.
  * @param other The value to copy from.
  */
-RYU_C_API void kuzu_value_copy(kuzu_value* value, kuzu_value* other);
+RYU_C_API void ryu_value_copy(ryu_value* value, ryu_value* other);
 /**
  * @brief Destroys the value.
  * @param value The value to destroy.
  */
-RYU_C_API void kuzu_value_destroy(kuzu_value* value);
+RYU_C_API void ryu_value_destroy(ryu_value* value);
 /**
  * @brief Returns the number of elements per list of the given value. The value must be of type
  * ARRAY.
@@ -1035,7 +1035,7 @@ RYU_C_API void kuzu_value_destroy(kuzu_value* value);
  * @param[out] out_result The output parameter that will hold the number of elements per list.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_list_size(kuzu_value* value, uint64_t* out_result);
+RYU_C_API ryu_state ryu_value_get_list_size(ryu_value* value, uint64_t* out_result);
 /**
  * @brief Returns the element at index of the given value. The value must be of type LIST.
  * @param value The LIST value to return.
@@ -1043,15 +1043,15 @@ RYU_C_API kuzu_state kuzu_value_get_list_size(kuzu_value* value, uint64_t* out_r
  * @param[out] out_value The output parameter that will hold the element at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_list_element(kuzu_value* value, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_list_element(ryu_value* value, uint64_t index,
+    ryu_value* out_value);
 /**
  * @brief Returns the number of fields of the given struct value. The value must be of type STRUCT.
  * @param value The STRUCT value to get number of fields.
  * @param[out] out_result The output parameter that will hold the number of fields.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_struct_num_fields(kuzu_value* value, uint64_t* out_result);
+RYU_C_API ryu_state ryu_value_get_struct_num_fields(ryu_value* value, uint64_t* out_result);
 /**
  * @brief Returns the field name at index of the given struct value. The value must be of physical
  * type STRUCT (STRUCT, NODE, REL, RECURSIVE_REL, UNION).
@@ -1060,7 +1060,7 @@ RYU_C_API kuzu_state kuzu_value_get_struct_num_fields(kuzu_value* value, uint64_
  * @param[out] out_result The output parameter that will hold the field name at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_struct_field_name(kuzu_value* value, uint64_t index,
+RYU_C_API ryu_state ryu_value_get_struct_field_name(ryu_value* value, uint64_t index,
     char** out_result);
 /**
  * @brief Returns the field value at index of the given struct value. The value must be of physical
@@ -1070,8 +1070,8 @@ RYU_C_API kuzu_state kuzu_value_get_struct_field_name(kuzu_value* value, uint64_
  * @param[out] out_value The output parameter that will hold the field value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_struct_field_value(kuzu_value* value, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_struct_field_value(ryu_value* value, uint64_t index,
+    ryu_value* out_value);
 
 /**
  * @brief Returns the size of the given map value. The value must be of type MAP.
@@ -1079,7 +1079,7 @@ RYU_C_API kuzu_state kuzu_value_get_struct_field_value(kuzu_value* value, uint64
  * @param[out] out_result The output parameter that will hold the size of the map.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_map_size(kuzu_value* value, uint64_t* out_result);
+RYU_C_API ryu_state ryu_value_get_map_size(ryu_value* value, uint64_t* out_result);
 /**
  * @brief Returns the key at index of the given map value. The value must be of physical
  * type MAP.
@@ -1088,8 +1088,8 @@ RYU_C_API kuzu_state kuzu_value_get_map_size(kuzu_value* value, uint64_t* out_re
  * @param[out] out_key The output parameter that will hold the key at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_map_key(kuzu_value* value, uint64_t index,
-    kuzu_value* out_key);
+RYU_C_API ryu_state ryu_value_get_map_key(ryu_value* value, uint64_t index,
+    ryu_value* out_key);
 /**
  * @brief Returns the field value at index of the given map value. The value must be of physical
  * type MAP.
@@ -1098,8 +1098,8 @@ RYU_C_API kuzu_state kuzu_value_get_map_key(kuzu_value* value, uint64_t index,
  * @param[out] out_value The output parameter that will hold the field value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_map_value(kuzu_value* value, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_map_value(ryu_value* value, uint64_t index,
+    ryu_value* out_value);
 /**
  * @brief Returns the list of nodes for recursive rel value. The value must be of type
  * RECURSIVE_REL.
@@ -1107,8 +1107,8 @@ RYU_C_API kuzu_state kuzu_value_get_map_value(kuzu_value* value, uint64_t index,
  * @param[out] out_value The output parameter that will hold the list of nodes.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_recursive_rel_node_list(kuzu_value* value,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_recursive_rel_node_list(ryu_value* value,
+    ryu_value* out_value);
 
 /**
  * @brief Returns the list of rels for recursive rel value. The value must be of type RECURSIVE_REL.
@@ -1116,149 +1116,149 @@ RYU_C_API kuzu_state kuzu_value_get_recursive_rel_node_list(kuzu_value* value,
  * @param[out] out_value The output parameter that will hold the list of rels.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_recursive_rel_rel_list(kuzu_value* value,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_recursive_rel_rel_list(ryu_value* value,
+    ryu_value* out_value);
 /**
  * @brief Returns internal type of the given value.
  * @param value The value to return.
  * @param[out] out_type The output parameter that will hold the internal type of the value.
  */
-RYU_C_API void kuzu_value_get_data_type(kuzu_value* value, kuzu_logical_type* out_type);
+RYU_C_API void ryu_value_get_data_type(ryu_value* value, ryu_logical_type* out_type);
 /**
  * @brief Returns the boolean value of the given value. The value must be of type BOOL.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the boolean value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_bool(kuzu_value* value, bool* out_result);
+RYU_C_API ryu_state ryu_value_get_bool(ryu_value* value, bool* out_result);
 /**
  * @brief Returns the int8 value of the given value. The value must be of type INT8.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the int8 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_int8(kuzu_value* value, int8_t* out_result);
+RYU_C_API ryu_state ryu_value_get_int8(ryu_value* value, int8_t* out_result);
 /**
  * @brief Returns the int16 value of the given value. The value must be of type INT16.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the int16 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_int16(kuzu_value* value, int16_t* out_result);
+RYU_C_API ryu_state ryu_value_get_int16(ryu_value* value, int16_t* out_result);
 /**
  * @brief Returns the int32 value of the given value. The value must be of type INT32.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the int32 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_int32(kuzu_value* value, int32_t* out_result);
+RYU_C_API ryu_state ryu_value_get_int32(ryu_value* value, int32_t* out_result);
 /**
  * @brief Returns the int64 value of the given value. The value must be of type INT64 or SERIAL.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the int64 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_int64(kuzu_value* value, int64_t* out_result);
+RYU_C_API ryu_state ryu_value_get_int64(ryu_value* value, int64_t* out_result);
 /**
  * @brief Returns the uint8 value of the given value. The value must be of type UINT8.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the uint8 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_uint8(kuzu_value* value, uint8_t* out_result);
+RYU_C_API ryu_state ryu_value_get_uint8(ryu_value* value, uint8_t* out_result);
 /**
  * @brief Returns the uint16 value of the given value. The value must be of type UINT16.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the uint16 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_uint16(kuzu_value* value, uint16_t* out_result);
+RYU_C_API ryu_state ryu_value_get_uint16(ryu_value* value, uint16_t* out_result);
 /**
  * @brief Returns the uint32 value of the given value. The value must be of type UINT32.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the uint32 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_uint32(kuzu_value* value, uint32_t* out_result);
+RYU_C_API ryu_state ryu_value_get_uint32(ryu_value* value, uint32_t* out_result);
 /**
  * @brief Returns the uint64 value of the given value. The value must be of type UINT64.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the uint64 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_uint64(kuzu_value* value, uint64_t* out_result);
+RYU_C_API ryu_state ryu_value_get_uint64(ryu_value* value, uint64_t* out_result);
 /**
  * @brief Returns the int128 value of the given value. The value must be of type INT128.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the int128 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_int128(kuzu_value* value, kuzu_int128_t* out_result);
+RYU_C_API ryu_state ryu_value_get_int128(ryu_value* value, ryu_int128_t* out_result);
 /**
  * @brief convert a string to int128 value.
  * @param str The string to convert.
  * @param[out] out_result The output parameter that will hold the int128 value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_int128_t_from_string(const char* str, kuzu_int128_t* out_result);
+RYU_C_API ryu_state ryu_int128_t_from_string(const char* str, ryu_int128_t* out_result);
 /**
  * @brief convert int128 to corresponding string.
  * @param val The int128 value to convert.
  * @param[out] out_result The output parameter that will hold the string value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_int128_t_to_string(kuzu_int128_t val, char** out_result);
+RYU_C_API ryu_state ryu_int128_t_to_string(ryu_int128_t val, char** out_result);
 /**
  * @brief Returns the float value of the given value. The value must be of type FLOAT.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the float value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_float(kuzu_value* value, float* out_result);
+RYU_C_API ryu_state ryu_value_get_float(ryu_value* value, float* out_result);
 /**
  * @brief Returns the double value of the given value. The value must be of type DOUBLE.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the double value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_double(kuzu_value* value, double* out_result);
+RYU_C_API ryu_state ryu_value_get_double(ryu_value* value, double* out_result);
 /**
  * @brief Returns the internal id value of the given value. The value must be of type INTERNAL_ID.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the internal id value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_internal_id(kuzu_value* value, kuzu_internal_id_t* out_result);
+RYU_C_API ryu_state ryu_value_get_internal_id(ryu_value* value, ryu_internal_id_t* out_result);
 /**
  * @brief Returns the date value of the given value. The value must be of type DATE.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the date value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_date(kuzu_value* value, kuzu_date_t* out_result);
+RYU_C_API ryu_state ryu_value_get_date(ryu_value* value, ryu_date_t* out_result);
 /**
  * @brief Returns the timestamp value of the given value. The value must be of type TIMESTAMP.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_timestamp(kuzu_value* value, kuzu_timestamp_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp(ryu_value* value, ryu_timestamp_t* out_result);
 /**
  * @brief Returns the timestamp_ns value of the given value. The value must be of type TIMESTAMP_NS.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp_ns value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_timestamp_ns(kuzu_value* value,
-    kuzu_timestamp_ns_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_ns(ryu_value* value,
+    ryu_timestamp_ns_t* out_result);
 /**
  * @brief Returns the timestamp_ms value of the given value. The value must be of type TIMESTAMP_MS.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp_ms value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_timestamp_ms(kuzu_value* value,
-    kuzu_timestamp_ms_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_ms(ryu_value* value,
+    ryu_timestamp_ms_t* out_result);
 /**
  * @brief Returns the timestamp_sec value of the given value. The value must be of type
  * TIMESTAMP_SEC.
@@ -1266,23 +1266,23 @@ RYU_C_API kuzu_state kuzu_value_get_timestamp_ms(kuzu_value* value,
  * @param[out] out_result The output parameter that will hold the timestamp_sec value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_timestamp_sec(kuzu_value* value,
-    kuzu_timestamp_sec_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_sec(ryu_value* value,
+    ryu_timestamp_sec_t* out_result);
 /**
  * @brief Returns the timestamp_tz value of the given value. The value must be of type TIMESTAMP_TZ.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp_tz value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_timestamp_tz(kuzu_value* value,
-    kuzu_timestamp_tz_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_tz(ryu_value* value,
+    ryu_timestamp_tz_t* out_result);
 /**
  * @brief Returns the interval value of the given value. The value must be of type INTERVAL.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the interval value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_interval(kuzu_value* value, kuzu_interval_t* out_result);
+RYU_C_API ryu_state ryu_value_get_interval(ryu_value* value, ryu_interval_t* out_result);
 /**
  * @brief Returns the decimal value of the given value as a string. The value must be of type
  * DECIMAL.
@@ -1290,14 +1290,14 @@ RYU_C_API kuzu_state kuzu_value_get_interval(kuzu_value* value, kuzu_interval_t*
  * @param[out] out_result The output parameter that will hold the decimal value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_decimal_as_string(kuzu_value* value, char** out_result);
+RYU_C_API ryu_state ryu_value_get_decimal_as_string(ryu_value* value, char** out_result);
 /**
  * @brief Returns the string value of the given value. The value must be of type STRING.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the string value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_string(kuzu_value* value, char** out_result);
+RYU_C_API ryu_state ryu_value_get_string(ryu_value* value, char** out_result);
 /**
  * @brief Returns the blob value of the given value. The returned buffer is null-terminated similar
  * to a string. The value must be of type BLOB.
@@ -1305,7 +1305,7 @@ RYU_C_API kuzu_state kuzu_value_get_string(kuzu_value* value, char** out_result)
  * @param[out] out_result The output parameter that will hold the blob value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_blob(kuzu_value* value, uint8_t** out_result);
+RYU_C_API ryu_state ryu_value_get_blob(ryu_value* value, uint8_t** out_result);
 /**
  * @brief Returns the uuid value of the given value.
  * to a string. The value must be of type UUID.
@@ -1313,34 +1313,34 @@ RYU_C_API kuzu_state kuzu_value_get_blob(kuzu_value* value, uint8_t** out_result
  * @param[out] out_result The output parameter that will hold the uuid value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_value_get_uuid(kuzu_value* value, char** out_result);
+RYU_C_API ryu_state ryu_value_get_uuid(ryu_value* value, char** out_result);
 /**
  * @brief Converts the given value to string.
  * @param value The value to convert.
  * @return The value as a string.
  */
-RYU_C_API char* kuzu_value_to_string(kuzu_value* value);
+RYU_C_API char* ryu_value_to_string(ryu_value* value);
 /**
- * @brief Returns the internal id value of the given node value as a kuzu value.
+ * @brief Returns the internal id value of the given node value as a ryu value.
  * @param node_val The node value to return.
  * @param[out] out_value The output parameter that will hold the internal id value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_get_id_val(kuzu_value* node_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_node_val_get_id_val(ryu_value* node_val, ryu_value* out_value);
 /**
  * @brief Returns the label value of the given node value as a label value.
  * @param node_val The node value to return.
  * @param[out] out_value The output parameter that will hold the label value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_get_label_val(kuzu_value* node_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_node_val_get_label_val(ryu_value* node_val, ryu_value* out_value);
 /**
  * @brief Returns the number of properties of the given node value.
  * @param node_val The node value to return.
  * @param[out] out_value The output parameter that will hold the number of properties.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_get_property_size(kuzu_value* node_val, uint64_t* out_value);
+RYU_C_API ryu_state ryu_node_val_get_property_size(ryu_value* node_val, uint64_t* out_value);
 /**
  * @brief Returns the property name of the given node value at the given index.
  * @param node_val The node value to return.
@@ -1348,7 +1348,7 @@ RYU_C_API kuzu_state kuzu_node_val_get_property_size(kuzu_value* node_val, uint6
  * @param[out] out_result The output parameter that will hold the property name at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_get_property_name_at(kuzu_value* node_val, uint64_t index,
+RYU_C_API ryu_state ryu_node_val_get_property_name_at(ryu_value* node_val, uint64_t index,
     char** out_result);
 /**
  * @brief Returns the property value of the given node value at the given index.
@@ -1357,51 +1357,51 @@ RYU_C_API kuzu_state kuzu_node_val_get_property_name_at(kuzu_value* node_val, ui
  * @param[out] out_value The output parameter that will hold the property value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_get_property_value_at(kuzu_value* node_val, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_node_val_get_property_value_at(ryu_value* node_val, uint64_t index,
+    ryu_value* out_value);
 /**
  * @brief Converts the given node value to string.
  * @param node_val The node value to convert.
  * @param[out] out_result The output parameter that will hold the node value as a string.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_node_val_to_string(kuzu_value* node_val, char** out_result);
+RYU_C_API ryu_state ryu_node_val_to_string(ryu_value* node_val, char** out_result);
 /**
- * @brief Returns the internal id value of the rel value as a kuzu value.
+ * @brief Returns the internal id value of the rel value as a ryu value.
  * @param rel_val The rel value to return.
  * @param[out] out_value The output parameter that will hold the internal id value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_id_val(kuzu_value* rel_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_id_val(ryu_value* rel_val, ryu_value* out_value);
 /**
- * @brief Returns the internal id value of the source node of the given rel value as a kuzu value.
+ * @brief Returns the internal id value of the source node of the given rel value as a ryu value.
  * @param rel_val The rel value to return.
  * @param[out] out_value The output parameter that will hold the internal id value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_src_id_val(kuzu_value* rel_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_src_id_val(ryu_value* rel_val, ryu_value* out_value);
 /**
- * @brief Returns the internal id value of the destination node of the given rel value as a kuzu
+ * @brief Returns the internal id value of the destination node of the given rel value as a ryu
  * value.
  * @param rel_val The rel value to return.
  * @param[out] out_value The output parameter that will hold the internal id value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_dst_id_val(kuzu_value* rel_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_dst_id_val(ryu_value* rel_val, ryu_value* out_value);
 /**
  * @brief Returns the label value of the given rel value.
  * @param rel_val The rel value to return.
  * @param[out] out_value The output parameter that will hold the label value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_label_val(kuzu_value* rel_val, kuzu_value* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_label_val(ryu_value* rel_val, ryu_value* out_value);
 /**
  * @brief Returns the number of properties of the given rel value.
  * @param rel_val The rel value to return.
  * @param[out] out_value The output parameter that will hold the number of properties.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_property_size(kuzu_value* rel_val, uint64_t* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_property_size(ryu_value* rel_val, uint64_t* out_value);
 /**
  * @brief Returns the property name of the given rel value at the given index.
  * @param rel_val The rel value to return.
@@ -1409,56 +1409,56 @@ RYU_C_API kuzu_state kuzu_rel_val_get_property_size(kuzu_value* rel_val, uint64_
  * @param[out] out_result The output parameter that will hold the property name at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_property_name_at(kuzu_value* rel_val, uint64_t index,
+RYU_C_API ryu_state ryu_rel_val_get_property_name_at(ryu_value* rel_val, uint64_t index,
     char** out_result);
 /**
- * @brief Returns the property of the given rel value at the given index as kuzu value.
+ * @brief Returns the property of the given rel value at the given index as ryu value.
  * @param rel_val The rel value to return.
  * @param index The index of the property.
  * @param[out] out_value The output parameter that will hold the property value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_get_property_value_at(kuzu_value* rel_val, uint64_t index,
-    kuzu_value* out_value);
+RYU_C_API ryu_state ryu_rel_val_get_property_value_at(ryu_value* rel_val, uint64_t index,
+    ryu_value* out_value);
 /**
  * @brief Converts the given rel value to string.
  * @param rel_val The rel value to convert.
  * @param[out] out_result The output parameter that will hold the rel value as a string.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_rel_val_to_string(kuzu_value* rel_val, char** out_result);
+RYU_C_API ryu_state ryu_rel_val_to_string(ryu_value* rel_val, char** out_result);
 /**
- * @brief Destroys any string created by the Kuzu C API, including both the error message and the
+ * @brief Destroys any string created by the Ryu C API, including both the error message and the
  * values returned by the API functions. This function is provided to avoid the inconsistency
  * between the memory allocation and deallocation across different libraries and is preferred over
  * using the standard C free function.
  * @param str The string to destroy.
  */
-RYU_C_API void kuzu_destroy_string(char* str);
+RYU_C_API void ryu_destroy_string(char* str);
 /**
- * @brief Destroys any blob created by the Kuzu C API. This function is provided to avoid the
+ * @brief Destroys any blob created by the Ryu C API. This function is provided to avoid the
  * inconsistency between the memory allocation and deallocation across different libraries and
  * is preferred over using the standard C free function.
  * @param blob The blob to destroy.
  */
-RYU_C_API void kuzu_destroy_blob(uint8_t* blob);
+RYU_C_API void ryu_destroy_blob(uint8_t* blob);
 
 // QuerySummary
 /**
  * @brief Destroys the given query summary.
  * @param query_summary The query summary to destroy.
  */
-RYU_C_API void kuzu_query_summary_destroy(kuzu_query_summary* query_summary);
+RYU_C_API void ryu_query_summary_destroy(ryu_query_summary* query_summary);
 /**
  * @brief Returns the compilation time of the given query summary in milliseconds.
  * @param query_summary The query summary to get compilation time.
  */
-RYU_C_API double kuzu_query_summary_get_compiling_time(kuzu_query_summary* query_summary);
+RYU_C_API double ryu_query_summary_get_compiling_time(ryu_query_summary* query_summary);
 /**
  * @brief Returns the execution time of the given query summary in milliseconds.
  * @param query_summary The query summary to get execution time.
  */
-RYU_C_API double kuzu_query_summary_get_execution_time(kuzu_query_summary* query_summary);
+RYU_C_API double ryu_query_summary_get_execution_time(ryu_query_summary* query_summary);
 
 // Utility functions
 /**
@@ -1467,21 +1467,21 @@ RYU_C_API double kuzu_query_summary_get_execution_time(kuzu_query_summary* query
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_ns_to_tm(kuzu_timestamp_ns_t timestamp, struct tm* out_result);
+RYU_C_API ryu_state ryu_timestamp_ns_to_tm(ryu_timestamp_ns_t timestamp, struct tm* out_result);
 /**
  * @brief Convert timestamp_ms to corresponding tm struct.
  * @param timestamp The timestamp_ms value to convert.
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_ms_to_tm(kuzu_timestamp_ms_t timestamp, struct tm* out_result);
+RYU_C_API ryu_state ryu_timestamp_ms_to_tm(ryu_timestamp_ms_t timestamp, struct tm* out_result);
 /**
  * @brief Convert timestamp_sec to corresponding tm struct.
  * @param timestamp The timestamp_sec value to convert.
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_sec_to_tm(kuzu_timestamp_sec_t timestamp,
+RYU_C_API ryu_state ryu_timestamp_sec_to_tm(ryu_timestamp_sec_t timestamp,
     struct tm* out_result);
 /**
  * @brief Convert timestamp_tz to corresponding tm struct.
@@ -1489,331 +1489,331 @@ RYU_C_API kuzu_state kuzu_timestamp_sec_to_tm(kuzu_timestamp_sec_t timestamp,
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_tz_to_tm(kuzu_timestamp_tz_t timestamp, struct tm* out_result);
+RYU_C_API ryu_state ryu_timestamp_tz_to_tm(ryu_timestamp_tz_t timestamp, struct tm* out_result);
 /**
  * @brief Convert timestamp to corresponding tm struct.
  * @param timestamp The timestamp value to convert.
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_to_tm(kuzu_timestamp_t timestamp, struct tm* out_result);
+RYU_C_API ryu_state ryu_timestamp_to_tm(ryu_timestamp_t timestamp, struct tm* out_result);
 /**
  * @brief Convert tm struct to timestamp_ns value.
  * @param tm The tm struct to convert.
  * @param[out] out_result The output parameter that will hold the timestamp_ns value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_ns_from_tm(struct tm tm, kuzu_timestamp_ns_t* out_result);
+RYU_C_API ryu_state ryu_timestamp_ns_from_tm(struct tm tm, ryu_timestamp_ns_t* out_result);
 /**
  * @brief Convert tm struct to timestamp_ms value.
  * @param tm The tm struct to convert.
  * @param[out] out_result The output parameter that will hold the timestamp_ms value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_ms_from_tm(struct tm tm, kuzu_timestamp_ms_t* out_result);
+RYU_C_API ryu_state ryu_timestamp_ms_from_tm(struct tm tm, ryu_timestamp_ms_t* out_result);
 /**
  * @brief Convert tm struct to timestamp_sec value.
  * @param tm The tm struct to convert.
  * @param[out] out_result The output parameter that will hold the timestamp_sec value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_sec_from_tm(struct tm tm, kuzu_timestamp_sec_t* out_result);
+RYU_C_API ryu_state ryu_timestamp_sec_from_tm(struct tm tm, ryu_timestamp_sec_t* out_result);
 /**
  * @brief Convert tm struct to timestamp_tz value.
  * @param tm The tm struct to convert.
  * @param[out] out_result The output parameter that will hold the timestamp_tz value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_tz_from_tm(struct tm tm, kuzu_timestamp_tz_t* out_result);
+RYU_C_API ryu_state ryu_timestamp_tz_from_tm(struct tm tm, ryu_timestamp_tz_t* out_result);
 /**
  * @brief Convert timestamp_ns to corresponding string.
  * @param timestamp The timestamp_ns value to convert.
  * @param[out] out_result The output parameter that will hold the string value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_timestamp_from_tm(struct tm tm, kuzu_timestamp_t* out_result);
+RYU_C_API ryu_state ryu_timestamp_from_tm(struct tm tm, ryu_timestamp_t* out_result);
 /**
  * @brief Convert date to corresponding string.
  * @param date The date value to convert.
  * @param[out] out_result The output parameter that will hold the string value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_date_to_string(kuzu_date_t date, char** out_result);
+RYU_C_API ryu_state ryu_date_to_string(ryu_date_t date, char** out_result);
 /**
  * @brief Convert a string to date value.
  * @param str The string to convert.
  * @param[out] out_result The output parameter that will hold the date value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_date_from_string(const char* str, kuzu_date_t* out_result);
+RYU_C_API ryu_state ryu_date_from_string(const char* str, ryu_date_t* out_result);
 /**
  * @brief Convert date to corresponding tm struct.
  * @param date The date value to convert.
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_date_to_tm(kuzu_date_t date, struct tm* out_result);
+RYU_C_API ryu_state ryu_date_to_tm(ryu_date_t date, struct tm* out_result);
 /**
  * @brief Convert tm struct to date value.
  * @param tm The tm struct to convert.
  * @param[out] out_result The output parameter that will hold the date value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API kuzu_state kuzu_date_from_tm(struct tm tm, kuzu_date_t* out_result);
+RYU_C_API ryu_state ryu_date_from_tm(struct tm tm, ryu_date_t* out_result);
 /**
  * @brief Convert interval to corresponding difftime value in seconds.
  * @param interval The interval value to convert.
  * @param[out] out_result The output parameter that will hold the difftime value.
  */
-RYU_C_API void kuzu_interval_to_difftime(kuzu_interval_t interval, double* out_result);
+RYU_C_API void ryu_interval_to_difftime(ryu_interval_t interval, double* out_result);
 /**
  * @brief Convert difftime value in seconds to interval.
  * @param difftime The difftime value to convert.
  * @param[out] out_result The output parameter that will hold the interval value.
  */
-RYU_C_API void kuzu_interval_from_difftime(double difftime, kuzu_interval_t* out_result);
+RYU_C_API void ryu_interval_from_difftime(double difftime, ryu_interval_t* out_result);
 
 // Version
 /**
- * @brief Returns the version of the Kuzu library.
+ * @brief Returns the version of the Ryu library.
  */
-RYU_C_API char* kuzu_get_version();
+RYU_C_API char* ryu_get_version();
 
 /**
- * @brief Returns the storage version of the Kuzu library.
+ * @brief Returns the storage version of the Ryu library.
  */
-RYU_C_API uint64_t kuzu_get_storage_version();
+RYU_C_API uint64_t ryu_get_storage_version();
 
 // Rebranding aliases: ryu_* types and functions
 // Type aliases
-typedef kuzu_system_config ryu_system_config;
-typedef kuzu_database ryu_database;
-typedef kuzu_connection ryu_connection;
-typedef kuzu_prepared_statement ryu_prepared_statement;
-typedef kuzu_query_result ryu_query_result;
-typedef kuzu_flat_tuple ryu_flat_tuple;
-typedef kuzu_logical_type ryu_logical_type;
-typedef kuzu_value ryu_value;
-typedef kuzu_internal_id_t ryu_internal_id_t;
-typedef kuzu_date_t ryu_date_t;
-typedef kuzu_timestamp_ns_t ryu_timestamp_ns_t;
-typedef kuzu_timestamp_ms_t ryu_timestamp_ms_t;
-typedef kuzu_timestamp_sec_t ryu_timestamp_sec_t;
-typedef kuzu_timestamp_tz_t ryu_timestamp_tz_t;
-typedef kuzu_timestamp_t ryu_timestamp_t;
-typedef kuzu_interval_t ryu_interval_t;
-typedef kuzu_query_summary ryu_query_summary;
-typedef kuzu_int128_t ryu_int128_t;
-typedef kuzu_data_type_id ryu_data_type_id;
-typedef kuzu_state ryu_state;
+typedef ryu_system_config ryu_system_config;
+typedef ryu_database ryu_database;
+typedef ryu_connection ryu_connection;
+typedef ryu_prepared_statement ryu_prepared_statement;
+typedef ryu_query_result ryu_query_result;
+typedef ryu_flat_tuple ryu_flat_tuple;
+typedef ryu_logical_type ryu_logical_type;
+typedef ryu_value ryu_value;
+typedef ryu_internal_id_t ryu_internal_id_t;
+typedef ryu_date_t ryu_date_t;
+typedef ryu_timestamp_ns_t ryu_timestamp_ns_t;
+typedef ryu_timestamp_ms_t ryu_timestamp_ms_t;
+typedef ryu_timestamp_sec_t ryu_timestamp_sec_t;
+typedef ryu_timestamp_tz_t ryu_timestamp_tz_t;
+typedef ryu_timestamp_t ryu_timestamp_t;
+typedef ryu_interval_t ryu_interval_t;
+typedef ryu_query_summary ryu_query_summary;
+typedef ryu_int128_t ryu_int128_t;
+typedef ryu_data_type_id ryu_data_type_id;
+typedef ryu_state ryu_state;
 
 // Enum value aliases
-#define RYU_ANY KUZU_ANY
-#define RYU_NODE KUZU_NODE
-#define RYU_REL KUZU_REL
-#define RYU_RECURSIVE_REL KUZU_RECURSIVE_REL
-#define RYU_SERIAL KUZU_SERIAL
-#define RYU_BOOL KUZU_BOOL
-#define RYU_INT64 KUZU_INT64
-#define RYU_INT32 KUZU_INT32
-#define RYU_INT16 KUZU_INT16
-#define RYU_INT8 KUZU_INT8
-#define RYU_UINT64 KUZU_UINT64
-#define RYU_UINT32 KUZU_UINT32
-#define RYU_UINT16 KUZU_UINT16
-#define RYU_UINT8 KUZU_UINT8
-#define RYU_INT128 KUZU_INT128
-#define RYU_DOUBLE KUZU_DOUBLE
-#define RYU_FLOAT KUZU_FLOAT
-#define RYU_DATE KUZU_DATE
-#define RYU_TIMESTAMP KUZU_TIMESTAMP
-#define RYU_TIMESTAMP_SEC KUZU_TIMESTAMP_SEC
-#define RYU_TIMESTAMP_MS KUZU_TIMESTAMP_MS
-#define RYU_TIMESTAMP_NS KUZU_TIMESTAMP_NS
-#define RYU_TIMESTAMP_TZ KUZU_TIMESTAMP_TZ
-#define RYU_INTERVAL KUZU_INTERVAL
-#define RYU_DECIMAL KUZU_DECIMAL
-#define RYU_INTERNAL_ID KUZU_INTERNAL_ID
-#define RYU_STRING KUZU_STRING
-#define RYU_BLOB KUZU_BLOB
-#define RYU_LIST KUZU_LIST
-#define RYU_ARRAY KUZU_ARRAY
-#define RYU_STRUCT KUZU_STRUCT
-#define RYU_MAP KUZU_MAP
-#define RYU_UNION KUZU_UNION
-#define RYU_POINTER KUZU_POINTER
-#define RYU_UUID KUZU_UUID
+#define RYU_ANY RYU_ANY
+#define RYU_NODE RYU_NODE
+#define RYU_REL RYU_REL
+#define RYU_RECURSIVE_REL RYU_RECURSIVE_REL
+#define RYU_SERIAL RYU_SERIAL
+#define RYU_BOOL RYU_BOOL
+#define RYU_INT64 RYU_INT64
+#define RYU_INT32 RYU_INT32
+#define RYU_INT16 RYU_INT16
+#define RYU_INT8 RYU_INT8
+#define RYU_UINT64 RYU_UINT64
+#define RYU_UINT32 RYU_UINT32
+#define RYU_UINT16 RYU_UINT16
+#define RYU_UINT8 RYU_UINT8
+#define RYU_INT128 RYU_INT128
+#define RYU_DOUBLE RYU_DOUBLE
+#define RYU_FLOAT RYU_FLOAT
+#define RYU_DATE RYU_DATE
+#define RYU_TIMESTAMP RYU_TIMESTAMP
+#define RYU_TIMESTAMP_SEC RYU_TIMESTAMP_SEC
+#define RYU_TIMESTAMP_MS RYU_TIMESTAMP_MS
+#define RYU_TIMESTAMP_NS RYU_TIMESTAMP_NS
+#define RYU_TIMESTAMP_TZ RYU_TIMESTAMP_TZ
+#define RYU_INTERVAL RYU_INTERVAL
+#define RYU_DECIMAL RYU_DECIMAL
+#define RYU_INTERNAL_ID RYU_INTERNAL_ID
+#define RYU_STRING RYU_STRING
+#define RYU_BLOB RYU_BLOB
+#define RYU_LIST RYU_LIST
+#define RYU_ARRAY RYU_ARRAY
+#define RYU_STRUCT RYU_STRUCT
+#define RYU_MAP RYU_MAP
+#define RYU_UNION RYU_UNION
+#define RYU_POINTER RYU_POINTER
+#define RYU_UUID RYU_UUID
 
-#define RyuSuccess KuzuSuccess
-#define RyuError KuzuError
+#define RyuSuccess RyuSuccess
+#define RyuError RyuError
 
 // Function aliases
-#define ryu_database_init kuzu_database_init
-#define ryu_database_destroy kuzu_database_destroy
-#define ryu_default_system_config kuzu_default_system_config
-#define ryu_connection_init kuzu_connection_init
-#define ryu_connection_destroy kuzu_connection_destroy
-#define ryu_connection_set_max_num_thread_for_exec kuzu_connection_set_max_num_thread_for_exec
-#define ryu_connection_get_max_num_thread_for_exec kuzu_connection_get_max_num_thread_for_exec
-#define ryu_connection_query kuzu_connection_query
-#define ryu_connection_prepare kuzu_connection_prepare
-#define ryu_connection_execute kuzu_connection_execute
-#define ryu_connection_interrupt kuzu_connection_interrupt
-#define ryu_connection_set_query_timeout kuzu_connection_set_query_timeout
-#define ryu_prepared_statement_destroy kuzu_prepared_statement_destroy
-#define ryu_prepared_statement_is_success kuzu_prepared_statement_is_success
-#define ryu_prepared_statement_get_error_message kuzu_prepared_statement_get_error_message
-#define ryu_prepared_statement_bind_bool kuzu_prepared_statement_bind_bool
-#define ryu_prepared_statement_bind_int64 kuzu_prepared_statement_bind_int64
-#define ryu_prepared_statement_bind_int32 kuzu_prepared_statement_bind_int32
-#define ryu_prepared_statement_bind_int16 kuzu_prepared_statement_bind_int16
-#define ryu_prepared_statement_bind_int8 kuzu_prepared_statement_bind_int8
-#define ryu_prepared_statement_bind_uint64 kuzu_prepared_statement_bind_uint64
-#define ryu_prepared_statement_bind_uint32 kuzu_prepared_statement_bind_uint32
-#define ryu_prepared_statement_bind_uint16 kuzu_prepared_statement_bind_uint16
-#define ryu_prepared_statement_bind_uint8 kuzu_prepared_statement_bind_uint8
-#define ryu_prepared_statement_bind_double kuzu_prepared_statement_bind_double
-#define ryu_prepared_statement_bind_float kuzu_prepared_statement_bind_float
-#define ryu_prepared_statement_bind_date kuzu_prepared_statement_bind_date
-#define ryu_prepared_statement_bind_timestamp_ns kuzu_prepared_statement_bind_timestamp_ns
-#define ryu_prepared_statement_bind_timestamp_sec kuzu_prepared_statement_bind_timestamp_sec
-#define ryu_prepared_statement_bind_timestamp_tz kuzu_prepared_statement_bind_timestamp_tz
-#define ryu_prepared_statement_bind_timestamp_ms kuzu_prepared_statement_bind_timestamp_ms
-#define ryu_prepared_statement_bind_timestamp kuzu_prepared_statement_bind_timestamp
-#define ryu_prepared_statement_bind_interval kuzu_prepared_statement_bind_interval
-#define ryu_prepared_statement_bind_string kuzu_prepared_statement_bind_string
-#define ryu_prepared_statement_bind_value kuzu_prepared_statement_bind_value
-#define ryu_query_result_destroy kuzu_query_result_destroy
-#define ryu_query_result_is_success kuzu_query_result_is_success
-#define ryu_query_result_get_error_message kuzu_query_result_get_error_message
-#define ryu_query_result_get_num_columns kuzu_query_result_get_num_columns
-#define ryu_query_result_get_column_name kuzu_query_result_get_column_name
-#define ryu_query_result_get_column_data_type kuzu_query_result_get_column_data_type
-#define ryu_query_result_get_num_tuples kuzu_query_result_get_num_tuples
-#define ryu_query_result_get_query_summary kuzu_query_result_get_query_summary
-#define ryu_query_result_has_next kuzu_query_result_has_next
-#define ryu_query_result_get_next kuzu_query_result_get_next
-#define ryu_query_result_has_next_query_result kuzu_query_result_has_next_query_result
-#define ryu_query_result_get_next_query_result kuzu_query_result_get_next_query_result
-#define ryu_query_result_to_string kuzu_query_result_to_string
-#define ryu_query_result_reset_iterator kuzu_query_result_reset_iterator
-#define ryu_query_result_get_arrow_schema kuzu_query_result_get_arrow_schema
-#define ryu_query_result_get_next_arrow_chunk kuzu_query_result_get_next_arrow_chunk
-#define ryu_flat_tuple_destroy kuzu_flat_tuple_destroy
-#define ryu_flat_tuple_get_value kuzu_flat_tuple_get_value
-#define ryu_flat_tuple_to_string kuzu_flat_tuple_to_string
-#define ryu_data_type_create kuzu_data_type_create
-#define ryu_data_type_clone kuzu_data_type_clone
-#define ryu_data_type_destroy kuzu_data_type_destroy
-#define ryu_data_type_equals kuzu_data_type_equals
-#define ryu_data_type_get_id kuzu_data_type_get_id
-#define ryu_data_type_get_num_elements_in_array kuzu_data_type_get_num_elements_in_array
-#define ryu_value_create_null kuzu_value_create_null
-#define ryu_value_create_null_with_data_type kuzu_value_create_null_with_data_type
-#define ryu_value_is_null kuzu_value_is_null
-#define ryu_value_set_null kuzu_value_set_null
-#define ryu_value_create_default kuzu_value_create_default
-#define ryu_value_create_bool kuzu_value_create_bool
-#define ryu_value_create_int8 kuzu_value_create_int8
-#define ryu_value_create_int16 kuzu_value_create_int16
-#define ryu_value_create_int32 kuzu_value_create_int32
-#define ryu_value_create_int64 kuzu_value_create_int64
-#define ryu_value_create_uint8 kuzu_value_create_uint8
-#define ryu_value_create_uint16 kuzu_value_create_uint16
-#define ryu_value_create_uint32 kuzu_value_create_uint32
-#define ryu_value_create_uint64 kuzu_value_create_uint64
-#define ryu_value_create_int128 kuzu_value_create_int128
-#define ryu_value_create_float kuzu_value_create_float
-#define ryu_value_create_double kuzu_value_create_double
-#define ryu_value_create_internal_id kuzu_value_create_internal_id
-#define ryu_value_create_date kuzu_value_create_date
-#define ryu_value_create_timestamp_ns kuzu_value_create_timestamp_ns
-#define ryu_value_create_timestamp_ms kuzu_value_create_timestamp_ms
-#define ryu_value_create_timestamp_sec kuzu_value_create_timestamp_sec
-#define ryu_value_create_timestamp_tz kuzu_value_create_timestamp_tz
-#define ryu_value_create_timestamp kuzu_value_create_timestamp
-#define ryu_value_create_interval kuzu_value_create_interval
-#define ryu_value_create_string kuzu_value_create_string
-#define ryu_value_create_list kuzu_value_create_list
-#define ryu_value_create_struct kuzu_value_create_struct
-#define ryu_value_create_map kuzu_value_create_map
-#define ryu_value_clone kuzu_value_clone
-#define ryu_value_copy kuzu_value_copy
-#define ryu_value_destroy kuzu_value_destroy
-#define ryu_value_get_list_size kuzu_value_get_list_size
-#define ryu_value_get_list_element kuzu_value_get_list_element
-#define ryu_value_get_struct_num_fields kuzu_value_get_struct_num_fields
-#define ryu_value_get_struct_field_name kuzu_value_get_struct_field_name
-#define ryu_value_get_struct_field_value kuzu_value_get_struct_field_value
-#define ryu_value_get_map_size kuzu_value_get_map_size
-#define ryu_value_get_map_key kuzu_value_get_map_key
-#define ryu_value_get_map_value kuzu_value_get_map_value
-#define ryu_value_get_recursive_rel_node_list kuzu_value_get_recursive_rel_node_list
-#define ryu_value_get_recursive_rel_rel_list kuzu_value_get_recursive_rel_rel_list
-#define ryu_value_get_data_type kuzu_value_get_data_type
-#define ryu_value_get_bool kuzu_value_get_bool
-#define ryu_value_get_int8 kuzu_value_get_int8
-#define ryu_value_get_int16 kuzu_value_get_int16
-#define ryu_value_get_int32 kuzu_value_get_int32
-#define ryu_value_get_int64 kuzu_value_get_int64
-#define ryu_value_get_uint8 kuzu_value_get_uint8
-#define ryu_value_get_uint16 kuzu_value_get_uint16
-#define ryu_value_get_uint32 kuzu_value_get_uint32
-#define ryu_value_get_uint64 kuzu_value_get_uint64
-#define ryu_value_get_int128 kuzu_value_get_int128
-#define ryu_int128_t_from_string kuzu_int128_t_from_string
-#define ryu_int128_t_to_string kuzu_int128_t_to_string
-#define ryu_value_get_float kuzu_value_get_float
-#define ryu_value_get_double kuzu_value_get_double
-#define ryu_value_get_internal_id kuzu_value_get_internal_id
-#define ryu_value_get_date kuzu_value_get_date
-#define ryu_value_get_timestamp kuzu_value_get_timestamp
-#define ryu_value_get_timestamp_ns kuzu_value_get_timestamp_ns
-#define ryu_value_get_timestamp_ms kuzu_value_get_timestamp_ms
-#define ryu_value_get_timestamp_sec kuzu_value_get_timestamp_sec
-#define ryu_value_get_timestamp_tz kuzu_value_get_timestamp_tz
-#define ryu_value_get_interval kuzu_value_get_interval
-#define ryu_value_get_decimal_as_string kuzu_value_get_decimal_as_string
-#define ryu_value_get_string kuzu_value_get_string
-#define ryu_value_get_blob kuzu_value_get_blob
-#define ryu_value_get_uuid kuzu_value_get_uuid
-#define ryu_value_to_string kuzu_value_to_string
-#define ryu_node_val_get_id_val kuzu_node_val_get_id_val
-#define ryu_node_val_get_label_val kuzu_node_val_get_label_val
-#define ryu_node_val_get_property_size kuzu_node_val_get_property_size
-#define ryu_node_val_get_property_name_at kuzu_node_val_get_property_name_at
-#define ryu_node_val_get_property_value_at kuzu_node_val_get_property_value_at
-#define ryu_node_val_to_string kuzu_node_val_to_string
-#define ryu_rel_val_get_id_val kuzu_rel_val_get_id_val
-#define ryu_rel_val_get_src_id_val kuzu_rel_val_get_src_id_val
-#define ryu_rel_val_get_dst_id_val kuzu_rel_val_get_dst_id_val
-#define ryu_rel_val_get_label_val kuzu_rel_val_get_label_val
-#define ryu_rel_val_get_property_size kuzu_rel_val_get_property_size
-#define ryu_rel_val_get_property_name_at kuzu_rel_val_get_property_name_at
-#define ryu_rel_val_get_property_value_at kuzu_rel_val_get_property_value_at
-#define ryu_rel_val_to_string kuzu_rel_val_to_string
-#define ryu_destroy_string kuzu_destroy_string
-#define ryu_destroy_blob kuzu_destroy_blob
-#define ryu_query_summary_destroy kuzu_query_summary_destroy
-#define ryu_query_summary_get_compiling_time kuzu_query_summary_get_compiling_time
-#define ryu_query_summary_get_execution_time kuzu_query_summary_get_execution_time
-#define ryu_timestamp_ns_to_tm kuzu_timestamp_ns_to_tm
-#define ryu_timestamp_ms_to_tm kuzu_timestamp_ms_to_tm
-#define ryu_timestamp_sec_to_tm kuzu_timestamp_sec_to_tm
-#define ryu_timestamp_tz_to_tm kuzu_timestamp_tz_to_tm
-#define ryu_timestamp_to_tm kuzu_timestamp_to_tm
-#define ryu_timestamp_ns_from_tm kuzu_timestamp_ns_from_tm
-#define ryu_timestamp_ms_from_tm kuzu_timestamp_ms_from_tm
-#define ryu_timestamp_sec_from_tm kuzu_timestamp_sec_from_tm
-#define ryu_timestamp_tz_from_tm kuzu_timestamp_tz_from_tm
-#define ryu_timestamp_from_tm kuzu_timestamp_from_tm
-#define ryu_date_to_string kuzu_date_to_string
-#define ryu_date_from_string kuzu_date_from_string
-#define ryu_date_to_tm kuzu_date_to_tm
-#define ryu_date_from_tm kuzu_date_from_tm
-#define ryu_interval_to_difftime kuzu_interval_to_difftime
-#define ryu_interval_from_difftime kuzu_interval_from_difftime
-#define ryu_get_version kuzu_get_version
-#define ryu_get_storage_version kuzu_get_storage_version
+#define ryu_database_init ryu_database_init
+#define ryu_database_destroy ryu_database_destroy
+#define ryu_default_system_config ryu_default_system_config
+#define ryu_connection_init ryu_connection_init
+#define ryu_connection_destroy ryu_connection_destroy
+#define ryu_connection_set_max_num_thread_for_exec ryu_connection_set_max_num_thread_for_exec
+#define ryu_connection_get_max_num_thread_for_exec ryu_connection_get_max_num_thread_for_exec
+#define ryu_connection_query ryu_connection_query
+#define ryu_connection_prepare ryu_connection_prepare
+#define ryu_connection_execute ryu_connection_execute
+#define ryu_connection_interrupt ryu_connection_interrupt
+#define ryu_connection_set_query_timeout ryu_connection_set_query_timeout
+#define ryu_prepared_statement_destroy ryu_prepared_statement_destroy
+#define ryu_prepared_statement_is_success ryu_prepared_statement_is_success
+#define ryu_prepared_statement_get_error_message ryu_prepared_statement_get_error_message
+#define ryu_prepared_statement_bind_bool ryu_prepared_statement_bind_bool
+#define ryu_prepared_statement_bind_int64 ryu_prepared_statement_bind_int64
+#define ryu_prepared_statement_bind_int32 ryu_prepared_statement_bind_int32
+#define ryu_prepared_statement_bind_int16 ryu_prepared_statement_bind_int16
+#define ryu_prepared_statement_bind_int8 ryu_prepared_statement_bind_int8
+#define ryu_prepared_statement_bind_uint64 ryu_prepared_statement_bind_uint64
+#define ryu_prepared_statement_bind_uint32 ryu_prepared_statement_bind_uint32
+#define ryu_prepared_statement_bind_uint16 ryu_prepared_statement_bind_uint16
+#define ryu_prepared_statement_bind_uint8 ryu_prepared_statement_bind_uint8
+#define ryu_prepared_statement_bind_double ryu_prepared_statement_bind_double
+#define ryu_prepared_statement_bind_float ryu_prepared_statement_bind_float
+#define ryu_prepared_statement_bind_date ryu_prepared_statement_bind_date
+#define ryu_prepared_statement_bind_timestamp_ns ryu_prepared_statement_bind_timestamp_ns
+#define ryu_prepared_statement_bind_timestamp_sec ryu_prepared_statement_bind_timestamp_sec
+#define ryu_prepared_statement_bind_timestamp_tz ryu_prepared_statement_bind_timestamp_tz
+#define ryu_prepared_statement_bind_timestamp_ms ryu_prepared_statement_bind_timestamp_ms
+#define ryu_prepared_statement_bind_timestamp ryu_prepared_statement_bind_timestamp
+#define ryu_prepared_statement_bind_interval ryu_prepared_statement_bind_interval
+#define ryu_prepared_statement_bind_string ryu_prepared_statement_bind_string
+#define ryu_prepared_statement_bind_value ryu_prepared_statement_bind_value
+#define ryu_query_result_destroy ryu_query_result_destroy
+#define ryu_query_result_is_success ryu_query_result_is_success
+#define ryu_query_result_get_error_message ryu_query_result_get_error_message
+#define ryu_query_result_get_num_columns ryu_query_result_get_num_columns
+#define ryu_query_result_get_column_name ryu_query_result_get_column_name
+#define ryu_query_result_get_column_data_type ryu_query_result_get_column_data_type
+#define ryu_query_result_get_num_tuples ryu_query_result_get_num_tuples
+#define ryu_query_result_get_query_summary ryu_query_result_get_query_summary
+#define ryu_query_result_has_next ryu_query_result_has_next
+#define ryu_query_result_get_next ryu_query_result_get_next
+#define ryu_query_result_has_next_query_result ryu_query_result_has_next_query_result
+#define ryu_query_result_get_next_query_result ryu_query_result_get_next_query_result
+#define ryu_query_result_to_string ryu_query_result_to_string
+#define ryu_query_result_reset_iterator ryu_query_result_reset_iterator
+#define ryu_query_result_get_arrow_schema ryu_query_result_get_arrow_schema
+#define ryu_query_result_get_next_arrow_chunk ryu_query_result_get_next_arrow_chunk
+#define ryu_flat_tuple_destroy ryu_flat_tuple_destroy
+#define ryu_flat_tuple_get_value ryu_flat_tuple_get_value
+#define ryu_flat_tuple_to_string ryu_flat_tuple_to_string
+#define ryu_data_type_create ryu_data_type_create
+#define ryu_data_type_clone ryu_data_type_clone
+#define ryu_data_type_destroy ryu_data_type_destroy
+#define ryu_data_type_equals ryu_data_type_equals
+#define ryu_data_type_get_id ryu_data_type_get_id
+#define ryu_data_type_get_num_elements_in_array ryu_data_type_get_num_elements_in_array
+#define ryu_value_create_null ryu_value_create_null
+#define ryu_value_create_null_with_data_type ryu_value_create_null_with_data_type
+#define ryu_value_is_null ryu_value_is_null
+#define ryu_value_set_null ryu_value_set_null
+#define ryu_value_create_default ryu_value_create_default
+#define ryu_value_create_bool ryu_value_create_bool
+#define ryu_value_create_int8 ryu_value_create_int8
+#define ryu_value_create_int16 ryu_value_create_int16
+#define ryu_value_create_int32 ryu_value_create_int32
+#define ryu_value_create_int64 ryu_value_create_int64
+#define ryu_value_create_uint8 ryu_value_create_uint8
+#define ryu_value_create_uint16 ryu_value_create_uint16
+#define ryu_value_create_uint32 ryu_value_create_uint32
+#define ryu_value_create_uint64 ryu_value_create_uint64
+#define ryu_value_create_int128 ryu_value_create_int128
+#define ryu_value_create_float ryu_value_create_float
+#define ryu_value_create_double ryu_value_create_double
+#define ryu_value_create_internal_id ryu_value_create_internal_id
+#define ryu_value_create_date ryu_value_create_date
+#define ryu_value_create_timestamp_ns ryu_value_create_timestamp_ns
+#define ryu_value_create_timestamp_ms ryu_value_create_timestamp_ms
+#define ryu_value_create_timestamp_sec ryu_value_create_timestamp_sec
+#define ryu_value_create_timestamp_tz ryu_value_create_timestamp_tz
+#define ryu_value_create_timestamp ryu_value_create_timestamp
+#define ryu_value_create_interval ryu_value_create_interval
+#define ryu_value_create_string ryu_value_create_string
+#define ryu_value_create_list ryu_value_create_list
+#define ryu_value_create_struct ryu_value_create_struct
+#define ryu_value_create_map ryu_value_create_map
+#define ryu_value_clone ryu_value_clone
+#define ryu_value_copy ryu_value_copy
+#define ryu_value_destroy ryu_value_destroy
+#define ryu_value_get_list_size ryu_value_get_list_size
+#define ryu_value_get_list_element ryu_value_get_list_element
+#define ryu_value_get_struct_num_fields ryu_value_get_struct_num_fields
+#define ryu_value_get_struct_field_name ryu_value_get_struct_field_name
+#define ryu_value_get_struct_field_value ryu_value_get_struct_field_value
+#define ryu_value_get_map_size ryu_value_get_map_size
+#define ryu_value_get_map_key ryu_value_get_map_key
+#define ryu_value_get_map_value ryu_value_get_map_value
+#define ryu_value_get_recursive_rel_node_list ryu_value_get_recursive_rel_node_list
+#define ryu_value_get_recursive_rel_rel_list ryu_value_get_recursive_rel_rel_list
+#define ryu_value_get_data_type ryu_value_get_data_type
+#define ryu_value_get_bool ryu_value_get_bool
+#define ryu_value_get_int8 ryu_value_get_int8
+#define ryu_value_get_int16 ryu_value_get_int16
+#define ryu_value_get_int32 ryu_value_get_int32
+#define ryu_value_get_int64 ryu_value_get_int64
+#define ryu_value_get_uint8 ryu_value_get_uint8
+#define ryu_value_get_uint16 ryu_value_get_uint16
+#define ryu_value_get_uint32 ryu_value_get_uint32
+#define ryu_value_get_uint64 ryu_value_get_uint64
+#define ryu_value_get_int128 ryu_value_get_int128
+#define ryu_int128_t_from_string ryu_int128_t_from_string
+#define ryu_int128_t_to_string ryu_int128_t_to_string
+#define ryu_value_get_float ryu_value_get_float
+#define ryu_value_get_double ryu_value_get_double
+#define ryu_value_get_internal_id ryu_value_get_internal_id
+#define ryu_value_get_date ryu_value_get_date
+#define ryu_value_get_timestamp ryu_value_get_timestamp
+#define ryu_value_get_timestamp_ns ryu_value_get_timestamp_ns
+#define ryu_value_get_timestamp_ms ryu_value_get_timestamp_ms
+#define ryu_value_get_timestamp_sec ryu_value_get_timestamp_sec
+#define ryu_value_get_timestamp_tz ryu_value_get_timestamp_tz
+#define ryu_value_get_interval ryu_value_get_interval
+#define ryu_value_get_decimal_as_string ryu_value_get_decimal_as_string
+#define ryu_value_get_string ryu_value_get_string
+#define ryu_value_get_blob ryu_value_get_blob
+#define ryu_value_get_uuid ryu_value_get_uuid
+#define ryu_value_to_string ryu_value_to_string
+#define ryu_node_val_get_id_val ryu_node_val_get_id_val
+#define ryu_node_val_get_label_val ryu_node_val_get_label_val
+#define ryu_node_val_get_property_size ryu_node_val_get_property_size
+#define ryu_node_val_get_property_name_at ryu_node_val_get_property_name_at
+#define ryu_node_val_get_property_value_at ryu_node_val_get_property_value_at
+#define ryu_node_val_to_string ryu_node_val_to_string
+#define ryu_rel_val_get_id_val ryu_rel_val_get_id_val
+#define ryu_rel_val_get_src_id_val ryu_rel_val_get_src_id_val
+#define ryu_rel_val_get_dst_id_val ryu_rel_val_get_dst_id_val
+#define ryu_rel_val_get_label_val ryu_rel_val_get_label_val
+#define ryu_rel_val_get_property_size ryu_rel_val_get_property_size
+#define ryu_rel_val_get_property_name_at ryu_rel_val_get_property_name_at
+#define ryu_rel_val_get_property_value_at ryu_rel_val_get_property_value_at
+#define ryu_rel_val_to_string ryu_rel_val_to_string
+#define ryu_destroy_string ryu_destroy_string
+#define ryu_destroy_blob ryu_destroy_blob
+#define ryu_query_summary_destroy ryu_query_summary_destroy
+#define ryu_query_summary_get_compiling_time ryu_query_summary_get_compiling_time
+#define ryu_query_summary_get_execution_time ryu_query_summary_get_execution_time
+#define ryu_timestamp_ns_to_tm ryu_timestamp_ns_to_tm
+#define ryu_timestamp_ms_to_tm ryu_timestamp_ms_to_tm
+#define ryu_timestamp_sec_to_tm ryu_timestamp_sec_to_tm
+#define ryu_timestamp_tz_to_tm ryu_timestamp_tz_to_tm
+#define ryu_timestamp_to_tm ryu_timestamp_to_tm
+#define ryu_timestamp_ns_from_tm ryu_timestamp_ns_from_tm
+#define ryu_timestamp_ms_from_tm ryu_timestamp_ms_from_tm
+#define ryu_timestamp_sec_from_tm ryu_timestamp_sec_from_tm
+#define ryu_timestamp_tz_from_tm ryu_timestamp_tz_from_tm
+#define ryu_timestamp_from_tm ryu_timestamp_from_tm
+#define ryu_date_to_string ryu_date_to_string
+#define ryu_date_from_string ryu_date_from_string
+#define ryu_date_to_tm ryu_date_to_tm
+#define ryu_date_from_tm ryu_date_from_tm
+#define ryu_interval_to_difftime ryu_interval_to_difftime
+#define ryu_interval_from_difftime ryu_interval_from_difftime
+#define ryu_get_version ryu_get_version
+#define ryu_get_storage_version ryu_get_storage_version
 
 #undef RYU_C_API
