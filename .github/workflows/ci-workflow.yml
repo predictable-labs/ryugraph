@@ -983,6 +983,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install clangd
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clangd
+
       - name: Install DuckDB
         uses: ./.github/actions/install-duckdb
 
