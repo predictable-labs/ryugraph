@@ -1,25 +1,25 @@
 package com.ryugraph;
 
 /**
- * Version is a class to get the version of the Kuzu.
+ * Version is a class to get the version of the Ryu.
  */
 public class Version {
 
     /**
-     * Get the version of the Kuzu.
+     * Get the version of the Ryu.
      *
-     * @return The version of the Kuzu.
+     * @return The version of the Ryu.
      */
     public static String getVersion() {
-        return Native.kuzuGetVersion();
+        return Native.ryuGetVersion();
     }
 
     /**
-     * Get the storage version of the Kuzu.
+     * Get the storage version of the Ryu.
      *
-     * @return The storage version of the Kuzu.
+     * @return The storage version of the Ryu.
      */
     public static long getStorageVersion() {
-        return Native.kuzuGetStorageVersion();
+        return Native.ryuGetStorageVersion();
     }
 }

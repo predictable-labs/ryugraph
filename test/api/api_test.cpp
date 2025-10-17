@@ -527,7 +527,7 @@ TEST_F(ApiTest, InvalidDBFile) {
     std::filesystem::remove(databasePath);
     // Create a new database with an empty file.
     std::ofstream file(databasePath);
-    file << "This is not a valid Kuzu database file.";
+    file << "This is not a valid Ryu database file.";
     file.close();
     ASSERT_TRUE(std::filesystem::exists(databasePath));
     ASSERT_FALSE(std::filesystem::file_size(databasePath) == 0);
@@ -541,7 +541,7 @@ TEST_F(ApiTest, DBFileUnderNonExistingDir) {
     }
     database.reset();
     std::filesystem::remove(databasePath);
-    databasePath = databasePath + "/non_existing_dir/database.kuzu";
+    databasePath = databasePath + "/non_existing_dir/database.ryu";
     ASSERT_FALSE(std::filesystem::exists(databasePath));
     // Attempt to open the database with the empty file.
     ASSERT_THROW(std::make_unique<Database>(databasePath, *systemConfig), IOException);

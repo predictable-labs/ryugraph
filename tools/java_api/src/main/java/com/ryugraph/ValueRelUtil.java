@@ -14,7 +14,7 @@ public class ValueRelUtil {
      */
     public static InternalID getID(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetId(value);
+        return Native.ryuRelValGetId(value);
     }
 
     /**
@@ -26,7 +26,7 @@ public class ValueRelUtil {
      */
     public static InternalID getSrcID(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetSrcId(value);
+        return Native.ryuRelValGetSrcId(value);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ValueRelUtil {
      */
     public static InternalID getDstID(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetDstId(value);
+        return Native.ryuRelValGetDstId(value);
     }
 
     /**
@@ -50,7 +50,7 @@ public class ValueRelUtil {
      */
     public static String getLabelName(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetLabelName(value);
+        return Native.ryuRelValGetLabelName(value);
     }
 
     /**
@@ -62,7 +62,7 @@ public class ValueRelUtil {
      */
     public static long getPropertySize(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetPropertySize(value);
+        return Native.ryuRelValGetPropertySize(value);
     }
 
     /**
@@ -75,7 +75,7 @@ public class ValueRelUtil {
      */
     public static String getPropertyNameAt(Value value, long index) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetPropertyNameAt(value, index);
+        return Native.ryuRelValGetPropertyNameAt(value, index);
     }
 
     /**
@@ -88,7 +88,7 @@ public class ValueRelUtil {
      */
     public static Value getPropertyValueAt(Value value, long index) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValGetPropertyValueAt(value, index);
+        return Native.ryuRelValGetPropertyValueAt(value, index);
     }
 
     /**
@@ -100,6 +100,6 @@ public class ValueRelUtil {
      */
     public static String toString(Value value) {
         value.checkNotDestroyed();
-        return Native.kuzuRelValToString(value);
+        return Native.ryuRelValToString(value);
     }
 }

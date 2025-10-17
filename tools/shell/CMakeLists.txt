@@ -14,14 +14,14 @@ add_executable(ryu_shell
         shell_runner.cpp)
 
 if (NOT MSVC)
-    # On Windows, rename the executable to kuzu.exe will cause an error
-    # "multiple rules generate src/kuzu.lib", so we do not set the output
+    # On Windows, rename the executable to ryu.exe will cause an error
+    # "multiple rules generate src/ryu.lib", so we do not set the output
     # name for MSVC.
-    set_target_properties(ryu_shell PROPERTIES OUTPUT_NAME kuzu)
+    set_target_properties(ryu_shell PROPERTIES OUTPUT_NAME ryu)
 endif ()
 
 
-target_link_libraries(ryu_shell kuzu)
+target_link_libraries(ryu_shell ryu)
 if (ENABLE_BACKTRACES)
     target_link_libraries(ryu_shell register_backtrace_signal_handler)
 endif ()

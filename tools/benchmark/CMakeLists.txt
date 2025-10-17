@@ -8,4 +8,4 @@ add_executable(ryu_benchmark
         benchmark_runner.cpp
         main.cpp)
 
-target_link_libraries(ryu_benchmark kuzu test_helper)
+target_link_libraries(ryu_benchmark ryu test_helper)

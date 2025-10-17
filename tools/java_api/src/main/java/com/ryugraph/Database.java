@@ -1,7 +1,7 @@
 package com.ryugraph;
 
 /**
- * The Database class is the main class of KuzuDB. It manages all database
+ * The Database class is the main class of RyuGraph. It manages all database
  * components.
  */
 public class Database implements AutoCloseable {
@@ -36,7 +36,7 @@ public class Database implements AutoCloseable {
         this.buffer_size = 0;
         this.max_db_size = 0;
         this.checkpointThreshold = -1;
-        db_ref = Native.kuzuDatabaseInit(databasePath, 0, true, false, max_db_size, autoCheckpoint,
+        db_ref = Native.ryuDatabaseInit(databasePath, 0, true, false, max_db_size, autoCheckpoint,
                 checkpointThreshold, throwOnWalReplayFailure, enableChecksums);
     }
 
@@ -62,7 +62,7 @@ public class Database implements AutoCloseable {
      *                                  WAL file exceeds this threshold, the database will
      *                                  checkpoint if autoCheckpoint is true.
      * @param throwOnWalReplayFailure   If true, any WAL replaying failure when loading the database
-     *                                  will throw an error. Otherwise, Kuzu will silently ignore
+     *                                  will throw an error. Otherwise, Ryu will silently ignore
      *                                  the failure and replay up to where the error occured.
      * @param enableChecksums           If true, the database will use checksums to detect
      *                                  corruption in the WAL file.
@@ -78,7 +78,7 @@ public class Database implements AutoCloseable {
         this.checkpointThreshold = checkpointThreshold;
         this.throwOnWalReplayFailure = throwOnWalReplayFailure;
         this.enableChecksums = enableChecksums;
-        db_ref = Native.kuzuDatabaseInit(databasePath, bufferPoolSize, enableCompression, readOnly, maxDBSize,
+        db_ref = Native.ryuDatabaseInit(databasePath, bufferPoolSize, enableCompression, readOnly, maxDBSize,
                 autoCheckpoint, checkpointThreshold, throwOnWalReplayFailure, enableChecksums);
     }
 
@@ -112,7 +112,7 @@ public class Database implements AutoCloseable {
      */
     private void destroy() {
         checkNotDestroyed();
-        Native.kuzuDatabaseDestroy(this);
+        Native.ryuDatabaseDestroy(this);
         destroyed = true;
     }
 }

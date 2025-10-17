@@ -1,5 +1,5 @@
 /**
- * @file kuzu_wasm_worker.js is the file for the worker thread that wraps around 
+ * @file ryu_wasm_worker.js is the file for the worker thread that wraps around 
  * the synchronous WebAssembly module to create an asynchronous API.
  */
 "use strict";
@@ -8,7 +8,7 @@ const { expose, isWorkerRuntime, Transfer } = require('threads/worker');
 const { v4: uuidv4 } = require('uuid');
 const objectsStore = {};
 let FS = null;
-const kuzuSync = require('./sync');
+const ryuSync = require('./sync');
 
 if (!isWorkerRuntime) {
   // Do nothing if not in worker runtime (i.e. running in main thread)
@@ -17,8 +17,8 @@ else {
   expose({
     async init() {
       try {
-        await kuzuSync.init();
-        FS = kuzuSync.getFS();
+        await ryuSync.init();
+        FS = ryuSync.getFS();
         return { isSuccess: true };
       }
       catch (e) {
@@ -27,11 +27,11 @@ else {
     },
 
     getVersion() {
-      return kuzuSync.getVersion();
+      return ryuSync.getVersion();
     },
 
     getStorageVersion() {
-      return kuzuSync.getStorageVersion();
+      return ryuSync.getStorageVersion();
     },
 
     databaseConstruct(databasePath,
@@ -44,7 +44,7 @@ else {
     ) {
       const id = uuidv4();
       try {
-        objectsStore[id] = new kuzuSync.Database(
+        objectsStore[id] = new ryuSync.Database(
           databasePath,
           bufferPoolSize,
           maxNumThreads,
@@ -73,7 +73,7 @@ else {
       }
       const id = uuidv4();
       try {
-        objectsStore[id] = new kuzuSync.Connection(
+        objectsStore[id] = new ryuSync.Connection(
           objectsStore[databaseId],
           numThreads
         );

@@ -15,7 +15,7 @@ else()
 endif()
 include(UseJava)
 
-file(GLOB JAVA_SRC_FILES src/main/java/com/kuzudb/*.java)
+file(GLOB JAVA_SRC_FILES src/main/java/com/ryugraph/*.java)
 
 set(CMAKE_JAVA_COMPILE_FLAGS -source 1.8 -target 1.8 -encoding utf-8)
 add_jar(ryu_java ${JAVA_SRC_FILES}
@@ -28,7 +28,7 @@ set (_stubDir "${CMAKE_CURRENT_BINARY_DIR}")
 
 include_directories(${JNI_INCLUDE_DIRS} ${_classDir} ${_stubDir})
 add_library(ryu_java_native SHARED src/jni/ryu_java.cpp)
-target_link_libraries(ryu_java_native PRIVATE ryu_native_header kuzu)
+target_link_libraries(ryu_java_native PRIVATE ryu_native_header ryu)
 
 message(STATUS "OS_NAME=${OS_NAME}")
 message(STATUS "OS_ARCH=${OS_ARCH}")

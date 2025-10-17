@@ -18,7 +18,7 @@ public class RyuStruct implements AutoCloseable {
      *
      * @param value the value to construct the struct from
      */
-    public KuzuStruct(Value value) {
+    public RyuStruct(Value value) {
         structVal = value;
     }
 
@@ -29,7 +29,7 @@ public class RyuStruct implements AutoCloseable {
      * @param fields: The fields of the struct, with the keys representing the field
      *                names and the values representing the field values.
      */
-    public KuzuStruct(Map<String, Value> fields) {
+    public RyuStruct(Map<String, Value> fields) {
         if (fields.isEmpty()) {
             structVal = null;
             return;
@@ -45,7 +45,7 @@ public class RyuStruct implements AutoCloseable {
         for (Value value : fieldValues) {
             value.checkNotDestroyed();
         }
-        structVal = Native.kuzuCreateStruct(fieldNames, fieldValues);
+        structVal = Native.ryuCreateStruct(fieldNames, fieldValues);
     }
 
     /**
@@ -55,7 +55,7 @@ public class RyuStruct implements AutoCloseable {
      * @param fieldNames:  The name of the struct fields
      * @param fieldValues: The values of the struct fields
      */
-    public KuzuStruct(String[] fieldNames, Value[] fieldValues) {
+    public RyuStruct(String[] fieldNames, Value[] fieldValues) {
         if (fieldNames.length != fieldValues.length) {
             structVal = null;
             return;
@@ -67,7 +67,7 @@ public class RyuStruct implements AutoCloseable {
         for (Value value : fieldValues) {
             value.checkNotDestroyed();
         }
-        structVal = Native.kuzuCreateStruct(fieldNames, fieldValues);
+        structVal = Native.ryuCreateStruct(fieldNames, fieldValues);
     }
 
     /**
@@ -78,7 +78,7 @@ public class RyuStruct implements AutoCloseable {
         if (structVal == null) {
             return 0;
         }
-        return Native.kuzuValueGetListSize(structVal);
+        return Native.ryuValueGetListSize(structVal);
     }
 
     /**
@@ -92,7 +92,7 @@ public class RyuStruct implements AutoCloseable {
         if (structVal == null) {
             return -1;
         }
-        return Native.kuzuValueGetStructIndex(structVal, fieldName);
+        return Native.ryuValueGetStructIndex(structVal, fieldName);
     }
 
     /**
@@ -106,7 +106,7 @@ public class RyuStruct implements AutoCloseable {
         if (structVal == null) {
             return null;
         }
-        return Native.kuzuValueGetStructFieldName(structVal, index);
+        return Native.ryuValueGetStructFieldName(structVal, index);
     }
 
     /**
@@ -137,7 +137,7 @@ public class RyuStruct implements AutoCloseable {
         if (index < 0 || index >= getNumFields()) {
             return null;
         }
-        return Native.kuzuValueGetListElement(structVal, index);
+        return Native.ryuValueGetListElement(structVal, index);
     }
 
     /**

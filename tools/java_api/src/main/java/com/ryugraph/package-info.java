@@ -1,8 +1,8 @@
 /**
- * Kuzu Java API.
+ * Ryu Java API.
  *
  * <p>
- * Kuzu is an in-process property graph database management system built for
+ * Ryu is an in-process property graph database management system built for
  * query speed and scalability.
  * </p>
  */

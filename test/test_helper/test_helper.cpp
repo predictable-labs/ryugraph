@@ -62,13 +62,13 @@ void TestHelper::executeScript(const std::string& cypherScript, Connection& conn
                 substrLower.find(".ttl") != std::string::npos ||
                 substrLower.find(".nq") != std::string::npos ||
                 substrLower.find(".json") != std::string::npos ||
-                substrLower.find(".kuzu_extension") != std::string::npos) {
+                substrLower.find(".ryu_extension") != std::string::npos) {
                 csvFilePaths.push_back(substr);
             }
             index = end + 1;
         }
         for (auto& csvFilePath : csvFilePaths) {
-            auto fullPath = appendKuzuRootPath(csvFilePath);
+            auto fullPath = appendRyuRootPath(csvFilePath);
             line.replace(line.find(csvFilePath), csvFilePath.length(), fullPath);
         }
 #ifdef __STATIC_LINK_EXTENSION_TEST__

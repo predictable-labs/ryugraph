@@ -1,4 +1,4 @@
-#include "kuzu_rs.h"
+#include "ryu_rs.h"
 
 using ryu::common::ArrayTypeInfo;
 using ryu::common::Interval;

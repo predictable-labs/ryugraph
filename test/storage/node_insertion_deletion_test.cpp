@@ -18,7 +18,7 @@ public:
     }
 
     std::string getInputDir() override {
-        return TestHelper::appendKuzuRootPath("dataset/node-insertion-deletion-tests/int64-pk/");
+        return TestHelper::appendRyuRootPath("dataset/node-insertion-deletion-tests/int64-pk/");
     }
 
     void initDBAndConnection() {

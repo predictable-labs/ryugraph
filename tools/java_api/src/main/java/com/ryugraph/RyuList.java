@@ -15,7 +15,7 @@ public class RyuList implements AutoCloseable {
      *
      * @param value the value to construct the list from
      */
-    public KuzuList(Value value) {
+    public RyuList(Value value) {
         listVal = value;
     }
 
@@ -24,8 +24,8 @@ public class RyuList implements AutoCloseable {
      *
      * @param values: the array to construct the list from
      */
-    public KuzuList(Value[] values) {
-        listVal = Native.kuzuCreateList(values);
+    public RyuList(Value[] values) {
+        listVal = Native.ryuCreateList(values);
     }
 
     /**
@@ -33,8 +33,8 @@ public class RyuList implements AutoCloseable {
      *
      * @param numElements: the size of the list to construct
      */
-    public KuzuList(DataType type, long numElements) {
-        listVal = Native.kuzuCreateList(type, numElements);
+    public RyuList(DataType type, long numElements) {
+        listVal = Native.ryuCreateList(type, numElements);
     }
 
     /**
@@ -45,7 +45,7 @@ public class RyuList implements AutoCloseable {
      */
     public long getListSize() {
         listVal.checkNotDestroyed();
-        return Native.kuzuValueGetListSize(listVal);
+        return Native.ryuValueGetListSize(listVal);
     }
 
     /**
@@ -57,7 +57,7 @@ public class RyuList implements AutoCloseable {
      */
     public Value getListElement(long index) {
         listVal.checkNotDestroyed();
-        return Native.kuzuValueGetListElement(listVal, index);
+        return Native.ryuValueGetListElement(listVal, index);
     }
 
     /**
