@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022-2025 Ryu Inc.
+Copyright (c) 2025 Predicatable Labs
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,5 @@ SOFTWARE.
 
 ---
 
-Modifications Copyright (c) 2025 Predictable Labs
-
-This project includes modifications made by Predictable Labs.
-The modifications are also licensed under the MIT License.
+This project is a fork of Kùzu (https://github.com/kuzudb/kuzu), which is
+licensed under the MIT License. See LICENSE file for the original Kùzu license.

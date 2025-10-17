@@ -23,7 +23,7 @@
 -SKIP_IN_MEM
 -STATEMENT CREATE NODE TABLE `mixed-newlines`(A STRING, B STRING, PRIMARY KEY(A));
 ---- ok
--STATEMENT COPY `mixed-newlines` FROM "${KUZU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
+-STATEMENT COPY `mixed-newlines` FROM "${RYU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
 ---- ok
 -STATEMENT PROFILE EXPORT DATABASE "${KUZU_EXPORT_DB_DIRECTORY}_special/explain_export_schema_only"(SCHEMA_ONLY=true);
 ---- ok
@@ -34,7 +34,7 @@
 -SKIP_IN_MEM
 -STATEMENT CREATE NODE TABLE `mixed-newlines`(A STRING, B STRING, PRIMARY KEY(A));
 ---- ok
--STATEMENT COPY `mixed-newlines` FROM "${KUZU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
+-STATEMENT COPY `mixed-newlines` FROM "${RYU_ROOT_DIRECTORY}/dataset/csv-multiline-quote-tests/mixed-newlines.csv" (PARALLEL=FALSE);
 ---- ok
 -STATEMENT PROFILE EXPORT DATABASE "${KUZU_EXPORT_DB_DIRECTORY}_special/explain_export";
 ---- ok

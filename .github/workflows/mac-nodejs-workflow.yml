@@ -13,7 +13,7 @@ env:
 
 jobs:
   build-mac-nodejs-arm64:
-    runs-on: self-hosted-mac-arm64
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -55,7 +55,7 @@ jobs:
         run: rm -rf package
 
   build-mac-nodejs-x86_64:
-    runs-on: self-hosted-mac-x64
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 

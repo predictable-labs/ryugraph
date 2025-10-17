@@ -20,7 +20,7 @@ on:
 jobs:
   benchmark:
     name: business-intelligence-benchmark
-    runs-on: kuzu-self-hosted-benchmarking-xl
+    runs-on: ubuntu-latest
     env:
       NUM_THREADS: 128
       GEN: Ninja
