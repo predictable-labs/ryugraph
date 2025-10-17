@@ -339,8 +339,8 @@ typedef enum { RyuSuccess = 0, RyuError = 1 } ryu_state;
  * @param[out] out_database The output parameter that will hold the database instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_database_init(const char* database_path,
-    ryu_system_config system_config, ryu_database* out_database);
+RYU_C_API ryu_state ryu_database_init(const char* database_path, ryu_system_config system_config,
+    ryu_database* out_database);
 /**
  * @brief Destroys the ryu database instance and frees the allocated memory.
  * @param database The database instance to destroy.
@@ -357,8 +357,7 @@ RYU_C_API ryu_system_config ryu_default_system_config();
  * @param[out] out_connection The output parameter that will hold the connection instance.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_connection_init(ryu_database* database,
-    ryu_connection* out_connection);
+RYU_C_API ryu_state ryu_connection_init(ryu_database* database, ryu_connection* out_connection);
 /**
  * @brief Destroys the connection instance and frees the allocated memory.
  * @param connection The connection instance to destroy.
@@ -458,8 +457,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_bool(ryu_prepared_statement* pre
  * @param value The int64_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_int64(
-    ryu_prepared_statement* prepared_statement, const char* param_name, int64_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int64(ryu_prepared_statement* prepared_statement,
+    const char* param_name, int64_t value);
 /**
  * @brief Binds the given int32_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -467,8 +466,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_int64(
  * @param value The int32_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_int32(
-    ryu_prepared_statement* prepared_statement, const char* param_name, int32_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int32(ryu_prepared_statement* prepared_statement,
+    const char* param_name, int32_t value);
 /**
  * @brief Binds the given int16_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -476,8 +475,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_int32(
  * @param value The int16_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_int16(
-    ryu_prepared_statement* prepared_statement, const char* param_name, int16_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_int16(ryu_prepared_statement* prepared_statement,
+    const char* param_name, int16_t value);
 /**
  * @brief Binds the given int8_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -494,8 +493,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_int8(ryu_prepared_statement* pre
  * @param value The uint64_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_uint64(
-    ryu_prepared_statement* prepared_statement, const char* param_name, uint64_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint64(ryu_prepared_statement* prepared_statement,
+    const char* param_name, uint64_t value);
 /**
  * @brief Binds the given uint32_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -503,8 +502,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_uint64(
  * @param value The uint32_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_uint32(
-    ryu_prepared_statement* prepared_statement, const char* param_name, uint32_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint32(ryu_prepared_statement* prepared_statement,
+    const char* param_name, uint32_t value);
 /**
  * @brief Binds the given uint16_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -512,8 +511,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_uint32(
  * @param value The uint16_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_uint16(
-    ryu_prepared_statement* prepared_statement, const char* param_name, uint16_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint16(ryu_prepared_statement* prepared_statement,
+    const char* param_name, uint16_t value);
 /**
  * @brief Binds the given int8_t value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -521,8 +520,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_uint16(
  * @param value The int8_t value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_uint8(
-    ryu_prepared_statement* prepared_statement, const char* param_name, uint8_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_uint8(ryu_prepared_statement* prepared_statement,
+    const char* param_name, uint8_t value);
 
 /**
  * @brief Binds the given double value to the given parameter name in the prepared statement.
@@ -531,8 +530,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_uint8(
  * @param value The double value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_double(
-    ryu_prepared_statement* prepared_statement, const char* param_name, double value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_double(ryu_prepared_statement* prepared_statement,
+    const char* param_name, double value);
 /**
  * @brief Binds the given float value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -540,8 +539,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_double(
  * @param value The float value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_float(
-    ryu_prepared_statement* prepared_statement, const char* param_name, float value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_float(ryu_prepared_statement* prepared_statement,
+    const char* param_name, float value);
 /**
  * @brief Binds the given date value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -568,8 +567,7 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_ns(
  * @return The state indicating the success or failure of the operation.
  */
 RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp_sec(
-    ryu_prepared_statement* prepared_statement, const char* param_name,
-    ryu_timestamp_sec_t value);
+    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_timestamp_sec_t value);
 /**
  * @brief Binds the given timestamp_tz value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -604,8 +602,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_timestamp(
  * @param value The interval value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_interval(
-    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_interval_t value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_interval(ryu_prepared_statement* prepared_statement,
+    const char* param_name, ryu_interval_t value);
 /**
  * @brief Binds the given string value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -613,8 +611,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_interval(
  * @param value The string value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_string(
-    ryu_prepared_statement* prepared_statement, const char* param_name, const char* value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_string(ryu_prepared_statement* prepared_statement,
+    const char* param_name, const char* value);
 /**
  * @brief Binds the given ryu value to the given parameter name in the prepared statement.
  * @param prepared_statement The prepared statement instance to bind the value.
@@ -622,8 +620,8 @@ RYU_C_API ryu_state ryu_prepared_statement_bind_string(
  * @param value The ryu value to bind.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_prepared_statement_bind_value(
-    ryu_prepared_statement* prepared_statement, const char* param_name, ryu_value* value);
+RYU_C_API ryu_state ryu_prepared_statement_bind_value(ryu_prepared_statement* prepared_statement,
+    const char* param_name, ryu_value* value);
 
 // QueryResult
 /**
@@ -655,8 +653,8 @@ RYU_C_API uint64_t ryu_query_result_get_num_columns(ryu_query_result* query_resu
  * @param[out] out_column_name The output parameter that will hold the column name.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_query_result_get_column_name(ryu_query_result* query_result,
-    uint64_t index, char** out_column_name);
+RYU_C_API ryu_state ryu_query_result_get_column_name(ryu_query_result* query_result, uint64_t index,
+    char** out_column_name);
 /**
  * @brief Returns the data type of the column at the given index.
  * @param query_result The query result instance to return.
@@ -1009,8 +1007,8 @@ RYU_C_API ryu_state ryu_value_create_struct(uint64_t num_fields, const char** fi
  * @param[out] out_value The output parameter that will hold a pointer to the created map value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_create_map(uint64_t num_fields, ryu_value** keys,
-    ryu_value** values, ryu_value** out_value);
+RYU_C_API ryu_state ryu_value_create_map(uint64_t num_fields, ryu_value** keys, ryu_value** values,
+    ryu_value** out_value);
 /**
  * @brief Creates a new value based on the given value. Caller is responsible for destroying the
  * returned value.
@@ -1088,8 +1086,7 @@ RYU_C_API ryu_state ryu_value_get_map_size(ryu_value* value, uint64_t* out_resul
  * @param[out] out_key The output parameter that will hold the key at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_map_key(ryu_value* value, uint64_t index,
-    ryu_value* out_key);
+RYU_C_API ryu_state ryu_value_get_map_key(ryu_value* value, uint64_t index, ryu_value* out_key);
 /**
  * @brief Returns the field value at index of the given map value. The value must be of physical
  * type MAP.
@@ -1098,8 +1095,7 @@ RYU_C_API ryu_state ryu_value_get_map_key(ryu_value* value, uint64_t index,
  * @param[out] out_value The output parameter that will hold the field value at index.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_map_value(ryu_value* value, uint64_t index,
-    ryu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_map_value(ryu_value* value, uint64_t index, ryu_value* out_value);
 /**
  * @brief Returns the list of nodes for recursive rel value. The value must be of type
  * RECURSIVE_REL.
@@ -1107,8 +1103,7 @@ RYU_C_API ryu_state ryu_value_get_map_value(ryu_value* value, uint64_t index,
  * @param[out] out_value The output parameter that will hold the list of nodes.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_recursive_rel_node_list(ryu_value* value,
-    ryu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_recursive_rel_node_list(ryu_value* value, ryu_value* out_value);
 
 /**
  * @brief Returns the list of rels for recursive rel value. The value must be of type RECURSIVE_REL.
@@ -1116,8 +1111,7 @@ RYU_C_API ryu_state ryu_value_get_recursive_rel_node_list(ryu_value* value,
  * @param[out] out_value The output parameter that will hold the list of rels.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_recursive_rel_rel_list(ryu_value* value,
-    ryu_value* out_value);
+RYU_C_API ryu_state ryu_value_get_recursive_rel_rel_list(ryu_value* value, ryu_value* out_value);
 /**
  * @brief Returns internal type of the given value.
  * @param value The value to return.
@@ -1249,16 +1243,14 @@ RYU_C_API ryu_state ryu_value_get_timestamp(ryu_value* value, ryu_timestamp_t* o
  * @param[out] out_result The output parameter that will hold the timestamp_ns value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_timestamp_ns(ryu_value* value,
-    ryu_timestamp_ns_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_ns(ryu_value* value, ryu_timestamp_ns_t* out_result);
 /**
  * @brief Returns the timestamp_ms value of the given value. The value must be of type TIMESTAMP_MS.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp_ms value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_timestamp_ms(ryu_value* value,
-    ryu_timestamp_ms_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_ms(ryu_value* value, ryu_timestamp_ms_t* out_result);
 /**
  * @brief Returns the timestamp_sec value of the given value. The value must be of type
  * TIMESTAMP_SEC.
@@ -1266,16 +1258,14 @@ RYU_C_API ryu_state ryu_value_get_timestamp_ms(ryu_value* value,
  * @param[out] out_result The output parameter that will hold the timestamp_sec value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_timestamp_sec(ryu_value* value,
-    ryu_timestamp_sec_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_sec(ryu_value* value, ryu_timestamp_sec_t* out_result);
 /**
  * @brief Returns the timestamp_tz value of the given value. The value must be of type TIMESTAMP_TZ.
  * @param value The value to return.
  * @param[out] out_result The output parameter that will hold the timestamp_tz value.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_value_get_timestamp_tz(ryu_value* value,
-    ryu_timestamp_tz_t* out_result);
+RYU_C_API ryu_state ryu_value_get_timestamp_tz(ryu_value* value, ryu_timestamp_tz_t* out_result);
 /**
  * @brief Returns the interval value of the given value. The value must be of type INTERVAL.
  * @param value The value to return.
@@ -1481,8 +1471,7 @@ RYU_C_API ryu_state ryu_timestamp_ms_to_tm(ryu_timestamp_ms_t timestamp, struct 
  * @param[out] out_result The output parameter that will hold the tm struct.
  * @return The state indicating the success or failure of the operation.
  */
-RYU_C_API ryu_state ryu_timestamp_sec_to_tm(ryu_timestamp_sec_t timestamp,
-    struct tm* out_result);
+RYU_C_API ryu_state ryu_timestamp_sec_to_tm(ryu_timestamp_sec_t timestamp, struct tm* out_result);
 /**
  * @brief Convert timestamp_tz to corresponding tm struct.
  * @param timestamp The timestamp_tz value to convert.

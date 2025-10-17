@@ -22,9 +22,7 @@ namespace testing {
 
 class BufferManagerTest : public DBTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
     void reserveAll() {
         auto* bm = getBufferManager(*database);
         // Can't use UINT64_MAX since it will overflow the usedMemory

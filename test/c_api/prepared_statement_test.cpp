@@ -5,9 +5,7 @@ using namespace ryu::testing;
 
 class CApiPreparedStatementTest : public CApiTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 TEST_F(CApiPreparedStatementTest, IsSuccess) {
@@ -433,8 +431,7 @@ TEST_F(CApiPreparedStatementTest, BindInteval) {
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_prepared_statement_is_success(&preparedStatement));
     auto interval = ryu_interval_t{0, 0, 0};
-    ASSERT_EQ(ryu_prepared_statement_bind_interval(&preparedStatement, "1", interval),
-        RyuSuccess);
+    ASSERT_EQ(ryu_prepared_statement_bind_interval(&preparedStatement, "1", interval), RyuSuccess);
     state = ryu_connection_execute(connection, &preparedStatement, &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_NE(result._query_result, nullptr);

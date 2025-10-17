@@ -13,9 +13,7 @@ public:
         initGraph();
     }
 
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 } // namespace testing

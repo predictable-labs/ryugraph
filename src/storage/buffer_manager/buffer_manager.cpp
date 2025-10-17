@@ -87,8 +87,8 @@ BufferManager::BufferManager(const std::string& databasePath, const std::string&
 
 void BufferManager::verifySizeParams(uint64_t bufferPoolSize, uint64_t maxDBSize) {
     if (bufferPoolSize < RYU_PAGE_SIZE) {
-        throw BufferManagerException(stringFormat(
-            "The given buffer pool size should be at least {} bytes.", RYU_PAGE_SIZE));
+        throw BufferManagerException(
+            stringFormat("The given buffer pool size should be at least {} bytes.", RYU_PAGE_SIZE));
     }
     // We require at least two page groups, one for the main data file, and one for the shadow file.
     if (maxDBSize < 2 * RYU_PAGE_SIZE * StorageConstants::PAGE_GROUP_SIZE) {

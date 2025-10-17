@@ -11,9 +11,7 @@ using namespace ryu::common;
 
 class CApiVersionTest : public CApiTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 
     void TearDown() override { APIDBTest::TearDown(); }
 };

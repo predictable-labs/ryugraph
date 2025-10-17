@@ -47,8 +47,7 @@ uint64_t logical_type_get_array_num_elements(const LogicalType& logicalType) {
     return ryu::common::ArrayType::getNumElements(logicalType);
 }
 
-rust::Vec<rust::String> logical_type_get_struct_field_names(
-    const ryu::common::LogicalType& value) {
+rust::Vec<rust::String> logical_type_get_struct_field_names(const ryu::common::LogicalType& value) {
     rust::Vec<rust::String> names;
     for (auto name : ryu::common::StructType::getFieldNames(value)) {
         names.push_back(name);

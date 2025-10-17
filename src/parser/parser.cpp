@@ -8,9 +8,9 @@
 
 #include "common/exception/parser.h"
 #include "common/string_utils.h"
-#include "parser/antlr_parser/ryu_cypher_parser.h"
 #include "parser/antlr_parser/parser_error_listener.h"
 #include "parser/antlr_parser/parser_error_strategy.h"
+#include "parser/antlr_parser/ryu_cypher_parser.h"
 #include "parser/transformer.h"
 
 using namespace antlr4;

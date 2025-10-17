@@ -1,7 +1,7 @@
 #pragma once
 
-#include "main/ryu.h"
 #include "main/prepared_statement.h"
+#include "main/ryu.h"
 #include "pybind_include.h"
 
 using namespace ryu::main;

@@ -33,8 +33,8 @@ static void validateEmptyWAL(const std::string& path, ClientContext* context) {
     }
 }
 
-AttachedRyuDatabase::AttachedRyuDatabase(std::string dbPath, std::string dbName,
-    std::string dbType, ClientContext* clientContext)
+AttachedRyuDatabase::AttachedRyuDatabase(std::string dbPath, std::string dbName, std::string dbType,
+    ClientContext* clientContext)
     : AttachedDatabase{std::move(dbName), std::move(dbType), nullptr /* catalog */} {
     auto vfs = common::VirtualFileSystem::GetUnsafe(*clientContext);
     if (DBConfig::isDBPathInMemory(dbPath)) {

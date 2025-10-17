@@ -10,8 +10,8 @@
 
 #include "common/api.h"
 #include "common/database_lifecycle_manager.h"
-#include "ryu_fwd.h"
 #include "main/db_config.h"
+#include "ryu_fwd.h"
 
 namespace ryu {
 namespace common {
@@ -130,8 +130,7 @@ public:
 
     std::vector<extension::BinderExtension*> getBinderExtensions();
 
-    RYU_API void addPlannerExtension(
-        std::unique_ptr<extension::PlannerExtension> plannerExtension);
+    RYU_API void addPlannerExtension(std::unique_ptr<extension::PlannerExtension> plannerExtension);
 
     std::vector<extension::PlannerExtension*> getPlannerExtensions();
 

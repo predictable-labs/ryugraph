@@ -317,8 +317,7 @@ py::object PyQueryResult::getArrowChunks(const std::vector<LogicalType>& types,
     return batches;
 }
 
-ryu::pyarrow::Table PyQueryResult::getAsArrow(std::int64_t chunkSize,
-    bool fallbackExtensionTypes) {
+ryu::pyarrow::Table PyQueryResult::getAsArrow(std::int64_t chunkSize, bool fallbackExtensionTypes) {
     auto types = queryResult->getColumnDataTypes();
     auto names = queryResult->getColumnNames();
     py::list batches = getArrowChunks(types, names, chunkSize, fallbackExtensionTypes);

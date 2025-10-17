@@ -9,9 +9,7 @@ using namespace ryu::testing;
 
 class CApiQueryResultTest : public CApiTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 static ryu_value* copy_flat_tuple(ryu_flat_tuple* tuple, uint32_t tupleLen) {

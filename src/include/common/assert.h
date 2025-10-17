@@ -28,7 +28,7 @@ namespace common {
 #endif
 
 #define KU_UNREACHABLE                                                                             \
-    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::kuAssertFailureInternal("KU_UNREACHABLE",     \
+    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::kuAssertFailureInternal("KU_UNREACHABLE",      \
         __FILE__, __LINE__) /* LCOV_EXCL_STOP */
 #define KU_UNUSED(expr) (void)(expr)
 

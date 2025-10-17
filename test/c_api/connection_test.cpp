@@ -8,9 +8,7 @@ using namespace ryu::testing;
 
 class CApiConnectionTest : public CApiTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 TEST_F(CApiConnectionTest, CreationAndDestroy) {

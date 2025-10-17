@@ -124,8 +124,8 @@ ryu_state ryu_query_result_get_arrow_schema(ryu_query_result* query_result,
     }
 }
 
-ryu_state ryu_query_result_get_next_arrow_chunk(ryu_query_result* query_result,
-    int64_t chunk_size, ArrowArray* out_arrow_array) {
+ryu_state ryu_query_result_get_next_arrow_chunk(ryu_query_result* query_result, int64_t chunk_size,
+    ArrowArray* out_arrow_array) {
     try {
         *out_arrow_array =
             *static_cast<QueryResult*>(query_result->_query_result)->getNextArrowChunk(chunk_size);

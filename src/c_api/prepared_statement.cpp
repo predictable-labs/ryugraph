@@ -45,8 +45,7 @@ ryu_state ryu_prepared_statement_bind_bool(ryu_prepared_statement* prepared_stat
     const char* param_name, bool value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -57,8 +56,7 @@ ryu_state ryu_prepared_statement_bind_int64(ryu_prepared_statement* prepared_sta
     const char* param_name, int64_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -69,8 +67,7 @@ ryu_state ryu_prepared_statement_bind_int32(ryu_prepared_statement* prepared_sta
     const char* param_name, int32_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -81,8 +78,7 @@ ryu_state ryu_prepared_statement_bind_int16(ryu_prepared_statement* prepared_sta
     const char* param_name, int16_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -93,8 +89,7 @@ ryu_state ryu_prepared_statement_bind_int8(ryu_prepared_statement* prepared_stat
     const char* param_name, int8_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -105,8 +100,7 @@ ryu_state ryu_prepared_statement_bind_uint64(ryu_prepared_statement* prepared_st
     const char* param_name, uint64_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -117,8 +111,7 @@ ryu_state ryu_prepared_statement_bind_uint32(ryu_prepared_statement* prepared_st
     const char* param_name, uint32_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -129,8 +122,7 @@ ryu_state ryu_prepared_statement_bind_uint16(ryu_prepared_statement* prepared_st
     const char* param_name, uint16_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -141,8 +133,7 @@ ryu_state ryu_prepared_statement_bind_uint8(ryu_prepared_statement* prepared_sta
     const char* param_name, uint8_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -153,8 +144,7 @@ ryu_state ryu_prepared_statement_bind_double(ryu_prepared_statement* prepared_st
     const char* param_name, double value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -165,8 +155,7 @@ ryu_state ryu_prepared_statement_bind_float(ryu_prepared_statement* prepared_sta
     const char* param_name, float value) {
     try {
         auto value_ptr = std::make_unique<Value>(value);
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -177,8 +166,7 @@ ryu_state ryu_prepared_statement_bind_date(ryu_prepared_statement* prepared_stat
     const char* param_name, ryu_date_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(date_t(value.days));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -189,8 +177,7 @@ ryu_state ryu_prepared_statement_bind_timestamp_ns(ryu_prepared_statement* prepa
     const char* param_name, ryu_timestamp_ns_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(timestamp_ns_t(value.value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -201,8 +188,7 @@ ryu_state ryu_prepared_statement_bind_timestamp_ms(ryu_prepared_statement* prepa
     const char* param_name, ryu_timestamp_ms_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(timestamp_ms_t(value.value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -213,8 +199,7 @@ ryu_state ryu_prepared_statement_bind_timestamp_sec(ryu_prepared_statement* prep
     const char* param_name, ryu_timestamp_sec_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(timestamp_sec_t(value.value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -225,8 +210,7 @@ ryu_state ryu_prepared_statement_bind_timestamp_tz(ryu_prepared_statement* prepa
     const char* param_name, ryu_timestamp_tz_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(timestamp_tz_t(value.value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -237,8 +221,7 @@ ryu_state ryu_prepared_statement_bind_timestamp(ryu_prepared_statement* prepared
     const char* param_name, ryu_timestamp_t value) {
     try {
         auto value_ptr = std::make_unique<Value>(timestamp_t(value.value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -250,8 +233,7 @@ ryu_state ryu_prepared_statement_bind_interval(ryu_prepared_statement* prepared_
     try {
         auto value_ptr =
             std::make_unique<Value>(interval_t(value.months, value.days, value.micros));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -262,8 +244,7 @@ ryu_state ryu_prepared_statement_bind_string(ryu_prepared_statement* prepared_st
     const char* param_name, const char* value) {
     try {
         auto value_ptr = std::make_unique<Value>(std::string(value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;
@@ -274,8 +255,7 @@ ryu_state ryu_prepared_statement_bind_value(ryu_prepared_statement* prepared_sta
     const char* param_name, ryu_value* value) {
     try {
         auto value_ptr = std::make_unique<Value>(*static_cast<Value*>(value->_value));
-        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name,
-            std::move(value_ptr));
+        ryu_prepared_statement_bind_cpp_value(prepared_statement, param_name, std::move(value_ptr));
         return RyuSuccess;
     } catch (Exception& e) {
         return RyuError;

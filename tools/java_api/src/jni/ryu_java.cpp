@@ -413,7 +413,8 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuDatabaseDestroy(JNIEnv* env, 
  * All Connection native functions
  */
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass, jobject db) {
+JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass,
+    jobject db) {
 
     try {
         Database* conn_db = getDatabase(env, db);
@@ -633,8 +634,8 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultIsSuccess(JNIE
     return jboolean();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env, jclass,
-    jobject thisQR) {
+JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env,
+    jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
         std::string errorMessage = qr->getErrorMessage();
@@ -720,8 +721,8 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNumTuples(JNIE
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env, jclass,
-    jobject thisQR) {
+JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env,
+    jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
         auto querySummary = qr->getQuerySummary();
@@ -1241,8 +1242,8 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueDestroy(JNIEnv* env, jcl
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList___3Lcom_ryugraph_Value_2(JNIEnv* env,
-    jclass, jobjectArray listValues) {
+JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList___3Lcom_ryugraph_Value_2(
+    JNIEnv* env, jclass, jobjectArray listValues) {
     try {
         jsize len = env->GetArrayLength(listValues);
         if (len == 0) {

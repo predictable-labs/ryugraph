@@ -345,8 +345,7 @@ ryu_state ryu_value_get_struct_field_name(ryu_value* value, uint64_t index, char
     return RyuSuccess;
 }
 
-ryu_state ryu_value_get_struct_field_value(ryu_value* value, uint64_t index,
-    ryu_value* out_value) {
+ryu_state ryu_value_get_struct_field_value(ryu_value* value, uint64_t index, ryu_value* out_value) {
     return ryu_value_get_list_element(value, index, out_value);
 }
 
@@ -928,8 +927,7 @@ ryu_state ryu_rel_val_get_property_size(ryu_value* rel_val, uint64_t* out_result
     }
     return RyuSuccess;
 }
-ryu_state ryu_rel_val_get_property_name_at(ryu_value* rel_val, uint64_t index,
-    char** out_result) {
+ryu_state ryu_rel_val_get_property_name_at(ryu_value* rel_val, uint64_t index, char** out_result) {
     auto logical_type_id = static_cast<Value*>(rel_val->_value)->getDataType().getLogicalTypeID();
     if (logical_type_id != LogicalTypeID::REL) {
         return RyuError;

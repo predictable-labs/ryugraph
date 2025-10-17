@@ -26,9 +26,7 @@ public:
         createDBAndConn();
     }
 
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 
     template<std::floating_point T>
     void commitUpdate(SegmentState& state, FileHandle* dataFH, MemoryManager* memoryManager,

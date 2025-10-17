@@ -7,9 +7,7 @@ namespace testing {
 
 class CardinalityTest : public DBTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 
     std::string getEncodedPlan(const std::string& query) {
         return planner::LogicalPlanUtil::encodeJoin(*TestRunner::getLogicalPlan(query, *conn));

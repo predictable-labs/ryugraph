@@ -51,11 +51,10 @@ public:
         int32_t microseconds = 0);
 
     // Extract the time from a given timestamp object
-    RYU_API static void convert(dtime_t time, int32_t& out_hour, int32_t& out_min,
-        int32_t& out_sec, int32_t& out_micros);
+    RYU_API static void convert(dtime_t time, int32_t& out_hour, int32_t& out_min, int32_t& out_sec,
+        int32_t& out_micros);
 
-    RYU_API static bool isValid(int32_t hour, int32_t minute, int32_t second,
-        int32_t milliseconds);
+    RYU_API static bool isValid(int32_t hour, int32_t minute, int32_t second, int32_t milliseconds);
 
 private:
     static bool tryConvertInternal(const char* buf, uint64_t len, uint64_t& pos, dtime_t& result);

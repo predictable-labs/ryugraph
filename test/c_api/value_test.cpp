@@ -6,9 +6,7 @@ using namespace ryu::testing;
 
 class CApiValueTest : public CApiTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 TEST(CApiValueTestEmptyDB, CreateNull) {
@@ -610,7 +608,7 @@ TEST_F(CApiValueTest, CreateStruct) {
 
 TEST(CApiValueTestEmptyDB, CreateStructEmpty) {
     const char* fieldNames[] = {(char*)"name"}; // Must be non-empty
-    ryu_value* values[] = {nullptr};           // Must be non-empty
+    ryu_value* values[] = {nullptr};            // Must be non-empty
     ryu_value* value = nullptr;
     ryu_state state = ryu_value_create_struct(0, fieldNames, values, &value);
     ASSERT_EQ(state, RyuError);
@@ -1555,8 +1553,8 @@ TEST_F(CApiValueTest, GetInternalID) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID",
-        &result);
+    state =
+        ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID", &result);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
     state = ryu_query_result_get_next(&result, &flatTuple);
@@ -1723,8 +1721,8 @@ TEST_F(CApiValueTest, GetString) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection,
-        (char*)"MATCH (a:person) RETURN a.fName ORDER BY a.ID", &result);
+    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a.fName ORDER BY a.ID",
+        &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -1752,8 +1750,7 @@ TEST_F(CApiValueTest, GetBlob) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state =
-        ryu_connection_query(connection, (char*)R"(RETURN BLOB('\xAA\xBB\xCD\x1A');)", &result);
+    state = ryu_connection_query(connection, (char*)R"(RETURN BLOB('\xAA\xBB\xCD\x1A');)", &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -1851,8 +1848,8 @@ TEST_F(CApiValueTest, NodeValGetLabelVal) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID",
-        &result);
+    state =
+        ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID", &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -1882,8 +1879,8 @@ TEST_F(CApiValueTest, NodeValGetID) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID",
-        &result);
+    state =
+        ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID", &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -1914,8 +1911,8 @@ TEST_F(CApiValueTest, NodeValGetLabelName) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID",
-        &result);
+    state =
+        ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID", &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -1945,8 +1942,8 @@ TEST_F(CApiValueTest, NodeValGetProperty) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID",
-        &result);
+    state =
+        ryu_connection_query(connection, (char*)"MATCH (a:person) RETURN a ORDER BY a.ID", &result);
     ASSERT_EQ(state, RyuSuccess);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
@@ -2002,8 +1999,8 @@ TEST_F(CApiValueTest, NodeValToString) {
     ryu_flat_tuple flatTuple;
     ryu_state state;
     auto connection = getConnection();
-    state = ryu_connection_query(connection,
-        (char*)"MATCH (b:organisation) RETURN b ORDER BY b.ID", &result);
+    state = ryu_connection_query(connection, (char*)"MATCH (b:organisation) RETURN b ORDER BY b.ID",
+        &result);
     ASSERT_TRUE(ryu_query_result_is_success(&result));
     ASSERT_TRUE(ryu_query_result_has_next(&result));
     state = ryu_query_result_get_next(&result, &flatTuple);

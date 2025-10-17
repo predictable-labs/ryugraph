@@ -7,9 +7,7 @@ namespace testing {
 
 class ImportExportDBTest : public DBTest {
 public:
-    std::string getInputDir() override {
-        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
-    }
+    std::string getInputDir() override { return TestHelper::appendRyuRootPath("dataset/tinysnb/"); }
 };
 
 TEST_F(ImportExportDBTest, Test) {
