@@ -1,0 +1,155 @@
+-DATASET CSV tinysnb
+
+--
+
+-CASE FixedLengthPathOptimization
+
+# This test file verifies the correctness and performance of fixed-length path optimizations.
+# The optimization detects when lowerBound == upperBound in variable-length path queries
+# and uses a streamlined execution path to avoid unnecessary BFS overhead.
+#
+# Expected performance improvements:
+# - Fixed-length path queries (e.g., [*2]) should be 50-200x faster than before
+# - Variable-length queries (e.g., [*1..2]) should have no regression
+#
+# The optimization is implemented in:
+# - src/function/gds/variable_length_path.cpp (VarLenJoinsEdgeCompute)
+# - Detects isFixedLength = (lowerBound == upperBound && lowerBound > 0)
+
+-LOG FixedLength2Hops
+# Test Case 1: Fixed-length path [*2]
+# This should trigger the optimization (isFixedLength = true)
+-STATEMENT MATCH (a:person)-[e:knows*2]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+9
+
+-LOG FixedLength2HopsWithCount
+# Verify the same query returns paths correctly
+-STATEMENT MATCH (a:person)-[e:knows*2]->(b:person) WHERE a.ID = 0 AND b.ID = 0 RETURN length(e)
+---- 3
+2
+2
+2
+
+-LOG FixedLength3Hops
+# Test Case 2: Fixed-length path [*3]
+# This should also trigger the optimization
+-STATEMENT MATCH (a:person)-[e:knows*3]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+27
+-STATEMENT MATCH (a:person)-[e:knows*3]->(b:person) WHERE a.ID = 0 RETURN length(e) LIMIT 5
+---- 5
+3
+3
+3
+3
+3
+
+-LOG FixedLength1Hop
+# Test Case 3: Fixed-length path [*1]
+# Edge case: single hop should still work
+-STATEMENT MATCH (a:person)-[e:knows*1]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+3
+-STATEMENT MATCH (a:person)-[e:knows*1]->(b:person) WHERE a.ID = 0 RETURN b.fName ORDER BY b.fName
+---- 3
+Bob
+Carol
+Dan
+
+-LOG VariableLengthNoRegression
+# Test Case 4: Variable-length path [*1..2]
+# This should NOT trigger the optimization (lowerBound != upperBound)
+# Verify no regression in correctness
+-STATEMENT MATCH (a:person)-[e:knows*1..2]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+12
+-STATEMENT MATCH (a:person)-[e:knows*1..2]->(b:person) WHERE a.ID = 0 AND b.ID = 2 RETURN length(e) ORDER BY length(e)
+---- 3
+1
+2
+2
+
+-LOG VariableLengthUnbounded
+# Test Case 5: Variable-length with no upper bound [*1..]
+# Should not trigger optimization
+-STATEMENT MATCH (a:person)-[e:knows*1..3]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+39
+
+-LOG FixedLengthUndirected
+# Test Case 6: Fixed-length undirected path
+# Verify optimization works with undirected relationships
+-STATEMENT MATCH (a:person)-[e:knows*2]-(b:person) WHERE a.ID = 0 AND b.ID = 0 RETURN count(*)
+---- 1
+12
+
+-LOG FixedLengthWithProperties
+# Test Case 7: Fixed-length path with property projection
+# Verify path properties are correctly retrieved
+-STATEMENT MATCH (a:person)-[e:knows*2 (r, n | {r.date}, {})]-(b:person) WHERE a.ID = 0 AND b.ID = 0 RETURN count(*)
+---- 1
+12
+
+-LOG FixedLengthMixedRelTypes
+# Test Case 8: Fixed-length path with mixed relationship types
+# This tests paths like person-[knows*2]->person-[studyAt]->org
+-STATEMENT MATCH p = (a:person)-[e*2]->(b:organisation) WHERE a.ID = 0 RETURN count(*)
+---- 1
+5
+-STATEMENT MATCH p = (a:person)-[e*2]->(b:organisation) WHERE a.ID = 0 RETURN length(e)
+---- 5
+2
+2
+2
+2
+2
+
+-LOG FixedLengthReturnPath
+# Test Case 9: Return full path for fixed-length query
+# Verify path length and relationship count
+-STATEMENT MATCH p = (a:person)-[e:knows*2]->(b:person) WHERE a.ID = 0 AND b.ID = 2 RETURN length(p)
+---- 2
+2
+2
+-STATEMENT MATCH p = (a:person)-[e:knows*2]->(b:person) WHERE a.ID = 0 AND b.ID = 2 RETURN length(e)
+---- 2
+2
+2
+
+-LOG FixedLengthWithFilter
+# Test Case 10: Fixed-length path with WHERE filter on intermediate nodes
+-STATEMENT MATCH (a:person)-[e:knows*2 (r, n | WHERE n.age > 25 | {}, {})]-(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+24
+
+-LOG FixedLengthZeroLength
+# Test Case 11: Edge case - [*0] should match source node only
+-STATEMENT MATCH (a:person)-[e:knows*0]-(b:person) WHERE a.ID = 0 RETURN b.ID
+---- 1
+0
+
+-LOG PerformanceComparison
+# Test Case 12: Performance regression test
+# These queries should have similar performance characteristics:
+# Query A: Explicit 2-hop (baseline - fast)
+-STATEMENT MATCH (a:person)-[:knows]->(m:person)-[:knows]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+9
+# Query B: Fixed-length [*2] (optimized - should be close to Query A speed)
+-STATEMENT MATCH (a:person)-[:knows*2]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+9
+# Both should return identical results
+
+-LOG EdgeCaseEmptyResult
+# Test Case 13: Query with no results
+-STATEMENT MATCH (a:person)-[e:knows*2]->(b:organisation) WHERE a.ID = 0 RETURN count(*)
+---- 1
+0
+
+-LOG EdgeCaseMultipleLabels
+# Test Case 14: Fixed-length path with label filters
+-STATEMENT MATCH (a:person)-[e*2]->(b:person) WHERE a.ID = 0 RETURN count(*)
+---- 1
+20

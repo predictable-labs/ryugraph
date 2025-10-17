@@ -248,6 +248,7 @@ public:
     std::vector<nodeID_t> edgeCompute(nodeID_t boundNodeID, NbrScanState::Chunk& resultChunk,
         bool) override {
         std::vector<nodeID_t> activeNodes;
+        activeNodes.reserve(resultChunk.size());  // OPTIMIZATION: Pre-allocate for better performance
         resultChunk.forEach([&](auto neighbors, auto, auto i) {
             auto nbrNodeID = neighbors[i];
             auto nbrVal = frontierPair->getNextFrontierValue(nbrNodeID.offset);

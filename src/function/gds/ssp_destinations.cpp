@@ -65,6 +65,7 @@ public:
 
     std::vector<nodeID_t> edgeCompute(nodeID_t, NbrScanState::Chunk& resultChunk, bool) override {
         std::vector<nodeID_t> activeNodes;
+        activeNodes.reserve(resultChunk.size());  // OPTIMIZATION: Pre-allocate for better performance
         resultChunk.forEach([&](auto neighbors, auto, auto i) {
             auto nbrNode = neighbors[i];
             auto iter = frontierPair->getNextFrontierValue(nbrNode.offset);

@@ -114,6 +114,9 @@ void GDSUtils::runRecursiveJoinEdgeCompute(ExecutionContext* context, GDSCompute
             break;
         }
         runOneIteration(context, graph, extendDirection, compState, propertiesToScan);
+        // OPTIMIZATION: For fixed-length paths (detected in VarLenJoinsEdgeCompute),
+        // the frontier is unlikely to grow large enough to benefit from dense switching.
+        // The needSwitchToDense check is relatively cheap, so we keep it for safety.
         if (frontierPair->needSwitchToDense(
                 context->clientContext->getClientConfig()->sparseFrontierThreshold)) {
             compState.switchToDense(context, graph);

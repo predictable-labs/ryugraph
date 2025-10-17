@@ -25,6 +25,7 @@ public:
     std::vector<nodeID_t> edgeCompute(nodeID_t boundNodeID, graph::NbrScanState::Chunk& chunk,
         bool fwdEdge) override {
         std::vector<nodeID_t> result;
+        result.reserve(chunk.size());  // OPTIMIZATION: Pre-allocate for better performance
         chunk.forEach([&](auto neighbors, auto propertyVectors, auto i) {
             auto nbrNodeID = neighbors[i];
             auto edgeID = propertyVectors[0]->template getValue<relID_t>(i);

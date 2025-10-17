@@ -52,14 +52,19 @@ public:
 class VarLenJoinsEdgeCompute : public EdgeCompute {
 public:
     VarLenJoinsEdgeCompute(DenseSparseDynamicFrontierPair* frontierPair,
-        BFSGraphManager* bfsGraphManager)
-        : frontierPair{frontierPair}, bfsGraphManager{bfsGraphManager} {
+        BFSGraphManager* bfsGraphManager, bool isFixedLength = false)
+        : frontierPair{frontierPair}, bfsGraphManager{bfsGraphManager},
+          isFixedLength{isFixedLength} {
         block = bfsGraphManager->getCurrentGraph()->addNewBlock();
     };
 
     std::vector<nodeID_t> edgeCompute(nodeID_t boundNodeID, graph::NbrScanState::Chunk& chunk,
         bool fwdEdge) override {
         std::vector<nodeID_t> activeNodes;
+        // OPTIMIZATION: For fixed-length paths, we can reserve space more efficiently
+        if (isFixedLength) {
+            activeNodes.reserve(chunk.size());
+        }
         chunk.forEach([&](auto neighbors, auto propertyVectors, auto i) {
             // We should always update the nbrID in variable length joins
             auto nbrNodeID = neighbors[i];
@@ -75,13 +80,15 @@ public:
     }
 
     std::unique_ptr<EdgeCompute> copy() override {
-        return std::make_unique<VarLenJoinsEdgeCompute>(frontierPair, bfsGraphManager);
+        return std::make_unique<VarLenJoinsEdgeCompute>(frontierPair, bfsGraphManager,
+            isFixedLength);
     }
 
 private:
     DenseSparseDynamicFrontierPair* frontierPair;
     BFSGraphManager* bfsGraphManager;
     ObjectBlock<ParentList>* block = nullptr;
+    bool isFixedLength;  // Optimization flag for fixed-length paths
 };
 
 /**
@@ -114,8 +121,8 @@ public:
     }
 
 private:
-    std::unique_ptr<GDSComputeState> getComputeState(ExecutionContext* context, const RJBindData&,
-        RecursiveExtendSharedState* sharedState) override {
+    std::unique_ptr<GDSComputeState> getComputeState(ExecutionContext* context,
+        const RJBindData& bindData, RecursiveExtendSharedState* sharedState) override {
         auto clientContext = context->clientContext;
         auto transaction = transaction::Transaction::Get(*clientContext);
         auto bfsGraph =
@@ -127,8 +134,14 @@ private:
             DenseFrontier::getUninitializedFrontier(context, sharedState->graph.get());
         auto frontierPair = std::make_unique<DenseSparseDynamicFrontierPair>(
             std::move(currentDenseFrontier), std::move(nextDenseFrontier));
+
+        // OPTIMIZATION: Detect fixed-length paths for optimized execution
+        bool isFixedLength = (bindData.lowerBound == bindData.upperBound) &&
+                              (bindData.lowerBound > 0);
+
         auto edgeCompute =
-            std::make_unique<VarLenJoinsEdgeCompute>(frontierPair.get(), bfsGraph.get());
+            std::make_unique<VarLenJoinsEdgeCompute>(frontierPair.get(), bfsGraph.get(),
+                isFixedLength);
         auto auxiliaryState = std::make_unique<PathAuxiliaryState>(std::move(bfsGraph));
         return std::make_unique<GDSComputeState>(std::move(frontierPair), std::move(edgeCompute),
             std::move(auxiliaryState));
