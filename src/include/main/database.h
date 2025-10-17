@@ -58,7 +58,7 @@ struct RYU_API SystemConfig {
      * WAL file exceeds this threshold, the database will checkpoint if autoCheckpoint is true.
      * @param forceCheckpointOnClose If true, the database will force checkpoint when closing.
      * @param throwOnWalReplayFailure If true, any WAL replaying failure when loading the database
-     * will throw an error. Otherwise, Kuzu will silently ignore the failure and replay up to where
+     * will throw an error. Otherwise, Ryu will silently ignore the failure and replay up to where
      * the error occured.
      * @param enableChecksums If true, the database will use checksums to detect corruption in the
      * WAL file.
@@ -90,7 +90,7 @@ struct RYU_API SystemConfig {
 };
 
 /**
- * @brief Database class is the main class of Kuzu. It manages all database components.
+ * @brief Database class is the main class of Ryu. It manages all database components.
  */
 class Database {
     friend class EmbeddedShell;

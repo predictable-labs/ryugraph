@@ -14,11 +14,11 @@ with open(os.path.join(base_dir, 'kuzu-source', 'tools', 'python_api', 'requirem
     requirements = f.read().splitlines()
 
 
-def _get_kuzu_version():
+def _get_ryu_version():
     cmake_file = os.path.join(base_dir, 'kuzu-source', 'CMakeLists.txt')
     with open(cmake_file) as f:
         for line in f:
-            if line.startswith('project(Kuzu VERSION'):
+            if line.startswith('project(Ryu VERSION'):
                 raw_version = line.split(' ')[2].strip()
                 version_nums = raw_version.split('.')
                 if len(version_nums) <= 3:
@@ -29,8 +29,8 @@ def _get_kuzu_version():
                     version += ".dev%s" % dev_suffix
                     return version
 
-kuzu_version = _get_kuzu_version()
-print("The version of this build is %s" % kuzu_version)
+ryu_version = _get_ryu_version()
+print("The version of this build is %s" % ryu_version)
 
 
 class CMakeExtension(Extension):
@@ -104,16 +104,16 @@ class BuildExtFirst(_build_py):
         return super().run()
 
 
-setup(name='kuzu',
-      version=kuzu_version,
+setup(name='ryu',
+      version=ryu_version,
       install_requires=[],
       ext_modules=[CMakeExtension(
-          name="kuzu", sourcedir=base_dir)],
+          name="ryu", sourcedir=base_dir)],
       description='An in-process property graph database management system built for query speed and scalability.',
       license='MIT',
       long_description=open(os.path.join(base_dir, "README.md"), 'r').read(),
       long_description_content_type="text/markdown",
-      packages=["kuzu"],
+      packages=["ryu"],
       zip_safe=True,
       include_package_data=True,
       cmdclass={

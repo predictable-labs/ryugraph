@@ -182,7 +182,7 @@ const main::ExtensionOption* ClientContext::getExtensionOption(std::string optio
 }
 
 std::string ClientContext::getExtensionDir() const {
-    return stringFormat("{}/.kuzu/extension/{}/{}/", clientConfig.homeDirectory,
+    return stringFormat("{}/.ryu/extension/{}/{}/", clientConfig.homeDirectory,
         RYU_EXTENSION_VERSION, extension::getPlatform());
 }
 
@@ -194,7 +194,7 @@ Database* ClientContext::getDatabase() const {
     return localDatabase;
 }
 
-AttachedKuzuDatabase* ClientContext::getAttachedDatabase() const {
+AttachedRyuDatabase* ClientContext::getAttachedDatabase() const {
     return remoteDatabase;
 }
 
@@ -231,7 +231,7 @@ std::string ClientContext::getUserHomeDir() {
 #endif
 }
 
-void ClientContext::setDefaultDatabase(AttachedKuzuDatabase* defaultDatabase_) {
+void ClientContext::setDefaultDatabase(AttachedRyuDatabase* defaultDatabase_) {
     remoteDatabase = defaultDatabase_;
 }
 
@@ -598,8 +598,8 @@ bool ClientContext::canExecuteWriteQuery() const {
     if (getDBConfig()->readOnly) {
         return false;
     }
-    // Note: we can only attach a remote kuzu database in read-only mode and only one
-    // remote kuzu database can be attached.
+    // Note: we can only attach a remote ryu database in read-only mode and only one
+    // remote ryu database can be attached.
     const auto dbManager = DatabaseManager::Get(*this);
     for (const auto& attachedDB : dbManager->getAttachedDatabases()) {
         if (attachedDB->getDBType() == ATTACHED_KUZU_DB_TYPE) {

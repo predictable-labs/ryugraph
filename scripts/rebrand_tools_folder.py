@@ -80,7 +80,7 @@ def process_file(file_path, file_type):
     elif file_type in ['cpp', 'h']:
         # C++ specific
         replacements.extend([
-            ('#include "kuzu.h"', '#include "ryu.h"'),
+            ('#include "ryu.h"', '#include "ryu.h"'),
             ('#include "kuzu_fwd.h"', '#include "ryu_fwd.h"'),
             ('kuzu::', 'ryu::'),
             ('namespace kuzu', 'namespace ryu'),

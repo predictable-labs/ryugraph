@@ -39,7 +39,7 @@ ParquetWriter::ParquetWriter(std::string fileName, std::vector<common::LogicalTy
     fileMetaData.schema.resize(1);
 
     // populate root schema object
-    fileMetaData.schema[0].name = "kuzu_schema";
+    fileMetaData.schema[0].name = "ryu_schema";
     fileMetaData.schema[0].num_children = this->types.size();
     fileMetaData.schema[0].__isset.num_children = true;
     fileMetaData.schema[0].repetition_type = kuzu_parquet::format::FieldRepetitionType::REQUIRED;

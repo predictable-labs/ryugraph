@@ -6,7 +6,7 @@
 namespace ryu {
 namespace optimizer {
 
-// This optimizer enables the Accumulated hash join algorithm as introduced in paper "Kuzu Graph
+// This optimizer enables the Accumulated hash join algorithm as introduced in paper "Ryu Graph
 // Database Management System".
 class HashJoinSIPOptimizer final : public LogicalOperatorVisitor {
 public:

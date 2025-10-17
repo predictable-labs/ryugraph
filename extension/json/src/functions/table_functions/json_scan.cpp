@@ -828,7 +828,7 @@ static std::unique_ptr<TableFuncBindData> bindFunc(main::ClientContext* context,
     if (!scanInput->expectedColumnNames.empty() || !scanConfig.autoDetect) {
         if (scanInput->expectedColumnNames.empty()) {
             throw BinderException{
-                "When auto-detect is set to false, Kuzu requires the "
+                "When auto-detect is set to false, Ryu requires the "
                 "user to provide column names and types in the LOAD FROM clause."};
         }
         columnTypes = copyVector(scanInput->expectedColumnTypes);

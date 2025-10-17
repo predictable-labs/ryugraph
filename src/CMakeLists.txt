@@ -59,9 +59,9 @@ endif()
 install(TARGETS ryu ryu_shared)
 
 if(${BUILD_SINGLE_FILE_HEADER})
-        # Create a command to generate kuzu.hpp, and then create a target that is
+        # Create a command to generate ryu.hpp, and then create a target that is
         # always built that depends on it. This allows our generator to detect when
-        # exactly to build kuzu.hpp, while still building the target by default.
+        # exactly to build ryu.hpp, while still building the target by default.
         find_package(Python3 3.9...4 REQUIRED)
         add_custom_command(
                 OUTPUT ryu.hpp

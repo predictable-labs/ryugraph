@@ -300,7 +300,7 @@ option(BUILD_SHELL "Build Interactive Shell" TRUE)
 option(BUILD_SINGLE_FILE_HEADER "Build single file header. Requires Python >= 3.9." TRUE)
 option(BUILD_TESTS "Build C++ tests." FALSE)
 option(BUILD_EXTENSION_TESTS "Build C++ extension tests." FALSE)
-option(BUILD_RYU "Build Kuzu." TRUE)
+option(BUILD_RYU "Build Ryu." TRUE)
 option(ENABLE_BACKTRACES "Enable backtrace printing for exceptions and segfaults" FALSE)
 option(USE_STD_FORMAT "Use std::format instead of a custom formatter." FALSE)
 option(PREFER_SYSTEM_DEPS "Only download certain deps if not found on the system" TRUE)
@@ -373,7 +373,7 @@ function(add_ryu_api_test TEST_NAME)
     gtest_discover_tests(${TEST_NAME})
 endfunction()
 
-# Windows doesn't support dynamic lookup, so we have to link extensions against kuzu.
+# Windows doesn't support dynamic lookup, so we have to link extensions against ryu.
 if (MSVC AND (NOT BUILD_EXTENSIONS EQUAL ""))
     set(BUILD_RYU TRUE)
 endif ()

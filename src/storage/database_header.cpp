@@ -38,7 +38,7 @@ static void validateMagicBytes(common::Deserializer& deSer) {
     }
     if (memcmp(magicBytes, StorageVersionInfo::MAGIC_BYTES, numMagicBytes) != 0) {
         throw common::RuntimeException(
-            "Unable to open database. The file is not a valid Kuzu database file!");
+            "Unable to open database. The file is not a valid Ryu database file!");
     }
 }
 

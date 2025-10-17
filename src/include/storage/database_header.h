@@ -13,7 +13,7 @@ struct DatabaseHeader {
     PageRange catalogPageRange;
     PageRange metadataPageRange;
 
-    // An ID that is unique between kuzu databases
+    // An ID that is unique between ryu databases
     // Used to ensure that files such as the WAL match the current database
     common::ku_uuid_t databaseID{0};
 

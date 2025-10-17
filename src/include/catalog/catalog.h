@@ -12,7 +12,7 @@ struct DBConfig;
 
 namespace ryu {
 namespace main {
-class AttachedKuzuDatabase;
+class AttachedRyuDatabase;
 } // namespace main
 
 namespace binder {
@@ -50,7 +50,7 @@ concept TableCatalogEntryType =
     std::is_same_v<T, NodeTableCatalogEntry> || std::is_same_v<T, RelGroupCatalogEntry>;
 
 class RYU_API Catalog {
-    friend class main::AttachedKuzuDatabase;
+    friend class main::AttachedRyuDatabase;
 
 public:
     Catalog();

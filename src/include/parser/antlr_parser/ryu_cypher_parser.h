@@ -9,10 +9,10 @@
 namespace ryu {
 namespace parser {
 
-class KuzuCypherParser : public CypherParser {
+class RyuCypherParser : public CypherParser {
 
 public:
-    explicit KuzuCypherParser(antlr4::TokenStream* input) : CypherParser(input) {}
+    explicit RyuCypherParser(antlr4::TokenStream* input) : CypherParser(input) {}
 
     void notifyQueryNotConcludeWithReturn(antlr4::Token* startToken) override;
 

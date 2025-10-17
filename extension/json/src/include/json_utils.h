@@ -47,7 +47,7 @@ JsonWrapper jsonify(const common::ValueVector& vec, uint64_t pos);
 yyjson_mut_val* jsonify(JsonMutWrapper& wrapper, const common::ValueVector& vec, uint64_t pos);
 yyjson_mut_val* jsonifyAsString(JsonMutWrapper& wrapper, const common::ValueVector& vec,
     uint64_t pos);
-// Converts an internal Kuzu Value into json
+// Converts an internal Ryu Value into json
 
 std::vector<JsonWrapper> jsonifyQueryResult(
     const std::vector<std::shared_ptr<common::ValueVector>>& columns,

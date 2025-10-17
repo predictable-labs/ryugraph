@@ -331,7 +331,7 @@ typedef enum { KuzuSuccess = 0, KuzuError = 1 } kuzu_state;
 
 // Database
 /**
- * @brief Allocates memory and creates a kuzu database instance at database_path with
+ * @brief Allocates memory and creates a ryu database instance at database_path with
  * bufferPoolSize=buffer_pool_size. Caller is responsible for calling kuzu_database_destroy() to
  * release the allocated memory.
  * @param database_path The path to the database.
@@ -342,7 +342,7 @@ typedef enum { KuzuSuccess = 0, KuzuError = 1 } kuzu_state;
 RYU_C_API kuzu_state kuzu_database_init(const char* database_path,
     kuzu_system_config system_config, kuzu_database* out_database);
 /**
- * @brief Destroys the kuzu database instance and frees the allocated memory.
+ * @brief Destroys the ryu database instance and frees the allocated memory.
  * @param database The database instance to destroy.
  */
 RYU_C_API void kuzu_database_destroy(kuzu_database* database);

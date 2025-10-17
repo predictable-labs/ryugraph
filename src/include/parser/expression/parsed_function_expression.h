@@ -68,7 +68,7 @@ private:
 private:
     bool isDistinct;
     std::string functionName;
-    // In Kuzu, function arguments must be either all required or all optional - mixing required and
+    // In Ryu, function arguments must be either all required or all optional - mixing required and
     // optional parameters in the same function is not allowed.
     std::vector<std::string> optionalArguments;
 };

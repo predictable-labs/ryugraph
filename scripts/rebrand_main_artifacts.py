@@ -3,7 +3,7 @@
 Script to rename main build artifacts from kuzu to ryu.
 This addresses two critical areas:
 1. CMake library target names (kuzu -> ryu)
-2. CMake output file names (libkuzu.* -> libryu.*, kuzu.hpp -> ryu.hpp)
+2. CMake output file names (libkuzu.* -> libryu.*, ryu.hpp -> ryu.hpp)
 """
 
 import os
@@ -53,13 +53,13 @@ def main():
         # Change install targets
         ("install(TARGETS kuzu ryu_shared)", "install(TARGETS ryu ryu_shared)"),
 
-        # Change single file header output from kuzu.hpp to ryu.hpp
-        ("OUTPUT kuzu.hpp", "OUTPUT ryu.hpp"),
-        ("DEPENDS kuzu.hpp)", "DEPENDS ryu.hpp)"),
+        # Change single file header output from ryu.hpp to ryu.hpp
+        ("OUTPUT ryu.hpp", "OUTPUT ryu.hpp"),
+        ("DEPENDS ryu.hpp)", "DEPENDS ryu.hpp)"),
 
         # Change install statements for header files
-        ("include/c_api/kuzu.h", "include/c_api/ryu.h"),
-        ("kuzu.hpp  TYPE INCLUDE)", "ryu.hpp  TYPE INCLUDE)"),
+        ("include/c_api/ryu.h", "include/c_api/ryu.h"),
+        ("ryu.hpp  TYPE INCLUDE)", "ryu.hpp  TYPE INCLUDE)"),
     ]
 
     if find_and_replace_in_file(src_cmake, replacements):
@@ -67,14 +67,14 @@ def main():
     else:
         print(f"✗ No changes needed in {src_cmake}")
 
-    # Area 2: Fix scripts that reference kuzu.hpp
+    # Area 2: Fix scripts that reference ryu.hpp
     print("\n=== Area 2: Build Scripts ===")
 
     # Update collect-single-file-header.py
     header_script = project_root / "scripts" / "collect-single-file-header.py"
     script_replacements = [
-        ("kuzu.hpp", "ryu.hpp"),
-        ("kuzu.h", "ryu.h"),
+        ("ryu.hpp", "ryu.hpp"),
+        ("ryu.h", "ryu.h"),
     ]
 
     if find_and_replace_in_file(header_script, script_replacements):
@@ -149,7 +149,7 @@ def main():
     print("\n=== Summary ===")
     print("Main areas addressed:")
     print("1. ✓ Library target: 'kuzu' → 'ryu' in src/CMakeLists.txt")
-    print("2. ✓ Output names: 'libkuzu.*' → 'libryu.*', 'kuzu.hpp' → 'ryu.hpp'")
+    print("2. ✓ Output names: 'libkuzu.*' → 'libryu.*', 'ryu.hpp' → 'ryu.hpp'")
     print("3. ✓ All tools now link against 'ryu' library instead of 'kuzu'")
     print("4. ✓ Build output directories: build/kuzu → build/ryu")
     print("\nNote: Build artifacts in build/ directories will be regenerated on next build.")

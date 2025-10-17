@@ -41,11 +41,11 @@ def get_common_replacements():
         ("namespace kuzu", "namespace ryu"),
         ("kuzu::", "ryu::"),
         ("using namespace kuzu", "using namespace ryu"),
-        ('#include "kuzu.h"', '#include "ryu.h"'),
-        ('#include "c_api/kuzu.h"', '#include "c_api/ryu.h"'),
+        ('#include "ryu.h"', '#include "ryu.h"'),
+        ('#include "c_api/ryu.h"', '#include "c_api/ryu.h"'),
 
         # CMake and constants
-        ("KUZU_ROOT_DIRECTORY", "RYU_ROOT_DIRECTORY"),
+        ("RYU_ROOT_DIRECTORY", "RYU_ROOT_DIRECTORY"),
         ("KUZU_PAGE_SIZE", "RYU_PAGE_SIZE"),
         ("KUZU_VECTOR_CAPACITY", "RYU_VECTOR_CAPACITY"),
 
