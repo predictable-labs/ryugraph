@@ -70,21 +70,53 @@ jobs:
     name: generate binary dataset
     needs: [ sanity-checks, python-lint-check ]
     runs-on: ubuntu-latest
+    services:
+      minio:
+        image: minio/minio:latest
+        ports:
+          - 9000:9000
+        env:
+          MINIO_ROOT_USER: minioadmin
+          MINIO_ROOT_PASSWORD: minioadmin
+        options: --health-cmd "curl -f http://localhost:9000/minio/health/live" --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       NUM_THREADS: 32
       GEN: Ninja
       CC: gcc
       CXX: g++
-      GCS_ACCESS_KEY_ID: ${{ secrets.GCS_ACCESS_KEY_ID }}
-      GCS_SECRET_ACCESS_KEY: ${{ secrets.GCS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install s3cmd
+      - name: Setup MinIO
         run: |
+          # Install MinIO client
+          wget -q https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x mc
+          sudo mv mc /usr/local/bin/
+
+          # Wait for MinIO to be ready
+          sleep 5
+
+          # Configure MinIO client
+          mc alias set minio http://localhost:9000 minioadmin minioadmin
+
+          # Create buckets
+          mc mb minio/ryu-test || true
+          mc mb minio/ryugraph-test || true
+
+          # Install and configure s3cmd for MinIO
           sudo apt-get update
           sudo apt-get install -y s3cmd
-          
+          cat > ~/.s3cfg << EOF
+          [default]
+          access_key = minioadmin
+          secret_key = minioadmin
+          host_base = localhost:9000
+          host_bucket = localhost:9000
+          use_https = False
+          signature_v2 = False
+          EOF
+
       - name: Install DuckDB
         uses: ./.github/actions/install-duckdb
 
@@ -105,42 +137,34 @@ jobs:
       - name: Generate and upload tinysnb
         run: |
           version_current="$(python3 benchmark/version.py)"
-          echo "0" > version_s3.txt
-          echo "0" > version_gcs.txt
-          s3cmd get --force s3://ryu-test/tinysnb/version.txt version_s3.txt || true
-          s3cmd --access_key=${GCS_ACCESS_KEY_ID} --secret_key=${GCS_SECRET_ACCESS_KEY} --host=storage.googleapis.com --host-bucket="%(bucket)s.storage.googleapis.com" get --force s3://ryugraph-test/tinysnb/version.txt version_gcs.txt || true
-          if [[ "$version_current" == "$(cat version_s3.txt)" ]] && [[ "$version_current" == "$(cat version_gcs.txt)" ]]; then
+          echo "0" > version_minio.txt
+          s3cmd get --force s3://ryu-test/tinysnb/version.txt version_minio.txt || true
+          if [[ "$version_current" == "$(cat version_minio.txt)" ]]; then
             echo "TinySNB dataset is up to date, skipping upload"
-            rm -rf tinysnb version_s3.txt version_gcs.txt
+            rm -rf tinysnb version_minio.txt
             exit 0
           fi
-          echo "TinySNB dataset is outdated, uploading..."
+          echo "TinySNB dataset is outdated, uploading to MinIO..."
           bash scripts/generate_binary_tinysnb.sh
-          s3cmd del -r s3://ryu-test/tinysnb/
+          s3cmd del -r s3://ryu-test/tinysnb/ || true
           s3cmd sync ./tinysnb s3://ryu-test/
-          # s3cmd del -r doesn't work on GCS so we individually delete each object in the directory
-          for gcs_file in $(s3cmd --access_key=${GCS_ACCESS_KEY_ID} --secret_key=${GCS_SECRET_ACCESS_KEY} --host=storage.googleapis.com --host-bucket="%(bucket)s.storage.googleapis.com" ls s3://ryugraph-test/tinysnb/ | awk '{ print $4 }');
-          do
-              s3cmd --access_key=${GCS_ACCESS_KEY_ID} --secret_key=${GCS_SECRET_ACCESS_KEY} --host=storage.googleapis.com --host-bucket="%(bucket)s.storage.googleapis.com" del ${gcs_file}
-          done
-          s3cmd --access_key=${GCS_ACCESS_KEY_ID} --secret_key=${GCS_SECRET_ACCESS_KEY} --host=storage.googleapis.com --host-bucket="%(bucket)s.storage.googleapis.com" sync ./tinysnb s3://ryugraph-test/
-          rm -rf tinysnb version_s3.txt version_gcs.txt
+          rm -rf tinysnb version_minio.txt
 
       - name: Generate and upload ldbc-sf01
         run: |
           version_current="$(python3 benchmark/version.py)"
-          echo "0" > version_s3.txt
-          s3cmd get --force s3://ryu-test/ldbc01/version.txt version_s3.txt || true
-          if [[ "$version_current" == "$(cat version_s3.txt)" ]]; then
+          echo "0" > version_minio.txt
+          s3cmd get --force s3://ryu-test/ldbc01/version.txt version_minio.txt || true
+          if [[ "$version_current" == "$(cat version_minio.txt)" ]]; then
             echo "LDBC-SF01 dataset is up to date, skipping upload"
-            rm -rf ldbc01 version_s3.txt
+            rm -rf ldbc01 version_minio.txt
             exit 0
           fi
-          echo "LDBC-SF01 dataset is outdated, uploading..."
+          echo "LDBC-SF01 dataset is outdated, uploading to MinIO..."
           bash scripts/generate_binary_ldbc-sf01.sh
-          s3cmd del -r s3://ryu-test/ldbc01/
+          s3cmd del -r s3://ryu-test/ldbc01/ || true
           s3cmd sync ./ldbc01 s3://ryu-test/
-          rm -rf ldbc01 version_s3.txt
+          rm -rf ldbc01 version_minio.txt
 
   gcc-build-test:
     name: gcc build & test
@@ -447,6 +471,9 @@ jobs:
 
       - name: Install DuckDB
         uses: ./.github/actions/install-duckdb
+
+      - name: Build RyuGraph
+        run: make release
 
       - name: Rust API test
         run: |
