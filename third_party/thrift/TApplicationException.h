@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#ifndef _KUZU_THRIFT_TAPPLICATIONEXCEPTION_H_
-#define _KUZU_THRIFT_TAPPLICATIONEXCEPTION_H_ 1
+#ifndef _RYU_THRIFT_TAPPLICATIONEXCEPTION_H_
+#define _RYU_THRIFT_TAPPLICATIONEXCEPTION_H_ 1
 
 #include "Thrift.h"
 
@@ -109,4 +109,4 @@ protected:
 }
 } // ryu_apache::thrift
 
-#endif // #ifndef _KUZU_THRIFT_TAPPLICATIONEXCEPTION_H_
+#endif // #ifndef _RYU_THRIFT_TAPPLICATIONEXCEPTION_H_

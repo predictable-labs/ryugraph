@@ -10,7 +10,7 @@
 namespace ryu {
 namespace common {
 
-extern const char* KUZU_VERSION;
+extern const char* RYU_VERSION;
 // Alias for rebranding
 extern const char* RYU_VERSION;
 
@@ -215,7 +215,6 @@ struct WarningConstants {
     static_assert(WARNING_TABLE_COLUMN_DATA_TYPES.size() == WARNING_TABLE_NUM_COLUMNS);
 };
 
-static constexpr char ATTACHED_KUZU_DB_TYPE[] = "KUZU"; // Legacy name for compatibility
 static constexpr char ATTACHED_RYU_DB_TYPE[] = "RYU";
 
 static constexpr char LOCAL_DB_NAME[] = "local(ryu)";

@@ -329,18 +329,18 @@ void ColumnWriter::compressPage(common::BufferWriter& bufferedSerializer, size_t
         compressedData = bufferedSerializer.getBlobData();
     } break;
     case CompressionCodec::SNAPPY: {
-        compressedSize = kuzu_snappy::MaxCompressedLength(bufferedSerializer.getSize());
+        compressedSize = ryu_snappy::MaxCompressedLength(bufferedSerializer.getSize());
         compressedBuf = std::unique_ptr<uint8_t[]>(new uint8_t[compressedSize]);
-        kuzu_snappy::RawCompress(reinterpret_cast<const char*>(bufferedSerializer.getBlobData()),
+        ryu_snappy::RawCompress(reinterpret_cast<const char*>(bufferedSerializer.getBlobData()),
             bufferedSerializer.getSize(), reinterpret_cast<char*>(compressedBuf.get()),
             &compressedSize);
         compressedData = compressedBuf.get();
-        KU_ASSERT(compressedSize <= kuzu_snappy::MaxCompressedLength(bufferedSerializer.getSize()));
+        KU_ASSERT(compressedSize <= ryu_snappy::MaxCompressedLength(bufferedSerializer.getSize()));
     } break;
     case CompressionCodec::ZSTD: {
-        compressedSize = kuzu_zstd::ZSTD_compressBound(bufferedSerializer.getSize());
+        compressedSize = ryu_zstd::ZSTD_compressBound(bufferedSerializer.getSize());
         compressedBuf = std::unique_ptr<uint8_t[]>(new uint8_t[compressedSize]);
-        compressedSize = kuzu_zstd::ZSTD_compress((void*)compressedBuf.get(), compressedSize,
+        compressedSize = ryu_zstd::ZSTD_compress((void*)compressedBuf.get(), compressedSize,
             reinterpret_cast<const char*>(bufferedSerializer.getBlobData()),
             bufferedSerializer.getSize(), ZSTD_CLEVEL_DEFAULT);
         compressedData = compressedBuf.get();

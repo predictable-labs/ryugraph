@@ -331,7 +331,7 @@ void ColumnReader::decompressInternal(ryu_parquet::format::CompressionCodec::typ
     case CompressionCodec::SNAPPY: {
         {
             size_t uncompressedSize = 0;
-            auto res = kuzu_snappy::GetUncompressedLength(reinterpret_cast<const char*>(src),
+            auto res = ryu_snappy::GetUncompressedLength(reinterpret_cast<const char*>(src),
                 srcSize, &uncompressedSize);
             // LCOV_EXCL_START
             if (!res) {
@@ -343,7 +343,7 @@ void ColumnReader::decompressInternal(ryu_parquet::format::CompressionCodec::typ
             }
             // LCOV_EXCL_STOP
         }
-        auto res = kuzu_snappy::RawUncompress(reinterpret_cast<const char*>(src), srcSize,
+        auto res = ryu_snappy::RawUncompress(reinterpret_cast<const char*>(src), srcSize,
             reinterpret_cast<char*>(dst));
         // LCOV_EXCL_START
         if (!res) {
@@ -352,9 +352,9 @@ void ColumnReader::decompressInternal(ryu_parquet::format::CompressionCodec::typ
         // LCOV_EXCL_STOP
     } break;
     case CompressionCodec::ZSTD: {
-        auto res = kuzu_zstd::ZSTD_decompress(dst, dstSize, src, srcSize);
+        auto res = ryu_zstd::ZSTD_decompress(dst, dstSize, src, srcSize);
         // LCOV_EXCL_START
-        if (kuzu_zstd::ZSTD_isError(res) || res != (size_t)dstSize) {
+        if (ryu_zstd::ZSTD_isError(res) || res != (size_t)dstSize) {
             throw common::RuntimeException{"ZSTD decompression failed."};
         }
         // LCOV_EXCL_STOP

@@ -13,7 +13,7 @@ void Serializer::serializeValue(const std::string& value) {
 }
 
 void Serializer::writeDebuggingInfo(const std::string& value) {
-#if defined(KUZU_DESER_DEBUG) && (defined(KUZU_RUNTIME_CHECKS) || !defined(NDEBUG))
+#if defined(RYU_DESER_DEBUG) && (defined(RYU_RUNTIME_CHECKS) || !defined(NDEBUG))
     serializeValue<std::string>(value);
 #endif
     // DO NOTHING

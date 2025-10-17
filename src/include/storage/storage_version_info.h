@@ -24,7 +24,7 @@ struct StorageVersionInfo {
 
     static RYU_API storage_version_t getStorageVersion();
 
-    static constexpr const char* MAGIC_BYTES = "KUZU";
+    static constexpr const char* MAGIC_BYTES = "RYU";
 };
 
 } // namespace storage

@@ -19,7 +19,7 @@ namespace common {
         void(0) :                                                                                  \
         ryu::common::kuAssertFailureInternal(#condition, __FILE__, __LINE__)
 
-#if defined(KUZU_RUNTIME_CHECKS) || !defined(NDEBUG)
+#if defined(RYU_RUNTIME_CHECKS) || !defined(NDEBUG)
 #define RUNTIME_CHECK(code) code
 #define KU_ASSERT(condition) KU_ASSERT_UNCONDITIONAL(condition)
 #else

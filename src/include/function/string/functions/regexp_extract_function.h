@@ -38,7 +38,7 @@ struct RegexpExtract : BaseRegexpOperation {
             return;
         }
 
-        copyToKuzuString(targetSubMatches[group].ToString(), result, resultValueVector);
+        copyToRyuString(targetSubMatches[group].ToString(), result, resultValueVector);
     }
 };
 

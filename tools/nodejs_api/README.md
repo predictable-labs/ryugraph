@@ -18,7 +18,7 @@ npm install ryu
 ### Example (ES Modules)
 
 ```js
-// Import the Kùzu module (ESM)
+// Import the Ryu module (ESM)
 import { Database, Connection } from "ryu";
 
 const main = async () => {

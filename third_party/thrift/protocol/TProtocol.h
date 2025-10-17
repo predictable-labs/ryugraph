@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#ifndef _KUZU_THRIFT_PROTOCOL_TPROTOCOL_H_
-#define _KUZU_THRIFT_PROTOCOL_TPROTOCOL_H_ 1
+#ifndef _RYU_THRIFT_PROTOCOL_TPROTOCOL_H_
+#define _RYU_THRIFT_PROTOCOL_TPROTOCOL_H_ 1
 
 #ifdef _WIN32
 // Need to come before any Windows.h includes
@@ -762,4 +762,4 @@ uint32_t skip(Protocol_& prot, TType type) {
 
 }}} // ryu_apache::thrift::protocol
 
-#endif // #define _KUZU_THRIFT_PROTOCOL_TPROTOCOL_H_ 1
+#endif // #define _RYU_THRIFT_PROTOCOL_TPROTOCOL_H_ 1

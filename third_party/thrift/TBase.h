@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#ifndef _KUZU_THRIFT_TBASE_H_
-#define _KUZU_THRIFT_TBASE_H_ 1
+#ifndef _RYU_THRIFT_TBASE_H_
+#define _RYU_THRIFT_TBASE_H_ 1
 
 #include "Thrift.h"
 #include "protocol/TProtocol.h"
@@ -35,4 +35,4 @@ public:
 }
 } // ryu_apache::thrift
 
-#endif // #ifndef _KUZU_THRIFT_TBASE_H_
+#endif // #ifndef _RYU_THRIFT_TBASE_H_

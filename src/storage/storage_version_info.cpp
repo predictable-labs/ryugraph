@@ -7,7 +7,7 @@ storage_version_t StorageVersionInfo::getStorageVersion() {
     auto storageVersionInfo = getStorageVersionInfo();
     if (!storageVersionInfo.contains(RYU_CMAKE_VERSION)) {
         // If the current RYU_CMAKE_VERSION is not in the map,
-        // then we must run the newest version of kuzu
+        // then we must run the newest version of ryu
         // LCOV_EXCL_START
         storage_version_t maxVersion = 0;
         for (auto& [_, versionNumber] : storageVersionInfo) {

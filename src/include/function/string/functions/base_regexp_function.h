@@ -15,9 +15,9 @@ struct BaseRegexpOperation {
         return std::regex_replace(pattern, std::regex(R"(\\\\)"), "\\");
     }
 
-    static inline void copyToKuzuString(const std::string& value, common::ku_string_t& kuString,
+    static inline void copyToRyuString(const std::string& value, common::ku_string_t& ryString,
         common::ValueVector& valueVector) {
-        common::StringVector::addString(&valueVector, kuString, value.data(), value.length());
+        common::StringVector::addString(&valueVector, ryString, value.data(), value.length());
     }
 };
 

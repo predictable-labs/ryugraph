@@ -13,7 +13,7 @@ namespace ryu {
 namespace main {
 
 void AttachedDatabase::invalidateCache() {
-    if (dbType != common::ATTACHED_KUZU_DB_TYPE) {
+    if (dbType != common::ATTACHED_RYU_DB_TYPE) {
         auto catalogExtension = catalog->ptrCast<extension::CatalogExtension>();
         catalogExtension->invalidateCache();
     }

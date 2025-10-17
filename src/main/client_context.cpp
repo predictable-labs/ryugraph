@@ -602,7 +602,7 @@ bool ClientContext::canExecuteWriteQuery() const {
     // remote ryu database can be attached.
     const auto dbManager = DatabaseManager::Get(*this);
     for (const auto& attachedDB : dbManager->getAttachedDatabases()) {
-        if (attachedDB->getDBType() == ATTACHED_KUZU_DB_TYPE) {
+        if (attachedDB->getDBType() == ATTACHED_RYU_DB_TYPE) {
             return false;
         }
     }

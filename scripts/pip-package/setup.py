@@ -10,12 +10,12 @@ from setuptools.command.build_py import build_py as _build_py
 
 base_dir = os.path.dirname(__file__)
 
-with open(os.path.join(base_dir, 'kuzu-source', 'tools', 'python_api', 'requirements_dev.txt')) as f:
+with open(os.path.join(base_dir, 'ryu-source', 'tools', 'python_api', 'requirements_dev.txt')) as f:
     requirements = f.read().splitlines()
 
 
 def _get_ryu_version():
-    cmake_file = os.path.join(base_dir, 'kuzu-source', 'CMakeLists.txt')
+    cmake_file = os.path.join(base_dir, 'ryu-source', 'CMakeLists.txt')
     with open(cmake_file) as f:
         for line in f:
             if line.startswith('project(Ryu VERSION'):
@@ -73,7 +73,7 @@ class CMakeBuild(build_ext):
                               deploy_target)
                 env_vars['CMAKE_OSX_DEPLOYMENT_TARGET'] = deploy_target
 
-        build_dir = os.path.join(ext.sourcedir, 'kuzu-source')
+        build_dir = os.path.join(ext.sourcedir, 'ryu-source')
 
         # Clean the build directory.
         subprocess.run(['make', 'clean'], check=True, cwd=build_dir)

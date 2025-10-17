@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#ifndef _KUZU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_
-#define _KUZU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_ 1
+#ifndef _RYU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_
+#define _RYU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_ 1
 
 #include <string>
 #include "Thrift.h"
@@ -99,4 +99,4 @@ protected:
 }
 } // ryu_apache::thrift::transport
 
-#endif // #ifndef _KUZU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_
+#endif // #ifndef _RYU_THRIFT_TRANSPORT_TTRANSPORTEXCEPTION_H_

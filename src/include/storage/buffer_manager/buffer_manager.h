@@ -182,7 +182,7 @@ private:
  * (https://www.cs.cit.tum.de/fileadmin/w00cfj/dis/_my_direct_uploads/vmcache.pdf).
  * We would also like to thank Fadhil Abubaker for doing the initial research and prototyping of
  * Umbra's design in his CS 848 course project:
- * https://github.com/fabubaker/kuzu/blob/umbra-bm/final_project_report.pdf.
+ * https://github.com/fabubaker/ryu/blob/umbra-bm/final_project_report.pdf.
  */
 class BufferManager {
     friend class testing::FlakyBufferManager;

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-#ifndef _KUZU_THRIFT_TOSTRING_H_
-#define _KUZU_THRIFT_TOSTRING_H_ 1
+#ifndef _RYU_THRIFT_TOSTRING_H_
+#define _RYU_THRIFT_TOSTRING_H_ 1
 
 #include <cmath>
 #include <limits>
@@ -110,4 +110,4 @@ std::string to_string(const std::set<T>& s) {
 }
 } // ryu_apache::thrift
 
-#endif // _KUZU_THRIFT_TOSTRING_H_
+#endif // _RYU_THRIFT_TOSTRING_H_
