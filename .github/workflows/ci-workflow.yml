@@ -448,6 +448,9 @@ jobs:
       - name: Install DuckDB
         uses: ./.github/actions/install-duckdb
 
+      - name: Build RyuGraph
+        run: make release
+
       - name: Rust API test
         run: |
           make extension-release
