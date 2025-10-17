@@ -197,7 +197,7 @@ def test_mode(temp_db, flag) -> None:
         .statement('RETURN "Databases Rule" AS a, "ryu is cool" AS b;')
     )
     result = test.run()
-    result.check_stdout("\u2502 a              \u2502 b            \u2502")
+    result.check_stdout("\u2502 a              \u2502 b           \u2502")
     result.check_stdout("\u2502 Databases Rule \u2502 ryu is cool \u2502")
 
     # test column mode
@@ -246,7 +246,7 @@ def test_mode(temp_db, flag) -> None:
         .statement('RETURN "Databases Rule" AS a, "ryu is cool" AS b;')
     )
     result = test.run()
-    result.check_stdout("\u2502 a              \u2502 b            \u2502")
+    result.check_stdout("\u2502 a              \u2502 b           \u2502")
     result.check_stdout("\u2502 Databases Rule \u2502 ryu is cool \u2502")
 
     # test html mode
@@ -427,7 +427,7 @@ def test_mode(temp_db, flag) -> None:
         .statement('RETURN "Databases Rule" AS a, "ryu is cool" AS b;')
     )
     result = test.run()
-    result.check_stdout("| a              | b            |")
+    result.check_stdout("| a              | b           |")
     result.check_stdout("| Databases Rule | ryu is cool |")
 
     # test table mode
@@ -439,7 +439,7 @@ def test_mode(temp_db, flag) -> None:
         .statement('RETURN "Databases Rule" AS a, "ryu is cool" AS b;')
     )
     result = test.run()
-    result.check_stdout("| a              | b            |")
+    result.check_stdout("| a              | b           |")
     result.check_stdout("| Databases Rule | ryu is cool |")
 
     # test tsv mode
