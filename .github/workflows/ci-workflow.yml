@@ -890,9 +890,6 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Install clang-format
         run: |
@@ -922,16 +919,8 @@ jobs:
         working-directory: tools/rust_api
         run: cargo fmt --all
 
-      - name: Fail if any change is detected on the master branch
-        if: github.ref == 'refs/heads/master'
+      - name: Fail if any formatting change is detected
         run: git diff --exit-code
-
-      - name: Commit changes on non-master branches
-        uses: EndBug/add-and-commit@v9
-        if: github.ref != 'refs/heads/master'
-        with:
-          author_name: "CI Bot"
-          message: "ci: auto code format"
 
   python-lint-check:
     name: python lint check
