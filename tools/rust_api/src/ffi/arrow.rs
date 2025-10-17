@@ -14,6 +14,7 @@ unsafe impl cxx::ExternType for ArrowSchema {
     type Kind = cxx::kind::Trivial;
 }
 
+#[allow(unused_attributes)]
 #[cxx::bridge]
 pub(crate) mod ffi_arrow {
     unsafe extern "C++" {
