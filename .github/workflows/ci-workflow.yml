@@ -70,15 +70,6 @@ jobs:
     name: generate binary dataset
     needs: [ sanity-checks, python-lint-check ]
     runs-on: ubuntu-latest
-    services:
-      minio:
-        image: minio/minio:latest
-        ports:
-          - 9000:9000
-        env:
-          MINIO_ROOT_USER: minioadmin
-          MINIO_ROOT_PASSWORD: minioadmin
-        options: --health-cmd "curl -f http://localhost:9000/minio/health/live" --health-interval 10s --health-timeout 5s --health-retries 5
     env:
       NUM_THREADS: 32
       GEN: Ninja
@@ -89,13 +80,30 @@ jobs:
 
       - name: Setup MinIO
         run: |
+          # Start MinIO in Docker
+          docker run -d \
+            --name minio \
+            -p 9000:9000 \
+            -e MINIO_ROOT_USER=minioadmin \
+            -e MINIO_ROOT_PASSWORD=minioadmin \
+            minio/minio:latest \
+            server /data
+
           # Install MinIO client
           wget -q https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
           sudo mv mc /usr/local/bin/
 
           # Wait for MinIO to be ready
-          sleep 5
+          echo "Waiting for MinIO to be ready..."
+          for i in {1..30}; do
+            if curl -f http://localhost:9000/minio/health/live 2>/dev/null; then
+              echo "MinIO is ready!"
+              break
+            fi
+            echo "Waiting... ($i/30)"
+            sleep 2
+          done
 
           # Configure MinIO client
           mc alias set minio http://localhost:9000 minioadmin minioadmin
