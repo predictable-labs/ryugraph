@@ -971,6 +971,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       # For `napi.h` header.
       - name: Ensure Node.js dependencies
         run: make nodejs-deps

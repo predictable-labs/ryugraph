@@ -1,0 +1,40 @@
+name: 'Install DuckDB'
+description: 'Install DuckDB library and headers for building extensions'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install DuckDB (Linux)
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        wget -q https://github.com/duckdb/duckdb/releases/download/v1.1.3/libduckdb-linux-amd64.zip
+        unzip -q libduckdb-linux-amd64.zip -d /tmp/duckdb
+        sudo cp /tmp/duckdb/duckdb.h /usr/local/include/
+        sudo cp /tmp/duckdb/duckdb.hpp /usr/local/include/
+        sudo cp /tmp/duckdb/libduckdb.so /usr/local/lib/
+        sudo ldconfig
+        rm libduckdb-linux-amd64.zip
+
+    - name: Install DuckDB (macOS)
+      if: runner.os == 'macOS'
+      shell: bash
+      run: |
+        wget -q https://github.com/duckdb/duckdb/releases/download/v1.1.3/libduckdb-osx-universal.zip
+        unzip -q libduckdb-osx-universal.zip -d /tmp/duckdb
+        sudo cp /tmp/duckdb/duckdb.h /usr/local/include/
+        sudo cp /tmp/duckdb/duckdb.hpp /usr/local/include/
+        sudo cp /tmp/duckdb/libduckdb.dylib /usr/local/lib/
+        rm libduckdb-osx-universal.zip
+
+    - name: Install DuckDB (Windows)
+      if: runner.os == 'Windows'
+      shell: pwsh
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/duckdb/duckdb/releases/download/v1.1.3/libduckdb-windows-amd64.zip" -OutFile "libduckdb-windows-amd64.zip"
+        Expand-Archive -Path "libduckdb-windows-amd64.zip" -DestinationPath "C:\duckdb"
+        Copy-Item "C:\duckdb\duckdb.h" -Destination "C:\Program Files\duckdb\include\" -Force
+        Copy-Item "C:\duckdb\duckdb.hpp" -Destination "C:\Program Files\duckdb\include\" -Force
+        Copy-Item "C:\duckdb\duckdb.dll" -Destination "C:\Program Files\duckdb\lib\" -Force
+        Copy-Item "C:\duckdb\duckdb.lib" -Destination "C:\Program Files\duckdb\lib\" -Force
+        Remove-Item "libduckdb-windows-amd64.zip"
+        echo "CMAKE_PREFIX_PATH=C:\Program Files\duckdb" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append

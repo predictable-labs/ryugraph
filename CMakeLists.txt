@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Ryu VERSION 0.11.2.2 LANGUAGES CXX C)
 
+# Add cmake modules directory to module path
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 option(SINGLE_THREADED "Single-threaded mode" FALSE)
 if(SINGLE_THREADED)
     set(__SINGLE_THREADED__ TRUE)
