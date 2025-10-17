@@ -30,7 +30,7 @@ impl<'a> StringView<'a> {
 #[cxx::bridge]
 pub(crate) mod ffi {
     unsafe extern "C++" {
-        include!("ryu/include/ryu_rs.h");
+        include!("ryu_rs.h");
         #[namespace = "std"]
         #[cxx_name = "string_view"]
         type StringView<'a> = crate::ffi::StringView<'a>;
