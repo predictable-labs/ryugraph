@@ -44,9 +44,9 @@ TEST_F(CApiVersionTest, GetStorageVersion) {
     std::ifstream dbFile;
     dbFile.open(data, std::ios::binary);
     ASSERT_TRUE(dbFile.is_open());
-    char magic[5];
-    dbFile.read(magic, 4);
-    magic[4] = '\0';
+    char magic[4];
+    dbFile.read(magic, 3);
+    magic[3] = '\0';
     ASSERT_STREQ(magic, "RYU");
     uint64_t actualVersion;
     dbFile.read(reinterpret_cast<char*>(&actualVersion), sizeof(actualVersion));
@@ -66,9 +66,9 @@ TEST_F(EmptyCApiVersionTest, GetStorageVersion) {
     std::ifstream dbFile;
     dbFile.open(data, std::ios::binary);
     ASSERT_TRUE(dbFile.is_open());
-    char magic[5];
-    dbFile.read(magic, 4);
-    magic[4] = '\0';
+    char magic[4];
+    dbFile.read(magic, 3);
+    magic[3] = '\0';
     ASSERT_STREQ(magic, "RYU");
     uint64_t actualVersion;
     dbFile.read(reinterpret_cast<char*>(&actualVersion), sizeof(actualVersion));
