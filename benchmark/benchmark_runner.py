@@ -244,7 +244,7 @@ def run_ryu(serialized_graph_path):
         is_current_group_error = False
         benchmark_cmd = [
             ryu_benchmark_tool,
-            '--dataset=' + serialized_graph_path + '/db.kz',
+            '--dataset=' + serialized_graph_path + '/db.ryu',
             '--benchmark=' + benchmark_files + '/' + group,
             '--warmup=' + str(num_warmup),
             '--run=' + str(num_run),
