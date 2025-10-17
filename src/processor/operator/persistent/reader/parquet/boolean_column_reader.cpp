@@ -4,8 +4,8 @@ namespace ryu {
 namespace processor {
 
 void BooleanColumnReader::initializeRead(uint64_t rowGroupIdx,
-    const std::vector<kuzu_parquet::format::ColumnChunk>& columns,
-    kuzu_apache::thrift::protocol::TProtocol& protocol) {
+    const std::vector<ryu_parquet::format::ColumnChunk>& columns,
+    ryu_apache::thrift::protocol::TProtocol& protocol) {
     bytePos = 0;
     TemplatedColumnReader<bool, BooleanParquetValueConversion>::initializeRead(rowGroupIdx, columns,
         protocol);
