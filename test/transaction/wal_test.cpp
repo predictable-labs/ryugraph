@@ -86,7 +86,7 @@ TEST_F(WalTest, ShadowFileExistsWithoutWAL) {
     auto shadowFilePath = ryu::storage::StorageUtils::getShadowFilePath(databasePath);
     // Create a shadow file that is corrupted.
     std::ofstream file(shadowFilePath);
-    file << "This is not a valid Kuzu database file.";
+    file << "This is not a valid Ryu database file.";
     file.close();
     auto walFilePath = ryu::storage::StorageUtils::getWALFilePath(databasePath);
     ASSERT_TRUE(std::filesystem::exists(walFilePath));
@@ -113,7 +113,7 @@ TEST_F(WalTest, ShadowFileExistsWithEmptyWAL) {
     auto shadowFilePath = ryu::storage::StorageUtils::getShadowFilePath(databasePath);
     // Create a shadow file that is corrupted.
     std::ofstream file(shadowFilePath);
-    file << "This is not a valid Kuzu database file.";
+    file << "This is not a valid Ryu database file.";
     file.close();
     auto walFilePath = ryu::storage::StorageUtils::getWALFilePath(databasePath);
     ASSERT_TRUE(std::filesystem::exists(walFilePath));

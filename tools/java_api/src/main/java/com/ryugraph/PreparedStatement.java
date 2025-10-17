@@ -34,7 +34,7 @@ public class PreparedStatement implements AutoCloseable {
      */
     private void destroy() {
         checkNotDestroyed();
-        Native.kuzuPreparedStatementDestroy(this);
+        Native.ryuPreparedStatementDestroy(this);
         destroyed = true;
     }
 
@@ -46,7 +46,7 @@ public class PreparedStatement implements AutoCloseable {
      */
     public boolean isSuccess() {
         checkNotDestroyed();
-        return Native.kuzuPreparedStatementIsSuccess(this);
+        return Native.ryuPreparedStatementIsSuccess(this);
     }
 
     /**
@@ -57,7 +57,7 @@ public class PreparedStatement implements AutoCloseable {
      */
     public String getErrorMessage() {
         checkNotDestroyed();
-        return Native.kuzuPreparedStatementGetErrorMessage(this);
+        return Native.ryuPreparedStatementGetErrorMessage(this);
     }
 
 }

@@ -1,4 +1,4 @@
-#include "kuzu_arrow.h"
+#include "ryu_arrow.h"
 
 namespace ryu_arrow {
 

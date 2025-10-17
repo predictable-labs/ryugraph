@@ -40,7 +40,7 @@ public class QueryResult implements AutoCloseable {
     private void destroy() {
         checkNotDestroyed();
         if (!isOwnedByCPP) {
-            Native.kuzuQueryResultDestroy(this);
+            Native.ryuQueryResultDestroy(this);
             destroyed = true;
         }
     }
@@ -53,7 +53,7 @@ public class QueryResult implements AutoCloseable {
      */
     public boolean isSuccess() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultIsSuccess(this);
+        return Native.ryuQueryResultIsSuccess(this);
     }
 
     /**
@@ -64,7 +64,7 @@ public class QueryResult implements AutoCloseable {
      */
     public String getErrorMessage() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetErrorMessage(this);
+        return Native.ryuQueryResultGetErrorMessage(this);
     }
 
     /**
@@ -75,7 +75,7 @@ public class QueryResult implements AutoCloseable {
      */
     public long getNumColumns() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetNumColumns(this);
+        return Native.ryuQueryResultGetNumColumns(this);
     }
 
     /**
@@ -87,7 +87,7 @@ public class QueryResult implements AutoCloseable {
      */
     public String getColumnName(long index) {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetColumnName(this, index);
+        return Native.ryuQueryResultGetColumnName(this, index);
     }
 
     /**
@@ -99,7 +99,7 @@ public class QueryResult implements AutoCloseable {
      */
     public DataType getColumnDataType(long index) {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetColumnDataType(this, index);
+        return Native.ryuQueryResultGetColumnDataType(this, index);
     }
 
     /**
@@ -110,7 +110,7 @@ public class QueryResult implements AutoCloseable {
      */
     public long getNumTuples() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetNumTuples(this);
+        return Native.ryuQueryResultGetNumTuples(this);
     }
 
     /**
@@ -121,7 +121,7 @@ public class QueryResult implements AutoCloseable {
      */
     public QuerySummary getQuerySummary() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetQuerySummary(this);
+        return Native.ryuQueryResultGetQuerySummary(this);
     }
 
     /**
@@ -132,7 +132,7 @@ public class QueryResult implements AutoCloseable {
      */
     public boolean hasNext() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultHasNext(this);
+        return Native.ryuQueryResultHasNext(this);
     }
 
     /**
@@ -146,7 +146,7 @@ public class QueryResult implements AutoCloseable {
      */
     public FlatTuple getNext() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetNext(this);
+        return Native.ryuQueryResultGetNext(this);
     }
 
     /**
@@ -157,7 +157,7 @@ public class QueryResult implements AutoCloseable {
      */
     public boolean hasNextQueryResult() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultHasNextQueryResult(this);
+        return Native.ryuQueryResultHasNextQueryResult(this);
     }
 
     /**
@@ -168,7 +168,7 @@ public class QueryResult implements AutoCloseable {
      */
     public QueryResult getNextQueryResult() {
         checkNotDestroyed();
-        return Native.kuzuQueryResultGetNextQueryResult(this);
+        return Native.ryuQueryResultGetNextQueryResult(this);
     }
 
     /**
@@ -180,7 +180,7 @@ public class QueryResult implements AutoCloseable {
         if (destroyed)
             return "QueryResult has been destroyed.";
         else
-            return Native.kuzuQueryResultToString(this);
+            return Native.ryuQueryResultToString(this);
     }
 
     /**
@@ -190,6 +190,6 @@ public class QueryResult implements AutoCloseable {
      */
     public void resetIterator() {
         checkNotDestroyed();
-        Native.kuzuQueryResultResetIterator(this);
+        Native.ryuQueryResultResetIterator(this);
     }
 }

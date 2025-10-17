@@ -59,10 +59,10 @@ public:
     static void executeScript(const std::string& cypherScript, main::Connection& conn);
 
     static std::string getTestListFile() {
-        return appendKuzuRootPath(std::string(E2E_TEST_FILES_DIRECTORY) + "/test_list");
+        return appendRyuRootPath(std::string(E2E_TEST_FILES_DIRECTORY) + "/test_list");
     }
 
-    static std::string appendKuzuRootPath(const std::string& path) {
+    static std::string appendRyuRootPath(const std::string& path) {
         if (std::filesystem::path(path).is_relative()) {
             return RYU_ROOT_DIRECTORY + std::string("/") + path;
         }
@@ -83,9 +83,9 @@ public:
     static std::filesystem::path getRootTempDir() {
         auto tempDir = std::getenv("RUNNER_TEMP");
         if (tempDir != nullptr) {
-            return std::filesystem::path(tempDir) / "kuzu";
+            return std::filesystem::path(tempDir) / "ryu";
         }
-        return std::filesystem::temp_directory_path() / "kuzu";
+        return std::filesystem::temp_directory_path() / "ryu";
     }
 
     static std::string getTempDir(const std::string& name) {
@@ -93,7 +93,7 @@ public:
         std::filesystem::create_directories(path);
         auto pathStr = path.string();
 #ifdef _WIN32
-        // kuzu still doesn't support backslashes in paths on windows
+        // ryu still doesn't support backslashes in paths on windows
         std::replace(pathStr.begin(), pathStr.end(), '\\', '/');
 #endif
         return pathStr;
@@ -105,7 +105,7 @@ public:
         path = path / TESTING_DB_FILE_NAME;
         auto pathStr = path.string();
 #ifdef _WIN32
-        // kuzu still doesn't support backslashes in paths on windows
+        // ryu still doesn't support backslashes in paths on windows
         std::replace(pathStr.begin(), pathStr.end(), '\\', '/');
 #endif
         return pathStr;
@@ -126,7 +126,7 @@ public:
     static std::string joinPath(const std::string& base, const std::string& part) {
         auto pathStr = common::FileSystem::joinPath(base, part);
 #ifdef _WIN32
-        // kuzu still doesn't support backslashes in paths on windows
+        // ryu still doesn't support backslashes in paths on windows
         std::replace(pathStr.begin(), pathStr.end(), '\\', '/');
 #endif
         return pathStr;

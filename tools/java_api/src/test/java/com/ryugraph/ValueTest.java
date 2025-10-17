@@ -350,7 +350,7 @@ public class ValueTest extends TestBase {
     @Test
     void CreateListLiteral() {
         Value[] listValues = { new Value(1), new Value(2), new Value(3) };
-        KuzuList list = new KuzuList(listValues);
+        RyuList list = new RyuList(listValues);
         Value[] listAsArray = list.toArray();
         assertEquals(listValues.length, list.getListSize());
         for (int i = 0; i < list.getListSize(); ++i) {
@@ -382,13 +382,13 @@ public class ValueTest extends TestBase {
     void CreateListLiteralNested() {
         Value[][] nestedListValues = { { new Value(1), new Value(2), new Value(3) },
                 { new Value(4), new Value(5), new Value(6) } };
-        KuzuList[] nestedLists = { new KuzuList(nestedListValues[0]), new KuzuList(nestedListValues[1]) };
+        RyuList[] nestedLists = { new RyuList(nestedListValues[0]), new RyuList(nestedListValues[1]) };
 
         Value[] listValues = { nestedLists[0].getValue(), nestedLists[1].getValue() };
-        KuzuList list = new KuzuList(listValues);
+        RyuList list = new RyuList(listValues);
         assertEquals(listValues.length, list.getListSize());
         for (int i = 0; i < list.getListSize(); ++i) {
-            KuzuList nestedList = new KuzuList(list.getListElement(i));
+            RyuList nestedList = new RyuList(list.getListElement(i));
             for (int j = 0; j < nestedListValues[i].length; ++j) {
                 assertEquals(nestedListValues[i].length, nestedList.getListSize());
                 assertEquals((Integer) nestedListValues[i][j].getValue(),
@@ -421,7 +421,7 @@ public class ValueTest extends TestBase {
     @Test
     void CreateListDefaultValues() {
         int listLength = 5;
-        KuzuList list = new KuzuList(new DataType(DataTypeID.INT32), listLength);
+        RyuList list = new RyuList(new DataType(DataTypeID.INT32), listLength);
         assertEquals(listLength, list.getListSize());
         for (int i = 0; i < listLength; ++i) {
             assertEquals(0, (Integer) list.getListElement(i).getValue());
@@ -442,7 +442,7 @@ public class ValueTest extends TestBase {
 
         assertTrue(value.isOwnedByCPP());
         assertFalse(value.isNull());
-        KuzuList list = new KuzuList(value);
+        RyuList list = new RyuList(value);
         assertEquals(list.getListSize(), 2);
 
         value.close();
@@ -462,7 +462,7 @@ public class ValueTest extends TestBase {
         assertTrue(value.isOwnedByCPP());
         assertFalse(value.isNull());
 
-        KuzuList list = new KuzuList(value);
+        RyuList list = new RyuList(value);
         assertEquals(list.getListSize(), 2);
 
         Value listElement = list.getListElement(0);
@@ -1161,7 +1161,7 @@ public class ValueTest extends TestBase {
     void CreateStructLiteral() {
         String[] fieldNames = { "name", "ID", "age" };
         Value[] fieldValues = { new Value("Alice"), new Value(1), new Value(20) };
-        KuzuStruct structVal = new KuzuStruct(fieldNames, fieldValues);
+        RyuStruct structVal = new RyuStruct(fieldNames, fieldValues);
         assertEquals(fieldNames.length, structVal.getNumFields());
         for (int i = 0; i < fieldNames.length; ++i) {
             assertEquals(fieldNames[i], structVal.getFieldNameByIndex(i));
@@ -1185,13 +1185,13 @@ public class ValueTest extends TestBase {
     void CreateStructLiteralNested() {
         String[] personFieldNames = { "name", "ID" };
         Value[] personFieldValues = { new Value("Alice"), new Value(1) };
-        KuzuStruct person = new KuzuStruct(personFieldNames, personFieldValues);
+        RyuStruct person = new RyuStruct(personFieldNames, personFieldValues);
 
         String[] companyFieldNames = { "name", "boss" };
         Value[] companyFieldValues = { new Value("Company"), person.getValue() };
-        KuzuStruct company = new KuzuStruct(companyFieldNames, companyFieldValues);
+        RyuStruct company = new RyuStruct(companyFieldNames, companyFieldValues);
 
-        KuzuStruct actualPerson = new KuzuStruct(company.getValueByFieldName("boss"));
+        RyuStruct actualPerson = new RyuStruct(company.getValueByFieldName("boss"));
         assertEquals(personFieldNames.length, actualPerson.getNumFields());
         for (int i = 0; i < personFieldNames.length; ++i) {
             assertEquals(personFieldNames[i], actualPerson.getFieldNameByIndex(i));
@@ -1220,7 +1220,7 @@ public class ValueTest extends TestBase {
                 "name", new Value("Alice"),
                 "ID", new Value(2),
                 "age", new Value(20));
-        KuzuStruct structVal = new KuzuStruct(fields);
+        RyuStruct structVal = new RyuStruct(fields);
         assertEquals(fields.size(), structVal.getNumFields());
         for (Map.Entry<String, Value> expectedField : fields.entrySet()) {
             String fieldName = expectedField.getKey();
@@ -1255,7 +1255,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuStruct structVal = new KuzuStruct(value);
+        RyuStruct structVal = new RyuStruct(value);
         assertEquals(structVal.getNumFields(), 14);
         value.close();
         flatTuple.close();
@@ -1305,7 +1305,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuStruct structVal = new KuzuStruct(value);
+        RyuStruct structVal = new RyuStruct(value);
         assertEquals(structVal.getIndexByFieldName("NOT_EXIST"), -1);
 
         assertEquals(structVal.getIndexByFieldName("rating"), 0);
@@ -1331,7 +1331,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuStruct structVal = new KuzuStruct(value);
+        RyuStruct structVal = new RyuStruct(value);
         assertNull(structVal.getFieldNameByIndex(1024));
         assertNull(structVal.getFieldNameByIndex(-1));
         assertEquals(structVal.getFieldNameByIndex(0), "rating");
@@ -1357,7 +1357,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuStruct structVal = new KuzuStruct(value);
+        RyuStruct structVal = new RyuStruct(value);
         Value fieldValue = structVal.getValueByFieldName("NOT_EXIST");
         assertNull(fieldValue);
         fieldValue = structVal.getValueByFieldName("rating");
@@ -1378,7 +1378,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuStruct structVal = new KuzuStruct(value);
+        RyuStruct structVal = new RyuStruct(value);
         Value fieldValue = structVal.getValueByIndex(1024);
         assertNull(fieldValue);
         fieldValue = structVal.getValueByIndex(-1);
@@ -1397,38 +1397,38 @@ public class ValueTest extends TestBase {
     void CreateMapLiteral() {
         Value[] keys = { new Value("Alice"), new Value("Bob") };
         Value[] values = { new Value(1), new Value(2) };
-        KuzuMap kuzuMap = new KuzuMap(keys, values);
-        assertEquals(keys.length, kuzuMap.getNumFields());
-        int aliceKeyIdx = (kuzuMap.getKey(0).getValue().equals("Alice")) ? 0 : 1;
+        RyuMap ryuMap = new RyuMap(keys, values);
+        assertEquals(keys.length, ryuMap.getNumFields());
+        int aliceKeyIdx = (ryuMap.getKey(0).getValue().equals("Alice")) ? 0 : 1;
         int bobKeyIdx = 1 - aliceKeyIdx;
-        assertEquals("Alice", kuzuMap.getKey(aliceKeyIdx).getValue());
-        assertEquals(1, (Integer) kuzuMap.getValue(aliceKeyIdx).getValue());
-        assertEquals("Bob", kuzuMap.getKey(bobKeyIdx).getValue());
-        assertEquals(2, (Integer) kuzuMap.getValue(bobKeyIdx).getValue());
+        assertEquals("Alice", ryuMap.getKey(aliceKeyIdx).getValue());
+        assertEquals(1, (Integer) ryuMap.getValue(aliceKeyIdx).getValue());
+        assertEquals("Bob", ryuMap.getKey(bobKeyIdx).getValue());
+        assertEquals(2, (Integer) ryuMap.getValue(bobKeyIdx).getValue());
 
         PreparedStatement stmt = conn
                 .prepare("MATCH (m:movies) WHERE m.name = 'Roma' SET m.audience = $audience");
         Map<String, Value> options = Map.of(
-                "audience", kuzuMap.getValue());
+                "audience", ryuMap.getValue());
         QueryResult result = conn.execute(stmt, options);
 
         assertTrue(result.isSuccess());
-        kuzuMap.close();
+        ryuMap.close();
     }
 
     @Test
     void CreateMapLiteralNested() {
         Value[][] nestedKeys = { { new Value("Alice"), new Value("Bob") }, { new Value("Carol"), new Value("Dan") } };
         Value[][] nestedValues = { { new Value(1), new Value(2) }, { new Value(3), new Value(4) } };
-        KuzuMap map0 = new KuzuMap(nestedKeys[0], nestedValues[0]);
-        KuzuMap map1 = new KuzuMap(nestedKeys[1], nestedValues[1]);
+        RyuMap map0 = new RyuMap(nestedKeys[0], nestedValues[0]);
+        RyuMap map1 = new RyuMap(nestedKeys[1], nestedValues[1]);
         Value[] nestedMaps = { map0.getValue(), map1.getValue() };
 
         Value[] keys = { new Value(Long.valueOf(0)), new Value(Long.valueOf(1)) };
-        KuzuMap kuzuMap = new KuzuMap(keys, nestedMaps);
-        assertEquals(keys.length, kuzuMap.getNumFields());
+        RyuMap ryuMap = new RyuMap(keys, nestedMaps);
+        assertEquals(keys.length, ryuMap.getNumFields());
 
-        KuzuMap map1Actual = new KuzuMap(kuzuMap.getValue(1));
+        RyuMap map1Actual = new RyuMap(ryuMap.getValue(1));
         int carolKeyIdx = (map1Actual.getKey(0).getValue().equals("Carol")) ? 0 : 1;
         int danKeyIdx = 1 - carolKeyIdx;
         assertEquals("Carol", map1Actual.getKey(carolKeyIdx).getValue());
@@ -1442,7 +1442,7 @@ public class ValueTest extends TestBase {
                 .prepare(
                         "MATCH (m:movies) WHERE m.name = 'Roma' SET m.audience = list_element(element_at($audience, CAST(1, 'INT64')), 1)");
         Map<String, Value> options = Map.of(
-                "audience", kuzuMap.getValue());
+                "audience", ryuMap.getValue());
         QueryResult result = conn.execute(stmt, options);
         assertTrue(result.isSuccess());
 
@@ -1452,7 +1452,7 @@ public class ValueTest extends TestBase {
         assertEquals(1, result.getNumTuples());
         assertEquals(4, (Long) result.getNext().getValue(0).getValue());
 
-        kuzuMap.close();
+        ryuMap.close();
         map1Actual.close();
         map0.close();
         map1.close();
@@ -1470,7 +1470,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuMap mapVal = new KuzuMap(value);
+        RyuMap mapVal = new RyuMap(value);
         assertEquals(mapVal.getNumFields(), 2);
         value.close();
         flatTuple.close();
@@ -1478,7 +1478,7 @@ public class ValueTest extends TestBase {
 
         flatTuple = result.getNext();
         value = flatTuple.getValue(0);
-        mapVal = new KuzuMap(value);
+        mapVal = new RyuMap(value);
         assertTrue(value.isOwnedByCPP());
         assertEquals(mapVal.getNumFields(), 0);
         value.close();
@@ -1487,7 +1487,7 @@ public class ValueTest extends TestBase {
 
         flatTuple = result.getNext();
         value = flatTuple.getValue(0);
-        mapVal = new KuzuMap(value);
+        mapVal = new RyuMap(value);
         assertTrue(value.isOwnedByCPP());
         assertEquals(mapVal.getNumFields(), 1);
         value.close();
@@ -1506,7 +1506,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuMap mapVal = new KuzuMap(value);
+        RyuMap mapVal = new RyuMap(value);
         Value key = mapVal.getKey(0);
         String fieldName = key.getValue();
         assertEquals(fieldName, "audience1");
@@ -1551,7 +1551,7 @@ public class ValueTest extends TestBase {
         FlatTuple flatTuple = result.getNext();
         Value value = flatTuple.getValue(0);
         assertTrue(value.isOwnedByCPP());
-        KuzuMap mapVal = new KuzuMap(value);
+        RyuMap mapVal = new RyuMap(value);
         Value fieldValue = mapVal.getValue(1024);
         assertNull(fieldValue);
         fieldValue = mapVal.getValue(-1);
@@ -1567,7 +1567,7 @@ public class ValueTest extends TestBase {
 
         flatTuple = result.getNext();
         value = flatTuple.getValue(0);
-        mapVal = new KuzuMap(value);
+        mapVal = new RyuMap(value);
         assertTrue(value.isOwnedByCPP());
         fieldValue = mapVal.getValue(0);
         assertNull(fieldValue);
@@ -1577,7 +1577,7 @@ public class ValueTest extends TestBase {
 
         flatTuple = result.getNext();
         value = flatTuple.getValue(0);
-        mapVal = new KuzuMap(value);
+        mapVal = new RyuMap(value);
         assertTrue(value.isOwnedByCPP());
         fieldValue = mapVal.getValue(0);
         assertEquals((long) fieldValue.getValue(), 33);
@@ -1604,14 +1604,14 @@ public class ValueTest extends TestBase {
 
                 try (Value nodeListValue = ValueRecursiveRelUtil.getNodeList(value)) {
                     assertTrue(nodeListValue.isOwnedByCPP());
-                    KuzuList nodeList = new KuzuList(nodeListValue);
+                    RyuList nodeList = new RyuList(nodeListValue);
                     assertEquals(nodeList.getListSize(), 0);
                     nodeList.close();
                 }
 
                 try (Value relListValue = ValueRecursiveRelUtil.getRelList(value)) {
                     assertTrue(relListValue.isOwnedByCPP());
-                    KuzuList relList = new KuzuList(relListValue);
+                    RyuList relList = new RyuList(relListValue);
                     assertEquals(relList.getListSize(), 1);
 
                     try (Value rel = relList.getListElement(0)) {

@@ -18,26 +18,26 @@ public:
 
 class CApiTest : public APIDBTest {
 public:
-    kuzu_database _database;
-    kuzu_connection connection;
+    ryu_database _database;
+    ryu_connection connection;
 
     void SetUp() override {
         APIDBTest::SetUp();
         auto* connCppPointer = conn.release();
         auto* databaseCppPointer = database.release();
-        connection = kuzu_connection{connCppPointer};
-        _database = kuzu_database{databaseCppPointer};
+        connection = ryu_connection{connCppPointer};
+        _database = ryu_database{databaseCppPointer};
     }
 
     std::string getDatabasePath() { return databasePath; }
 
-    kuzu_database* getDatabase() { return &_database; }
+    ryu_database* getDatabase() { return &_database; }
 
-    kuzu_connection* getConnection() { return &connection; }
+    ryu_connection* getConnection() { return &connection; }
 
     void TearDown() override {
-        kuzu_connection_destroy(&connection);
-        kuzu_database_destroy(&_database);
+        ryu_connection_destroy(&connection);
+        ryu_database_destroy(&_database);
         APIDBTest::TearDown();
     }
 };

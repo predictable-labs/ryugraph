@@ -1,10 +1,10 @@
 #pragma once
 
 #include "rust/cxx.h"
-#ifdef KUZU_BUNDLED
+#ifdef RYU_BUNDLED
 #include "main/ryu.h"
 #else
-#include <kuzu.hpp>
+#include <ryu.hpp>
 #endif
 
 namespace ryu_arrow {

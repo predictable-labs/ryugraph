@@ -15,7 +15,7 @@ public class RyuMap implements AutoCloseable {
      *
      * @param value the value to construct the map from
      */
-    public KuzuMap(Value value) {
+    public RyuMap(Value value) {
         mapVal = value;
     }
 
@@ -26,7 +26,7 @@ public class RyuMap implements AutoCloseable {
      * @param keys:   The keys in the map
      * @param values: The values in the map
      */
-    public KuzuMap(Value[] keys, Value[] values) {
+    public RyuMap(Value[] keys, Value[] values) {
         if (keys.length != values.length) {
             mapVal = null;
             return;
@@ -35,15 +35,15 @@ public class RyuMap implements AutoCloseable {
             mapVal = null;
             return;
         }
-        mapVal = Native.kuzuCreateMap(keys, values);
+        mapVal = Native.ryuCreateMap(keys, values);
     }
 
     private Value getMapKeyOrValue(long index, boolean isKey) {
         if (index < 0 || index >= getNumFields()) {
             return null;
         }
-        Value structValue = Native.kuzuValueGetListElement(mapVal, index);
-        Value keyOrValue = new KuzuList(structValue).getListElement(isKey ? 0 : 1);
+        Value structValue = Native.ryuValueGetListElement(mapVal, index);
+        Value keyOrValue = new RyuList(structValue).getListElement(isKey ? 0 : 1);
         structValue.close();
         return keyOrValue;
     }
@@ -56,7 +56,7 @@ public class RyuMap implements AutoCloseable {
         if (mapVal == null) {
             return 0;
         }
-        return Native.kuzuValueGetListSize(mapVal);
+        return Native.ryuValueGetListSize(mapVal);
     }
 
     /**

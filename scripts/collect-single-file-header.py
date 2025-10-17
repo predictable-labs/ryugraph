@@ -19,7 +19,7 @@ MAIN_HEADER_PATH = HEADER_BASE_PATH / "main"
 START_POINT = MAIN_HEADER_PATH / "ryu.h"
 JSON_HEADER_PATH = (SCRIPT_DIR / "../third_party/nlohmann_json/json_fwd.hpp").resolve()
 ALP_HEADERS_PATH = (SCRIPT_DIR / "../third_party/alp/include").resolve()
-OUTPUT_PATH = "kuzu.hpp"
+OUTPUT_PATH = "ryu.hpp"
 
 logging.debug("HEADER_BASE_PATH: %s", HEADER_BASE_PATH)
 logging.debug("MAIN_HEADER_PATH: %s", MAIN_HEADER_PATH)

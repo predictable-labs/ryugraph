@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "rust/cxx.h"
-#ifdef KUZU_BUNDLED
+#ifdef RYU_BUNDLED
 #include "common/type_utils.h"
 #include "common/types/int128_t.h"
 #include "common/types/types.h"
@@ -16,7 +16,7 @@
 #include "main/ryu.h"
 #include "storage/storage_version_info.h"
 #else
-#include <kuzu.hpp>
+#include <ryu.hpp>
 #endif
 
 namespace ryu_rs {

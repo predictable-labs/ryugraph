@@ -404,13 +404,13 @@ static LogicalType pyLogicalType(const py::handle& val) {
             LogicalType resultKey, resultValue;
             if (!LogicalTypeUtils::tryGetMaxLogicalType(childKeyType, curChildKeyType, resultKey)) {
                 throw RuntimeException(stringFormat(
-                    "Cannot convert Python object to Kuzu value : {}  is incompatible with {}",
+                    "Cannot convert Python object to Ryu value : {}  is incompatible with {}",
                     childKeyType.toString(), curChildKeyType.toString()));
             }
             if (!LogicalTypeUtils::tryGetMaxLogicalType(childValueType, curChildValueType,
                     resultValue)) {
                 throw RuntimeException(stringFormat(
-                    "Cannot convert Python object to Kuzu value : {}  is incompatible with {}",
+                    "Cannot convert Python object to Ryu value : {}  is incompatible with {}",
                     childValueType.toString(), curChildValueType.toString()));
             }
             childKeyType = std::move(resultKey);
@@ -425,7 +425,7 @@ static LogicalType pyLogicalType(const py::handle& val) {
             LogicalType result;
             if (!LogicalTypeUtils::tryGetMaxLogicalType(childType, curChildType, result)) {
                 throw RuntimeException(stringFormat(
-                    "Cannot convert Python object to Kuzu value : {}  is incompatible with {}",
+                    "Cannot convert Python object to Ryu value : {}  is incompatible with {}",
                     childType.toString(), curChildType.toString()));
             }
             childType = std::move(result);
@@ -521,7 +521,7 @@ static LogicalType pyLogicalTypeFromParameter(const py::handle& val) {
             LogicalType result;
             if (!LogicalTypeUtils::tryGetMaxLogicalType(childType, curChildType, result)) {
                 throw RuntimeException(stringFormat(
-                    "Cannot convert Python object to Kuzu value : {}  is incompatible with {}",
+                    "Cannot convert Python object to Ryu value : {}  is incompatible with {}",
                     childType.toString(), curChildType.toString()));
             }
             childType = std::move(result);

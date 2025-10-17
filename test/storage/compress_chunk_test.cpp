@@ -27,7 +27,7 @@ public:
     }
 
     std::string getInputDir() override {
-        return TestHelper::appendKuzuRootPath("dataset/tinysnb/");
+        return TestHelper::appendRyuRootPath("dataset/tinysnb/");
     }
 
     template<std::floating_point T>

@@ -20,7 +20,7 @@ add_subdirectory(storage)
 add_subdirectory(transaction)
 add_subdirectory(extension)
 
-add_library(kuzu STATIC ${ALL_OBJECT_FILES})
+add_library(ryu STATIC ${ALL_OBJECT_FILES})
 add_library(ryu_shared SHARED ${ALL_OBJECT_FILES})
 
 set(RYU_LIBRARIES antlr4_cypher antlr4_runtime brotlidec brotlicommon fast_float utf8proc re2 fastpfor parquet snappy thrift yyjson zstd miniz mbedtls lz4 roaring_bitmap simsimd)
@@ -38,25 +38,25 @@ endif()
 if (ENABLE_BACKTRACES)
         set(RYU_LIBRARIES ${RYU_LIBRARIES} cpptrace::cpptrace)
 endif()
-target_link_libraries(kuzu PUBLIC ${RYU_LIBRARIES})
+target_link_libraries(ryu PUBLIC ${RYU_LIBRARIES})
 target_link_libraries(ryu_shared PUBLIC ${RYU_LIBRARIES})
 unset(RYU_LIBRARIES)
 
 set(RYU_INCLUDES $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}> ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/include/c_api)
-target_include_directories(kuzu PUBLIC ${RYU_INCLUDES})
+target_include_directories(ryu PUBLIC ${RYU_INCLUDES})
 target_include_directories(ryu_shared PUBLIC ${RYU_INCLUDES})
 unset(RYU_INCLUDES)
 
 if(WIN32)
         # Anything linking against the static library must not use dllimport.
-        target_compile_definitions(kuzu INTERFACE RYU_STATIC_DEFINE)
+        target_compile_definitions(ryu INTERFACE RYU_STATIC_DEFINE)
 endif()
 
 if(NOT WIN32)
-        set_target_properties(ryu_shared PROPERTIES OUTPUT_NAME kuzu)
+        set_target_properties(ryu_shared PROPERTIES OUTPUT_NAME ryu)
 endif()
 
-install(TARGETS kuzu ryu_shared)
+install(TARGETS ryu ryu_shared)
 
 if(${BUILD_SINGLE_FILE_HEADER})
         # Create a command to generate kuzu.hpp, and then create a target that is
@@ -64,16 +64,16 @@ if(${BUILD_SINGLE_FILE_HEADER})
         # exactly to build kuzu.hpp, while still building the target by default.
         find_package(Python3 3.9...4 REQUIRED)
         add_custom_command(
-                OUTPUT kuzu.hpp
+                OUTPUT ryu.hpp
                 COMMAND
                         ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/scripts/collect-single-file-header.py ${CMAKE_CURRENT_BINARY_DIR}/..
                 DEPENDS
                         ${PROJECT_SOURCE_DIR}/scripts/collect-single-file-header.py ryu_shared)
-        add_custom_target(single_file_header ALL DEPENDS kuzu.hpp)
+        add_custom_target(single_file_header ALL DEPENDS ryu.hpp)
 endif()
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/c_api/kuzu.h TYPE INCLUDE)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/c_api/ryu.h TYPE INCLUDE)
 
 if(${BUILD_SINGLE_FILE_HEADER})
-        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/kuzu.hpp  TYPE INCLUDE)
+        install(FILES ${CMAKE_CURRENT_BINARY_DIR}/ryu.hpp  TYPE INCLUDE)
 endif()

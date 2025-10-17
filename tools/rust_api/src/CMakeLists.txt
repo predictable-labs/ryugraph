@@ -1,6 +1,6 @@
 add_library(ryu_rs STATIC
     ${CMAKE_CURRENT_SOURCE_DIR}/ryu_rs.cpp
-    ${RYU_RS_BINDINGS_DIR}/sources/kuzu/src/lib.rs.cc
+    ${RYU_RS_BINDINGS_DIR}/sources/ryu/src/lib.rs.cc
 )
 
 target_include_directories(ryu_rs
@@ -11,4 +11,4 @@ target_include_directories(ryu_rs
         ${RYU_RS_BINDINGS_DIR}/sources
 )
 
-target_link_libraries(ryu_rs kuzu)
+target_link_libraries(ryu_rs ryu)
