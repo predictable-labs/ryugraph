@@ -3,10 +3,10 @@ name: CI Workflow
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
     inputs:
       auto_checkpoint:
@@ -84,9 +84,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y s3cmd
+          
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
 
       - name: Build
         run: make release
+        
 
       # Generate the binary db once to test that it can be read on all platforms.
       - name: Generate datasets
@@ -440,6 +444,9 @@ jobs:
       RYU_LOCAL_EXTENSIONS: ${{ github.workspace }}/extension
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
 
       - name: Rust API test
         run: |
@@ -1165,6 +1172,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Update PostgreSQL host
         working-directory: extension/postgres/test/test_files
         env:
@@ -1265,6 +1276,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Determine NUM_THREADS
         run: |
           export NUM_THREADS=$(($(sysctl -n hw.logicalcpu) * 2 / 3))
@@ -1356,6 +1370,10 @@ jobs:
       WERROR: 0
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install DuckDB
+        uses: ./.github/actions/install-duckdb
+
       - name: Install dependencies
         run: pip install rangehttpserver requests
 
