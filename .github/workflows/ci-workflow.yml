@@ -480,13 +480,11 @@ jobs:
       - name: Install DuckDB
         uses: ./.github/actions/install-duckdb
 
-      - name: Build RyuGraph
-        run: make release
+      - name: Build RyuGraph with extensions
+        run: make release EXTRA_CMAKE_FLAGS="-DBUILD_EXTENSIONS=\"httpfs;duckdb;json;postgres;sqlite;fts;delta;iceberg;azure;unity_catalog;vector;neo4j;algo;llm\""
 
       - name: Rust API test
-        run: |
-          make extension-release
-          make rusttest
+        run: make rusttest
 
       - name: Rust example build
         working-directory: examples/rust
