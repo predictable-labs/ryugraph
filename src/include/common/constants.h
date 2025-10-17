@@ -11,6 +11,8 @@ namespace ryu {
 namespace common {
 
 extern const char* KUZU_VERSION;
+// Alias for rebranding
+extern const char* RYU_VERSION;
 
 constexpr double DEFAULT_HT_LOAD_FACTOR = 1.5;
 
