@@ -75,7 +75,7 @@ Binder exception: The second argument of LIST_TRANSFORM should be a lambda expre
 [RYUtest,DUCKDBtest,NEO4Jtest]
 -STATEMENT RETURN LIST_TRANSFORM(['RYU', 'DUCKDB', 'NEO4J'], x-> size(x))
 ---- 1
-[4,6,5]
+[3,6,5]
 -STATEMENT RETURN LIST_TRANSFORM([], x->x+5)
 ---- 1
 []
@@ -107,7 +107,7 @@ Binder exception: The second argument of LIST_TRANSFORM should be a lambda expre
 [22,24,26,8,10,12,14,16]
 -STATEMENT RETURN LIST_TRANSFORM(['RYU', 'DUCKDB', 'NEO4J'], x-> size(x)+size(x))
 ---- 1
-[8,12,10]
+[6,12,10]
 -STATEMENT unwind range(1, 5000) as t with collect(t) as lst return list_filter(list_transform(lst, x->x+1), x->x<3);
 ---- 1
 [2]
