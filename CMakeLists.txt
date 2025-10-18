@@ -313,7 +313,7 @@ option(PREFER_SYSTEM_DEPS "Only download certain deps if not found on the system
 
 option(BUILD_LCOV "Build coverage report." FALSE)
 if(${BUILD_LCOV})
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage -fprofile-update=atomic")
 endif()
 
 if (ENABLE_BACKTRACES)
