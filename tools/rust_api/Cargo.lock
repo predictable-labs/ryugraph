@@ -523,23 +523,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ryugraph"
-version = "0.11.1"
-dependencies = [
- "anyhow",
- "arrow",
- "cmake",
- "cxx",
- "cxx-build",
- "rust_decimal",
- "rust_decimal_macros",
- "rustversion",
- "tempfile",
- "time",
- "uuid",
-]
-
-[[package]]
 name = "lexical-core"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -831,6 +814,23 @@ name = "ryu"
 version = "1.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
+
+[[package]]
+name = "ryu"
+version = "0.11.1"
+dependencies = [
+ "anyhow",
+ "arrow",
+ "cmake",
+ "cxx",
+ "cxx-build",
+ "rust_decimal",
+ "rust_decimal_macros",
+ "rustversion",
+ "tempfile",
+ "time",
+ "uuid",
+]
 
 [[package]]
 name = "scratch"
