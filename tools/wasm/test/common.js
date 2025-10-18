@@ -20,7 +20,7 @@ const initTests = async () => {
     });
   });
 
-  const dbPath = path.join(tmpPath, "db.kz");
+  const dbPath = path.join(tmpPath, "db.ryu");
   await ryu.init();
   const db = new ryu.Database(dbPath, 1 << 30 /* 1GB */);
   const conn = new ryu.Connection(db, 4);

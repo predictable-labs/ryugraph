@@ -2,7 +2,7 @@
 //!
 //! ## Example Usage
 //! ```
-//! use ryugraph::{Database, SystemConfig, Connection};
+//! use ryu::{Database, SystemConfig, Connection};
 //! # use anyhow::Error;
 //!
 //! # fn main() -> Result<(), Error> {

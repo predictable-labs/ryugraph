@@ -19,7 +19,7 @@ public class TestBase {
 
     @BeforeAll
     static void getDBandConn() throws IOException {
-        String dbPath = tempDir.resolve("db.kz").toString();
+        String dbPath = tempDir.resolve("db.ryu").toString();
         TestHelper.loadData(dbPath);
         db = TestHelper.getDatabase();
         conn = TestHelper.getConnection();
