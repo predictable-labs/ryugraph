@@ -486,6 +486,8 @@ jobs:
       - name: Rust API test
         env:
           RYU_LOCAL_EXTENSIONS: ${{ github.workspace }}/extension
+          LD_LIBRARY_PATH: /usr/local/lib:${{ env.LD_LIBRARY_PATH }}
+          LD_PRELOAD: /usr/local/lib/libduckdb.so
         run: make rusttest
 
       - name: Rust example build
