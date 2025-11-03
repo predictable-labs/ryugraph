@@ -14,7 +14,7 @@ except ImportError:
     from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 import ryugraph as ryu
-from ryu.constants import ID, LABEL
+from ryugraph.constants import ID, LABEL
 
 
 def validate_scan_pandas_results(results: ryu.QueryResult) -> None:
