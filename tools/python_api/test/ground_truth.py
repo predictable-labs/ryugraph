@@ -1,6 +1,6 @@
 from datetime import date, datetime, timedelta
 from uuid import UUID
-from ryu.constants import ID, LABEL
+from ryugraph.constants import ID, LABEL
 
 TINY_SNB_PERSONS_GROUND_TRUTH = {
     0: {

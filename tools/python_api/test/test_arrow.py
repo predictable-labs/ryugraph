@@ -9,13 +9,13 @@ from uuid import UUID
 import pytest
 
 import ground_truth
-import ryu
+import ryugraph as ryu
 import polars as pl
 import pyarrow as pa
 import pytz
 from pandas import Timestamp
 from type_aliases import ConnDB
-from ryu.constants import ID, LABEL, SRC, DST, NODES
+from ryugraph.constants import ID, LABEL, SRC, DST, NODES
 
 _expected_dtypes = {
     # ------------------------------------------------
