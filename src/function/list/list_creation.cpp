@@ -31,7 +31,24 @@ static std::unique_ptr<FunctionBindData> bindFunc(const ScalarBindFuncInput& inp
     LogicalType combinedType(LogicalTypeID::ANY);
     binder::ExpressionUtil::tryCombineDataType(input.arguments, combinedType);
     if (combinedType.getLogicalTypeID() == LogicalTypeID::ANY) {
-        combinedType = LogicalType::INT64();
+        // Check if we have any non-null, non-ANY types to determine if this is truly mixed
+        bool hasConcreteType = false;
+        std::unordered_set<LogicalTypeID> distinctTypes;
+        for (auto& arg : input.arguments) {
+            auto typeID = arg->getDataType().getLogicalTypeID();
+            if (typeID != LogicalTypeID::ANY) {
+                hasConcreteType = true;
+                distinctTypes.insert(typeID);
+            }
+        }
+
+        // If we have multiple distinct concrete types, it's a mixed-type list - use STRING
+        // Otherwise, fall back to INT64 (original behavior for NULL-only lists)
+        if (hasConcreteType && distinctTypes.size() > 1) {
+            combinedType = LogicalType::STRING();
+        } else {
+            combinedType = LogicalType::INT64();
+        }
     }
     auto resultType = LogicalType::LIST(combinedType.copy());
     auto bindData = std::make_unique<FunctionBindData>(std::move(resultType));

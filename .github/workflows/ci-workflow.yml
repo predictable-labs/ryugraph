@@ -1373,6 +1373,9 @@ jobs:
           ulimit -n 10240
           make example
 
+      - name: Install Apache Arrow for pyarrow
+        run: brew install apache-arrow
+
       - name: Ensure Python dependencies
         run: pip3 install --user -r tools/python_api/requirements_dev.txt
 
