@@ -122,10 +122,11 @@ jobs:
           python3 update-nightly-build-version.py
         working-directory: scripts
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: java-lib-osx-x86_64
-          path: tools/java_api/src/main/resources
+      # Temporarily disabled - Mac Intel build takes too long
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: java-lib-osx-x86_64
+      #     path: tools/java_api/src/main/resources
 
       - uses: actions/download-artifact@v4
         with:
