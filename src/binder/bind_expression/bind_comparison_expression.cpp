@@ -39,7 +39,7 @@ static bool isNodeOrRel(const Expression& expression) {
 std::shared_ptr<Expression> ExpressionBinder::bindComparisonExpression(
     ExpressionType expressionType, const expression_vector& children) {
     // Rewrite node or rel comparison
-    KU_ASSERT(children.size() == 2);
+    RYU_ASSERT(children.size() == 2);
     if (isNodeOrRel(*children[0]) && isNodeOrRel(*children[1])) {
         expression_vector newChildren;
         // For pattern expressions (NODE/REL), use getInternalID() directly

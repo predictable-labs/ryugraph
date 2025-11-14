@@ -166,7 +166,7 @@ public:
         storage::MemoryManager* mm);
 
     BaseBFSGraph* getCurrentGraph() const {
-        KU_ASSERT(curGraph);
+        RYU_ASSERT(curGraph);
         return curGraph;
     }
 

@@ -14,11 +14,11 @@ void Deserializer::deserializeValue(std::string& value) {
 void Deserializer::validateDebuggingInfo(std::string& value, const std::string& expectedVal) {
 #if defined(RYU_DESER_DEBUG) && (defined(RYU_RUNTIME_CHECKS) || !defined(NDEBUG))
     deserializeValue<std::string>(value);
-    KU_ASSERT(value == expectedVal);
+    RYU_ASSERT(value == expectedVal);
 #endif
     // DO NOTHING
-    KU_UNUSED(value);
-    KU_UNUSED(expectedVal);
+    RYU_UNUSED(value);
+    RYU_UNUSED(expectedVal);
 }
 
 } // namespace common

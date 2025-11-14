@@ -18,7 +18,7 @@ public:
             result.set("", 0);
             return;
         }
-        KU_ASSERT(characterToPad.len == 1);
+        RYU_ASSERT(characterToPad.len == 1);
         padOperation(result, src, characterToPad);
         common::StringVector::addString(&resultValueVector, result, (const char*)result.getData(),
             count);

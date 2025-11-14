@@ -97,12 +97,12 @@ std::unique_ptr<BoundStatement> Binder::bindImportDatabaseClause(const Statement
     if (!copyQuery.empty()) {
         auto parsedStatements = Parser::parseQuery(copyQuery);
         for (auto& parsedStatement : parsedStatements) {
-            KU_ASSERT(parsedStatement->getStatementType() == StatementType::COPY_FROM);
+            RYU_ASSERT(parsedStatement->getStatementType() == StatementType::COPY_FROM);
             auto& copyFromStatement = parsedStatement->constCast<CopyFrom>();
-            KU_ASSERT(copyFromStatement.getSource()->type == ScanSourceType::FILE);
+            RYU_ASSERT(copyFromStatement.getSource()->type == ScanSourceType::FILE);
             auto filePaths =
                 copyFromStatement.getSource()->constPtrCast<FileScanSource>()->filePaths;
-            KU_ASSERT(filePaths.size() == 1);
+            RYU_ASSERT(filePaths.size() == 1);
             auto fileTypeInfo = bindFileTypeInfo(filePaths);
             std::string query;
             auto copyFilePath = getCopyFilePath(boundFilePath, filePaths[0]);
@@ -110,7 +110,7 @@ std::unique_ptr<BoundStatement> Binder::bindImportDatabaseClause(const Statement
             auto parsingOptions = bindParsingOptions(copyFromStatement.getParsingOptions());
             std::unordered_map<std::string, std::string> copyFromOptions;
             if (parsingOptions.contains(CopyConstants::FROM_OPTION_NAME)) {
-                KU_ASSERT(parsingOptions.contains(CopyConstants::TO_OPTION_NAME));
+                RYU_ASSERT(parsingOptions.contains(CopyConstants::TO_OPTION_NAME));
                 copyFromOptions[CopyConstants::FROM_OPTION_NAME] = stringFormat("'{}'",
                     parsingOptions.at(CopyConstants::FROM_OPTION_NAME).getValue<std::string>());
                 copyFromOptions[CopyConstants::TO_OPTION_NAME] = stringFormat("'{}'",

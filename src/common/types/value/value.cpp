@@ -70,12 +70,12 @@ bool Value::operator==(const Value& rhs) const {
         return true;
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
 void Value::setDataType(const LogicalType& dataType_) {
-    KU_ASSERT(allowTypeChange());
+    RYU_ASSERT(allowTypeChange());
     dataType = dataType_.copy();
 }
 
@@ -197,7 +197,7 @@ Value Value::createDefaultValue(const LogicalType& dataType) {
         return createNullValue();
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -403,7 +403,7 @@ void Value::copyFromRowLayout(const uint8_t* value) {
             val.int128Val = (*(int128_t*)value);
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     case LogicalTypeID::INTERVAL: {
@@ -445,7 +445,7 @@ void Value::copyFromRowLayout(const uint8_t* value) {
         val.pointer = *((uint8_t**)value);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -507,7 +507,7 @@ void Value::copyFromColLayout(const uint8_t* value, ValueVector* vector) {
         val.uint128Val = *((uint128_t*)value);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -517,7 +517,7 @@ void Value::copyValueFrom(const Value& other) {
         return;
     }
     isNull_ = false;
-    KU_ASSERT(dataType == other.dataType);
+    RYU_ASSERT(dataType == other.dataType);
     switch (dataType.getPhysicalType()) {
     case PhysicalTypeID::BOOL: {
         val.booleanVal = other.val.booleanVal;
@@ -578,7 +578,7 @@ void Value::copyValueFrom(const Value& other) {
         val.pointer = other.val.pointer;
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -663,7 +663,7 @@ std::string Value::toString() const {
         return relToString();
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -837,11 +837,11 @@ void Value::serialize(Serializer& serializer) const {
     case PhysicalTypeID::ANY: {
         // We want to be able to ser/deser values that are meant to just be null
         if (!isNull_) {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -911,11 +911,11 @@ std::unique_ptr<Value> Value::deserialize(Deserializer& deserializer) {
     case PhysicalTypeID::ANY: {
         // We want to be able to ser/deser values that are meant to just be null
         if (!val->isNull_) {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     return val;
@@ -1050,7 +1050,7 @@ uint64_t Value::computeHash() const {
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     return hashValue;
@@ -1154,7 +1154,7 @@ std::string Value::decimalToString() const {
         return DecimalType::insertDecimalPoint(TypeUtils::toString(val.int128Val),
             DecimalType::getScale(dataType));
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

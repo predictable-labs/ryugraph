@@ -30,7 +30,7 @@ static void processDataEntry(offset_t curOffset, sel_t listEntryPos, common::Val
     evaluator::ListLambdaBindData& bindData) {
     common::ValueVector& inputDataVector = *ListVector::getDataVector(&inputVector);
     const auto listEntry = inputVector.getValue<list_entry_t>(listEntryPos);
-    KU_ASSERT(listEntry.size > 0);
+    RYU_ASSERT(listEntry.size > 0);
     offset_t offsetInList = curOffset - listEntry.offset;
     if (offsetInList == 0 && listEntry.size == 1) {
         // if list size is 1 the reduce result is equal to the single value
@@ -77,7 +77,7 @@ static void reduceSlice(evaluator::ListSliceInfo& sliceInfo, common::ValueVector
 static void execFunc(const std::vector<std::shared_ptr<common::ValueVector>>& input,
     const std::vector<common::SelectionVector*>& inputSelVectors, common::ValueVector& result,
     common::SelectionVector* resultSelVector, void* bindData) {
-    KU_ASSERT(input.size() == 2);
+    RYU_ASSERT(input.size() == 2);
     auto listLambdaBindData = reinterpret_cast<evaluator::ListLambdaBindData*>(bindData);
     const auto* inputVector = input[0].get();
     reduceSlice(*listLambdaBindData->sliceInfo, result, *inputVector, *input[1].get(),

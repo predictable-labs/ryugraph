@@ -43,15 +43,15 @@ LocalFileInfo::~LocalFileInfo() {
 static void validateFileFlags(uint8_t flags) {
     const bool isRead = flags & FileFlags::READ_ONLY;
     const bool isWrite = flags & FileFlags::WRITE;
-    KU_UNUSED(isRead);
-    KU_UNUSED(isWrite);
+    RYU_UNUSED(isRead);
+    RYU_UNUSED(isWrite);
     // Require either READ or WRITE (or both).
-    KU_ASSERT(isRead || isWrite);
+    RYU_ASSERT(isRead || isWrite);
     // CREATE flags require writing.
-    KU_ASSERT(isWrite || !(flags & FileFlags::CREATE_IF_NOT_EXISTS));
-    KU_ASSERT(isWrite || !(flags & FileFlags::CREATE_AND_TRUNCATE_IF_EXISTS));
+    RYU_ASSERT(isWrite || !(flags & FileFlags::CREATE_IF_NOT_EXISTS));
+    RYU_ASSERT(isWrite || !(flags & FileFlags::CREATE_AND_TRUNCATE_IF_EXISTS));
     // CREATE_IF_NOT_EXISTS and CREATE_AND_TRUNCATE_IF_EXISTS flags cannot be combined.
-    KU_ASSERT(!(flags & FileFlags::CREATE_IF_NOT_EXISTS &&
+    RYU_ASSERT(!(flags & FileFlags::CREATE_IF_NOT_EXISTS &&
                 flags & FileFlags::CREATE_AND_TRUNCATE_IF_EXISTS));
 }
 
@@ -76,7 +76,7 @@ std::unique_ptr<FileInfo> LocalFileSystem::openFile(const std::string& path, Fil
         // LCOV_EXCL_STOP
     }
     if (writeMode) {
-        KU_ASSERT(fileFlags & FileFlags::WRITE);
+        RYU_ASSERT(fileFlags & FileFlags::WRITE);
         if (fileFlags & FileFlags::CREATE_IF_NOT_EXISTS) {
             openFlags |= O_CREAT;
         } else if (fileFlags & FileFlags::CREATE_AND_TRUNCATE_IF_EXISTS) {
@@ -358,7 +358,7 @@ bool LocalFileSystem::isLocalPath(const std::string& path) {
 void LocalFileSystem::readFromFile(FileInfo& fileInfo, void* buffer, uint64_t numBytes,
     uint64_t position) const {
     auto localFileInfo = fileInfo.constPtrCast<LocalFileInfo>();
-    KU_ASSERT(localFileInfo->getFileSize() >= position + numBytes);
+    RYU_ASSERT(localFileInfo->getFileSize() >= position + numBytes);
 #if defined(_WIN32)
     DWORD numBytesRead;
     OVERLAPPED overlapped{0, 0, 0, 0};
@@ -543,7 +543,7 @@ uint64_t LocalFileSystem::getFileSize(const FileInfo& fileInfo) const {
         throw IOException(stringFormat("Cannot read size of file. path: {} - Error {}: {}",
             fileInfo.path, errno, posixErrMessage()));
     }
-    KU_ASSERT(s.st_size >= 0);
+    RYU_ASSERT(s.st_size >= 0);
     return s.st_size;
 #endif
 }

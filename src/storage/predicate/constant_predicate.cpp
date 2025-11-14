@@ -59,7 +59,7 @@ ZoneMapCheckResult checkZoneMapSwitch(const MergedColumnChunkStats& mergedStats,
             }
         } break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
     return ZoneMapCheckResult::ALWAYS_SCAN;

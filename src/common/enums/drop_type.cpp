@@ -12,7 +12,7 @@ std::string DropTypeUtils::toString(DropType type) {
     case DropType::SEQUENCE:
         return "Sequence";
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

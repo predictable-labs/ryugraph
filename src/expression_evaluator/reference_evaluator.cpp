@@ -7,7 +7,7 @@ namespace ryu {
 namespace evaluator {
 
 inline static bool isTrue(ValueVector& vector, uint64_t pos) {
-    KU_ASSERT(vector.dataType.getLogicalTypeID() == LogicalTypeID::BOOL);
+    RYU_ASSERT(vector.dataType.getLogicalTypeID() == LogicalTypeID::BOOL);
     return !vector.isNull(pos) && vector.getValue<bool>(pos);
 }
 

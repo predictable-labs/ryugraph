@@ -32,7 +32,7 @@ std::string CatalogEntryTypeUtils::toString(CatalogEntryType type) {
     case CatalogEntryType::SEQUENCE_ENTRY:
         return "SEQUENCE_ENTRY";
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -53,7 +53,7 @@ std::string FunctionEntryTypeUtils::toString(CatalogEntryType type) {
     case CatalogEntryType::COPY_FUNCTION_ENTRY:
         return "COPY FUNCTION";
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

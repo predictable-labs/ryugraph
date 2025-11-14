@@ -131,7 +131,7 @@ BoundCreateTableInfo Binder::bindCreateTableInfo(const CreateTableInfo* info) {
         return bindCreateRelTableGroupInfo(info);
     }
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -287,7 +287,7 @@ std::unique_ptr<BoundStatement> Binder::bindCreateTableAs(const Statement& state
         return boundCreateTable;
     }
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -394,7 +394,7 @@ std::unique_ptr<BoundStatement> Binder::bindAlter(const Statement& statement) {
         return bindAlterFromToConnection(statement);
     }
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }

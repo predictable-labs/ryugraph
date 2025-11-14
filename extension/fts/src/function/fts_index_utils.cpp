@@ -30,7 +30,7 @@ void FTSIndexUtils::validateIndexExistence(const main::ClientContext& context,
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }

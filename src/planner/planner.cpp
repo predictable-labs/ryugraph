@@ -121,7 +121,7 @@ LogicalPlan Planner::planStatement(const BoundStatement& statement) {
         return planExtensionClause(statement);
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

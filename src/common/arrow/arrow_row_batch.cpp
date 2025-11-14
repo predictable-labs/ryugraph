@@ -77,7 +77,7 @@ static uint64_t getArrowMainBufferSize(const LogicalType& type, uint64_t capacit
     case LogicalTypeID::REL:
         return 0; // no main buffer
     default:
-        KU_UNREACHABLE; // should enumerate all types.
+        RYU_UNREACHABLE; // should enumerate all types.
     }
 }
 
@@ -407,7 +407,7 @@ void ArrowRowBatch::templateCopyNonNullValue<LogicalTypeID::UNION>(ArrowVector* 
                 fallbackExtensionTypes);
         }
     }
-    KU_UNREACHABLE; // We should always be able to find a matching type
+    RYU_UNREACHABLE; // We should always be able to find a matching type
 }
 
 template<>
@@ -554,7 +554,7 @@ void ArrowRowBatch::copyNonNullValue(ArrowVector* vector, const Value& value, st
         templateCopyNonNullValue<LogicalTypeID::REL>(vector, value, pos, fallbackExtensionTypes);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -713,7 +713,7 @@ void ArrowRowBatch::copyNullValue(ArrowVector* vector, const Value& value, std::
         templateCopyNullValue<LogicalTypeID::REL>(vector, pos);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -984,7 +984,7 @@ ArrowArray* ArrowRowBatch::convertVectorToArray(ArrowVector& vector, const Logic
         return templateCreateArray<LogicalTypeID::REL>(vector, type, fallbackExtensionTypes);
     }
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }

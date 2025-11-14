@@ -164,7 +164,7 @@ void OverflowFileHandle::reclaimStorage(PageAllocator& pageAllocator) {
 
         // reclaimStorage() is only called after the hash index is checkpointed
         // so the page write cache should always be cleared
-        KU_ASSERT(!pageWriteCache.contains(pageIdx));
+        RYU_ASSERT(!pageWriteCache.contains(pageIdx));
         overflowFile.readFromDisk(TransactionType::CHECKPOINT, pageIdx, [&pageIdx](auto* frame) {
             pageIdx = *reinterpret_cast<page_idx_t*>(frame + END_OF_PAGE);
         });
@@ -184,7 +184,7 @@ OverflowFile::OverflowFile(FileHandle* fileHandle, MemoryManager& memoryManager,
     ShadowFile* shadowFile, page_idx_t headerPageIdx)
     : fileHandle{fileHandle}, shadowFile{shadowFile}, memoryManager{memoryManager},
       headerChanged{false}, headerPageIdx{headerPageIdx} {
-    KU_ASSERT(shadowFile);
+    RYU_ASSERT(shadowFile);
     if (headerPageIdx != INVALID_PAGE_IDX) {
         readFromDisk(TransactionType::READ_ONLY, headerPageIdx,
             [&](auto* frame) { memcpy(&header, frame, sizeof(header)); });
@@ -213,7 +213,7 @@ common::page_idx_t OverflowFile::getNewPageIdx(PageAllocator* pageAllocator) {
 
 void OverflowFile::readFromDisk(TransactionType trxType, page_idx_t pageIdx,
     const std::function<void(uint8_t*)>& func) const {
-    KU_ASSERT(shadowFile);
+    RYU_ASSERT(shadowFile);
     auto [fileHandleToPin, pageIdxToPin] = ShadowUtils::getFileHandleAndPhysicalPageIdxToPin(
         *fileHandle, pageIdx, *shadowFile, trxType);
     fileHandleToPin->optimisticReadPage(pageIdxToPin, func);
@@ -221,18 +221,18 @@ void OverflowFile::readFromDisk(TransactionType trxType, page_idx_t pageIdx,
 
 void OverflowFile::writePageToDisk(page_idx_t pageIdx, uint8_t* data, bool newPage) const {
     if (newPage) {
-        KU_ASSERT(fileHandle);
-        KU_ASSERT(!fileHandle->isInMemoryMode());
+        RYU_ASSERT(fileHandle);
+        RYU_ASSERT(!fileHandle->isInMemoryMode());
         fileHandle->writePageToFile(data, pageIdx);
     } else {
-        KU_ASSERT(shadowFile);
+        RYU_ASSERT(shadowFile);
         ShadowUtils::updatePage(*fileHandle, pageIdx, true /* overwriting entire page*/,
             *shadowFile, [&](auto* frame) { memcpy(frame, data, RYU_PAGE_SIZE); });
     }
 }
 
 void OverflowFile::checkpoint(PageAllocator& pageAllocator) {
-    KU_ASSERT(fileHandle);
+    RYU_ASSERT(fileHandle);
     if (headerPageIdx == INVALID_PAGE_IDX) {
         // Reserve a page for the header
         this->headerPageIdx = getNewPageIdx(&pageAllocator);
@@ -258,7 +258,7 @@ void OverflowFile::checkpointInMemory() {
 }
 
 void OverflowFile::rollbackInMemory() {
-    KU_ASSERT(getFileHandle()->getNumPages() <= INVALID_PAGE_IDX);
+    RYU_ASSERT(getFileHandle()->getNumPages() <= INVALID_PAGE_IDX);
     if (getFileHandle()->getNumPages() > headerPageIdx) {
         readFromDisk(TransactionType::READ_ONLY, headerPageIdx,
             [&](auto* frame) { memcpy(&header, frame, sizeof(header)); });

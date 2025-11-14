@@ -361,7 +361,7 @@ std::string TestRunner::convertResultColumnsToString(const QueryResult& queryRes
 std::unique_ptr<planner::LogicalPlan> TestRunner::getLogicalPlan(const std::string& query,
     Connection& conn) {
     const auto preparedStatement = conn.prepare(query);
-    KU_ASSERT(preparedStatement->isSuccess());
+    RYU_ASSERT(preparedStatement->isSuccess());
     auto cachedStatement =
         conn.getClientContext()->getCachedPreparedStatementManager().getCachedStatement(
             preparedStatement->getName());

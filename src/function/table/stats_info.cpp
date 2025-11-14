@@ -44,7 +44,7 @@ static offset_t internalTableFunc(const TableFuncMorsel& /*morsel*/, const Table
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     return 1;

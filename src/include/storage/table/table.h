@@ -64,12 +64,12 @@ struct RYU_API TableScanState {
     // Note that `resetCachedBoundNodeSelVec` is only applicable to RelTable for now.
     virtual void initState(transaction::Transaction* transaction, NodeGroup* nodeGroup,
         bool /*resetCachedBoundNodeSelVev*/ = true) {
-        KU_ASSERT(nodeGroup);
+        RYU_ASSERT(nodeGroup);
         this->nodeGroup = nodeGroup;
         this->nodeGroup->initializeScanState(transaction, *this);
     }
 
-    virtual bool scanNext(transaction::Transaction*) { KU_UNREACHABLE; }
+    virtual bool scanNext(transaction::Transaction*) { RYU_UNREACHABLE; }
 
     void resetOutVectors();
 

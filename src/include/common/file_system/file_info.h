@@ -36,7 +36,7 @@ struct RYU_API FileInfo {
 
     bool canPerformSeek() const;
 
-    virtual function::TableFunction getHandleFunction() const { KU_UNREACHABLE; }
+    virtual function::TableFunction getHandleFunction() const { RYU_UNREACHABLE; }
 
     template<class TARGET>
     TARGET* ptrCast() {

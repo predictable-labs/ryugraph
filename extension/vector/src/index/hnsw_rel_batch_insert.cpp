@@ -42,8 +42,8 @@ struct HNSWRelBatchInsertExecutionState : processor::RelBatchInsertExecutionStat
             startNodeOffset + common::StorageConfig::NODE_GROUP_SIZE);
         startNodeInGraph = selectionMap.nodeToGraphOffset(startNodeOffset, false);
         endNodeInGraph = selectionMap.nodeToGraphOffset(endNodeOffset, false);
-        KU_ASSERT(startNodeInGraph <= endNodeInGraph);
-        KU_ASSERT(endNodeInGraph <= selectionMap.numNodesInTable);
+        RYU_ASSERT(startNodeInGraph <= endNodeInGraph);
+        RYU_ASSERT(endNodeInGraph <= selectionMap.numNodesInTable);
     }
     common::offset_t startNodeOffset;
     common::offset_t startNodeInGraph;
@@ -70,7 +70,7 @@ std::unique_ptr<processor::RelBatchInsertExecutionState> HNSWRelBatchInsert::ini
 void HNSWRelBatchInsert::populateCSRLengths(processor::RelBatchInsertExecutionState& executionState,
     storage::InMemChunkedCSRHeader& csrHeader, common::offset_t numNodes,
     const processor::RelBatchInsertInfo&) {
-    KU_ASSERT(numNodes == csrHeader.length->getNumValues() &&
+    RYU_ASSERT(numNodes == csrHeader.length->getNumValues() &&
               numNodes == csrHeader.offset->getNumValues());
     const auto& hnswExecutionState = executionState.constCast<HNSWRelBatchInsertExecutionState>();
     const auto& graph = hnswExecutionState.graph;
@@ -81,7 +81,7 @@ void HNSWRelBatchInsert::populateCSRLengths(processor::RelBatchInsertExecutionSt
     for (common::offset_t graphOffset = startNodeInGraph; graphOffset < endNodeInGraph;
          ++graphOffset) {
         const auto nodeOffsetInGroup = hnswExecutionState.getBoundNodeOffsetInGroup(graphOffset);
-        KU_ASSERT(nodeOffsetInGroup < numNodes);
+        RYU_ASSERT(nodeOffsetInGroup < numNodes);
         lengthData[nodeOffsetInGroup] = graph.getCSRLength(graphOffset);
     }
 }
@@ -136,7 +136,7 @@ void HNSWRelBatchInsert::writeToTable(processor::RelBatchInsertExecutionState& e
         }
     }
 
-    KU_ASSERT(relIDChunk.getNumValues() == neighbourChunk.getNumValues());
+    RYU_ASSERT(relIDChunk.getNumValues() == neighbourChunk.getNumValues());
     localState.chunkedGroup->setNumRows(neighbourChunk.getNumValues());
 }
 } // namespace vector_extension

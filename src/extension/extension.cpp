@@ -68,7 +68,7 @@ std::string ExtensionSourceUtils::toString(ExtensionSource source) {
     case ExtensionSource::STATIC_LINKED:
         return "STATIC LINK";
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -139,7 +139,7 @@ std::string ExtensionUtils::appendLibSuffix(const std::string& libName) {
     } else if (os == "osx") {
         suffix = "dylib";
     } else {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return common::stringFormat("{}.{}", libName, suffix);
 }
@@ -194,13 +194,13 @@ ext_install_func_t ExtensionLibLoader::getInstallFunc() {
 }
 
 void ExtensionLibLoader::unload() {
-    KU_ASSERT(libHdl != nullptr);
+    RYU_ASSERT(libHdl != nullptr);
     dlclose(libHdl);
     libHdl = nullptr;
 }
 
 void* ExtensionLibLoader::getDynamicLibFunc(const std::string& funcName) {
-    KU_ASSERT(libHdl != nullptr);
+    RYU_ASSERT(libHdl != nullptr);
     auto sym = dlsym(libHdl, funcName.c_str());
     if (sym == nullptr) {
         throw common::IOException(
@@ -227,18 +227,18 @@ std::wstring utf8ToUnicode(const char* input) {
 }
 
 void* dlopen(const char* file, int /*mode*/) {
-    KU_ASSERT(file);
+    RYU_ASSERT(file);
     auto fpath = utf8ToUnicode(file);
     return (void*)LoadLibraryW(fpath.c_str());
 }
 
 void* dlsym(void* handle, const char* name) {
-    KU_ASSERT(handle);
+    RYU_ASSERT(handle);
     return (void*)GetProcAddress((HINSTANCE)handle, name);
 }
 
 void dlclose(void* handle) {
-    KU_ASSERT(handle);
+    RYU_ASSERT(handle);
     FreeLibrary((HINSTANCE)handle);
 }
 #endif

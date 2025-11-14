@@ -42,7 +42,7 @@ bool Transaction::getNextTuplesInternal(ExecutionContext* context) {
         TransactionManager::Get(*clientContext)->checkpoint(*clientContext);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     return true;
@@ -73,7 +73,7 @@ void Transaction::validateActiveTransaction(const TransactionContext& context) c
         }
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }

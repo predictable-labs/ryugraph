@@ -10,9 +10,9 @@ namespace ryu {
 namespace function {
 
 static std::shared_ptr<Expression> rewriteFunc(const RewriteFunctionBindInput& input) {
-    KU_ASSERT(input.arguments.size() == 1);
+    RYU_ASSERT(input.arguments.size() == 1);
     auto param = input.arguments[0].get();
-    KU_ASSERT(param->getDataType().getLogicalTypeID() == LogicalTypeID::RECURSIVE_REL);
+    RYU_ASSERT(param->getDataType().getLogicalTypeID() == LogicalTypeID::RECURSIVE_REL);
     auto recursiveInfo = param->ptrCast<RelExpression>()->getRecursiveInfo();
     if (recursiveInfo->bindData->weightOutputExpr == nullptr) {
         throw BinderException(

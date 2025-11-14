@@ -175,7 +175,7 @@ ColumnChunkData::flush_buffer_func_t ColumnChunkData::initializeFlushBufferFunct
 }
 
 void ColumnChunkData::resetToAllNull() {
-    KU_ASSERT(residencyState != ResidencyState::ON_DISK);
+    RYU_ASSERT(residencyState != ResidencyState::ON_DISK);
     if (nullData) {
         nullData->resetToAllNull();
     }
@@ -183,11 +183,11 @@ void ColumnChunkData::resetToAllNull() {
 }
 
 void ColumnChunkData::resetToEmpty() {
-    KU_ASSERT(residencyState != ResidencyState::ON_DISK);
+    RYU_ASSERT(residencyState != ResidencyState::ON_DISK);
     if (nullData) {
         nullData->resetToEmpty();
     }
-    KU_ASSERT(getBufferSize() == getBufferSize(capacity));
+    RYU_ASSERT(getBufferSize() == getBufferSize(capacity));
     memset(getData<uint8_t>(), 0x00, getBufferSize());
     numValues = 0;
     resetInMemoryStats();
@@ -272,7 +272,7 @@ void ColumnChunkData::resetInMemoryStats() {
 }
 
 ColumnChunkMetadata ColumnChunkData::getMetadataToFlush() const {
-    KU_ASSERT(numValues <= capacity);
+    RYU_ASSERT(numValues <= capacity);
     StorageValue minValue = {}, maxValue = {};
     if (capacity > 0) {
         std::optional<NullMask> nullMask;
@@ -285,12 +285,12 @@ ColumnChunkMetadata ColumnChunkData::getMetadataToFlush() const {
         minValue = min.value_or(StorageValue());
         maxValue = max.value_or(StorageValue());
     }
-    KU_ASSERT(getBufferSize() == getBufferSize(capacity));
+    RYU_ASSERT(getBufferSize() == getBufferSize(capacity));
     return getMetadataFunction(buffer->getBuffer(), numValues, minValue, maxValue);
 }
 
 void ColumnChunkData::append(ValueVector* vector, const SelectionView& selView) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == dataType.getPhysicalType());
+    RYU_ASSERT(vector->dataType.getPhysicalType() == dataType.getPhysicalType());
     copyVectorToBuffer(vector, numValues, selView);
     numValues += selView.getSelSize();
     updateStats(vector, selView);
@@ -298,12 +298,12 @@ void ColumnChunkData::append(ValueVector* vector, const SelectionView& selView) 
 
 void ColumnChunkData::append(const ColumnChunkData* other, offset_t startPosInOtherChunk,
     uint32_t numValuesToAppend) {
-    KU_ASSERT(other->dataType.getPhysicalType() == dataType.getPhysicalType());
+    RYU_ASSERT(other->dataType.getPhysicalType() == dataType.getPhysicalType());
     if (nullData) {
-        KU_ASSERT(nullData->getNumValues() == getNumValues());
+        RYU_ASSERT(nullData->getNumValues() == getNumValues());
         nullData->append(other->nullData.get(), startPosInOtherChunk, numValuesToAppend);
     }
-    KU_ASSERT(numValues + numValuesToAppend <= capacity);
+    RYU_ASSERT(numValues + numValuesToAppend <= capacity);
     memcpy(getData<uint8_t>() + numValues * numBytesPerValue,
         other->getData<uint8_t>() + startPosInOtherChunk * numBytesPerValue,
         numValuesToAppend * numBytesPerValue);
@@ -336,11 +336,11 @@ ColumnChunkMetadata ColumnChunkData::flushBuffer(PageAllocator& pageAllocator,
     const PageRange& entry, const ColumnChunkMetadata& otherMetadata) const {
     const auto bufferSizeToFlush = getBufferSize(numValues);
     if (!otherMetadata.compMeta.isConstant() && bufferSizeToFlush != 0) {
-        KU_ASSERT(bufferSizeToFlush <= buffer->getBuffer().size_bytes());
+        RYU_ASSERT(bufferSizeToFlush <= buffer->getBuffer().size_bytes());
         const auto bufferToFlush = buffer->getBuffer().subspan(0, bufferSizeToFlush);
         return flushBufferFunction(bufferToFlush, pageAllocator.getDataFH(), entry, otherMetadata);
     }
-    KU_ASSERT(otherMetadata.getNumPages() == 0);
+    RYU_ASSERT(otherMetadata.getNumPages() == 0);
     return otherMetadata;
 }
 
@@ -359,7 +359,7 @@ uint64_t ColumnChunkData::getBufferSize(uint64_t capacity_) const {
 
 void ColumnChunkData::initializeScanState(SegmentState& state, const Column* column) const {
     if (nullData) {
-        KU_ASSERT(state.nullState);
+        RYU_ASSERT(state.nullState);
         nullData->initializeScanState(*state.nullState, column->getNullColumn());
     }
     state.column = column;
@@ -373,7 +373,7 @@ void ColumnChunkData::initializeScanState(SegmentState& state, const Column* col
 
 void ColumnChunkData::scan(ValueVector& output, offset_t offset, length_t length,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offset + length <= numValues);
+    RYU_ASSERT(offset + length <= numValues);
     if (nullData) {
         nullData->scan(output, offset, length, posInOutputVector);
     }
@@ -383,7 +383,7 @@ void ColumnChunkData::scan(ValueVector& output, offset_t offset, length_t length
 
 void ColumnChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offsetInChunk < capacity);
+    RYU_ASSERT(offsetInChunk < capacity);
     output.setNull(posInOutputVector, isNull(offsetInChunk));
     if (!output.isNull(posInOutputVector)) {
         memcpy(output.getData() + posInOutputVector * numBytesPerValue,
@@ -393,12 +393,12 @@ void ColumnChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
 
 void ColumnChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets,
     RelMultiplicity multiplicity) {
-    KU_ASSERT(chunk->dataType.getPhysicalType() == dataType.getPhysicalType() &&
+    RYU_ASSERT(chunk->dataType.getPhysicalType() == dataType.getPhysicalType() &&
               dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
               chunk->getNumValues() == dstOffsets->getNumValues());
     for (auto i = 0u; i < dstOffsets->getNumValues(); i++) {
         const auto dstOffset = dstOffsets->getValue<offset_t>(i);
-        KU_ASSERT(dstOffset < capacity);
+        RYU_ASSERT(dstOffset < capacity);
         memcpy(getData() + dstOffset * numBytesPerValue, chunk->getData() + i * numBytesPerValue,
             numBytesPerValue);
         numValues = dstOffset >= numValues ? dstOffset + 1 : numValues;
@@ -427,7 +427,7 @@ void ColumnChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets,
 // later. Thus, an assertion is added at the first line.
 void ColumnChunkData::write(const ValueVector* vector, offset_t offsetInVector,
     offset_t offsetInChunk) {
-    KU_ASSERT(dataType.getPhysicalType() != PhysicalTypeID::BOOL &&
+    RYU_ASSERT(dataType.getPhysicalType() != PhysicalTypeID::BOOL &&
               dataType.getPhysicalType() != PhysicalTypeID::LIST &&
               dataType.getPhysicalType() != PhysicalTypeID::ARRAY);
     if (nullData) {
@@ -446,7 +446,7 @@ void ColumnChunkData::write(const ValueVector* vector, offset_t offsetInVector,
 
 void ColumnChunkData::write(const ColumnChunkData* srcChunk, offset_t srcOffsetInChunk,
     offset_t dstOffsetInChunk, offset_t numValuesToCopy) {
-    KU_ASSERT(srcChunk->dataType.getPhysicalType() == dataType.getPhysicalType());
+    RYU_ASSERT(srcChunk->dataType.getPhysicalType() == dataType.getPhysicalType());
     if ((dstOffsetInChunk + numValuesToCopy) >= numValues) {
         numValues = dstOffsetInChunk + numValuesToCopy;
     }
@@ -454,7 +454,7 @@ void ColumnChunkData::write(const ColumnChunkData* srcChunk, offset_t srcOffsetI
         srcChunk->getData() + srcOffsetInChunk * numBytesPerValue,
         numValuesToCopy * numBytesPerValue);
     if (nullData) {
-        KU_ASSERT(srcChunk->getNullData());
+        RYU_ASSERT(srcChunk->getNullData());
         nullData->write(srcChunk->getNullData(), srcOffsetInChunk, dstOffsetInChunk,
             numValuesToCopy);
     }
@@ -462,18 +462,18 @@ void ColumnChunkData::write(const ColumnChunkData* srcChunk, offset_t srcOffsetI
 }
 
 void ColumnChunkData::resetNumValuesFromMetadata() {
-    KU_ASSERT(residencyState == ResidencyState::ON_DISK);
+    RYU_ASSERT(residencyState == ResidencyState::ON_DISK);
     numValues = metadata.numValues;
     if (nullData) {
         nullData->resetNumValuesFromMetadata();
         // FIXME(bmwinger): not always working
-        // KU_ASSERT(numValues == nullData->numValues);
+        // RYU_ASSERT(numValues == nullData->numValues);
     }
 }
 
 void ColumnChunkData::setToInMemory() {
-    KU_ASSERT(residencyState == ResidencyState::ON_DISK);
-    KU_ASSERT(capacity == 0 && getBufferSize() == 0);
+    RYU_ASSERT(residencyState == ResidencyState::ON_DISK);
+    RYU_ASSERT(capacity == 0 && getBufferSize() == 0);
     residencyState = ResidencyState::IN_MEMORY;
     numValues = 0;
     if (nullData) {
@@ -522,7 +522,7 @@ void ColumnChunkData::populateWithDefaultVal(ExpressionEvaluator& defaultEvaluat
             std::min(DEFAULT_VECTOR_CAPACITY, numValuesToPopulate - numValuesAppended);
         defaultEvaluator.evaluate(numValuesToAppend);
         auto resultVector = defaultEvaluator.resultVector.get();
-        KU_ASSERT(resultVector->state->getSelVector().getSelSize() == numValuesToAppend);
+        RYU_ASSERT(resultVector->state->getSelVector().getSelSize() == numValuesToAppend);
         append(resultVector, resultVector->state->getSelVector());
         if (newColumnStats) {
             newColumnStats->update(resultVector);
@@ -534,7 +534,7 @@ void ColumnChunkData::populateWithDefaultVal(ExpressionEvaluator& defaultEvaluat
 void ColumnChunkData::copyVectorToBuffer(ValueVector* vector, offset_t startPosInChunk,
     const SelectionView& selView) {
     auto bufferToWrite = buffer->getBuffer().data() + startPosInChunk * numBytesPerValue;
-    KU_ASSERT(startPosInChunk + selView.getSelSize() <= capacity);
+    RYU_ASSERT(startPosInChunk + selView.getSelSize() <= capacity);
     const auto vectorDataToWriteFrom = vector->getData();
     if (nullData) {
         nullData->appendNulls(vector, selView, startPosInChunk);
@@ -550,7 +550,7 @@ void ColumnChunkData::copyVectorToBuffer(ValueVector* vector, offset_t startPosI
 }
 
 void ColumnChunkData::setNumValues(uint64_t numValues_) {
-    KU_ASSERT(numValues_ <= capacity);
+    RYU_ASSERT(numValues_ <= capacity);
     numValues = numValues_;
     if (nullData) {
         nullData->setNumValues(numValues_);
@@ -576,7 +576,7 @@ uint64_t ColumnChunkData::getEstimatedMemoryUsage() const {
 }
 
 void ColumnChunkData::serialize(Serializer& serializer) const {
-    KU_ASSERT(residencyState == ResidencyState::ON_DISK);
+    RYU_ASSERT(residencyState == ResidencyState::ON_DISK);
     serializer.writeDebuggingInfo("data_type");
     dataType.serialize(serializer);
     serializer.writeDebuggingInfo("metadata");
@@ -633,7 +633,7 @@ std::unique_ptr<ColumnChunkData> ColumnChunkData::deserialize(MemoryManager& mem
 }
 
 void BoolChunkData::append(ValueVector* vector, const SelectionView& selView) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::BOOL);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::BOOL);
     for (auto i = 0u; i < selView.getSelSize(); i++) {
         const auto pos = selView[i];
         NullMask::setNull(getData<uint64_t>(), numValues + i, vector->getValue<bool>(pos));
@@ -658,7 +658,7 @@ void BoolChunkData::append(const ColumnChunkData* other, offset_t startPosInOthe
 
 void BoolChunkData::scan(ValueVector& output, offset_t offset, length_t length,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offset + length <= numValues);
+    RYU_ASSERT(offset + length <= numValues);
     if (nullData) {
         nullData->scan(output, offset, length, posInOutputVector);
     }
@@ -670,7 +670,7 @@ void BoolChunkData::scan(ValueVector& output, offset_t offset, length_t length,
 
 void BoolChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offsetInChunk < capacity);
+    RYU_ASSERT(offsetInChunk < capacity);
     output.setNull(posInOutputVector, nullData->isNull(offsetInChunk));
     if (!output.isNull(posInOutputVector)) {
         output.setValue<bool>(posInOutputVector,
@@ -679,12 +679,12 @@ void BoolChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
 }
 
 void BoolChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets, RelMultiplicity) {
-    KU_ASSERT(chunk->getDataType().getPhysicalType() == PhysicalTypeID::BOOL &&
+    RYU_ASSERT(chunk->getDataType().getPhysicalType() == PhysicalTypeID::BOOL &&
               dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
               chunk->getNumValues() == dstOffsets->getNumValues());
     for (auto i = 0u; i < dstOffsets->getNumValues(); i++) {
         const auto dstOffset = dstOffsets->getValue<offset_t>(i);
-        KU_ASSERT(dstOffset < capacity);
+        RYU_ASSERT(dstOffset < capacity);
         NullMask::setNull(getData<uint64_t>(), dstOffset, chunk->getValue<bool>(i));
         if (nullData) {
             nullData->setNull(dstOffset, chunk->getNullData()->isNull(i));
@@ -696,8 +696,8 @@ void BoolChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets, R
 
 void BoolChunkData::write(const ValueVector* vector, offset_t offsetInVector,
     offset_t offsetInChunk) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::BOOL);
-    KU_ASSERT(offsetInChunk < capacity);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::BOOL);
+    RYU_ASSERT(offsetInChunk < capacity);
     const auto valueToSet = vector->getValue<bool>(offsetInVector);
     setValue(valueToSet, offsetInChunk);
     if (nullData) {
@@ -746,7 +746,7 @@ void NullChunkData::write(const ColumnChunkData* srcChunk, offset_t srcOffsetInC
     if (numValuesToCopy == 0) {
         return;
     }
-    KU_ASSERT(srcChunk->getBufferSize() >= sizeof(uint64_t));
+    RYU_ASSERT(srcChunk->getBufferSize() >= sizeof(uint64_t));
     copyFromBuffer(srcChunk->getData<uint64_t>(), srcOffsetInChunk, dstOffsetInChunk,
         numValuesToCopy);
 }
@@ -765,7 +765,7 @@ bool NullChunkData::haveAllNullsGuaranteed() const {
 }
 
 void NullChunkData::serialize(Serializer& serializer) const {
-    KU_ASSERT(residencyState == ResidencyState::ON_DISK);
+    RYU_ASSERT(residencyState == ResidencyState::ON_DISK);
     serializer.writeDebuggingInfo("null_chunk_metadata");
     metadata.serialize(serializer);
 }
@@ -806,7 +806,7 @@ void InternalIDChunkData::append(ValueVector* vector, const SelectionView& selVi
         copyInt64VectorToBuffer(vector, numValues, selView);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     numValues += selView.getSelSize();
@@ -814,7 +814,7 @@ void InternalIDChunkData::append(ValueVector* vector, const SelectionView& selVi
 
 void InternalIDChunkData::copyVectorToBuffer(ValueVector* vector, offset_t startPosInChunk,
     const SelectionView& selView) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INTERNAL_ID);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INTERNAL_ID);
     const auto relIDsInVector = reinterpret_cast<internalID_t*>(vector->getData());
     if (commonTableID == INVALID_TABLE_ID) {
         commonTableID = relIDsInVector[selView[0]].tableID;
@@ -824,7 +824,7 @@ void InternalIDChunkData::copyVectorToBuffer(ValueVector* vector, offset_t start
         if (vector->isNull(pos)) {
             continue;
         }
-        KU_ASSERT(relIDsInVector[pos].tableID == commonTableID);
+        RYU_ASSERT(relIDsInVector[pos].tableID == commonTableID);
         memcpy(getData() + (startPosInChunk + i) * numBytesPerValue, &relIDsInVector[pos].offset,
             numBytesPerValue);
     }
@@ -832,7 +832,7 @@ void InternalIDChunkData::copyVectorToBuffer(ValueVector* vector, offset_t start
 
 void InternalIDChunkData::copyInt64VectorToBuffer(ValueVector* vector, offset_t startPosInChunk,
     const SelectionView& selView) const {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INT64);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INT64);
     for (auto i = 0u; i < selView.getSelSize(); i++) {
         const auto pos = selView[i];
         if (vector->isNull(pos)) {
@@ -845,8 +845,8 @@ void InternalIDChunkData::copyInt64VectorToBuffer(ValueVector* vector, offset_t 
 
 void InternalIDChunkData::scan(ValueVector& output, offset_t offset, length_t length,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offset + length <= numValues);
-    KU_ASSERT(commonTableID != INVALID_TABLE_ID);
+    RYU_ASSERT(offset + length <= numValues);
+    RYU_ASSERT(commonTableID != INVALID_TABLE_ID);
     internalID_t relID;
     relID.tableID = commonTableID;
     for (auto i = 0u; i < length; i++) {
@@ -857,22 +857,22 @@ void InternalIDChunkData::scan(ValueVector& output, offset_t offset, length_t le
 
 void InternalIDChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offsetInChunk < capacity);
+    RYU_ASSERT(offsetInChunk < capacity);
     internalID_t relID;
     relID.offset = getValue<offset_t>(offsetInChunk);
-    KU_ASSERT(commonTableID != INVALID_TABLE_ID);
+    RYU_ASSERT(commonTableID != INVALID_TABLE_ID);
     relID.tableID = commonTableID;
     output.setValue<internalID_t>(posInOutputVector, relID);
 }
 
 void InternalIDChunkData::write(const ValueVector* vector, offset_t offsetInVector,
     offset_t offsetInChunk) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INTERNAL_ID);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::INTERNAL_ID);
     const auto relIDsInVector = reinterpret_cast<internalID_t*>(vector->getData());
     if (commonTableID == INVALID_TABLE_ID) {
         commonTableID = relIDsInVector[offsetInVector].tableID;
     }
-    KU_ASSERT(commonTableID == relIDsInVector[offsetInVector].tableID);
+    RYU_ASSERT(commonTableID == relIDsInVector[offsetInVector].tableID);
     if (!vector->isNull(offsetInVector)) {
         memcpy(getData() + offsetInChunk * numBytesPerValue, &relIDsInVector[offsetInVector].offset,
             numBytesPerValue);
@@ -934,7 +934,7 @@ std::unique_ptr<ColumnChunkData> ColumnChunkFactory::createColumnChunkData(Memor
             enableCompression, residencyState);
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -979,7 +979,7 @@ std::unique_ptr<ColumnChunkData> ColumnChunkFactory::createColumnChunkData(Memor
             metadata);
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -1024,7 +1024,7 @@ void ColumnChunkData::reclaimStorage(PageAllocator& pageAllocator) {
 uint64_t ColumnChunkData::getSizeOnDisk() const {
     // Probably could just return the actual size from the metadata if it's on-disk, but it's not
     // currently needed for on-disk segments
-    KU_ASSERT(ResidencyState::IN_MEMORY == residencyState);
+    RYU_ASSERT(ResidencyState::IN_MEMORY == residencyState);
     auto metadata = getMetadataToFlush();
     uint64_t nullSize = 0;
     if (nullData) {
@@ -1036,7 +1036,7 @@ uint64_t ColumnChunkData::getSizeOnDisk() const {
 uint64_t ColumnChunkData::getSizeOnDiskInMemoryStats() const {
     // Probably could just return the actual size from the metadata if it's on-disk, but it's not
     // currently needed for on-disk segments
-    KU_ASSERT(ResidencyState::IN_MEMORY == residencyState);
+    RYU_ASSERT(ResidencyState::IN_MEMORY == residencyState);
     uint64_t nullSize = 0;
     if (nullData) {
         nullSize = nullData->getSizeOnDiskInMemoryStats();

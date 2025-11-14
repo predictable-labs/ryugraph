@@ -186,7 +186,7 @@ public:
     bool isSource() const override { return true; }
 
     void executeInternal(ExecutionContext* /*context*/) override {
-        KU_ASSERT(sharedState->isReadyForFinalization());
+        RYU_ASSERT(sharedState->isReadyForFinalization());
         sharedState->finalizePartitions();
     }
     void finalizeInternal(ExecutionContext* /*context*/) override {

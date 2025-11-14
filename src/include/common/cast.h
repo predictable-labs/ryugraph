@@ -12,7 +12,7 @@ TO ku_dynamic_cast(FROM* old) {
 #if defined(RYU_RUNTIME_CHECKS) || !defined(NDEBUG)
     static_assert(std::is_pointer<TO>());
     TO newVal = dynamic_cast<TO>(old);
-    KU_ASSERT(newVal != nullptr);
+    RYU_ASSERT(newVal != nullptr);
     return newVal;
 #else
     return reinterpret_cast<TO>(old);
@@ -27,7 +27,7 @@ TO ku_dynamic_cast(FROM& old) {
         TO newVal = dynamic_cast<TO>(old);
         return newVal;
     } catch (std::bad_cast& e) {
-        KU_ASSERT(false);
+        RYU_ASSERT(false);
     }
 #else
     return reinterpret_cast<TO>(old);

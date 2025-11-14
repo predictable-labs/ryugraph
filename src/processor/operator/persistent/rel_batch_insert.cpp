@@ -170,7 +170,7 @@ void RelBatchInsert::appendNodeGroup(const RelGroupCatalogEntry& relGroupEntry, 
     // Reset num of rows in the chunked group to fill gaps at the end of the node group.
     const auto maxSize = csrHeader.getEndCSROffset(numNodes - 1);
     auto numGapsAtEnd = maxSize - localState.chunkedGroup->getNumRows();
-    KU_ASSERT(localState.chunkedGroup->getCapacity() >= maxSize);
+    RYU_ASSERT(localState.chunkedGroup->getCapacity() >= maxSize);
     while (numGapsAtEnd > 0) {
         const auto numGapsToFill = std::min(numGapsAtEnd, DEFAULT_VECTOR_CAPACITY);
         localState.dummyAllNullDataChunk->state->getSelVectorUnsafe().setSelSize(numGapsToFill);
@@ -179,10 +179,10 @@ void RelBatchInsert::appendNodeGroup(const RelGroupCatalogEntry& relGroupEntry, 
             dummyVectors.push_back(&localState.dummyAllNullDataChunk->getValueVectorMutable(i));
         }
         const auto numGapsFilled = localState.chunkedGroup->append(dummyVectors, 0, numGapsToFill);
-        KU_ASSERT(numGapsFilled == numGapsToFill);
+        RYU_ASSERT(numGapsFilled == numGapsToFill);
         numGapsAtEnd -= numGapsFilled;
     }
-    KU_ASSERT(localState.chunkedGroup->getNumRows() == maxSize);
+    RYU_ASSERT(localState.chunkedGroup->getNumRows() == maxSize);
 
     auto* relTable = sharedState->table->ptrCast<RelTable>();
 
@@ -218,7 +218,7 @@ void RelBatchInsert::populateCSRHeader(const RelGroupCatalogEntry& relGroupEntry
     // Resize csr data column chunks.
     localState.chunkedGroup->resizeChunks(csrHeader.getEndCSROffset(numNodes - 1));
     localState.chunkedGroup->resetToAllNull();
-    KU_ASSERT(csrHeader.sanityCheck());
+    RYU_ASSERT(csrHeader.sanityCheck());
 }
 
 void RelBatchInsert::checkRelMultiplicityConstraint(const RelGroupCatalogEntry& relGroupEntry,
@@ -239,7 +239,7 @@ void RelBatchInsert::checkRelMultiplicityConstraint(const RelGroupCatalogEntry& 
 void RelBatchInsert::finalizeInternal(ExecutionContext* context) {
     const auto relInfo = info->ptrCast<RelBatchInsertInfo>();
     if (relInfo->direction == RelDataDirection::FWD) {
-        KU_ASSERT(relInfo->partitioningIdx == 0);
+        RYU_ASSERT(relInfo->partitioningIdx == 0);
 
         auto outputMsg = stringFormat("{} tuples have been copied to the {} table.",
             sharedState->getNumRows(), relInfo->tableName);

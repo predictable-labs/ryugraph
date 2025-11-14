@@ -64,7 +64,7 @@ static bool isRelTableQualifies(ExtendDirection direction, table_id_t srcTableID
         return dstTableID == boundNodeTableID && nbrTableISet.contains(srcTableID);
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -106,7 +106,7 @@ static std::vector<ScanRelTableInfo> populateRelTableCollectionScanner(table_id_
             }
         } break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
     return scanInfos;
@@ -143,7 +143,7 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapExtend(const LogicalOperator* l
     auto printInfo = std::make_unique<ScanRelTablePrintInfo>(tableNames, extend->getProperties(),
         boundNode, rel, nbrNode, extendDirection, rel->getVariableName());
     if (scanSingleRelTable(*rel, *boundNode, extendDirection)) {
-        KU_ASSERT(rel->getNumEntries() == 1);
+        RYU_ASSERT(rel->getNumEntries() == 1);
         auto entry = rel->getEntry(0)->ptrCast<RelGroupCatalogEntry>();
         auto relDataDirection = ExtendDirectionUtil::getRelDataDirection(extendDirection);
         auto entryInfo = entry->getSingleRelEntryInfo();

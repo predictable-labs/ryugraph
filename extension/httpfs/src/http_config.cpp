@@ -7,7 +7,7 @@ namespace ryu {
 namespace httpfs_extension {
 
 HTTPConfig::HTTPConfig(main::ClientContext* context) {
-    KU_ASSERT(context != nullptr);
+    RYU_ASSERT(context != nullptr);
     cacheFile =
         context->getCurrentSetting(HTTPCacheFileConfig::HTTP_CACHE_FILE_OPTION).getValue<bool>();
 }

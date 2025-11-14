@@ -42,7 +42,7 @@ std::unique_ptr<BoundUpdatingClause> Binder::bindUpdatingClause(
         return bindDeleteClause(updatingClause);
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -177,9 +177,9 @@ void Binder::bindInsertNode(std::shared_ptr<NodeExpression> node,
         throw BinderException(
             "Create node " + node->toString() + " with empty node labels is not supported.");
     }
-    KU_ASSERT(node->getNumEntries() == 1);
+    RYU_ASSERT(node->getNumEntries() == 1);
     auto entry = node->getEntry(0);
-    KU_ASSERT(entry->getTableType() == TableType::NODE);
+    RYU_ASSERT(entry->getTableType() == TableType::NODE);
     auto insertInfo = BoundInsertInfo(TableType::NODE, node);
     for (auto& property : node->getPropertyExpressions()) {
         if (property->hasProperty(entry->getTableID())) {
@@ -207,7 +207,7 @@ static TableCatalogEntry* tryPruneMultiLabeled(const RelExpression& rel,
     const TableCatalogEntry& srcEntry, const TableCatalogEntry& dstEntry) {
     std::vector<TableCatalogEntry*> candidates;
     for (auto& entry : rel.getEntries()) {
-        KU_ASSERT(entry->getType() == CatalogEntryType::REL_GROUP_ENTRY);
+        RYU_ASSERT(entry->getType() == CatalogEntryType::REL_GROUP_ENTRY);
         auto& relEntry = entry->constCast<RelGroupCatalogEntry>();
         if (relEntry.hasRelEntryInfo(srcEntry.getTableID(), dstEntry.getTableID())) {
             candidates.push_back(entry);
@@ -240,7 +240,7 @@ void Binder::bindInsertRel(std::shared_ptr<RelExpression> rel,
     }
     TableCatalogEntry* entry = nullptr;
     if (!rel->isMultiLabeled()) {
-        KU_ASSERT(rel->getNumEntries() == 1);
+        RYU_ASSERT(rel->getNumEntries() == 1);
         entry = rel->getEntry(0);
     } else {
         auto srcEntry = rel->getSrcNode()->getEntry(0);

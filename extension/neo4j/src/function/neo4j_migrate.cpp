@@ -83,7 +83,7 @@ static std::unordered_set<std::string> getLabelsInNeo4j(httplib::Client& cli,
         query = "CALL db.relationshipTypes();";
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     auto res = executeNeo4jQuery(cli, query);
     for (auto row : res) {

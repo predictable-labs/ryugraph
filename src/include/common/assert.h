@@ -6,7 +6,7 @@
 namespace ryu {
 namespace common {
 
-[[noreturn]] inline void kuAssertFailureInternal(const char* condition_name, const char* file,
+[[noreturn]] inline void ryuAssertFailureInternal(const char* condition_name, const char* file,
     int linenr) {
     // LCOV_EXCL_START
     throw InternalException(stringFormat("Assertion failed in file \"{}\" on line {}: {}", file,
@@ -14,23 +14,23 @@ namespace common {
     // LCOV_EXCL_STOP
 }
 
-#define KU_ASSERT_UNCONDITIONAL(condition)                                                         \
+#define RYU_ASSERT_UNCONDITIONAL(condition)                                                        \
     static_cast<bool>(condition) ?                                                                 \
         void(0) :                                                                                  \
-        ryu::common::kuAssertFailureInternal(#condition, __FILE__, __LINE__)
+        ryu::common::ryuAssertFailureInternal(#condition, __FILE__, __LINE__)
 
 #if defined(RYU_RUNTIME_CHECKS) || !defined(NDEBUG)
 #define RUNTIME_CHECK(code) code
-#define KU_ASSERT(condition) KU_ASSERT_UNCONDITIONAL(condition)
+#define RYU_ASSERT(condition) RYU_ASSERT_UNCONDITIONAL(condition)
 #else
-#define KU_ASSERT(condition) void(0)
+#define RYU_ASSERT(condition) void(0)
 #define RUNTIME_CHECK(code) void(0)
 #endif
 
-#define KU_UNREACHABLE                                                                             \
-    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::kuAssertFailureInternal("KU_UNREACHABLE",      \
+#define RYU_UNREACHABLE                                                                            \
+    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::ryuAssertFailureInternal("RYU_UNREACHABLE",   \
         __FILE__, __LINE__) /* LCOV_EXCL_STOP */
-#define KU_UNUSED(expr) (void)(expr)
+#define RYU_UNUSED(expr) (void)(expr)
 
 } // namespace common
 } // namespace ryu

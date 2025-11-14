@@ -57,7 +57,7 @@ LogicalPlan Planner::planCreateTable(const BoundStatement& statement) {
             children.push_back(planCopyRelFrom(&createTable.getCopyInfo()).getLastOperator());
         } break;
         default: {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
         }
         auto create = std::make_shared<LogicalCreateTable>(info.copy());
@@ -163,7 +163,7 @@ LogicalPlan Planner::planExtensionClause(const BoundStatement& statement) {
             return getSimplePlan(op);
         }
     }
-    KU_UNREACHABLE;
+    RYU_UNREACHABLE;
 }
 
 } // namespace planner

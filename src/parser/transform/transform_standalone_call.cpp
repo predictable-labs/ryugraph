@@ -6,7 +6,7 @@ namespace ryu {
 namespace parser {
 
 std::unique_ptr<Statement> Transformer::transformStandaloneCall(
-    CypherParser::KU_StandaloneCallContext& ctx) {
+    CypherParser::RU_StandaloneCallContext& ctx) {
     if (ctx.oC_FunctionInvocation()) {
         return std::make_unique<StandaloneCallFunction>(
             transformFunctionInvocation(*ctx.oC_FunctionInvocation()));

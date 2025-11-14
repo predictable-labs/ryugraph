@@ -218,7 +218,7 @@ inline std::unique_ptr<ryu::common::Value> create_value_decimal(int64_t high, ui
         [&](int64_t) { value->val.int64Val = static_cast<int64_t>(i128); },
         [&](int32_t) { value->val.int32Val = static_cast<int32_t>(i128); },
         [&](int16_t) { value->val.int16Val = static_cast<int16_t>(i128); },
-        [](auto) { KU_UNREACHABLE; });
+        [](auto) { RYU_UNREACHABLE; });
     return value;
 }
 

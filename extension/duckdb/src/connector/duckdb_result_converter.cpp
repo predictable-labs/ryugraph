@@ -72,7 +72,7 @@ void convertDuckDBVectorToVector<list_entry_t>(duckdb::Vector& duckDBVector, Val
         }
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 
     ListVector::resizeDataVector(&result, numValuesInDataVec);
@@ -123,7 +123,7 @@ void DuckDBResultConverter::convertDuckDBResultToVector(duckdb::DataChunk& duckD
         if (columnSkips && columnSkips.value()[i]) {
             continue;
         }
-        KU_ASSERT(duckDBResult.data[duckdbResultColIdx].GetVectorType() ==
+        RYU_ASSERT(duckDBResult.data[duckdbResultColIdx].GetVectorType() ==
                   duckdb::VectorType::FLAT_VECTOR);
         conversionFunctions[i](duckDBResult.data[duckdbResultColIdx],
             result.getValueVectorMutable(i), result.state->getSelVector().getSelSize());

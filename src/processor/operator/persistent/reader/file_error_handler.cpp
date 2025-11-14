@@ -67,7 +67,7 @@ void SharedFileErrorHandler::tryThrowFirstCachedError() {
     std::sort(cachedErrors.begin(), cachedErrors.end());
 
     const auto error = *cachedErrors.cbegin();
-    KU_ASSERT(!error.mustThrow);
+    RYU_ASSERT(!error.mustThrow);
 
     const bool errorIsThrowable = canGetLineNumber(error.warningData.getBlockIdx());
     if (errorIsThrowable) {
@@ -103,7 +103,7 @@ std::string SharedFileErrorHandler::getErrorMessage(PopulatedCopyFromError popul
 }
 
 void SharedFileErrorHandler::throwError(CopyFromFileError error) const {
-    KU_ASSERT(populateErrorFunc);
+    RYU_ASSERT(populateErrorFunc);
     throw CopyException(getErrorMessage(populateErrorFunc(std::move(error), fileIdx)));
 }
 
@@ -136,7 +136,7 @@ uint64_t SharedFileErrorHandler::getLineNumber(uint64_t blockIdx,
     // 1-indexed
     uint64_t res = numRowsReadInBlock + headerNumRows + 1;
     for (uint64_t i = 0; i < blockIdx; ++i) {
-        KU_ASSERT(i < linesPerBlock.size());
+        RYU_ASSERT(i < linesPerBlock.size());
         res += linesPerBlock[i].numLines;
     }
     return res;
@@ -187,7 +187,7 @@ void LocalFileErrorHandler::handleError(CopyFromFileError error) {
         return;
     }
 
-    KU_ASSERT(cachedErrors.size() <= maxCachedErrorCount);
+    RYU_ASSERT(cachedErrors.size() <= maxCachedErrorCount);
     if (cachedErrors.size() == maxCachedErrorCount) {
         flushCachedErrors();
     }

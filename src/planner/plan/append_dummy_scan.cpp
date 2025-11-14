@@ -5,7 +5,7 @@ namespace ryu {
 namespace planner {
 
 void Planner::appendDummyScan(LogicalPlan& plan) {
-    KU_ASSERT(plan.isEmpty());
+    RYU_ASSERT(plan.isEmpty());
     auto dummyScan = std::make_shared<LogicalDummyScan>();
     dummyScan->computeFactorizedSchema();
     plan.setLastOperator(std::move(dummyScan));

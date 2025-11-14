@@ -99,7 +99,7 @@ void StemStaticStemmer::operation(common::ku_string_t& word, common::ku_string_t
     common::ku_string_t& result, common::ValueVector& /*leftValueVector*/,
     common::ValueVector& /*rightValueVector*/, common::ValueVector& resultVector, void* dataPtr) {
     auto stemBindData = reinterpret_cast<StemBindData*>(dataPtr);
-    KU_ASSERT(stemBindData->sbStemmer != nullptr);
+    RYU_ASSERT(stemBindData->sbStemmer != nullptr);
     auto stemData = sb_stemmer_stem(stemBindData->sbStemmer,
         reinterpret_cast<const sb_symbol*>(word.getData()), word.len);
     common::StringVector::addString(&resultVector, result, reinterpret_cast<const char*>(stemData),

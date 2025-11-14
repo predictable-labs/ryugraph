@@ -148,7 +148,7 @@ public:
             [&]<common::HashablePrimitive T>(T) {
                 localIndex = std::make_unique<HashIndexLocalStorage<T>>(memoryManager, nullptr);
             },
-            [&](auto) { KU_UNREACHABLE; });
+            [&](auto) { RYU_UNREACHABLE; });
     }
 
     common::offset_t lookup(const common::ValueVector& keyVector, common::sel_t pos,
@@ -158,12 +158,12 @@ public:
             keyDataTypeID,
             [&]<common::IndexHashable T>(
                 T) { result = lookup(keyVector.getValue<T>(pos), isVisible); },
-            [](auto) { KU_UNREACHABLE; });
+            [](auto) { RYU_UNREACHABLE; });
         return result;
     }
 
     common::offset_t lookup(const common::ValueVector& keyVector, visible_func isVisible) {
-        KU_ASSERT(keyVector.state->getSelVector().getSelSize() == 1);
+        RYU_ASSERT(keyVector.state->getSelVector().getSelSize() == 1);
         auto pos = keyVector.state->getSelVector().getSelectedPositions()[0];
         return lookup(keyVector, pos, isVisible);
     }
@@ -191,7 +191,7 @@ public:
                         insert(keyVector.getValue<T>(pos), startNodeOffset + i, isVisible);
                 }
             },
-            [](auto) { KU_UNREACHABLE; });
+            [](auto) { RYU_UNREACHABLE; });
         return numInserted == keyVector.state->getSelVector().getSelSize();
     }
 
@@ -200,7 +200,7 @@ public:
     }
     template<common::IndexHashable T>
     bool insert(T key, common::offset_t value, visible_func isVisible) {
-        KU_ASSERT(keyDataTypeID == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(keyDataTypeID == common::TypeUtils::getPhysicalTypeIDForType<T>());
         return common::ku_dynamic_cast<HashIndexLocalStorage<HashIndexType<T>>*>(localIndex.get())
             ->insert(std::move(key), value, isVisible);
     }
@@ -214,13 +214,13 @@ public:
                     delete_(keyVector.getValue<T>(pos));
                 }
             },
-            [](auto) { KU_UNREACHABLE; });
+            [](auto) { RYU_UNREACHABLE; });
     }
 
     void delete_(const common::ku_string_t key) { delete_(key.getAsStringView()); }
     template<common::IndexHashable T>
     void delete_(T key) {
-        KU_ASSERT(keyDataTypeID == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(keyDataTypeID == common::TypeUtils::getPhysicalTypeIDForType<T>());
         common::ku_dynamic_cast<HashIndexLocalStorage<HashIndexType<T>>*>(localIndex.get())
             ->deleteKey(key);
     }

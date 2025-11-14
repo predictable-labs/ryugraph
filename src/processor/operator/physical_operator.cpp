@@ -161,7 +161,7 @@ PhysicalOperator::PhysicalOperator(PhysicalOperatorType operatorType, physical_o
 }
 
 std::unique_ptr<PhysicalOperator> PhysicalOperator::moveUnaryChild() {
-    KU_ASSERT(children.size() == 1);
+    RYU_ASSERT(children.size() == 1);
     auto result = std::move(children[0]);
     children.clear();
     return result;

@@ -17,7 +17,7 @@ std::unique_ptr<UpdatingClause> Transformer::transformUpdatingClause(
     } else if (ctx.oC_Set()) {
         return transformSet(*ctx.oC_Set());
     } else {
-        KU_ASSERT(ctx.oC_Delete());
+        RYU_ASSERT(ctx.oC_Delete());
         return transformDelete(*ctx.oC_Delete());
     }
 }
@@ -44,12 +44,12 @@ std::unique_ptr<UpdatingClause> Transformer::transformMerge(CypherParser::OC_Mer
 
 std::unique_ptr<UpdatingClause> Transformer::transformSet(CypherParser::OC_SetContext& ctx) {
     auto setClause = std::make_unique<SetClause>();
-    if (ctx.kU_Properties()) {
+    if (ctx.rU_Properties()) {
         auto child = transformAtom(*ctx.oC_Atom());
-        for (auto i = 0u; i < ctx.kU_Properties()->oC_PropertyKeyName().size(); ++i) {
+        for (auto i = 0u; i < ctx.rU_Properties()->oC_PropertyKeyName().size(); ++i) {
             auto propertyKeyName = createPropertyExpression(
-                *ctx.kU_Properties()->oC_PropertyKeyName(i), child->copy());
-            auto expression = transformExpression(*ctx.kU_Properties()->oC_Expression(i));
+                *ctx.rU_Properties()->oC_PropertyKeyName(i), child->copy());
+            auto expression = transformExpression(*ctx.rU_Properties()->oC_Expression(i));
             setClause->addSetItem(make_pair(std::move(propertyKeyName), std::move(expression)));
         }
     } else {

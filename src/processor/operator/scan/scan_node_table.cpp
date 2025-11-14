@@ -65,7 +65,7 @@ void ScanNodeTableSharedState::nextMorsel(NodeTableScanState& scanState,
 
 table_id_map_t<SemiMask*> ScanNodeTable::getSemiMasks() const {
     table_id_map_t<SemiMask*> result;
-    KU_ASSERT(tableInfos.size() == sharedStates.size());
+    RYU_ASSERT(tableInfos.size() == sharedStates.size());
     for (auto i = 0u; i < sharedStates.size(); ++i) {
         result.insert({tableInfos[i].table->getTableID(), sharedStates[i]->getSemiMask()});
     }
@@ -94,7 +94,7 @@ void ScanNodeTable::initCurrentTable(ExecutionContext* context) {
 }
 
 void ScanNodeTable::initGlobalStateInternal(ExecutionContext* context) {
-    KU_ASSERT(sharedStates.size() == tableInfos.size());
+    RYU_ASSERT(sharedStates.size() == tableInfos.size());
     for (auto i = 0u; i < tableInfos.size(); i++) {
         sharedStates[i]->initialize(transaction::Transaction::Get(*context->clientContext),
             tableInfos[i].table->ptrCast<NodeTable>(), *progressSharedState);

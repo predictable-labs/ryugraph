@@ -23,7 +23,7 @@ std::string TransactionActionUtils::toString(TransactionAction action) {
         return "CHECKPOINT";
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

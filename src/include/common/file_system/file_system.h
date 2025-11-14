@@ -55,12 +55,12 @@ public:
 
     virtual std::unique_ptr<FileInfo> openFile(const std::string& /*path*/, FileOpenFlags /*flags*/,
         main::ClientContext* /*context*/ = nullptr) {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 
     virtual std::vector<std::string> glob(main::ClientContext* /*context*/,
         const std::string& /*path*/) const {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 
     virtual void overwriteFile(const std::string& from, const std::string& to);
@@ -84,7 +84,7 @@ public:
 
     static std::string getFileName(const std::filesystem::path& path);
 
-    virtual bool canHandleFile(const std::string_view /*path*/) const { KU_UNREACHABLE; }
+    virtual bool canHandleFile(const std::string_view /*path*/) const { RYU_UNREACHABLE; }
 
     virtual void syncFile(const FileInfo& fileInfo) const = 0;
 
@@ -93,7 +93,7 @@ public:
     virtual bool handleFileViaFunction(const std::string& /*path*/) const { return false; }
 
     virtual function::TableFunction getHandleFunction(const std::string& /*path*/) const {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 
     template<class TARGET>

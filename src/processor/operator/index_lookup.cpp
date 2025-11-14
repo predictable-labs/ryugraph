@@ -76,7 +76,7 @@ template<bool hasNoNullsGuarantee>
 void fillOffsetArraysFromVector(transaction::Transaction* transaction, const IndexLookupInfo& info,
     ValueVector* keyVector, ValueVector* resultVector,
     const std::vector<ValueVector*>& warningDataVectors, BatchInsertErrorHandler* errorHandler) {
-    KU_ASSERT(resultVector->dataType.getPhysicalType() == PhysicalTypeID::INT64);
+    RYU_ASSERT(resultVector->dataType.getPhysicalType() == PhysicalTypeID::INT64);
     TypeUtils::visit(
         keyVector->dataType.getPhysicalType(),
         [&]<IndexHashable T>(T) {
@@ -110,7 +110,7 @@ void fillOffsetArraysFromVector(transaction::Transaction* transaction, const Ind
                 }
             }
         },
-        [&](auto) { KU_UNREACHABLE; });
+        [&](auto) { RYU_UNREACHABLE; });
 }
 } // namespace
 

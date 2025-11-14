@@ -57,7 +57,7 @@ public:
     common::idx_t getNumChildren() const { return children.size(); }
     ParsedExpression* getChild(common::idx_t idx) const { return children[idx].get(); }
     void setChild(common::idx_t idx, std::unique_ptr<ParsedExpression> child) {
-        KU_ASSERT(idx < children.size());
+        RYU_ASSERT(idx < children.size());
         children[idx] = std::move(child);
     }
 

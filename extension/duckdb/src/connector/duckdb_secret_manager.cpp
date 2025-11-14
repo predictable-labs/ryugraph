@@ -17,7 +17,7 @@ static std::string getDuckDBExtensionOptions(httpfs_extension::S3AuthParams ryuO
 
 std::string DuckDBSecretManager::getRemoteS3FSSecret(main::ClientContext* context,
     const httpfs_extension::S3FileSystemConfig& config) {
-    KU_ASSERT(config.fsName == "S3" || config.fsName == "GCS");
+    RYU_ASSERT(config.fsName == "S3" || config.fsName == "GCS");
     std::string templateQuery = R"(CREATE SECRET {}_secret (
         {}
         TYPE {}

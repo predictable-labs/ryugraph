@@ -23,14 +23,14 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapExpressionsScan(
     auto expressionsToScan = expressionsScan.getExpressions();
     std::vector<ft_col_idx_t> colIndicesToScan;
     for (auto& expression : expressionsToScan) {
-        KU_ASSERT(materializedExpressionToColIdx.contains(expression));
+        RYU_ASSERT(materializedExpressionToColIdx.contains(expression));
         colIndicesToScan.push_back(materializedExpressionToColIdx.at(expression));
     }
     auto schema = expressionsScan.getSchema();
-    KU_ASSERT(logicalOpToPhysicalOpMap.contains(outerAccumulate));
+    RYU_ASSERT(logicalOpToPhysicalOpMap.contains(outerAccumulate));
     auto physicalOp = logicalOpToPhysicalOpMap.at(outerAccumulate);
-    KU_ASSERT(physicalOp->getOperatorType() == PhysicalOperatorType::TABLE_FUNCTION_CALL);
-    KU_ASSERT(physicalOp->getChild(0)->getOperatorType() == PhysicalOperatorType::RESULT_COLLECTOR);
+    RYU_ASSERT(physicalOp->getOperatorType() == PhysicalOperatorType::TABLE_FUNCTION_CALL);
+    RYU_ASSERT(physicalOp->getChild(0)->getOperatorType() == PhysicalOperatorType::RESULT_COLLECTOR);
     auto resultCollector = physicalOp->getChild(0)->ptrCast<ResultCollector>();
     auto table = resultCollector->getResultFTable();
     return createFTableScan(expressionsToScan, colIndicesToScan, schema, table,

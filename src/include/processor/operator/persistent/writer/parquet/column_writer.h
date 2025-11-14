@@ -75,10 +75,10 @@ public:
     virtual bool hasAnalyze() { return false; }
     virtual void analyze(ColumnWriterState& /*state*/, ColumnWriterState* /*parent*/,
         common::ValueVector* /*vector*/, uint64_t /*count*/) {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     // Called after all data has been passed to Analyze.
-    virtual void finalizeAnalyze(ColumnWriterState& /*state*/) { KU_UNREACHABLE; }
+    virtual void finalizeAnalyze(ColumnWriterState& /*state*/) { RYU_UNREACHABLE; }
     virtual void prepare(ColumnWriterState& state, ColumnWriterState* parent,
         common::ValueVector* vector, uint64_t count) = 0;
     virtual void beginWrite(ColumnWriterState& state) = 0;

@@ -27,7 +27,7 @@ void BufferedFileWriter::write(const uint8_t* data, uint64_t size) {
         fileOffset += size;
         return;
     }
-    KU_ASSERT(size <= BUFFER_SIZE);
+    RYU_ASSERT(size <= BUFFER_SIZE);
     if (bufferOffset + size <= BUFFER_SIZE) {
         memcpy(&buffer[bufferOffset], data, size);
         bufferOffset += size;

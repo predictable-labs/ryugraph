@@ -28,7 +28,7 @@ void CreateTable::executeInternal(ExecutionContext* context) {
             throw BinderException(info.tableName + " already exists in catalog.");
         }
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
     // Create the table.
@@ -39,7 +39,7 @@ void CreateTable::executeInternal(ExecutionContext* context) {
         entry = catalog->createTableEntry(transaction, info);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     storage::StorageManager::Get(*clientContext)->createTable(entry->ptrCast<TableCatalogEntry>());
     appendMessage(stringFormat("Table {} has been created.", info.tableName), memoryManager);

@@ -29,7 +29,7 @@ void Drop::executeInternal(ExecutionContext* context) {
         dropMacro(clientContext);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -48,7 +48,7 @@ void Drop::dropSequence(const main::ClientContext* context) {
             throw BinderException(message);
         }
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
     catalog->dropSequence(transaction, dropInfo.name);
@@ -70,7 +70,7 @@ void Drop::dropTable(const main::ClientContext* context) {
             throw BinderException(message);
         }
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
     auto entry = catalog->getTableCatalogEntry(transaction, dropInfo.name);
@@ -95,7 +95,7 @@ void Drop::dropTable(const main::ClientContext* context) {
         // Do nothing
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     catalog->dropTableEntryAndIndex(transaction, dropInfo.name);
     appendMessage(stringFormat("Table {} has been dropped.", dropInfo.name), memoryManager);
@@ -125,7 +125,7 @@ void Drop::handleMacroExistence(const main::ClientContext* context) {
             throw BinderException(message);
         }
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
 }

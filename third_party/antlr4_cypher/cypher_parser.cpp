@@ -51,53 +51,53 @@ void cypherParserInitialize() {
 #endif
   auto staticData = std::make_unique<CypherParserStaticData>(
     std::vector<std::string>{
-      "ku_Statements", "oC_Cypher", "oC_Statement", "kU_CopyFrom", "kU_ColumnNames", 
-      "kU_ScanSource", "kU_CopyFromByColumn", "kU_CopyTO", "kU_ExportDatabase", 
-      "kU_ImportDatabase", "kU_AttachDatabase", "kU_Option", "kU_Options", 
-      "kU_DetachDatabase", "kU_UseDatabase", "kU_StandaloneCall", "kU_CommentOn", 
-      "kU_CreateMacro", "kU_PositionalArgs", "kU_DefaultArg", "kU_FilePaths", 
-      "kU_IfNotExists", "kU_CreateNodeTable", "kU_CreateRelTable", "kU_FromToConnections", 
-      "kU_FromToConnection", "kU_CreateSequence", "kU_CreateType", "kU_SequenceOptions", 
-      "kU_WithPasswd", "kU_CreateUser", "kU_CreateRole", "kU_IncrementBy", 
-      "kU_MinValue", "kU_MaxValue", "kU_StartWith", "kU_Cycle", "kU_IfExists", 
-      "kU_Drop", "kU_AlterTable", "kU_AlterOptions", "kU_AddProperty", "kU_Default", 
-      "kU_DropProperty", "kU_RenameTable", "kU_RenameProperty", "kU_AddFromToConnection", 
-      "kU_DropFromToConnection", "kU_ColumnDefinitions", "kU_ColumnDefinition", 
-      "kU_PropertyDefinitions", "kU_PropertyDefinition", "kU_CreateNodeConstraint", 
-      "kU_UnionType", "kU_StructType", "kU_MapType", "kU_DecimalType", "kU_DataType", 
-      "kU_ListIdentifiers", "kU_ListIdentifier", "oC_AnyCypherOption", "oC_Explain", 
-      "oC_Profile", "kU_Transaction", "kU_Extension", "kU_LoadExtension", 
-      "kU_InstallExtension", "kU_UninstallExtension", "kU_UpdateExtension", 
+      "ku_Statements", "oC_Cypher", "oC_Statement", "rU_CopyFrom", "rU_ColumnNames", 
+      "rU_ScanSource", "rU_CopyFromByColumn", "rU_CopyTO", "rU_ExportDatabase", 
+      "rU_ImportDatabase", "rU_AttachDatabase", "rU_Option", "rU_Options", 
+      "rU_DetachDatabase", "rU_UseDatabase", "rU_StandaloneCall", "rU_CommentOn", 
+      "rU_CreateMacro", "rU_PositionalArgs", "rU_DefaultArg", "rU_FilePaths", 
+      "rU_IfNotExists", "rU_CreateNodeTable", "rU_CreateRelTable", "rU_FromToConnections", 
+      "rU_FromToConnection", "rU_CreateSequence", "rU_CreateType", "rU_SequenceOptions", 
+      "rU_WithPasswd", "rU_CreateUser", "rU_CreateRole", "rU_IncrementBy", 
+      "rU_MinValue", "rU_MaxValue", "rU_StartWith", "rU_Cycle", "rU_IfExists", 
+      "rU_Drop", "rU_AlterTable", "rU_AlterOptions", "rU_AddProperty", "rU_Default", 
+      "rU_DropProperty", "rU_RenameTable", "rU_RenameProperty", "rU_AddFromToConnection", 
+      "rU_DropFromToConnection", "rU_ColumnDefinitions", "rU_ColumnDefinition", 
+      "rU_PropertyDefinitions", "rU_PropertyDefinition", "rU_CreateNodeConstraint", 
+      "rU_UnionType", "rU_StructType", "rU_MapType", "rU_DecimalType", "rU_DataType", 
+      "rU_ListIdentifiers", "rU_ListIdentifier", "oC_AnyCypherOption", "oC_Explain", 
+      "oC_Profile", "rU_Transaction", "rU_Extension", "rU_LoadExtension", 
+      "rU_InstallExtension", "rU_UninstallExtension", "rU_UpdateExtension", 
       "oC_Query", "oC_RegularQuery", "oC_Union", "oC_SingleQuery", "oC_SinglePartQuery", 
-      "oC_MultiPartQuery", "kU_QueryPart", "oC_UpdatingClause", "oC_ReadingClause", 
-      "kU_LoadFrom", "oC_YieldItem", "oC_YieldItems", "kU_InQueryCall", 
-      "oC_Match", "kU_Hint", "kU_JoinNode", "oC_Unwind", "oC_Create", "oC_Merge", 
+      "oC_MultiPartQuery", "rU_QueryPart", "oC_UpdatingClause", "oC_ReadingClause", 
+      "rU_LoadFrom", "oC_YieldItem", "oC_YieldItems", "rU_InQueryCall", 
+      "oC_Match", "rU_Hint", "rU_JoinNode", "oC_Unwind", "oC_Create", "oC_Merge", 
       "oC_MergeAction", "oC_Set", "oC_SetItem", "oC_Delete", "oC_With", 
       "oC_Return", "oC_ProjectionBody", "oC_ProjectionItems", "oC_ProjectionItem", 
       "oC_Order", "oC_Skip", "oC_Limit", "oC_SortItem", "oC_Where", "oC_Pattern", 
       "oC_PatternPart", "oC_AnonymousPatternPart", "oC_PatternElement", 
       "oC_NodePattern", "oC_PatternElementChain", "oC_RelationshipPattern", 
-      "oC_RelationshipDetail", "kU_Properties", "oC_RelationshipTypes", 
-      "oC_NodeLabels", "kU_RecursiveDetail", "kU_RecursiveType", "oC_RangeLiteral", 
-      "kU_RecursiveComprehension", "kU_RecursiveProjectionItems", "oC_LowerBound", 
+      "oC_RelationshipDetail", "rU_Properties", "oC_RelationshipTypes", 
+      "oC_NodeLabels", "rU_RecursiveDetail", "rU_RecursiveType", "oC_RangeLiteral", 
+      "rU_RecursiveComprehension", "rU_RecursiveProjectionItems", "oC_LowerBound", 
       "oC_UpperBound", "oC_LabelName", "oC_RelTypeName", "oC_Expression", 
       "oC_OrExpression", "oC_XorExpression", "oC_AndExpression", "oC_NotExpression", 
-      "oC_ComparisonExpression", "kU_ComparisonOperator", "kU_BitwiseOrOperatorExpression", 
-      "kU_BitwiseAndOperatorExpression", "kU_BitShiftOperatorExpression", 
-      "kU_BitShiftOperator", "oC_AddOrSubtractExpression", "kU_AddOrSubtractOperator", 
-      "oC_MultiplyDivideModuloExpression", "kU_MultiplyDivideModuloOperator", 
+      "oC_ComparisonExpression", "rU_ComparisonOperator", "rU_BitwiseOrOperatorExpression", 
+      "rU_BitwiseAndOperatorExpression", "rU_BitShiftOperatorExpression", 
+      "rU_BitShiftOperator", "oC_AddOrSubtractExpression", "rU_AddOrSubtractOperator", 
+      "oC_MultiplyDivideModuloExpression", "rU_MultiplyDivideModuloOperator", 
       "oC_PowerOfExpression", "oC_StringListNullOperatorExpression", "oC_ListOperatorExpression", 
       "oC_StringOperatorExpression", "oC_RegularExpression", "oC_NullOperatorExpression", 
       "oC_UnaryAddSubtractOrFactorialExpression", "oC_PropertyOrLabelsExpression", 
       "oC_Atom", "oC_Quantifier", "oC_FilterExpression", "oC_IdInColl", 
-      "oC_Literal", "oC_BooleanLiteral", "oC_ListLiteral", "kU_ListEntry", 
-      "kU_StructLiteral", "kU_StructField", "oC_ParenthesizedExpression", 
-      "oC_FunctionInvocation", "oC_FunctionName", "kU_FunctionParameter", 
-      "kU_LambdaParameter", "kU_LambdaVars", "oC_PathPatterns", "oC_ExistCountSubquery", 
+      "oC_Literal", "oC_BooleanLiteral", "oC_ListLiteral", "rU_ListEntry", 
+      "rU_StructLiteral", "rU_StructField", "oC_ParenthesizedExpression", 
+      "oC_FunctionInvocation", "oC_FunctionName", "rU_FunctionParameter", 
+      "rU_LambdaParameter", "rU_LambdaVars", "oC_PathPatterns", "oC_ExistCountSubquery", 
       "oC_PropertyLookup", "oC_CaseExpression", "oC_CaseAlternative", "oC_Variable", 
       "oC_NumberLiteral", "oC_Parameter", "oC_PropertyExpression", "oC_PropertyKeyName", 
       "oC_IntegerLiteral", "oC_DoubleLiteral", "oC_SchemaName", "oC_SymbolicName", 
-      "kU_NonReservedKeywords", "oC_LeftArrowHead", "oC_RightArrowHead", 
+      "rU_NonReservedKeywords", "oC_LeftArrowHead", "oC_RightArrowHead", 
       "oC_Dash"
     },
     std::vector<std::string>{
@@ -1565,88 +1565,88 @@ CypherParser::OC_QueryContext* CypherParser::OC_StatementContext::oC_Query() {
   return getRuleContext<CypherParser::OC_QueryContext>(0);
 }
 
-CypherParser::KU_CreateUserContext* CypherParser::OC_StatementContext::kU_CreateUser() {
-  return getRuleContext<CypherParser::KU_CreateUserContext>(0);
+CypherParser::RU_CreateUserContext* CypherParser::OC_StatementContext::rU_CreateUser() {
+  return getRuleContext<CypherParser::RU_CreateUserContext>(0);
 }
 
-CypherParser::KU_CreateRoleContext* CypherParser::OC_StatementContext::kU_CreateRole() {
-  return getRuleContext<CypherParser::KU_CreateRoleContext>(0);
+CypherParser::RU_CreateRoleContext* CypherParser::OC_StatementContext::rU_CreateRole() {
+  return getRuleContext<CypherParser::RU_CreateRoleContext>(0);
 }
 
-CypherParser::KU_CreateNodeTableContext* CypherParser::OC_StatementContext::kU_CreateNodeTable() {
-  return getRuleContext<CypherParser::KU_CreateNodeTableContext>(0);
+CypherParser::RU_CreateNodeTableContext* CypherParser::OC_StatementContext::rU_CreateNodeTable() {
+  return getRuleContext<CypherParser::RU_CreateNodeTableContext>(0);
 }
 
-CypherParser::KU_CreateRelTableContext* CypherParser::OC_StatementContext::kU_CreateRelTable() {
-  return getRuleContext<CypherParser::KU_CreateRelTableContext>(0);
+CypherParser::RU_CreateRelTableContext* CypherParser::OC_StatementContext::rU_CreateRelTable() {
+  return getRuleContext<CypherParser::RU_CreateRelTableContext>(0);
 }
 
-CypherParser::KU_CreateSequenceContext* CypherParser::OC_StatementContext::kU_CreateSequence() {
-  return getRuleContext<CypherParser::KU_CreateSequenceContext>(0);
+CypherParser::RU_CreateSequenceContext* CypherParser::OC_StatementContext::rU_CreateSequence() {
+  return getRuleContext<CypherParser::RU_CreateSequenceContext>(0);
 }
 
-CypherParser::KU_CreateTypeContext* CypherParser::OC_StatementContext::kU_CreateType() {
-  return getRuleContext<CypherParser::KU_CreateTypeContext>(0);
+CypherParser::RU_CreateTypeContext* CypherParser::OC_StatementContext::rU_CreateType() {
+  return getRuleContext<CypherParser::RU_CreateTypeContext>(0);
 }
 
-CypherParser::KU_DropContext* CypherParser::OC_StatementContext::kU_Drop() {
-  return getRuleContext<CypherParser::KU_DropContext>(0);
+CypherParser::RU_DropContext* CypherParser::OC_StatementContext::rU_Drop() {
+  return getRuleContext<CypherParser::RU_DropContext>(0);
 }
 
-CypherParser::KU_AlterTableContext* CypherParser::OC_StatementContext::kU_AlterTable() {
-  return getRuleContext<CypherParser::KU_AlterTableContext>(0);
+CypherParser::RU_AlterTableContext* CypherParser::OC_StatementContext::rU_AlterTable() {
+  return getRuleContext<CypherParser::RU_AlterTableContext>(0);
 }
 
-CypherParser::KU_CopyFromContext* CypherParser::OC_StatementContext::kU_CopyFrom() {
-  return getRuleContext<CypherParser::KU_CopyFromContext>(0);
+CypherParser::RU_CopyFromContext* CypherParser::OC_StatementContext::rU_CopyFrom() {
+  return getRuleContext<CypherParser::RU_CopyFromContext>(0);
 }
 
-CypherParser::KU_CopyFromByColumnContext* CypherParser::OC_StatementContext::kU_CopyFromByColumn() {
-  return getRuleContext<CypherParser::KU_CopyFromByColumnContext>(0);
+CypherParser::RU_CopyFromByColumnContext* CypherParser::OC_StatementContext::rU_CopyFromByColumn() {
+  return getRuleContext<CypherParser::RU_CopyFromByColumnContext>(0);
 }
 
-CypherParser::KU_CopyTOContext* CypherParser::OC_StatementContext::kU_CopyTO() {
-  return getRuleContext<CypherParser::KU_CopyTOContext>(0);
+CypherParser::RU_CopyTOContext* CypherParser::OC_StatementContext::rU_CopyTO() {
+  return getRuleContext<CypherParser::RU_CopyTOContext>(0);
 }
 
-CypherParser::KU_StandaloneCallContext* CypherParser::OC_StatementContext::kU_StandaloneCall() {
-  return getRuleContext<CypherParser::KU_StandaloneCallContext>(0);
+CypherParser::RU_StandaloneCallContext* CypherParser::OC_StatementContext::rU_StandaloneCall() {
+  return getRuleContext<CypherParser::RU_StandaloneCallContext>(0);
 }
 
-CypherParser::KU_CreateMacroContext* CypherParser::OC_StatementContext::kU_CreateMacro() {
-  return getRuleContext<CypherParser::KU_CreateMacroContext>(0);
+CypherParser::RU_CreateMacroContext* CypherParser::OC_StatementContext::rU_CreateMacro() {
+  return getRuleContext<CypherParser::RU_CreateMacroContext>(0);
 }
 
-CypherParser::KU_CommentOnContext* CypherParser::OC_StatementContext::kU_CommentOn() {
-  return getRuleContext<CypherParser::KU_CommentOnContext>(0);
+CypherParser::RU_CommentOnContext* CypherParser::OC_StatementContext::rU_CommentOn() {
+  return getRuleContext<CypherParser::RU_CommentOnContext>(0);
 }
 
-CypherParser::KU_TransactionContext* CypherParser::OC_StatementContext::kU_Transaction() {
-  return getRuleContext<CypherParser::KU_TransactionContext>(0);
+CypherParser::RU_TransactionContext* CypherParser::OC_StatementContext::rU_Transaction() {
+  return getRuleContext<CypherParser::RU_TransactionContext>(0);
 }
 
-CypherParser::KU_ExtensionContext* CypherParser::OC_StatementContext::kU_Extension() {
-  return getRuleContext<CypherParser::KU_ExtensionContext>(0);
+CypherParser::RU_ExtensionContext* CypherParser::OC_StatementContext::rU_Extension() {
+  return getRuleContext<CypherParser::RU_ExtensionContext>(0);
 }
 
-CypherParser::KU_ExportDatabaseContext* CypherParser::OC_StatementContext::kU_ExportDatabase() {
-  return getRuleContext<CypherParser::KU_ExportDatabaseContext>(0);
+CypherParser::RU_ExportDatabaseContext* CypherParser::OC_StatementContext::rU_ExportDatabase() {
+  return getRuleContext<CypherParser::RU_ExportDatabaseContext>(0);
 }
 
-CypherParser::KU_ImportDatabaseContext* CypherParser::OC_StatementContext::kU_ImportDatabase() {
-  return getRuleContext<CypherParser::KU_ImportDatabaseContext>(0);
+CypherParser::RU_ImportDatabaseContext* CypherParser::OC_StatementContext::rU_ImportDatabase() {
+  return getRuleContext<CypherParser::RU_ImportDatabaseContext>(0);
 }
 
-CypherParser::KU_AttachDatabaseContext* CypherParser::OC_StatementContext::kU_AttachDatabase() {
-  return getRuleContext<CypherParser::KU_AttachDatabaseContext>(0);
+CypherParser::RU_AttachDatabaseContext* CypherParser::OC_StatementContext::rU_AttachDatabase() {
+  return getRuleContext<CypherParser::RU_AttachDatabaseContext>(0);
 }
 
-CypherParser::KU_DetachDatabaseContext* CypherParser::OC_StatementContext::kU_DetachDatabase() {
-  return getRuleContext<CypherParser::KU_DetachDatabaseContext>(0);
+CypherParser::RU_DetachDatabaseContext* CypherParser::OC_StatementContext::rU_DetachDatabase() {
+  return getRuleContext<CypherParser::RU_DetachDatabaseContext>(0);
 }
 
-CypherParser::KU_UseDatabaseContext* CypherParser::OC_StatementContext::kU_UseDatabase() {
-  return getRuleContext<CypherParser::KU_UseDatabaseContext>(0);
+CypherParser::RU_UseDatabaseContext* CypherParser::OC_StatementContext::rU_UseDatabase() {
+  return getRuleContext<CypherParser::RU_UseDatabaseContext>(0);
 }
 
 
@@ -1680,147 +1680,147 @@ CypherParser::OC_StatementContext* CypherParser::oC_Statement() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(391);
-      kU_CreateUser();
+      rU_CreateUser();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(392);
-      kU_CreateRole();
+      rU_CreateRole();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
       setState(393);
-      kU_CreateNodeTable();
+      rU_CreateNodeTable();
       break;
     }
 
     case 5: {
       enterOuterAlt(_localctx, 5);
       setState(394);
-      kU_CreateRelTable();
+      rU_CreateRelTable();
       break;
     }
 
     case 6: {
       enterOuterAlt(_localctx, 6);
       setState(395);
-      kU_CreateSequence();
+      rU_CreateSequence();
       break;
     }
 
     case 7: {
       enterOuterAlt(_localctx, 7);
       setState(396);
-      kU_CreateType();
+      rU_CreateType();
       break;
     }
 
     case 8: {
       enterOuterAlt(_localctx, 8);
       setState(397);
-      kU_Drop();
+      rU_Drop();
       break;
     }
 
     case 9: {
       enterOuterAlt(_localctx, 9);
       setState(398);
-      kU_AlterTable();
+      rU_AlterTable();
       break;
     }
 
     case 10: {
       enterOuterAlt(_localctx, 10);
       setState(399);
-      kU_CopyFrom();
+      rU_CopyFrom();
       break;
     }
 
     case 11: {
       enterOuterAlt(_localctx, 11);
       setState(400);
-      kU_CopyFromByColumn();
+      rU_CopyFromByColumn();
       break;
     }
 
     case 12: {
       enterOuterAlt(_localctx, 12);
       setState(401);
-      kU_CopyTO();
+      rU_CopyTO();
       break;
     }
 
     case 13: {
       enterOuterAlt(_localctx, 13);
       setState(402);
-      kU_StandaloneCall();
+      rU_StandaloneCall();
       break;
     }
 
     case 14: {
       enterOuterAlt(_localctx, 14);
       setState(403);
-      kU_CreateMacro();
+      rU_CreateMacro();
       break;
     }
 
     case 15: {
       enterOuterAlt(_localctx, 15);
       setState(404);
-      kU_CommentOn();
+      rU_CommentOn();
       break;
     }
 
     case 16: {
       enterOuterAlt(_localctx, 16);
       setState(405);
-      kU_Transaction();
+      rU_Transaction();
       break;
     }
 
     case 17: {
       enterOuterAlt(_localctx, 17);
       setState(406);
-      kU_Extension();
+      rU_Extension();
       break;
     }
 
     case 18: {
       enterOuterAlt(_localctx, 18);
       setState(407);
-      kU_ExportDatabase();
+      rU_ExportDatabase();
       break;
     }
 
     case 19: {
       enterOuterAlt(_localctx, 19);
       setState(408);
-      kU_ImportDatabase();
+      rU_ImportDatabase();
       break;
     }
 
     case 20: {
       enterOuterAlt(_localctx, 20);
       setState(409);
-      kU_AttachDatabase();
+      rU_AttachDatabase();
       break;
     }
 
     case 21: {
       enterOuterAlt(_localctx, 21);
       setState(410);
-      kU_DetachDatabase();
+      rU_DetachDatabase();
       break;
     }
 
     case 22: {
       enterOuterAlt(_localctx, 22);
       setState(411);
-      kU_UseDatabase();
+      rU_UseDatabase();
       break;
     }
 
@@ -1838,53 +1838,53 @@ CypherParser::OC_StatementContext* CypherParser::oC_Statement() {
   return _localctx;
 }
 
-//----------------- KU_CopyFromContext ------------------------------------------------------------------
+//----------------- RU_CopyFromContext ------------------------------------------------------------------
 
-CypherParser::KU_CopyFromContext::KU_CopyFromContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CopyFromContext::RU_CopyFromContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromContext::COPY() {
+tree::TerminalNode* CypherParser::RU_CopyFromContext::COPY() {
   return getToken(CypherParser::COPY, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CopyFromContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CopyFromContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CopyFromContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CopyFromContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CopyFromContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromContext::FROM() {
+tree::TerminalNode* CypherParser::RU_CopyFromContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-CypherParser::KU_ScanSourceContext* CypherParser::KU_CopyFromContext::kU_ScanSource() {
-  return getRuleContext<CypherParser::KU_ScanSourceContext>(0);
+CypherParser::RU_ScanSourceContext* CypherParser::RU_CopyFromContext::rU_ScanSource() {
+  return getRuleContext<CypherParser::RU_ScanSourceContext>(0);
 }
 
-CypherParser::KU_ColumnNamesContext* CypherParser::KU_CopyFromContext::kU_ColumnNames() {
-  return getRuleContext<CypherParser::KU_ColumnNamesContext>(0);
+CypherParser::RU_ColumnNamesContext* CypherParser::RU_CopyFromContext::rU_ColumnNames() {
+  return getRuleContext<CypherParser::RU_ColumnNamesContext>(0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_CopyFromContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
-}
-
-
-size_t CypherParser::KU_CopyFromContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CopyFrom;
+CypherParser::RU_OptionsContext* CypherParser::RU_CopyFromContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
 
-CypherParser::KU_CopyFromContext* CypherParser::kU_CopyFrom() {
-  KU_CopyFromContext *_localctx = _tracker.createInstance<KU_CopyFromContext>(_ctx, getState());
-  enterRule(_localctx, 6, CypherParser::RuleKU_CopyFrom);
+size_t CypherParser::RU_CopyFromContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CopyFrom;
+}
+
+
+CypherParser::RU_CopyFromContext* CypherParser::rU_CopyFrom() {
+  RU_CopyFromContext *_localctx = _tracker.createInstance<RU_CopyFromContext>(_ctx, getState());
+  enterRule(_localctx, 6, CypherParser::RuleRU_CopyFrom);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1908,7 +1908,7 @@ CypherParser::KU_CopyFromContext* CypherParser::kU_CopyFrom() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 9, _ctx)) {
     case 1: {
       setState(417);
-      kU_ColumnNames();
+      rU_ColumnNames();
       break;
     }
 
@@ -1922,7 +1922,7 @@ CypherParser::KU_CopyFromContext* CypherParser::kU_CopyFrom() {
     setState(422);
     match(CypherParser::SP);
     setState(423);
-    kU_ScanSource();
+    rU_ScanSource();
     setState(437);
     _errHandler->sync(this);
 
@@ -1947,7 +1947,7 @@ CypherParser::KU_CopyFromContext* CypherParser::kU_CopyFrom() {
         match(CypherParser::SP);
       }
       setState(431);
-      kU_Options();
+      rU_Options();
       setState(433);
       _errHandler->sync(this);
 
@@ -1975,37 +1975,37 @@ CypherParser::KU_CopyFromContext* CypherParser::kU_CopyFrom() {
   return _localctx;
 }
 
-//----------------- KU_ColumnNamesContext ------------------------------------------------------------------
+//----------------- RU_ColumnNamesContext ------------------------------------------------------------------
 
-CypherParser::KU_ColumnNamesContext::KU_ColumnNamesContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ColumnNamesContext::RU_ColumnNamesContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_ColumnNamesContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_ColumnNamesContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_ColumnNamesContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_ColumnNamesContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::KU_ColumnNamesContext::oC_SchemaName() {
+std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::RU_ColumnNamesContext::oC_SchemaName() {
   return getRuleContexts<CypherParser::OC_SchemaNameContext>();
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_ColumnNamesContext::oC_SchemaName(size_t i) {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_ColumnNamesContext::oC_SchemaName(size_t i) {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(i);
 }
 
 
-size_t CypherParser::KU_ColumnNamesContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ColumnNames;
+size_t CypherParser::RU_ColumnNamesContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ColumnNames;
 }
 
 
-CypherParser::KU_ColumnNamesContext* CypherParser::kU_ColumnNames() {
-  KU_ColumnNamesContext *_localctx = _tracker.createInstance<KU_ColumnNamesContext>(_ctx, getState());
-  enterRule(_localctx, 8, CypherParser::RuleKU_ColumnNames);
+CypherParser::RU_ColumnNamesContext* CypherParser::rU_ColumnNames() {
+  RU_ColumnNamesContext *_localctx = _tracker.createInstance<RU_ColumnNamesContext>(_ctx, getState());
+  enterRule(_localctx, 8, CypherParser::RuleRU_ColumnNames);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2098,53 +2098,53 @@ CypherParser::KU_ColumnNamesContext* CypherParser::kU_ColumnNames() {
   return _localctx;
 }
 
-//----------------- KU_ScanSourceContext ------------------------------------------------------------------
+//----------------- RU_ScanSourceContext ------------------------------------------------------------------
 
-CypherParser::KU_ScanSourceContext::KU_ScanSourceContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ScanSourceContext::RU_ScanSourceContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_FilePathsContext* CypherParser::KU_ScanSourceContext::kU_FilePaths() {
-  return getRuleContext<CypherParser::KU_FilePathsContext>(0);
+CypherParser::RU_FilePathsContext* CypherParser::RU_ScanSourceContext::rU_FilePaths() {
+  return getRuleContext<CypherParser::RU_FilePathsContext>(0);
 }
 
-CypherParser::OC_QueryContext* CypherParser::KU_ScanSourceContext::oC_Query() {
+CypherParser::OC_QueryContext* CypherParser::RU_ScanSourceContext::oC_Query() {
   return getRuleContext<CypherParser::OC_QueryContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_ScanSourceContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_ScanSourceContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_ScanSourceContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_ScanSourceContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_ParameterContext* CypherParser::KU_ScanSourceContext::oC_Parameter() {
+CypherParser::OC_ParameterContext* CypherParser::RU_ScanSourceContext::oC_Parameter() {
   return getRuleContext<CypherParser::OC_ParameterContext>(0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_ScanSourceContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_ScanSourceContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_ScanSourceContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_ScanSourceContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::OC_FunctionInvocationContext* CypherParser::KU_ScanSourceContext::oC_FunctionInvocation() {
+CypherParser::OC_FunctionInvocationContext* CypherParser::RU_ScanSourceContext::oC_FunctionInvocation() {
   return getRuleContext<CypherParser::OC_FunctionInvocationContext>(0);
 }
 
 
-size_t CypherParser::KU_ScanSourceContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ScanSource;
+size_t CypherParser::RU_ScanSourceContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ScanSource;
 }
 
 
-CypherParser::KU_ScanSourceContext* CypherParser::kU_ScanSource() {
-  KU_ScanSourceContext *_localctx = _tracker.createInstance<KU_ScanSourceContext>(_ctx, getState());
-  enterRule(_localctx, 10, CypherParser::RuleKU_ScanSource);
+CypherParser::RU_ScanSourceContext* CypherParser::rU_ScanSource() {
+  RU_ScanSourceContext *_localctx = _tracker.createInstance<RU_ScanSourceContext>(_ctx, getState());
+  enterRule(_localctx, 10, CypherParser::RuleRU_ScanSource);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2161,7 +2161,7 @@ CypherParser::KU_ScanSourceContext* CypherParser::kU_ScanSource() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(467);
-      kU_FilePaths();
+      rU_FilePaths();
       break;
     }
 
@@ -2246,57 +2246,57 @@ CypherParser::KU_ScanSourceContext* CypherParser::kU_ScanSource() {
   return _localctx;
 }
 
-//----------------- KU_CopyFromByColumnContext ------------------------------------------------------------------
+//----------------- RU_CopyFromByColumnContext ------------------------------------------------------------------
 
-CypherParser::KU_CopyFromByColumnContext::KU_CopyFromByColumnContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CopyFromByColumnContext::RU_CopyFromByColumnContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::COPY() {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::COPY() {
   return getToken(CypherParser::COPY, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CopyFromByColumnContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CopyFromByColumnContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CopyFromByColumnContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CopyFromByColumnContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::FROM() {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CopyFromByColumnContext::StringLiteral() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CopyFromByColumnContext::StringLiteral() {
   return getTokens(CypherParser::StringLiteral);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::StringLiteral(size_t i) {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::StringLiteral(size_t i) {
   return getToken(CypherParser::StringLiteral, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::BY() {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::BY() {
   return getToken(CypherParser::BY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyFromByColumnContext::COLUMN() {
+tree::TerminalNode* CypherParser::RU_CopyFromByColumnContext::COLUMN() {
   return getToken(CypherParser::COLUMN, 0);
 }
 
 
-size_t CypherParser::KU_CopyFromByColumnContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CopyFromByColumn;
+size_t CypherParser::RU_CopyFromByColumnContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CopyFromByColumn;
 }
 
 
-CypherParser::KU_CopyFromByColumnContext* CypherParser::kU_CopyFromByColumn() {
-  KU_CopyFromByColumnContext *_localctx = _tracker.createInstance<KU_CopyFromByColumnContext>(_ctx, getState());
-  enterRule(_localctx, 12, CypherParser::RuleKU_CopyFromByColumn);
+CypherParser::RU_CopyFromByColumnContext* CypherParser::rU_CopyFromByColumn() {
+  RU_CopyFromByColumnContext *_localctx = _tracker.createInstance<RU_CopyFromByColumnContext>(_ctx, getState());
+  enterRule(_localctx, 12, CypherParser::RuleRU_CopyFromByColumn);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2381,49 +2381,49 @@ CypherParser::KU_CopyFromByColumnContext* CypherParser::kU_CopyFromByColumn() {
   return _localctx;
 }
 
-//----------------- KU_CopyTOContext ------------------------------------------------------------------
+//----------------- RU_CopyTOContext ------------------------------------------------------------------
 
-CypherParser::KU_CopyTOContext::KU_CopyTOContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CopyTOContext::RU_CopyTOContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CopyTOContext::COPY() {
+tree::TerminalNode* CypherParser::RU_CopyTOContext::COPY() {
   return getToken(CypherParser::COPY, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CopyTOContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CopyTOContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyTOContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CopyTOContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_QueryContext* CypherParser::KU_CopyTOContext::oC_Query() {
+CypherParser::OC_QueryContext* CypherParser::RU_CopyTOContext::oC_Query() {
   return getRuleContext<CypherParser::OC_QueryContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyTOContext::TO() {
+tree::TerminalNode* CypherParser::RU_CopyTOContext::TO() {
   return getToken(CypherParser::TO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CopyTOContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_CopyTOContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_CopyTOContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
+CypherParser::RU_OptionsContext* CypherParser::RU_CopyTOContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
 
-size_t CypherParser::KU_CopyTOContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CopyTO;
+size_t CypherParser::RU_CopyTOContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CopyTO;
 }
 
 
-CypherParser::KU_CopyTOContext* CypherParser::kU_CopyTO() {
-  KU_CopyTOContext *_localctx = _tracker.createInstance<KU_CopyTOContext>(_ctx, getState());
-  enterRule(_localctx, 14, CypherParser::RuleKU_CopyTO);
+CypherParser::RU_CopyTOContext* CypherParser::rU_CopyTO() {
+  RU_CopyTOContext *_localctx = _tracker.createInstance<RU_CopyTOContext>(_ctx, getState());
+  enterRule(_localctx, 14, CypherParser::RuleRU_CopyTO);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2493,7 +2493,7 @@ CypherParser::KU_CopyTOContext* CypherParser::kU_CopyTO() {
         match(CypherParser::SP);
       }
       setState(542);
-      kU_Options();
+      rU_Options();
       setState(544);
       _errHandler->sync(this);
 
@@ -2521,45 +2521,45 @@ CypherParser::KU_CopyTOContext* CypherParser::kU_CopyTO() {
   return _localctx;
 }
 
-//----------------- KU_ExportDatabaseContext ------------------------------------------------------------------
+//----------------- RU_ExportDatabaseContext ------------------------------------------------------------------
 
-CypherParser::KU_ExportDatabaseContext::KU_ExportDatabaseContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ExportDatabaseContext::RU_ExportDatabaseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_ExportDatabaseContext::EXPORT() {
+tree::TerminalNode* CypherParser::RU_ExportDatabaseContext::EXPORT() {
   return getToken(CypherParser::EXPORT, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_ExportDatabaseContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_ExportDatabaseContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_ExportDatabaseContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_ExportDatabaseContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_ExportDatabaseContext::DATABASE() {
+tree::TerminalNode* CypherParser::RU_ExportDatabaseContext::DATABASE() {
   return getToken(CypherParser::DATABASE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_ExportDatabaseContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_ExportDatabaseContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_ExportDatabaseContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
+CypherParser::RU_OptionsContext* CypherParser::RU_ExportDatabaseContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
 
-size_t CypherParser::KU_ExportDatabaseContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ExportDatabase;
+size_t CypherParser::RU_ExportDatabaseContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ExportDatabase;
 }
 
 
-CypherParser::KU_ExportDatabaseContext* CypherParser::kU_ExportDatabase() {
-  KU_ExportDatabaseContext *_localctx = _tracker.createInstance<KU_ExportDatabaseContext>(_ctx, getState());
-  enterRule(_localctx, 16, CypherParser::RuleKU_ExportDatabase);
+CypherParser::RU_ExportDatabaseContext* CypherParser::rU_ExportDatabase() {
+  RU_ExportDatabaseContext *_localctx = _tracker.createInstance<RU_ExportDatabaseContext>(_ctx, getState());
+  enterRule(_localctx, 16, CypherParser::RuleRU_ExportDatabase);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2605,7 +2605,7 @@ CypherParser::KU_ExportDatabaseContext* CypherParser::kU_ExportDatabase() {
         match(CypherParser::SP);
       }
       setState(562);
-      kU_Options();
+      rU_Options();
       setState(564);
       _errHandler->sync(this);
 
@@ -2633,41 +2633,41 @@ CypherParser::KU_ExportDatabaseContext* CypherParser::kU_ExportDatabase() {
   return _localctx;
 }
 
-//----------------- KU_ImportDatabaseContext ------------------------------------------------------------------
+//----------------- RU_ImportDatabaseContext ------------------------------------------------------------------
 
-CypherParser::KU_ImportDatabaseContext::KU_ImportDatabaseContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ImportDatabaseContext::RU_ImportDatabaseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_ImportDatabaseContext::IMPORT() {
+tree::TerminalNode* CypherParser::RU_ImportDatabaseContext::IMPORT() {
   return getToken(CypherParser::IMPORT, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_ImportDatabaseContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_ImportDatabaseContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_ImportDatabaseContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_ImportDatabaseContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_ImportDatabaseContext::DATABASE() {
+tree::TerminalNode* CypherParser::RU_ImportDatabaseContext::DATABASE() {
   return getToken(CypherParser::DATABASE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_ImportDatabaseContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_ImportDatabaseContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
 
-size_t CypherParser::KU_ImportDatabaseContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ImportDatabase;
+size_t CypherParser::RU_ImportDatabaseContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ImportDatabase;
 }
 
 
-CypherParser::KU_ImportDatabaseContext* CypherParser::kU_ImportDatabase() {
-  KU_ImportDatabaseContext *_localctx = _tracker.createInstance<KU_ImportDatabaseContext>(_ctx, getState());
-  enterRule(_localctx, 18, CypherParser::RuleKU_ImportDatabase);
+CypherParser::RU_ImportDatabaseContext* CypherParser::rU_ImportDatabase() {
+  RU_ImportDatabaseContext *_localctx = _tracker.createInstance<RU_ImportDatabaseContext>(_ctx, getState());
+  enterRule(_localctx, 18, CypherParser::RuleRU_ImportDatabase);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -2699,57 +2699,57 @@ CypherParser::KU_ImportDatabaseContext* CypherParser::kU_ImportDatabase() {
   return _localctx;
 }
 
-//----------------- KU_AttachDatabaseContext ------------------------------------------------------------------
+//----------------- RU_AttachDatabaseContext ------------------------------------------------------------------
 
-CypherParser::KU_AttachDatabaseContext::KU_AttachDatabaseContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AttachDatabaseContext::RU_AttachDatabaseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_AttachDatabaseContext::ATTACH() {
+tree::TerminalNode* CypherParser::RU_AttachDatabaseContext::ATTACH() {
   return getToken(CypherParser::ATTACH, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_AttachDatabaseContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_AttachDatabaseContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_AttachDatabaseContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_AttachDatabaseContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_AttachDatabaseContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_AttachDatabaseContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_AttachDatabaseContext::DBTYPE() {
+tree::TerminalNode* CypherParser::RU_AttachDatabaseContext::DBTYPE() {
   return getToken(CypherParser::DBTYPE, 0);
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_AttachDatabaseContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_AttachDatabaseContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_AttachDatabaseContext::AS() {
+tree::TerminalNode* CypherParser::RU_AttachDatabaseContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_AttachDatabaseContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_AttachDatabaseContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_AttachDatabaseContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
+CypherParser::RU_OptionsContext* CypherParser::RU_AttachDatabaseContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
 
-size_t CypherParser::KU_AttachDatabaseContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AttachDatabase;
+size_t CypherParser::RU_AttachDatabaseContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AttachDatabase;
 }
 
 
-CypherParser::KU_AttachDatabaseContext* CypherParser::kU_AttachDatabase() {
-  KU_AttachDatabaseContext *_localctx = _tracker.createInstance<KU_AttachDatabaseContext>(_ctx, getState());
-  enterRule(_localctx, 20, CypherParser::RuleKU_AttachDatabase);
+CypherParser::RU_AttachDatabaseContext* CypherParser::rU_AttachDatabase() {
+  RU_AttachDatabaseContext *_localctx = _tracker.createInstance<RU_AttachDatabaseContext>(_ctx, getState());
+  enterRule(_localctx, 20, CypherParser::RuleRU_AttachDatabase);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2828,7 +2828,7 @@ CypherParser::KU_AttachDatabaseContext* CypherParser::kU_AttachDatabase() {
         match(CypherParser::SP);
       }
       setState(600);
-      kU_Options();
+      rU_Options();
       break;
     }
 
@@ -2856,37 +2856,37 @@ CypherParser::KU_AttachDatabaseContext* CypherParser::kU_AttachDatabase() {
   return _localctx;
 }
 
-//----------------- KU_OptionContext ------------------------------------------------------------------
+//----------------- RU_OptionContext ------------------------------------------------------------------
 
-CypherParser::KU_OptionContext::KU_OptionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_OptionContext::RU_OptionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_OptionContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_OptionContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-CypherParser::OC_LiteralContext* CypherParser::KU_OptionContext::oC_Literal() {
+CypherParser::OC_LiteralContext* CypherParser::RU_OptionContext::oC_Literal() {
   return getRuleContext<CypherParser::OC_LiteralContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_OptionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_OptionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_OptionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_OptionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_OptionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Option;
+size_t CypherParser::RU_OptionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Option;
 }
 
 
-CypherParser::KU_OptionContext* CypherParser::kU_Option() {
-  KU_OptionContext *_localctx = _tracker.createInstance<KU_OptionContext>(_ctx, getState());
-  enterRule(_localctx, 22, CypherParser::RuleKU_Option);
+CypherParser::RU_OptionContext* CypherParser::rU_Option() {
+  RU_OptionContext *_localctx = _tracker.createInstance<RU_OptionContext>(_ctx, getState());
+  enterRule(_localctx, 22, CypherParser::RuleRU_Option);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -2972,37 +2972,37 @@ CypherParser::KU_OptionContext* CypherParser::kU_Option() {
   return _localctx;
 }
 
-//----------------- KU_OptionsContext ------------------------------------------------------------------
+//----------------- RU_OptionsContext ------------------------------------------------------------------
 
-CypherParser::KU_OptionsContext::KU_OptionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_OptionsContext::RU_OptionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_OptionContext *> CypherParser::KU_OptionsContext::kU_Option() {
-  return getRuleContexts<CypherParser::KU_OptionContext>();
+std::vector<CypherParser::RU_OptionContext *> CypherParser::RU_OptionsContext::rU_Option() {
+  return getRuleContexts<CypherParser::RU_OptionContext>();
 }
 
-CypherParser::KU_OptionContext* CypherParser::KU_OptionsContext::kU_Option(size_t i) {
-  return getRuleContext<CypherParser::KU_OptionContext>(i);
+CypherParser::RU_OptionContext* CypherParser::RU_OptionsContext::rU_Option(size_t i) {
+  return getRuleContext<CypherParser::RU_OptionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_OptionsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_OptionsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_OptionsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_OptionsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_OptionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Options;
+size_t CypherParser::RU_OptionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Options;
 }
 
 
-CypherParser::KU_OptionsContext* CypherParser::kU_Options() {
-  KU_OptionsContext *_localctx = _tracker.createInstance<KU_OptionsContext>(_ctx, getState());
-  enterRule(_localctx, 24, CypherParser::RuleKU_Options);
+CypherParser::RU_OptionsContext* CypherParser::rU_Options() {
+  RU_OptionsContext *_localctx = _tracker.createInstance<RU_OptionsContext>(_ctx, getState());
+  enterRule(_localctx, 24, CypherParser::RuleRU_Options);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3016,7 +3016,7 @@ CypherParser::KU_OptionsContext* CypherParser::kU_Options() {
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(629);
-    kU_Option();
+    rU_Option();
     setState(640);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 52, _ctx);
@@ -3041,7 +3041,7 @@ CypherParser::KU_OptionsContext* CypherParser::kU_Options() {
           match(CypherParser::SP);
         }
         setState(637);
-        kU_Option(); 
+        rU_Option(); 
       }
       setState(642);
       _errHandler->sync(this);
@@ -3058,33 +3058,33 @@ CypherParser::KU_OptionsContext* CypherParser::kU_Options() {
   return _localctx;
 }
 
-//----------------- KU_DetachDatabaseContext ------------------------------------------------------------------
+//----------------- RU_DetachDatabaseContext ------------------------------------------------------------------
 
-CypherParser::KU_DetachDatabaseContext::KU_DetachDatabaseContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DetachDatabaseContext::RU_DetachDatabaseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DetachDatabaseContext::DETACH() {
+tree::TerminalNode* CypherParser::RU_DetachDatabaseContext::DETACH() {
   return getToken(CypherParser::DETACH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_DetachDatabaseContext::SP() {
+tree::TerminalNode* CypherParser::RU_DetachDatabaseContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_DetachDatabaseContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_DetachDatabaseContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
 
-size_t CypherParser::KU_DetachDatabaseContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DetachDatabase;
+size_t CypherParser::RU_DetachDatabaseContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DetachDatabase;
 }
 
 
-CypherParser::KU_DetachDatabaseContext* CypherParser::kU_DetachDatabase() {
-  KU_DetachDatabaseContext *_localctx = _tracker.createInstance<KU_DetachDatabaseContext>(_ctx, getState());
-  enterRule(_localctx, 26, CypherParser::RuleKU_DetachDatabase);
+CypherParser::RU_DetachDatabaseContext* CypherParser::rU_DetachDatabase() {
+  RU_DetachDatabaseContext *_localctx = _tracker.createInstance<RU_DetachDatabaseContext>(_ctx, getState());
+  enterRule(_localctx, 26, CypherParser::RuleRU_DetachDatabase);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -3112,33 +3112,33 @@ CypherParser::KU_DetachDatabaseContext* CypherParser::kU_DetachDatabase() {
   return _localctx;
 }
 
-//----------------- KU_UseDatabaseContext ------------------------------------------------------------------
+//----------------- RU_UseDatabaseContext ------------------------------------------------------------------
 
-CypherParser::KU_UseDatabaseContext::KU_UseDatabaseContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_UseDatabaseContext::RU_UseDatabaseContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_UseDatabaseContext::USE() {
+tree::TerminalNode* CypherParser::RU_UseDatabaseContext::USE() {
   return getToken(CypherParser::USE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_UseDatabaseContext::SP() {
+tree::TerminalNode* CypherParser::RU_UseDatabaseContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_UseDatabaseContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_UseDatabaseContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
 
-size_t CypherParser::KU_UseDatabaseContext::getRuleIndex() const {
-  return CypherParser::RuleKU_UseDatabase;
+size_t CypherParser::RU_UseDatabaseContext::getRuleIndex() const {
+  return CypherParser::RuleRU_UseDatabase;
 }
 
 
-CypherParser::KU_UseDatabaseContext* CypherParser::kU_UseDatabase() {
-  KU_UseDatabaseContext *_localctx = _tracker.createInstance<KU_UseDatabaseContext>(_ctx, getState());
-  enterRule(_localctx, 28, CypherParser::RuleKU_UseDatabase);
+CypherParser::RU_UseDatabaseContext* CypherParser::rU_UseDatabase() {
+  RU_UseDatabaseContext *_localctx = _tracker.createInstance<RU_UseDatabaseContext>(_ctx, getState());
+  enterRule(_localctx, 28, CypherParser::RuleRU_UseDatabase);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -3166,45 +3166,45 @@ CypherParser::KU_UseDatabaseContext* CypherParser::kU_UseDatabase() {
   return _localctx;
 }
 
-//----------------- KU_StandaloneCallContext ------------------------------------------------------------------
+//----------------- RU_StandaloneCallContext ------------------------------------------------------------------
 
-CypherParser::KU_StandaloneCallContext::KU_StandaloneCallContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_StandaloneCallContext::RU_StandaloneCallContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_StandaloneCallContext::CALL() {
+tree::TerminalNode* CypherParser::RU_StandaloneCallContext::CALL() {
   return getToken(CypherParser::CALL, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_StandaloneCallContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_StandaloneCallContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_StandaloneCallContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_StandaloneCallContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_StandaloneCallContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_StandaloneCallContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_StandaloneCallContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_StandaloneCallContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-CypherParser::OC_FunctionInvocationContext* CypherParser::KU_StandaloneCallContext::oC_FunctionInvocation() {
+CypherParser::OC_FunctionInvocationContext* CypherParser::RU_StandaloneCallContext::oC_FunctionInvocation() {
   return getRuleContext<CypherParser::OC_FunctionInvocationContext>(0);
 }
 
 
-size_t CypherParser::KU_StandaloneCallContext::getRuleIndex() const {
-  return CypherParser::RuleKU_StandaloneCall;
+size_t CypherParser::RU_StandaloneCallContext::getRuleIndex() const {
+  return CypherParser::RuleRU_StandaloneCall;
 }
 
 
-CypherParser::KU_StandaloneCallContext* CypherParser::kU_StandaloneCall() {
-  KU_StandaloneCallContext *_localctx = _tracker.createInstance<KU_StandaloneCallContext>(_ctx, getState());
-  enterRule(_localctx, 30, CypherParser::RuleKU_StandaloneCall);
+CypherParser::RU_StandaloneCallContext* CypherParser::rU_StandaloneCall() {
+  RU_StandaloneCallContext *_localctx = _tracker.createInstance<RU_StandaloneCallContext>(_ctx, getState());
+  enterRule(_localctx, 30, CypherParser::RuleRU_StandaloneCall);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3274,53 +3274,53 @@ CypherParser::KU_StandaloneCallContext* CypherParser::kU_StandaloneCall() {
   return _localctx;
 }
 
-//----------------- KU_CommentOnContext ------------------------------------------------------------------
+//----------------- RU_CommentOnContext ------------------------------------------------------------------
 
-CypherParser::KU_CommentOnContext::KU_CommentOnContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CommentOnContext::RU_CommentOnContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::COMMENT() {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::COMMENT() {
   return getToken(CypherParser::COMMENT, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CommentOnContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CommentOnContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::ON() {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::ON() {
   return getToken(CypherParser::ON, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::TABLE() {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::TABLE() {
   return getToken(CypherParser::TABLE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CommentOnContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CommentOnContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::IS() {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::IS() {
   return getToken(CypherParser::IS, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CommentOnContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_CommentOnContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
 
-size_t CypherParser::KU_CommentOnContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CommentOn;
+size_t CypherParser::RU_CommentOnContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CommentOn;
 }
 
 
-CypherParser::KU_CommentOnContext* CypherParser::kU_CommentOn() {
-  KU_CommentOnContext *_localctx = _tracker.createInstance<KU_CommentOnContext>(_ctx, getState());
-  enterRule(_localctx, 32, CypherParser::RuleKU_CommentOn);
+CypherParser::RU_CommentOnContext* CypherParser::rU_CommentOn() {
+  RU_CommentOnContext *_localctx = _tracker.createInstance<RU_CommentOnContext>(_ctx, getState());
+  enterRule(_localctx, 32, CypherParser::RuleRU_CommentOn);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -3364,61 +3364,61 @@ CypherParser::KU_CommentOnContext* CypherParser::kU_CommentOn() {
   return _localctx;
 }
 
-//----------------- KU_CreateMacroContext ------------------------------------------------------------------
+//----------------- RU_CreateMacroContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateMacroContext::KU_CreateMacroContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateMacroContext::RU_CreateMacroContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateMacroContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateMacroContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateMacroContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateMacroContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateMacroContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateMacroContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateMacroContext::MACRO() {
+tree::TerminalNode* CypherParser::RU_CreateMacroContext::MACRO() {
   return getToken(CypherParser::MACRO, 0);
 }
 
-CypherParser::OC_FunctionNameContext* CypherParser::KU_CreateMacroContext::oC_FunctionName() {
+CypherParser::OC_FunctionNameContext* CypherParser::RU_CreateMacroContext::oC_FunctionName() {
   return getRuleContext<CypherParser::OC_FunctionNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateMacroContext::AS() {
+tree::TerminalNode* CypherParser::RU_CreateMacroContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_CreateMacroContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_CreateMacroContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-CypherParser::KU_PositionalArgsContext* CypherParser::KU_CreateMacroContext::kU_PositionalArgs() {
-  return getRuleContext<CypherParser::KU_PositionalArgsContext>(0);
+CypherParser::RU_PositionalArgsContext* CypherParser::RU_CreateMacroContext::rU_PositionalArgs() {
+  return getRuleContext<CypherParser::RU_PositionalArgsContext>(0);
 }
 
-std::vector<CypherParser::KU_DefaultArgContext *> CypherParser::KU_CreateMacroContext::kU_DefaultArg() {
-  return getRuleContexts<CypherParser::KU_DefaultArgContext>();
+std::vector<CypherParser::RU_DefaultArgContext *> CypherParser::RU_CreateMacroContext::rU_DefaultArg() {
+  return getRuleContexts<CypherParser::RU_DefaultArgContext>();
 }
 
-CypherParser::KU_DefaultArgContext* CypherParser::KU_CreateMacroContext::kU_DefaultArg(size_t i) {
-  return getRuleContext<CypherParser::KU_DefaultArgContext>(i);
-}
-
-
-size_t CypherParser::KU_CreateMacroContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateMacro;
+CypherParser::RU_DefaultArgContext* CypherParser::RU_CreateMacroContext::rU_DefaultArg(size_t i) {
+  return getRuleContext<CypherParser::RU_DefaultArgContext>(i);
 }
 
 
-CypherParser::KU_CreateMacroContext* CypherParser::kU_CreateMacro() {
-  KU_CreateMacroContext *_localctx = _tracker.createInstance<KU_CreateMacroContext>(_ctx, getState());
-  enterRule(_localctx, 34, CypherParser::RuleKU_CreateMacro);
+size_t CypherParser::RU_CreateMacroContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateMacro;
+}
+
+
+CypherParser::RU_CreateMacroContext* CypherParser::rU_CreateMacro() {
+  RU_CreateMacroContext *_localctx = _tracker.createInstance<RU_CreateMacroContext>(_ctx, getState());
+  enterRule(_localctx, 34, CypherParser::RuleRU_CreateMacro);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3470,7 +3470,7 @@ CypherParser::KU_CreateMacroContext* CypherParser::kU_CreateMacro() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 58, _ctx)) {
     case 1: {
       setState(692);
-      kU_PositionalArgs();
+      rU_PositionalArgs();
       break;
     }
 
@@ -3499,7 +3499,7 @@ CypherParser::KU_CreateMacroContext* CypherParser::kU_CreateMacro() {
       ((1ULL << (_la - 65)) & -287985230644762313) != 0) || ((((_la - 130) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 130)) & 5068755015275819) != 0)) {
       setState(698);
-      kU_DefaultArg();
+      rU_DefaultArg();
     }
     setState(711);
     _errHandler->sync(this);
@@ -3525,7 +3525,7 @@ CypherParser::KU_CreateMacroContext* CypherParser::kU_CreateMacro() {
           match(CypherParser::SP);
         }
         setState(708);
-        kU_DefaultArg(); 
+        rU_DefaultArg(); 
       }
       setState(713);
       _errHandler->sync(this);
@@ -3560,37 +3560,37 @@ CypherParser::KU_CreateMacroContext* CypherParser::kU_CreateMacro() {
   return _localctx;
 }
 
-//----------------- KU_PositionalArgsContext ------------------------------------------------------------------
+//----------------- RU_PositionalArgsContext ------------------------------------------------------------------
 
-CypherParser::KU_PositionalArgsContext::KU_PositionalArgsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_PositionalArgsContext::RU_PositionalArgsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::OC_SymbolicNameContext *> CypherParser::KU_PositionalArgsContext::oC_SymbolicName() {
+std::vector<CypherParser::OC_SymbolicNameContext *> CypherParser::RU_PositionalArgsContext::oC_SymbolicName() {
   return getRuleContexts<CypherParser::OC_SymbolicNameContext>();
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_PositionalArgsContext::oC_SymbolicName(size_t i) {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_PositionalArgsContext::oC_SymbolicName(size_t i) {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_PositionalArgsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_PositionalArgsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_PositionalArgsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_PositionalArgsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_PositionalArgsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_PositionalArgs;
+size_t CypherParser::RU_PositionalArgsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_PositionalArgs;
 }
 
 
-CypherParser::KU_PositionalArgsContext* CypherParser::kU_PositionalArgs() {
-  KU_PositionalArgsContext *_localctx = _tracker.createInstance<KU_PositionalArgsContext>(_ctx, getState());
-  enterRule(_localctx, 36, CypherParser::RuleKU_PositionalArgs);
+CypherParser::RU_PositionalArgsContext* CypherParser::rU_PositionalArgs() {
+  RU_PositionalArgsContext *_localctx = _tracker.createInstance<RU_PositionalArgsContext>(_ctx, getState());
+  enterRule(_localctx, 36, CypherParser::RuleRU_PositionalArgs);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3646,41 +3646,41 @@ CypherParser::KU_PositionalArgsContext* CypherParser::kU_PositionalArgs() {
   return _localctx;
 }
 
-//----------------- KU_DefaultArgContext ------------------------------------------------------------------
+//----------------- RU_DefaultArgContext ------------------------------------------------------------------
 
-CypherParser::KU_DefaultArgContext::KU_DefaultArgContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DefaultArgContext::RU_DefaultArgContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_DefaultArgContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_DefaultArgContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_DefaultArgContext::COLON() {
+tree::TerminalNode* CypherParser::RU_DefaultArgContext::COLON() {
   return getToken(CypherParser::COLON, 0);
 }
 
-CypherParser::OC_LiteralContext* CypherParser::KU_DefaultArgContext::oC_Literal() {
+CypherParser::OC_LiteralContext* CypherParser::RU_DefaultArgContext::oC_Literal() {
   return getRuleContext<CypherParser::OC_LiteralContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_DefaultArgContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_DefaultArgContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_DefaultArgContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_DefaultArgContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_DefaultArgContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DefaultArg;
+size_t CypherParser::RU_DefaultArgContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DefaultArg;
 }
 
 
-CypherParser::KU_DefaultArgContext* CypherParser::kU_DefaultArg() {
-  KU_DefaultArgContext *_localctx = _tracker.createInstance<KU_DefaultArgContext>(_ctx, getState());
-  enterRule(_localctx, 38, CypherParser::RuleKU_DefaultArg);
+CypherParser::RU_DefaultArgContext* CypherParser::rU_DefaultArg() {
+  RU_DefaultArgContext *_localctx = _tracker.createInstance<RU_DefaultArgContext>(_ctx, getState());
+  enterRule(_localctx, 38, CypherParser::RuleRU_DefaultArg);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3727,41 +3727,41 @@ CypherParser::KU_DefaultArgContext* CypherParser::kU_DefaultArg() {
   return _localctx;
 }
 
-//----------------- KU_FilePathsContext ------------------------------------------------------------------
+//----------------- RU_FilePathsContext ------------------------------------------------------------------
 
-CypherParser::KU_FilePathsContext::KU_FilePathsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_FilePathsContext::RU_FilePathsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_FilePathsContext::StringLiteral() {
+std::vector<tree::TerminalNode *> CypherParser::RU_FilePathsContext::StringLiteral() {
   return getTokens(CypherParser::StringLiteral);
 }
 
-tree::TerminalNode* CypherParser::KU_FilePathsContext::StringLiteral(size_t i) {
+tree::TerminalNode* CypherParser::RU_FilePathsContext::StringLiteral(size_t i) {
   return getToken(CypherParser::StringLiteral, i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_FilePathsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_FilePathsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_FilePathsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_FilePathsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_FilePathsContext::GLOB() {
+tree::TerminalNode* CypherParser::RU_FilePathsContext::GLOB() {
   return getToken(CypherParser::GLOB, 0);
 }
 
 
-size_t CypherParser::KU_FilePathsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_FilePaths;
+size_t CypherParser::RU_FilePathsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_FilePaths;
 }
 
 
-CypherParser::KU_FilePathsContext* CypherParser::kU_FilePaths() {
-  KU_FilePathsContext *_localctx = _tracker.createInstance<KU_FilePathsContext>(_ctx, getState());
-  enterRule(_localctx, 40, CypherParser::RuleKU_FilePaths);
+CypherParser::RU_FilePathsContext* CypherParser::rU_FilePaths() {
+  RU_FilePathsContext *_localctx = _tracker.createInstance<RU_FilePathsContext>(_ctx, getState());
+  enterRule(_localctx, 40, CypherParser::RuleRU_FilePaths);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -3880,41 +3880,41 @@ CypherParser::KU_FilePathsContext* CypherParser::kU_FilePaths() {
   return _localctx;
 }
 
-//----------------- KU_IfNotExistsContext ------------------------------------------------------------------
+//----------------- RU_IfNotExistsContext ------------------------------------------------------------------
 
-CypherParser::KU_IfNotExistsContext::KU_IfNotExistsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_IfNotExistsContext::RU_IfNotExistsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_IfNotExistsContext::IF() {
+tree::TerminalNode* CypherParser::RU_IfNotExistsContext::IF() {
   return getToken(CypherParser::IF, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_IfNotExistsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_IfNotExistsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_IfNotExistsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_IfNotExistsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_IfNotExistsContext::NOT() {
+tree::TerminalNode* CypherParser::RU_IfNotExistsContext::NOT() {
   return getToken(CypherParser::NOT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_IfNotExistsContext::EXISTS() {
+tree::TerminalNode* CypherParser::RU_IfNotExistsContext::EXISTS() {
   return getToken(CypherParser::EXISTS, 0);
 }
 
 
-size_t CypherParser::KU_IfNotExistsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_IfNotExists;
+size_t CypherParser::RU_IfNotExistsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_IfNotExists;
 }
 
 
-CypherParser::KU_IfNotExistsContext* CypherParser::kU_IfNotExists() {
-  KU_IfNotExistsContext *_localctx = _tracker.createInstance<KU_IfNotExistsContext>(_ctx, getState());
-  enterRule(_localctx, 42, CypherParser::RuleKU_IfNotExists);
+CypherParser::RU_IfNotExistsContext* CypherParser::rU_IfNotExists() {
+  RU_IfNotExistsContext *_localctx = _tracker.createInstance<RU_IfNotExistsContext>(_ctx, getState());
+  enterRule(_localctx, 42, CypherParser::RuleRU_IfNotExists);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -3946,65 +3946,65 @@ CypherParser::KU_IfNotExistsContext* CypherParser::kU_IfNotExists() {
   return _localctx;
 }
 
-//----------------- KU_CreateNodeTableContext ------------------------------------------------------------------
+//----------------- RU_CreateNodeTableContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateNodeTableContext::KU_CreateNodeTableContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateNodeTableContext::RU_CreateNodeTableContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeTableContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateNodeTableContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateNodeTableContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateNodeTableContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeTableContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateNodeTableContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeTableContext::NODE() {
+tree::TerminalNode* CypherParser::RU_CreateNodeTableContext::NODE() {
   return getToken(CypherParser::NODE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeTableContext::TABLE() {
+tree::TerminalNode* CypherParser::RU_CreateNodeTableContext::TABLE() {
   return getToken(CypherParser::TABLE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CreateNodeTableContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CreateNodeTableContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::KU_PropertyDefinitionsContext* CypherParser::KU_CreateNodeTableContext::kU_PropertyDefinitions() {
-  return getRuleContext<CypherParser::KU_PropertyDefinitionsContext>(0);
+CypherParser::RU_PropertyDefinitionsContext* CypherParser::RU_CreateNodeTableContext::rU_PropertyDefinitions() {
+  return getRuleContext<CypherParser::RU_PropertyDefinitionsContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeTableContext::AS() {
+tree::TerminalNode* CypherParser::RU_CreateNodeTableContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::OC_QueryContext* CypherParser::KU_CreateNodeTableContext::oC_Query() {
+CypherParser::OC_QueryContext* CypherParser::RU_CreateNodeTableContext::oC_Query() {
   return getRuleContext<CypherParser::OC_QueryContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_CreateNodeTableContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_CreateNodeTableContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
-CypherParser::KU_CreateNodeConstraintContext* CypherParser::KU_CreateNodeTableContext::kU_CreateNodeConstraint() {
-  return getRuleContext<CypherParser::KU_CreateNodeConstraintContext>(0);
-}
-
-
-size_t CypherParser::KU_CreateNodeTableContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateNodeTable;
+CypherParser::RU_CreateNodeConstraintContext* CypherParser::RU_CreateNodeTableContext::rU_CreateNodeConstraint() {
+  return getRuleContext<CypherParser::RU_CreateNodeConstraintContext>(0);
 }
 
 
-CypherParser::KU_CreateNodeTableContext* CypherParser::kU_CreateNodeTable() {
-  KU_CreateNodeTableContext *_localctx = _tracker.createInstance<KU_CreateNodeTableContext>(_ctx, getState());
-  enterRule(_localctx, 44, CypherParser::RuleKU_CreateNodeTable);
+size_t CypherParser::RU_CreateNodeTableContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateNodeTable;
+}
+
+
+CypherParser::RU_CreateNodeTableContext* CypherParser::rU_CreateNodeTable() {
+  RU_CreateNodeTableContext *_localctx = _tracker.createInstance<RU_CreateNodeTableContext>(_ctx, getState());
+  enterRule(_localctx, 44, CypherParser::RuleRU_CreateNodeTable);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -4034,7 +4034,7 @@ CypherParser::KU_CreateNodeTableContext* CypherParser::kU_CreateNodeTable() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 78, _ctx)) {
     case 1: {
       setState(795);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(796);
       match(CypherParser::SP);
       break;
@@ -4068,7 +4068,7 @@ CypherParser::KU_CreateNodeTableContext* CypherParser::kU_CreateNodeTable() {
         match(CypherParser::SP);
       }
       setState(808);
-      kU_PropertyDefinitions();
+      rU_PropertyDefinitions();
       setState(810);
       _errHandler->sync(this);
 
@@ -4098,7 +4098,7 @@ CypherParser::KU_CreateNodeTableContext* CypherParser::kU_CreateNodeTable() {
           match(CypherParser::SP);
         }
         setState(816);
-        kU_CreateNodeConstraint();
+        rU_CreateNodeConstraint();
       }
       setState(820);
       _errHandler->sync(this);
@@ -4139,81 +4139,81 @@ CypherParser::KU_CreateNodeTableContext* CypherParser::kU_CreateNodeTable() {
   return _localctx;
 }
 
-//----------------- KU_CreateRelTableContext ------------------------------------------------------------------
+//----------------- RU_CreateRelTableContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateRelTableContext::KU_CreateRelTableContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateRelTableContext::RU_CreateRelTableContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateRelTableContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateRelTableContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::REL() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::REL() {
   return getToken(CypherParser::REL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::TABLE() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::TABLE() {
   return getToken(CypherParser::TABLE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CreateRelTableContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CreateRelTableContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::KU_FromToConnectionsContext* CypherParser::KU_CreateRelTableContext::kU_FromToConnections() {
-  return getRuleContext<CypherParser::KU_FromToConnectionsContext>(0);
+CypherParser::RU_FromToConnectionsContext* CypherParser::RU_CreateRelTableContext::rU_FromToConnections() {
+  return getRuleContext<CypherParser::RU_FromToConnectionsContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::AS() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::OC_QueryContext* CypherParser::KU_CreateRelTableContext::oC_Query() {
+CypherParser::OC_QueryContext* CypherParser::RU_CreateRelTableContext::oC_Query() {
   return getRuleContext<CypherParser::OC_QueryContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::GROUP() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::GROUP() {
   return getToken(CypherParser::GROUP, 0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_CreateRelTableContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_CreateRelTableContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRelTableContext::WITH() {
+tree::TerminalNode* CypherParser::RU_CreateRelTableContext::WITH() {
   return getToken(CypherParser::WITH, 0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_CreateRelTableContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
+CypherParser::RU_OptionsContext* CypherParser::RU_CreateRelTableContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
-CypherParser::KU_PropertyDefinitionsContext* CypherParser::KU_CreateRelTableContext::kU_PropertyDefinitions() {
-  return getRuleContext<CypherParser::KU_PropertyDefinitionsContext>(0);
+CypherParser::RU_PropertyDefinitionsContext* CypherParser::RU_CreateRelTableContext::rU_PropertyDefinitions() {
+  return getRuleContext<CypherParser::RU_PropertyDefinitionsContext>(0);
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_CreateRelTableContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_CreateRelTableContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
 
-size_t CypherParser::KU_CreateRelTableContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateRelTable;
+size_t CypherParser::RU_CreateRelTableContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateRelTable;
 }
 
 
-CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
-  KU_CreateRelTableContext *_localctx = _tracker.createInstance<KU_CreateRelTableContext>(_ctx, getState());
-  enterRule(_localctx, 46, CypherParser::RuleKU_CreateRelTable);
+CypherParser::RU_CreateRelTableContext* CypherParser::rU_CreateRelTable() {
+  RU_CreateRelTableContext *_localctx = _tracker.createInstance<RU_CreateRelTableContext>(_ctx, getState());
+  enterRule(_localctx, 46, CypherParser::RuleRU_CreateRelTable);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -4258,7 +4258,7 @@ CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
       setState(839);
       match(CypherParser::SP);
       setState(840);
-      kU_IfNotExists();
+      rU_IfNotExists();
       break;
     }
 
@@ -4288,7 +4288,7 @@ CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
       match(CypherParser::SP);
     }
     setState(852);
-    kU_FromToConnections();
+    rU_FromToConnections();
     setState(854);
     _errHandler->sync(this);
 
@@ -4317,7 +4317,7 @@ CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
           match(CypherParser::SP);
         }
         setState(860);
-        kU_PropertyDefinitions();
+        rU_PropertyDefinitions();
         setState(862);
         _errHandler->sync(this);
 
@@ -4408,7 +4408,7 @@ CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
         match(CypherParser::SP);
       }
       setState(893);
-      kU_Options();
+      rU_Options();
       setState(895);
       _errHandler->sync(this);
 
@@ -4436,37 +4436,37 @@ CypherParser::KU_CreateRelTableContext* CypherParser::kU_CreateRelTable() {
   return _localctx;
 }
 
-//----------------- KU_FromToConnectionsContext ------------------------------------------------------------------
+//----------------- RU_FromToConnectionsContext ------------------------------------------------------------------
 
-CypherParser::KU_FromToConnectionsContext::KU_FromToConnectionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_FromToConnectionsContext::RU_FromToConnectionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_FromToConnectionContext *> CypherParser::KU_FromToConnectionsContext::kU_FromToConnection() {
-  return getRuleContexts<CypherParser::KU_FromToConnectionContext>();
+std::vector<CypherParser::RU_FromToConnectionContext *> CypherParser::RU_FromToConnectionsContext::rU_FromToConnection() {
+  return getRuleContexts<CypherParser::RU_FromToConnectionContext>();
 }
 
-CypherParser::KU_FromToConnectionContext* CypherParser::KU_FromToConnectionsContext::kU_FromToConnection(size_t i) {
-  return getRuleContext<CypherParser::KU_FromToConnectionContext>(i);
+CypherParser::RU_FromToConnectionContext* CypherParser::RU_FromToConnectionsContext::rU_FromToConnection(size_t i) {
+  return getRuleContext<CypherParser::RU_FromToConnectionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_FromToConnectionsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_FromToConnectionsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_FromToConnectionsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_FromToConnectionsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_FromToConnectionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_FromToConnections;
+size_t CypherParser::RU_FromToConnectionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_FromToConnections;
 }
 
 
-CypherParser::KU_FromToConnectionsContext* CypherParser::kU_FromToConnections() {
-  KU_FromToConnectionsContext *_localctx = _tracker.createInstance<KU_FromToConnectionsContext>(_ctx, getState());
-  enterRule(_localctx, 48, CypherParser::RuleKU_FromToConnections);
+CypherParser::RU_FromToConnectionsContext* CypherParser::rU_FromToConnections() {
+  RU_FromToConnectionsContext *_localctx = _tracker.createInstance<RU_FromToConnectionsContext>(_ctx, getState());
+  enterRule(_localctx, 48, CypherParser::RuleRU_FromToConnections);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -4480,7 +4480,7 @@ CypherParser::KU_FromToConnectionsContext* CypherParser::kU_FromToConnections() 
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(901);
-    kU_FromToConnection();
+    rU_FromToConnection();
     setState(912);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 104, _ctx);
@@ -4505,7 +4505,7 @@ CypherParser::KU_FromToConnectionsContext* CypherParser::kU_FromToConnections() 
           match(CypherParser::SP);
         }
         setState(909);
-        kU_FromToConnection(); 
+        rU_FromToConnection(); 
       }
       setState(914);
       _errHandler->sync(this);
@@ -4522,45 +4522,45 @@ CypherParser::KU_FromToConnectionsContext* CypherParser::kU_FromToConnections() 
   return _localctx;
 }
 
-//----------------- KU_FromToConnectionContext ------------------------------------------------------------------
+//----------------- RU_FromToConnectionContext ------------------------------------------------------------------
 
-CypherParser::KU_FromToConnectionContext::KU_FromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_FromToConnectionContext::RU_FromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_FromToConnectionContext::FROM() {
+tree::TerminalNode* CypherParser::RU_FromToConnectionContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_FromToConnectionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_FromToConnectionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_FromToConnectionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_FromToConnectionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::KU_FromToConnectionContext::oC_SchemaName() {
+std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::RU_FromToConnectionContext::oC_SchemaName() {
   return getRuleContexts<CypherParser::OC_SchemaNameContext>();
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_FromToConnectionContext::oC_SchemaName(size_t i) {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_FromToConnectionContext::oC_SchemaName(size_t i) {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(i);
 }
 
-tree::TerminalNode* CypherParser::KU_FromToConnectionContext::TO() {
+tree::TerminalNode* CypherParser::RU_FromToConnectionContext::TO() {
   return getToken(CypherParser::TO, 0);
 }
 
 
-size_t CypherParser::KU_FromToConnectionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_FromToConnection;
+size_t CypherParser::RU_FromToConnectionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_FromToConnection;
 }
 
 
-CypherParser::KU_FromToConnectionContext* CypherParser::kU_FromToConnection() {
-  KU_FromToConnectionContext *_localctx = _tracker.createInstance<KU_FromToConnectionContext>(_ctx, getState());
-  enterRule(_localctx, 50, CypherParser::RuleKU_FromToConnection);
+CypherParser::RU_FromToConnectionContext* CypherParser::rU_FromToConnection() {
+  RU_FromToConnectionContext *_localctx = _tracker.createInstance<RU_FromToConnectionContext>(_ctx, getState());
+  enterRule(_localctx, 50, CypherParser::RuleRU_FromToConnection);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4596,53 +4596,53 @@ CypherParser::KU_FromToConnectionContext* CypherParser::kU_FromToConnection() {
   return _localctx;
 }
 
-//----------------- KU_CreateSequenceContext ------------------------------------------------------------------
+//----------------- RU_CreateSequenceContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateSequenceContext::KU_CreateSequenceContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateSequenceContext::RU_CreateSequenceContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateSequenceContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateSequenceContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateSequenceContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateSequenceContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateSequenceContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateSequenceContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateSequenceContext::SEQUENCE() {
+tree::TerminalNode* CypherParser::RU_CreateSequenceContext::SEQUENCE() {
   return getToken(CypherParser::SEQUENCE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CreateSequenceContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CreateSequenceContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_CreateSequenceContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_CreateSequenceContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
-std::vector<CypherParser::KU_SequenceOptionsContext *> CypherParser::KU_CreateSequenceContext::kU_SequenceOptions() {
-  return getRuleContexts<CypherParser::KU_SequenceOptionsContext>();
+std::vector<CypherParser::RU_SequenceOptionsContext *> CypherParser::RU_CreateSequenceContext::rU_SequenceOptions() {
+  return getRuleContexts<CypherParser::RU_SequenceOptionsContext>();
 }
 
-CypherParser::KU_SequenceOptionsContext* CypherParser::KU_CreateSequenceContext::kU_SequenceOptions(size_t i) {
-  return getRuleContext<CypherParser::KU_SequenceOptionsContext>(i);
-}
-
-
-size_t CypherParser::KU_CreateSequenceContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateSequence;
+CypherParser::RU_SequenceOptionsContext* CypherParser::RU_CreateSequenceContext::rU_SequenceOptions(size_t i) {
+  return getRuleContext<CypherParser::RU_SequenceOptionsContext>(i);
 }
 
 
-CypherParser::KU_CreateSequenceContext* CypherParser::kU_CreateSequence() {
-  KU_CreateSequenceContext *_localctx = _tracker.createInstance<KU_CreateSequenceContext>(_ctx, getState());
-  enterRule(_localctx, 52, CypherParser::RuleKU_CreateSequence);
+size_t CypherParser::RU_CreateSequenceContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateSequence;
+}
+
+
+CypherParser::RU_CreateSequenceContext* CypherParser::rU_CreateSequence() {
+  RU_CreateSequenceContext *_localctx = _tracker.createInstance<RU_CreateSequenceContext>(_ctx, getState());
+  enterRule(_localctx, 52, CypherParser::RuleRU_CreateSequence);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4668,7 +4668,7 @@ CypherParser::KU_CreateSequenceContext* CypherParser::kU_CreateSequence() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 105, _ctx)) {
     case 1: {
       setState(927);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(928);
       match(CypherParser::SP);
       break;
@@ -4687,7 +4687,7 @@ CypherParser::KU_CreateSequenceContext* CypherParser::kU_CreateSequence() {
         setState(933);
         match(CypherParser::SP);
         setState(934);
-        kU_SequenceOptions(); 
+        rU_SequenceOptions(); 
       }
       setState(939);
       _errHandler->sync(this);
@@ -4704,49 +4704,49 @@ CypherParser::KU_CreateSequenceContext* CypherParser::kU_CreateSequence() {
   return _localctx;
 }
 
-//----------------- KU_CreateTypeContext ------------------------------------------------------------------
+//----------------- RU_CreateTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateTypeContext::KU_CreateTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateTypeContext::RU_CreateTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateTypeContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateTypeContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateTypeContext::TYPE() {
+tree::TerminalNode* CypherParser::RU_CreateTypeContext::TYPE() {
   return getToken(CypherParser::TYPE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_CreateTypeContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_CreateTypeContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateTypeContext::AS() {
+tree::TerminalNode* CypherParser::RU_CreateTypeContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::KU_CreateTypeContext::kU_DataType() {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(0);
+CypherParser::RU_DataTypeContext* CypherParser::RU_CreateTypeContext::rU_DataType() {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(0);
 }
 
 
-size_t CypherParser::KU_CreateTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateType;
+size_t CypherParser::RU_CreateTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateType;
 }
 
 
-CypherParser::KU_CreateTypeContext* CypherParser::kU_CreateType() {
-  KU_CreateTypeContext *_localctx = _tracker.createInstance<KU_CreateTypeContext>(_ctx, getState());
-  enterRule(_localctx, 54, CypherParser::RuleKU_CreateType);
+CypherParser::RU_CreateTypeContext* CypherParser::rU_CreateType() {
+  RU_CreateTypeContext *_localctx = _tracker.createInstance<RU_CreateTypeContext>(_ctx, getState());
+  enterRule(_localctx, 54, CypherParser::RuleRU_CreateType);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4774,7 +4774,7 @@ CypherParser::KU_CreateTypeContext* CypherParser::kU_CreateType() {
     setState(947);
     match(CypherParser::SP);
     setState(948);
-    kU_DataType(0);
+    rU_DataType(0);
     setState(950);
     _errHandler->sync(this);
 
@@ -4799,41 +4799,41 @@ CypherParser::KU_CreateTypeContext* CypherParser::kU_CreateType() {
   return _localctx;
 }
 
-//----------------- KU_SequenceOptionsContext ------------------------------------------------------------------
+//----------------- RU_SequenceOptionsContext ------------------------------------------------------------------
 
-CypherParser::KU_SequenceOptionsContext::KU_SequenceOptionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_SequenceOptionsContext::RU_SequenceOptionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_IncrementByContext* CypherParser::KU_SequenceOptionsContext::kU_IncrementBy() {
-  return getRuleContext<CypherParser::KU_IncrementByContext>(0);
+CypherParser::RU_IncrementByContext* CypherParser::RU_SequenceOptionsContext::rU_IncrementBy() {
+  return getRuleContext<CypherParser::RU_IncrementByContext>(0);
 }
 
-CypherParser::KU_MinValueContext* CypherParser::KU_SequenceOptionsContext::kU_MinValue() {
-  return getRuleContext<CypherParser::KU_MinValueContext>(0);
+CypherParser::RU_MinValueContext* CypherParser::RU_SequenceOptionsContext::rU_MinValue() {
+  return getRuleContext<CypherParser::RU_MinValueContext>(0);
 }
 
-CypherParser::KU_MaxValueContext* CypherParser::KU_SequenceOptionsContext::kU_MaxValue() {
-  return getRuleContext<CypherParser::KU_MaxValueContext>(0);
+CypherParser::RU_MaxValueContext* CypherParser::RU_SequenceOptionsContext::rU_MaxValue() {
+  return getRuleContext<CypherParser::RU_MaxValueContext>(0);
 }
 
-CypherParser::KU_StartWithContext* CypherParser::KU_SequenceOptionsContext::kU_StartWith() {
-  return getRuleContext<CypherParser::KU_StartWithContext>(0);
+CypherParser::RU_StartWithContext* CypherParser::RU_SequenceOptionsContext::rU_StartWith() {
+  return getRuleContext<CypherParser::RU_StartWithContext>(0);
 }
 
-CypherParser::KU_CycleContext* CypherParser::KU_SequenceOptionsContext::kU_Cycle() {
-  return getRuleContext<CypherParser::KU_CycleContext>(0);
-}
-
-
-size_t CypherParser::KU_SequenceOptionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_SequenceOptions;
+CypherParser::RU_CycleContext* CypherParser::RU_SequenceOptionsContext::rU_Cycle() {
+  return getRuleContext<CypherParser::RU_CycleContext>(0);
 }
 
 
-CypherParser::KU_SequenceOptionsContext* CypherParser::kU_SequenceOptions() {
-  KU_SequenceOptionsContext *_localctx = _tracker.createInstance<KU_SequenceOptionsContext>(_ctx, getState());
-  enterRule(_localctx, 56, CypherParser::RuleKU_SequenceOptions);
+size_t CypherParser::RU_SequenceOptionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_SequenceOptions;
+}
+
+
+CypherParser::RU_SequenceOptionsContext* CypherParser::rU_SequenceOptions() {
+  RU_SequenceOptionsContext *_localctx = _tracker.createInstance<RU_SequenceOptionsContext>(_ctx, getState());
+  enterRule(_localctx, 56, CypherParser::RuleRU_SequenceOptions);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4849,35 +4849,35 @@ CypherParser::KU_SequenceOptionsContext* CypherParser::kU_SequenceOptions() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(952);
-      kU_IncrementBy();
+      rU_IncrementBy();
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(953);
-      kU_MinValue();
+      rU_MinValue();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(954);
-      kU_MaxValue();
+      rU_MaxValue();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
       setState(955);
-      kU_StartWith();
+      rU_StartWith();
       break;
     }
 
     case 5: {
       enterOuterAlt(_localctx, 5);
       setState(956);
-      kU_Cycle();
+      rU_Cycle();
       break;
     }
 
@@ -4895,41 +4895,41 @@ CypherParser::KU_SequenceOptionsContext* CypherParser::kU_SequenceOptions() {
   return _localctx;
 }
 
-//----------------- KU_WithPasswdContext ------------------------------------------------------------------
+//----------------- RU_WithPasswdContext ------------------------------------------------------------------
 
-CypherParser::KU_WithPasswdContext::KU_WithPasswdContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_WithPasswdContext::RU_WithPasswdContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_WithPasswdContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_WithPasswdContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_WithPasswdContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_WithPasswdContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_WithPasswdContext::WITH() {
+tree::TerminalNode* CypherParser::RU_WithPasswdContext::WITH() {
   return getToken(CypherParser::WITH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_WithPasswdContext::PASSWORD() {
+tree::TerminalNode* CypherParser::RU_WithPasswdContext::PASSWORD() {
   return getToken(CypherParser::PASSWORD, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_WithPasswdContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_WithPasswdContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
 
-size_t CypherParser::KU_WithPasswdContext::getRuleIndex() const {
-  return CypherParser::RuleKU_WithPasswd;
+size_t CypherParser::RU_WithPasswdContext::getRuleIndex() const {
+  return CypherParser::RuleRU_WithPasswd;
 }
 
 
-CypherParser::KU_WithPasswdContext* CypherParser::kU_WithPasswd() {
-  KU_WithPasswdContext *_localctx = _tracker.createInstance<KU_WithPasswdContext>(_ctx, getState());
-  enterRule(_localctx, 58, CypherParser::RuleKU_WithPasswd);
+CypherParser::RU_WithPasswdContext* CypherParser::rU_WithPasswd() {
+  RU_WithPasswdContext *_localctx = _tracker.createInstance<RU_WithPasswdContext>(_ctx, getState());
+  enterRule(_localctx, 58, CypherParser::RuleRU_WithPasswd);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -4963,49 +4963,49 @@ CypherParser::KU_WithPasswdContext* CypherParser::kU_WithPasswd() {
   return _localctx;
 }
 
-//----------------- KU_CreateUserContext ------------------------------------------------------------------
+//----------------- RU_CreateUserContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateUserContext::KU_CreateUserContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateUserContext::RU_CreateUserContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateUserContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateUserContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateUserContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateUserContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateUserContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateUserContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateUserContext::USER() {
+tree::TerminalNode* CypherParser::RU_CreateUserContext::USER() {
   return getToken(CypherParser::USER, 0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_CreateUserContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_CreateUserContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_CreateUserContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_CreateUserContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
-CypherParser::KU_WithPasswdContext* CypherParser::KU_CreateUserContext::kU_WithPasswd() {
-  return getRuleContext<CypherParser::KU_WithPasswdContext>(0);
-}
-
-
-size_t CypherParser::KU_CreateUserContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateUser;
+CypherParser::RU_WithPasswdContext* CypherParser::RU_CreateUserContext::rU_WithPasswd() {
+  return getRuleContext<CypherParser::RU_WithPasswdContext>(0);
 }
 
 
-CypherParser::KU_CreateUserContext* CypherParser::kU_CreateUser() {
-  KU_CreateUserContext *_localctx = _tracker.createInstance<KU_CreateUserContext>(_ctx, getState());
-  enterRule(_localctx, 60, CypherParser::RuleKU_CreateUser);
+size_t CypherParser::RU_CreateUserContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateUser;
+}
+
+
+CypherParser::RU_CreateUserContext* CypherParser::rU_CreateUser() {
+  RU_CreateUserContext *_localctx = _tracker.createInstance<RU_CreateUserContext>(_ctx, getState());
+  enterRule(_localctx, 60, CypherParser::RuleRU_CreateUser);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5030,7 +5030,7 @@ CypherParser::KU_CreateUserContext* CypherParser::kU_CreateUser() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 109, _ctx)) {
     case 1: {
       setState(970);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(971);
       match(CypherParser::SP);
       break;
@@ -5047,7 +5047,7 @@ CypherParser::KU_CreateUserContext* CypherParser::kU_CreateUser() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 110, _ctx)) {
     case 1: {
       setState(976);
-      kU_WithPasswd();
+      rU_WithPasswd();
       break;
     }
 
@@ -5065,45 +5065,45 @@ CypherParser::KU_CreateUserContext* CypherParser::kU_CreateUser() {
   return _localctx;
 }
 
-//----------------- KU_CreateRoleContext ------------------------------------------------------------------
+//----------------- RU_CreateRoleContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateRoleContext::KU_CreateRoleContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateRoleContext::RU_CreateRoleContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRoleContext::CREATE() {
+tree::TerminalNode* CypherParser::RU_CreateRoleContext::CREATE() {
   return getToken(CypherParser::CREATE, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateRoleContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateRoleContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRoleContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateRoleContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateRoleContext::ROLE() {
+tree::TerminalNode* CypherParser::RU_CreateRoleContext::ROLE() {
   return getToken(CypherParser::ROLE, 0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_CreateRoleContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_CreateRoleContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_CreateRoleContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_CreateRoleContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
 
-size_t CypherParser::KU_CreateRoleContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateRole;
+size_t CypherParser::RU_CreateRoleContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateRole;
 }
 
 
-CypherParser::KU_CreateRoleContext* CypherParser::kU_CreateRole() {
-  KU_CreateRoleContext *_localctx = _tracker.createInstance<KU_CreateRoleContext>(_ctx, getState());
-  enterRule(_localctx, 62, CypherParser::RuleKU_CreateRole);
+CypherParser::RU_CreateRoleContext* CypherParser::rU_CreateRole() {
+  RU_CreateRoleContext *_localctx = _tracker.createInstance<RU_CreateRoleContext>(_ctx, getState());
+  enterRule(_localctx, 62, CypherParser::RuleRU_CreateRole);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5128,7 +5128,7 @@ CypherParser::KU_CreateRoleContext* CypherParser::kU_CreateRole() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 111, _ctx)) {
     case 1: {
       setState(983);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(984);
       match(CypherParser::SP);
       break;
@@ -5150,45 +5150,45 @@ CypherParser::KU_CreateRoleContext* CypherParser::kU_CreateRole() {
   return _localctx;
 }
 
-//----------------- KU_IncrementByContext ------------------------------------------------------------------
+//----------------- RU_IncrementByContext ------------------------------------------------------------------
 
-CypherParser::KU_IncrementByContext::KU_IncrementByContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_IncrementByContext::RU_IncrementByContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_IncrementByContext::INCREMENT() {
+tree::TerminalNode* CypherParser::RU_IncrementByContext::INCREMENT() {
   return getToken(CypherParser::INCREMENT, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_IncrementByContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_IncrementByContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_IncrementByContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_IncrementByContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_IncrementByContext::oC_IntegerLiteral() {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_IncrementByContext::oC_IntegerLiteral() {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_IncrementByContext::BY() {
+tree::TerminalNode* CypherParser::RU_IncrementByContext::BY() {
   return getToken(CypherParser::BY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_IncrementByContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_IncrementByContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
 
-size_t CypherParser::KU_IncrementByContext::getRuleIndex() const {
-  return CypherParser::RuleKU_IncrementBy;
+size_t CypherParser::RU_IncrementByContext::getRuleIndex() const {
+  return CypherParser::RuleRU_IncrementBy;
 }
 
 
-CypherParser::KU_IncrementByContext* CypherParser::kU_IncrementBy() {
-  KU_IncrementByContext *_localctx = _tracker.createInstance<KU_IncrementByContext>(_ctx, getState());
-  enterRule(_localctx, 64, CypherParser::RuleKU_IncrementBy);
+CypherParser::RU_IncrementByContext* CypherParser::rU_IncrementBy() {
+  RU_IncrementByContext *_localctx = _tracker.createInstance<RU_IncrementByContext>(_ctx, getState());
+  enterRule(_localctx, 64, CypherParser::RuleRU_IncrementBy);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5235,41 +5235,41 @@ CypherParser::KU_IncrementByContext* CypherParser::kU_IncrementBy() {
   return _localctx;
 }
 
-//----------------- KU_MinValueContext ------------------------------------------------------------------
+//----------------- RU_MinValueContext ------------------------------------------------------------------
 
-CypherParser::KU_MinValueContext::KU_MinValueContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_MinValueContext::RU_MinValueContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_MinValueContext::NO() {
+tree::TerminalNode* CypherParser::RU_MinValueContext::NO() {
   return getToken(CypherParser::NO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_MinValueContext::SP() {
+tree::TerminalNode* CypherParser::RU_MinValueContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_MinValueContext::MINVALUE() {
+tree::TerminalNode* CypherParser::RU_MinValueContext::MINVALUE() {
   return getToken(CypherParser::MINVALUE, 0);
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_MinValueContext::oC_IntegerLiteral() {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_MinValueContext::oC_IntegerLiteral() {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_MinValueContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_MinValueContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
 
-size_t CypherParser::KU_MinValueContext::getRuleIndex() const {
-  return CypherParser::RuleKU_MinValue;
+size_t CypherParser::RU_MinValueContext::getRuleIndex() const {
+  return CypherParser::RuleRU_MinValue;
 }
 
 
-CypherParser::KU_MinValueContext* CypherParser::kU_MinValue() {
-  KU_MinValueContext *_localctx = _tracker.createInstance<KU_MinValueContext>(_ctx, getState());
-  enterRule(_localctx, 66, CypherParser::RuleKU_MinValue);
+CypherParser::RU_MinValueContext* CypherParser::rU_MinValue() {
+  RU_MinValueContext *_localctx = _tracker.createInstance<RU_MinValueContext>(_ctx, getState());
+  enterRule(_localctx, 66, CypherParser::RuleRU_MinValue);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5327,41 +5327,41 @@ CypherParser::KU_MinValueContext* CypherParser::kU_MinValue() {
   return _localctx;
 }
 
-//----------------- KU_MaxValueContext ------------------------------------------------------------------
+//----------------- RU_MaxValueContext ------------------------------------------------------------------
 
-CypherParser::KU_MaxValueContext::KU_MaxValueContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_MaxValueContext::RU_MaxValueContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_MaxValueContext::NO() {
+tree::TerminalNode* CypherParser::RU_MaxValueContext::NO() {
   return getToken(CypherParser::NO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_MaxValueContext::SP() {
+tree::TerminalNode* CypherParser::RU_MaxValueContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_MaxValueContext::MAXVALUE() {
+tree::TerminalNode* CypherParser::RU_MaxValueContext::MAXVALUE() {
   return getToken(CypherParser::MAXVALUE, 0);
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_MaxValueContext::oC_IntegerLiteral() {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_MaxValueContext::oC_IntegerLiteral() {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_MaxValueContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_MaxValueContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
 
-size_t CypherParser::KU_MaxValueContext::getRuleIndex() const {
-  return CypherParser::RuleKU_MaxValue;
+size_t CypherParser::RU_MaxValueContext::getRuleIndex() const {
+  return CypherParser::RuleRU_MaxValue;
 }
 
 
-CypherParser::KU_MaxValueContext* CypherParser::kU_MaxValue() {
-  KU_MaxValueContext *_localctx = _tracker.createInstance<KU_MaxValueContext>(_ctx, getState());
-  enterRule(_localctx, 68, CypherParser::RuleKU_MaxValue);
+CypherParser::RU_MaxValueContext* CypherParser::rU_MaxValue() {
+  RU_MaxValueContext *_localctx = _tracker.createInstance<RU_MaxValueContext>(_ctx, getState());
+  enterRule(_localctx, 68, CypherParser::RuleRU_MaxValue);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5419,45 +5419,45 @@ CypherParser::KU_MaxValueContext* CypherParser::kU_MaxValue() {
   return _localctx;
 }
 
-//----------------- KU_StartWithContext ------------------------------------------------------------------
+//----------------- RU_StartWithContext ------------------------------------------------------------------
 
-CypherParser::KU_StartWithContext::KU_StartWithContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_StartWithContext::RU_StartWithContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_StartWithContext::START() {
+tree::TerminalNode* CypherParser::RU_StartWithContext::START() {
   return getToken(CypherParser::START, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_StartWithContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_StartWithContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_StartWithContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_StartWithContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_StartWithContext::oC_IntegerLiteral() {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_StartWithContext::oC_IntegerLiteral() {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_StartWithContext::WITH() {
+tree::TerminalNode* CypherParser::RU_StartWithContext::WITH() {
   return getToken(CypherParser::WITH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_StartWithContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_StartWithContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
 
-size_t CypherParser::KU_StartWithContext::getRuleIndex() const {
-  return CypherParser::RuleKU_StartWith;
+size_t CypherParser::RU_StartWithContext::getRuleIndex() const {
+  return CypherParser::RuleRU_StartWith;
 }
 
 
-CypherParser::KU_StartWithContext* CypherParser::kU_StartWith() {
-  KU_StartWithContext *_localctx = _tracker.createInstance<KU_StartWithContext>(_ctx, getState());
-  enterRule(_localctx, 70, CypherParser::RuleKU_StartWith);
+CypherParser::RU_StartWithContext* CypherParser::rU_StartWith() {
+  RU_StartWithContext *_localctx = _tracker.createInstance<RU_StartWithContext>(_ctx, getState());
+  enterRule(_localctx, 70, CypherParser::RuleRU_StartWith);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5504,33 +5504,33 @@ CypherParser::KU_StartWithContext* CypherParser::kU_StartWith() {
   return _localctx;
 }
 
-//----------------- KU_CycleContext ------------------------------------------------------------------
+//----------------- RU_CycleContext ------------------------------------------------------------------
 
-CypherParser::KU_CycleContext::KU_CycleContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CycleContext::RU_CycleContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CycleContext::CYCLE() {
+tree::TerminalNode* CypherParser::RU_CycleContext::CYCLE() {
   return getToken(CypherParser::CYCLE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CycleContext::NO() {
+tree::TerminalNode* CypherParser::RU_CycleContext::NO() {
   return getToken(CypherParser::NO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_CycleContext::SP() {
+tree::TerminalNode* CypherParser::RU_CycleContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
 
-size_t CypherParser::KU_CycleContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Cycle;
+size_t CypherParser::RU_CycleContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Cycle;
 }
 
 
-CypherParser::KU_CycleContext* CypherParser::kU_Cycle() {
-  KU_CycleContext *_localctx = _tracker.createInstance<KU_CycleContext>(_ctx, getState());
-  enterRule(_localctx, 72, CypherParser::RuleKU_Cycle);
+CypherParser::RU_CycleContext* CypherParser::rU_Cycle() {
+  RU_CycleContext *_localctx = _tracker.createInstance<RU_CycleContext>(_ctx, getState());
+  enterRule(_localctx, 72, CypherParser::RuleRU_Cycle);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5565,33 +5565,33 @@ CypherParser::KU_CycleContext* CypherParser::kU_Cycle() {
   return _localctx;
 }
 
-//----------------- KU_IfExistsContext ------------------------------------------------------------------
+//----------------- RU_IfExistsContext ------------------------------------------------------------------
 
-CypherParser::KU_IfExistsContext::KU_IfExistsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_IfExistsContext::RU_IfExistsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_IfExistsContext::IF() {
+tree::TerminalNode* CypherParser::RU_IfExistsContext::IF() {
   return getToken(CypherParser::IF, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_IfExistsContext::SP() {
+tree::TerminalNode* CypherParser::RU_IfExistsContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_IfExistsContext::EXISTS() {
+tree::TerminalNode* CypherParser::RU_IfExistsContext::EXISTS() {
   return getToken(CypherParser::EXISTS, 0);
 }
 
 
-size_t CypherParser::KU_IfExistsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_IfExists;
+size_t CypherParser::RU_IfExistsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_IfExists;
 }
 
 
-CypherParser::KU_IfExistsContext* CypherParser::kU_IfExists() {
-  KU_IfExistsContext *_localctx = _tracker.createInstance<KU_IfExistsContext>(_ctx, getState());
-  enterRule(_localctx, 74, CypherParser::RuleKU_IfExists);
+CypherParser::RU_IfExistsContext* CypherParser::rU_IfExists() {
+  RU_IfExistsContext *_localctx = _tracker.createInstance<RU_IfExistsContext>(_ctx, getState());
+  enterRule(_localctx, 74, CypherParser::RuleRU_IfExists);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5619,53 +5619,53 @@ CypherParser::KU_IfExistsContext* CypherParser::kU_IfExists() {
   return _localctx;
 }
 
-//----------------- KU_DropContext ------------------------------------------------------------------
+//----------------- RU_DropContext ------------------------------------------------------------------
 
-CypherParser::KU_DropContext::KU_DropContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DropContext::RU_DropContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DropContext::DROP() {
+tree::TerminalNode* CypherParser::RU_DropContext::DROP() {
   return getToken(CypherParser::DROP, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_DropContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_DropContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_DropContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_DropContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_DropContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_DropContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_DropContext::TABLE() {
+tree::TerminalNode* CypherParser::RU_DropContext::TABLE() {
   return getToken(CypherParser::TABLE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_DropContext::SEQUENCE() {
+tree::TerminalNode* CypherParser::RU_DropContext::SEQUENCE() {
   return getToken(CypherParser::SEQUENCE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_DropContext::MACRO() {
+tree::TerminalNode* CypherParser::RU_DropContext::MACRO() {
   return getToken(CypherParser::MACRO, 0);
 }
 
-CypherParser::KU_IfExistsContext* CypherParser::KU_DropContext::kU_IfExists() {
-  return getRuleContext<CypherParser::KU_IfExistsContext>(0);
+CypherParser::RU_IfExistsContext* CypherParser::RU_DropContext::rU_IfExists() {
+  return getRuleContext<CypherParser::RU_IfExistsContext>(0);
 }
 
 
-size_t CypherParser::KU_DropContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Drop;
+size_t CypherParser::RU_DropContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Drop;
 }
 
 
-CypherParser::KU_DropContext* CypherParser::kU_Drop() {
-  KU_DropContext *_localctx = _tracker.createInstance<KU_DropContext>(_ctx, getState());
-  enterRule(_localctx, 76, CypherParser::RuleKU_Drop);
+CypherParser::RU_DropContext* CypherParser::rU_Drop() {
+  RU_DropContext *_localctx = _tracker.createInstance<RU_DropContext>(_ctx, getState());
+  enterRule(_localctx, 76, CypherParser::RuleRU_Drop);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -5699,7 +5699,7 @@ CypherParser::KU_DropContext* CypherParser::kU_Drop() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 121, _ctx)) {
     case 1: {
       setState(1048);
-      kU_IfExists();
+      rU_IfExists();
       setState(1049);
       match(CypherParser::SP);
       break;
@@ -5721,45 +5721,45 @@ CypherParser::KU_DropContext* CypherParser::kU_Drop() {
   return _localctx;
 }
 
-//----------------- KU_AlterTableContext ------------------------------------------------------------------
+//----------------- RU_AlterTableContext ------------------------------------------------------------------
 
-CypherParser::KU_AlterTableContext::KU_AlterTableContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AlterTableContext::RU_AlterTableContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_AlterTableContext::ALTER() {
+tree::TerminalNode* CypherParser::RU_AlterTableContext::ALTER() {
   return getToken(CypherParser::ALTER, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_AlterTableContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_AlterTableContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_AlterTableContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_AlterTableContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_AlterTableContext::TABLE() {
+tree::TerminalNode* CypherParser::RU_AlterTableContext::TABLE() {
   return getToken(CypherParser::TABLE, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_AlterTableContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_AlterTableContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
-CypherParser::KU_AlterOptionsContext* CypherParser::KU_AlterTableContext::kU_AlterOptions() {
-  return getRuleContext<CypherParser::KU_AlterOptionsContext>(0);
+CypherParser::RU_AlterOptionsContext* CypherParser::RU_AlterTableContext::rU_AlterOptions() {
+  return getRuleContext<CypherParser::RU_AlterOptionsContext>(0);
 }
 
 
-size_t CypherParser::KU_AlterTableContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AlterTable;
+size_t CypherParser::RU_AlterTableContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AlterTable;
 }
 
 
-CypherParser::KU_AlterTableContext* CypherParser::kU_AlterTable() {
-  KU_AlterTableContext *_localctx = _tracker.createInstance<KU_AlterTableContext>(_ctx, getState());
-  enterRule(_localctx, 78, CypherParser::RuleKU_AlterTable);
+CypherParser::RU_AlterTableContext* CypherParser::rU_AlterTable() {
+  RU_AlterTableContext *_localctx = _tracker.createInstance<RU_AlterTableContext>(_ctx, getState());
+  enterRule(_localctx, 78, CypherParser::RuleRU_AlterTable);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5783,7 +5783,7 @@ CypherParser::KU_AlterTableContext* CypherParser::kU_AlterTable() {
     setState(1060);
     match(CypherParser::SP);
     setState(1061);
-    kU_AlterOptions();
+    rU_AlterOptions();
    
   }
   catch (RecognitionException &e) {
@@ -5795,45 +5795,45 @@ CypherParser::KU_AlterTableContext* CypherParser::kU_AlterTable() {
   return _localctx;
 }
 
-//----------------- KU_AlterOptionsContext ------------------------------------------------------------------
+//----------------- RU_AlterOptionsContext ------------------------------------------------------------------
 
-CypherParser::KU_AlterOptionsContext::KU_AlterOptionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AlterOptionsContext::RU_AlterOptionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_AddPropertyContext* CypherParser::KU_AlterOptionsContext::kU_AddProperty() {
-  return getRuleContext<CypherParser::KU_AddPropertyContext>(0);
+CypherParser::RU_AddPropertyContext* CypherParser::RU_AlterOptionsContext::rU_AddProperty() {
+  return getRuleContext<CypherParser::RU_AddPropertyContext>(0);
 }
 
-CypherParser::KU_DropPropertyContext* CypherParser::KU_AlterOptionsContext::kU_DropProperty() {
-  return getRuleContext<CypherParser::KU_DropPropertyContext>(0);
+CypherParser::RU_DropPropertyContext* CypherParser::RU_AlterOptionsContext::rU_DropProperty() {
+  return getRuleContext<CypherParser::RU_DropPropertyContext>(0);
 }
 
-CypherParser::KU_RenameTableContext* CypherParser::KU_AlterOptionsContext::kU_RenameTable() {
-  return getRuleContext<CypherParser::KU_RenameTableContext>(0);
+CypherParser::RU_RenameTableContext* CypherParser::RU_AlterOptionsContext::rU_RenameTable() {
+  return getRuleContext<CypherParser::RU_RenameTableContext>(0);
 }
 
-CypherParser::KU_RenamePropertyContext* CypherParser::KU_AlterOptionsContext::kU_RenameProperty() {
-  return getRuleContext<CypherParser::KU_RenamePropertyContext>(0);
+CypherParser::RU_RenamePropertyContext* CypherParser::RU_AlterOptionsContext::rU_RenameProperty() {
+  return getRuleContext<CypherParser::RU_RenamePropertyContext>(0);
 }
 
-CypherParser::KU_AddFromToConnectionContext* CypherParser::KU_AlterOptionsContext::kU_AddFromToConnection() {
-  return getRuleContext<CypherParser::KU_AddFromToConnectionContext>(0);
+CypherParser::RU_AddFromToConnectionContext* CypherParser::RU_AlterOptionsContext::rU_AddFromToConnection() {
+  return getRuleContext<CypherParser::RU_AddFromToConnectionContext>(0);
 }
 
-CypherParser::KU_DropFromToConnectionContext* CypherParser::KU_AlterOptionsContext::kU_DropFromToConnection() {
-  return getRuleContext<CypherParser::KU_DropFromToConnectionContext>(0);
-}
-
-
-size_t CypherParser::KU_AlterOptionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AlterOptions;
+CypherParser::RU_DropFromToConnectionContext* CypherParser::RU_AlterOptionsContext::rU_DropFromToConnection() {
+  return getRuleContext<CypherParser::RU_DropFromToConnectionContext>(0);
 }
 
 
-CypherParser::KU_AlterOptionsContext* CypherParser::kU_AlterOptions() {
-  KU_AlterOptionsContext *_localctx = _tracker.createInstance<KU_AlterOptionsContext>(_ctx, getState());
-  enterRule(_localctx, 80, CypherParser::RuleKU_AlterOptions);
+size_t CypherParser::RU_AlterOptionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AlterOptions;
+}
+
+
+CypherParser::RU_AlterOptionsContext* CypherParser::rU_AlterOptions() {
+  RU_AlterOptionsContext *_localctx = _tracker.createInstance<RU_AlterOptionsContext>(_ctx, getState());
+  enterRule(_localctx, 80, CypherParser::RuleRU_AlterOptions);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5849,42 +5849,42 @@ CypherParser::KU_AlterOptionsContext* CypherParser::kU_AlterOptions() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(1063);
-      kU_AddProperty();
+      rU_AddProperty();
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(1064);
-      kU_DropProperty();
+      rU_DropProperty();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(1065);
-      kU_RenameTable();
+      rU_RenameTable();
       break;
     }
 
     case 4: {
       enterOuterAlt(_localctx, 4);
       setState(1066);
-      kU_RenameProperty();
+      rU_RenameProperty();
       break;
     }
 
     case 5: {
       enterOuterAlt(_localctx, 5);
       setState(1067);
-      kU_AddFromToConnection();
+      rU_AddFromToConnection();
       break;
     }
 
     case 6: {
       enterOuterAlt(_localctx, 6);
       setState(1068);
-      kU_DropFromToConnection();
+      rU_DropFromToConnection();
       break;
     }
 
@@ -5902,49 +5902,49 @@ CypherParser::KU_AlterOptionsContext* CypherParser::kU_AlterOptions() {
   return _localctx;
 }
 
-//----------------- KU_AddPropertyContext ------------------------------------------------------------------
+//----------------- RU_AddPropertyContext ------------------------------------------------------------------
 
-CypherParser::KU_AddPropertyContext::KU_AddPropertyContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AddPropertyContext::RU_AddPropertyContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_AddPropertyContext::ADD() {
+tree::TerminalNode* CypherParser::RU_AddPropertyContext::ADD() {
   return getToken(CypherParser::ADD, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_AddPropertyContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_AddPropertyContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_AddPropertyContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_AddPropertyContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_AddPropertyContext::oC_PropertyKeyName() {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_AddPropertyContext::oC_PropertyKeyName() {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(0);
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::KU_AddPropertyContext::kU_DataType() {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(0);
+CypherParser::RU_DataTypeContext* CypherParser::RU_AddPropertyContext::rU_DataType() {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_AddPropertyContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_AddPropertyContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
-CypherParser::KU_DefaultContext* CypherParser::KU_AddPropertyContext::kU_Default() {
-  return getRuleContext<CypherParser::KU_DefaultContext>(0);
-}
-
-
-size_t CypherParser::KU_AddPropertyContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AddProperty;
+CypherParser::RU_DefaultContext* CypherParser::RU_AddPropertyContext::rU_Default() {
+  return getRuleContext<CypherParser::RU_DefaultContext>(0);
 }
 
 
-CypherParser::KU_AddPropertyContext* CypherParser::kU_AddProperty() {
-  KU_AddPropertyContext *_localctx = _tracker.createInstance<KU_AddPropertyContext>(_ctx, getState());
-  enterRule(_localctx, 82, CypherParser::RuleKU_AddProperty);
+size_t CypherParser::RU_AddPropertyContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AddProperty;
+}
+
+
+CypherParser::RU_AddPropertyContext* CypherParser::rU_AddProperty() {
+  RU_AddPropertyContext *_localctx = _tracker.createInstance<RU_AddPropertyContext>(_ctx, getState());
+  enterRule(_localctx, 82, CypherParser::RuleRU_AddProperty);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -5965,7 +5965,7 @@ CypherParser::KU_AddPropertyContext* CypherParser::kU_AddProperty() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 123, _ctx)) {
     case 1: {
       setState(1073);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(1074);
       match(CypherParser::SP);
       break;
@@ -5979,7 +5979,7 @@ CypherParser::KU_AddPropertyContext* CypherParser::kU_AddProperty() {
     setState(1079);
     match(CypherParser::SP);
     setState(1080);
-    kU_DataType(0);
+    rU_DataType(0);
     setState(1083);
     _errHandler->sync(this);
 
@@ -5988,7 +5988,7 @@ CypherParser::KU_AddPropertyContext* CypherParser::kU_AddProperty() {
       setState(1081);
       match(CypherParser::SP);
       setState(1082);
-      kU_Default();
+      rU_Default();
       break;
     }
 
@@ -6006,33 +6006,33 @@ CypherParser::KU_AddPropertyContext* CypherParser::kU_AddProperty() {
   return _localctx;
 }
 
-//----------------- KU_DefaultContext ------------------------------------------------------------------
+//----------------- RU_DefaultContext ------------------------------------------------------------------
 
-CypherParser::KU_DefaultContext::KU_DefaultContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DefaultContext::RU_DefaultContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DefaultContext::DEFAULT() {
+tree::TerminalNode* CypherParser::RU_DefaultContext::DEFAULT() {
   return getToken(CypherParser::DEFAULT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_DefaultContext::SP() {
+tree::TerminalNode* CypherParser::RU_DefaultContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_DefaultContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_DefaultContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
 
-size_t CypherParser::KU_DefaultContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Default;
+size_t CypherParser::RU_DefaultContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Default;
 }
 
 
-CypherParser::KU_DefaultContext* CypherParser::kU_Default() {
-  KU_DefaultContext *_localctx = _tracker.createInstance<KU_DefaultContext>(_ctx, getState());
-  enterRule(_localctx, 84, CypherParser::RuleKU_Default);
+CypherParser::RU_DefaultContext* CypherParser::rU_Default() {
+  RU_DefaultContext *_localctx = _tracker.createInstance<RU_DefaultContext>(_ctx, getState());
+  enterRule(_localctx, 84, CypherParser::RuleRU_Default);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6060,41 +6060,41 @@ CypherParser::KU_DefaultContext* CypherParser::kU_Default() {
   return _localctx;
 }
 
-//----------------- KU_DropPropertyContext ------------------------------------------------------------------
+//----------------- RU_DropPropertyContext ------------------------------------------------------------------
 
-CypherParser::KU_DropPropertyContext::KU_DropPropertyContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DropPropertyContext::RU_DropPropertyContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DropPropertyContext::DROP() {
+tree::TerminalNode* CypherParser::RU_DropPropertyContext::DROP() {
   return getToken(CypherParser::DROP, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_DropPropertyContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_DropPropertyContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_DropPropertyContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_DropPropertyContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_DropPropertyContext::oC_PropertyKeyName() {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_DropPropertyContext::oC_PropertyKeyName() {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(0);
 }
 
-CypherParser::KU_IfExistsContext* CypherParser::KU_DropPropertyContext::kU_IfExists() {
-  return getRuleContext<CypherParser::KU_IfExistsContext>(0);
+CypherParser::RU_IfExistsContext* CypherParser::RU_DropPropertyContext::rU_IfExists() {
+  return getRuleContext<CypherParser::RU_IfExistsContext>(0);
 }
 
 
-size_t CypherParser::KU_DropPropertyContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DropProperty;
+size_t CypherParser::RU_DropPropertyContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DropProperty;
 }
 
 
-CypherParser::KU_DropPropertyContext* CypherParser::kU_DropProperty() {
-  KU_DropPropertyContext *_localctx = _tracker.createInstance<KU_DropPropertyContext>(_ctx, getState());
-  enterRule(_localctx, 86, CypherParser::RuleKU_DropProperty);
+CypherParser::RU_DropPropertyContext* CypherParser::rU_DropProperty() {
+  RU_DropPropertyContext *_localctx = _tracker.createInstance<RU_DropPropertyContext>(_ctx, getState());
+  enterRule(_localctx, 86, CypherParser::RuleRU_DropProperty);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6115,7 +6115,7 @@ CypherParser::KU_DropPropertyContext* CypherParser::kU_DropProperty() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 125, _ctx)) {
     case 1: {
       setState(1091);
-      kU_IfExists();
+      rU_IfExists();
       setState(1092);
       match(CypherParser::SP);
       break;
@@ -6137,41 +6137,41 @@ CypherParser::KU_DropPropertyContext* CypherParser::kU_DropProperty() {
   return _localctx;
 }
 
-//----------------- KU_RenameTableContext ------------------------------------------------------------------
+//----------------- RU_RenameTableContext ------------------------------------------------------------------
 
-CypherParser::KU_RenameTableContext::KU_RenameTableContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RenameTableContext::RU_RenameTableContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_RenameTableContext::RENAME() {
+tree::TerminalNode* CypherParser::RU_RenameTableContext::RENAME() {
   return getToken(CypherParser::RENAME, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RenameTableContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RenameTableContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RenameTableContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RenameTableContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_RenameTableContext::TO() {
+tree::TerminalNode* CypherParser::RU_RenameTableContext::TO() {
   return getToken(CypherParser::TO, 0);
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_RenameTableContext::oC_SchemaName() {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_RenameTableContext::oC_SchemaName() {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(0);
 }
 
 
-size_t CypherParser::KU_RenameTableContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RenameTable;
+size_t CypherParser::RU_RenameTableContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RenameTable;
 }
 
 
-CypherParser::KU_RenameTableContext* CypherParser::kU_RenameTable() {
-  KU_RenameTableContext *_localctx = _tracker.createInstance<KU_RenameTableContext>(_ctx, getState());
-  enterRule(_localctx, 88, CypherParser::RuleKU_RenameTable);
+CypherParser::RU_RenameTableContext* CypherParser::rU_RenameTable() {
+  RU_RenameTableContext *_localctx = _tracker.createInstance<RU_RenameTableContext>(_ctx, getState());
+  enterRule(_localctx, 88, CypherParser::RuleRU_RenameTable);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6203,45 +6203,45 @@ CypherParser::KU_RenameTableContext* CypherParser::kU_RenameTable() {
   return _localctx;
 }
 
-//----------------- KU_RenamePropertyContext ------------------------------------------------------------------
+//----------------- RU_RenamePropertyContext ------------------------------------------------------------------
 
-CypherParser::KU_RenamePropertyContext::KU_RenamePropertyContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RenamePropertyContext::RU_RenamePropertyContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_RenamePropertyContext::RENAME() {
+tree::TerminalNode* CypherParser::RU_RenamePropertyContext::RENAME() {
   return getToken(CypherParser::RENAME, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RenamePropertyContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RenamePropertyContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RenamePropertyContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RenamePropertyContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-std::vector<CypherParser::OC_PropertyKeyNameContext *> CypherParser::KU_RenamePropertyContext::oC_PropertyKeyName() {
+std::vector<CypherParser::OC_PropertyKeyNameContext *> CypherParser::RU_RenamePropertyContext::oC_PropertyKeyName() {
   return getRuleContexts<CypherParser::OC_PropertyKeyNameContext>();
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_RenamePropertyContext::oC_PropertyKeyName(size_t i) {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_RenamePropertyContext::oC_PropertyKeyName(size_t i) {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(i);
 }
 
-tree::TerminalNode* CypherParser::KU_RenamePropertyContext::TO() {
+tree::TerminalNode* CypherParser::RU_RenamePropertyContext::TO() {
   return getToken(CypherParser::TO, 0);
 }
 
 
-size_t CypherParser::KU_RenamePropertyContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RenameProperty;
+size_t CypherParser::RU_RenamePropertyContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RenameProperty;
 }
 
 
-CypherParser::KU_RenamePropertyContext* CypherParser::kU_RenameProperty() {
-  KU_RenamePropertyContext *_localctx = _tracker.createInstance<KU_RenamePropertyContext>(_ctx, getState());
-  enterRule(_localctx, 90, CypherParser::RuleKU_RenameProperty);
+CypherParser::RU_RenamePropertyContext* CypherParser::rU_RenameProperty() {
+  RU_RenamePropertyContext *_localctx = _tracker.createInstance<RU_RenamePropertyContext>(_ctx, getState());
+  enterRule(_localctx, 90, CypherParser::RuleRU_RenameProperty);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6277,41 +6277,41 @@ CypherParser::KU_RenamePropertyContext* CypherParser::kU_RenameProperty() {
   return _localctx;
 }
 
-//----------------- KU_AddFromToConnectionContext ------------------------------------------------------------------
+//----------------- RU_AddFromToConnectionContext ------------------------------------------------------------------
 
-CypherParser::KU_AddFromToConnectionContext::KU_AddFromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AddFromToConnectionContext::RU_AddFromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_AddFromToConnectionContext::ADD() {
+tree::TerminalNode* CypherParser::RU_AddFromToConnectionContext::ADD() {
   return getToken(CypherParser::ADD, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_AddFromToConnectionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_AddFromToConnectionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_AddFromToConnectionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_AddFromToConnectionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::KU_FromToConnectionContext* CypherParser::KU_AddFromToConnectionContext::kU_FromToConnection() {
-  return getRuleContext<CypherParser::KU_FromToConnectionContext>(0);
+CypherParser::RU_FromToConnectionContext* CypherParser::RU_AddFromToConnectionContext::rU_FromToConnection() {
+  return getRuleContext<CypherParser::RU_FromToConnectionContext>(0);
 }
 
-CypherParser::KU_IfNotExistsContext* CypherParser::KU_AddFromToConnectionContext::kU_IfNotExists() {
-  return getRuleContext<CypherParser::KU_IfNotExistsContext>(0);
-}
-
-
-size_t CypherParser::KU_AddFromToConnectionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AddFromToConnection;
+CypherParser::RU_IfNotExistsContext* CypherParser::RU_AddFromToConnectionContext::rU_IfNotExists() {
+  return getRuleContext<CypherParser::RU_IfNotExistsContext>(0);
 }
 
 
-CypherParser::KU_AddFromToConnectionContext* CypherParser::kU_AddFromToConnection() {
-  KU_AddFromToConnectionContext *_localctx = _tracker.createInstance<KU_AddFromToConnectionContext>(_ctx, getState());
-  enterRule(_localctx, 92, CypherParser::RuleKU_AddFromToConnection);
+size_t CypherParser::RU_AddFromToConnectionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AddFromToConnection;
+}
+
+
+CypherParser::RU_AddFromToConnectionContext* CypherParser::rU_AddFromToConnection() {
+  RU_AddFromToConnectionContext *_localctx = _tracker.createInstance<RU_AddFromToConnectionContext>(_ctx, getState());
+  enterRule(_localctx, 92, CypherParser::RuleRU_AddFromToConnection);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6333,12 +6333,12 @@ CypherParser::KU_AddFromToConnectionContext* CypherParser::kU_AddFromToConnectio
     _la = _input->LA(1);
     if (_la == CypherParser::IF) {
       setState(1114);
-      kU_IfNotExists();
+      rU_IfNotExists();
       setState(1115);
       match(CypherParser::SP);
     }
     setState(1119);
-    kU_FromToConnection();
+    rU_FromToConnection();
    
   }
   catch (RecognitionException &e) {
@@ -6350,41 +6350,41 @@ CypherParser::KU_AddFromToConnectionContext* CypherParser::kU_AddFromToConnectio
   return _localctx;
 }
 
-//----------------- KU_DropFromToConnectionContext ------------------------------------------------------------------
+//----------------- RU_DropFromToConnectionContext ------------------------------------------------------------------
 
-CypherParser::KU_DropFromToConnectionContext::KU_DropFromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DropFromToConnectionContext::RU_DropFromToConnectionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DropFromToConnectionContext::DROP() {
+tree::TerminalNode* CypherParser::RU_DropFromToConnectionContext::DROP() {
   return getToken(CypherParser::DROP, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_DropFromToConnectionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_DropFromToConnectionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_DropFromToConnectionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_DropFromToConnectionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::KU_FromToConnectionContext* CypherParser::KU_DropFromToConnectionContext::kU_FromToConnection() {
-  return getRuleContext<CypherParser::KU_FromToConnectionContext>(0);
+CypherParser::RU_FromToConnectionContext* CypherParser::RU_DropFromToConnectionContext::rU_FromToConnection() {
+  return getRuleContext<CypherParser::RU_FromToConnectionContext>(0);
 }
 
-CypherParser::KU_IfExistsContext* CypherParser::KU_DropFromToConnectionContext::kU_IfExists() {
-  return getRuleContext<CypherParser::KU_IfExistsContext>(0);
-}
-
-
-size_t CypherParser::KU_DropFromToConnectionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DropFromToConnection;
+CypherParser::RU_IfExistsContext* CypherParser::RU_DropFromToConnectionContext::rU_IfExists() {
+  return getRuleContext<CypherParser::RU_IfExistsContext>(0);
 }
 
 
-CypherParser::KU_DropFromToConnectionContext* CypherParser::kU_DropFromToConnection() {
-  KU_DropFromToConnectionContext *_localctx = _tracker.createInstance<KU_DropFromToConnectionContext>(_ctx, getState());
-  enterRule(_localctx, 94, CypherParser::RuleKU_DropFromToConnection);
+size_t CypherParser::RU_DropFromToConnectionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DropFromToConnection;
+}
+
+
+CypherParser::RU_DropFromToConnectionContext* CypherParser::rU_DropFromToConnection() {
+  RU_DropFromToConnectionContext *_localctx = _tracker.createInstance<RU_DropFromToConnectionContext>(_ctx, getState());
+  enterRule(_localctx, 94, CypherParser::RuleRU_DropFromToConnection);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6406,12 +6406,12 @@ CypherParser::KU_DropFromToConnectionContext* CypherParser::kU_DropFromToConnect
     _la = _input->LA(1);
     if (_la == CypherParser::IF) {
       setState(1123);
-      kU_IfExists();
+      rU_IfExists();
       setState(1124);
       match(CypherParser::SP);
     }
     setState(1128);
-    kU_FromToConnection();
+    rU_FromToConnection();
    
   }
   catch (RecognitionException &e) {
@@ -6423,37 +6423,37 @@ CypherParser::KU_DropFromToConnectionContext* CypherParser::kU_DropFromToConnect
   return _localctx;
 }
 
-//----------------- KU_ColumnDefinitionsContext ------------------------------------------------------------------
+//----------------- RU_ColumnDefinitionsContext ------------------------------------------------------------------
 
-CypherParser::KU_ColumnDefinitionsContext::KU_ColumnDefinitionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ColumnDefinitionsContext::RU_ColumnDefinitionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_ColumnDefinitionContext *> CypherParser::KU_ColumnDefinitionsContext::kU_ColumnDefinition() {
-  return getRuleContexts<CypherParser::KU_ColumnDefinitionContext>();
+std::vector<CypherParser::RU_ColumnDefinitionContext *> CypherParser::RU_ColumnDefinitionsContext::rU_ColumnDefinition() {
+  return getRuleContexts<CypherParser::RU_ColumnDefinitionContext>();
 }
 
-CypherParser::KU_ColumnDefinitionContext* CypherParser::KU_ColumnDefinitionsContext::kU_ColumnDefinition(size_t i) {
-  return getRuleContext<CypherParser::KU_ColumnDefinitionContext>(i);
+CypherParser::RU_ColumnDefinitionContext* CypherParser::RU_ColumnDefinitionsContext::rU_ColumnDefinition(size_t i) {
+  return getRuleContext<CypherParser::RU_ColumnDefinitionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_ColumnDefinitionsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_ColumnDefinitionsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_ColumnDefinitionsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_ColumnDefinitionsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_ColumnDefinitionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ColumnDefinitions;
+size_t CypherParser::RU_ColumnDefinitionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ColumnDefinitions;
 }
 
 
-CypherParser::KU_ColumnDefinitionsContext* CypherParser::kU_ColumnDefinitions() {
-  KU_ColumnDefinitionsContext *_localctx = _tracker.createInstance<KU_ColumnDefinitionsContext>(_ctx, getState());
-  enterRule(_localctx, 96, CypherParser::RuleKU_ColumnDefinitions);
+CypherParser::RU_ColumnDefinitionsContext* CypherParser::rU_ColumnDefinitions() {
+  RU_ColumnDefinitionsContext *_localctx = _tracker.createInstance<RU_ColumnDefinitionsContext>(_ctx, getState());
+  enterRule(_localctx, 96, CypherParser::RuleRU_ColumnDefinitions);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6467,7 +6467,7 @@ CypherParser::KU_ColumnDefinitionsContext* CypherParser::kU_ColumnDefinitions() 
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(1130);
-    kU_ColumnDefinition();
+    rU_ColumnDefinition();
     setState(1141);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 130, _ctx);
@@ -6492,7 +6492,7 @@ CypherParser::KU_ColumnDefinitionsContext* CypherParser::kU_ColumnDefinitions() 
           match(CypherParser::SP);
         }
         setState(1138);
-        kU_ColumnDefinition(); 
+        rU_ColumnDefinition(); 
       }
       setState(1143);
       _errHandler->sync(this);
@@ -6509,33 +6509,33 @@ CypherParser::KU_ColumnDefinitionsContext* CypherParser::kU_ColumnDefinitions() 
   return _localctx;
 }
 
-//----------------- KU_ColumnDefinitionContext ------------------------------------------------------------------
+//----------------- RU_ColumnDefinitionContext ------------------------------------------------------------------
 
-CypherParser::KU_ColumnDefinitionContext::KU_ColumnDefinitionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ColumnDefinitionContext::RU_ColumnDefinitionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_ColumnDefinitionContext::oC_PropertyKeyName() {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_ColumnDefinitionContext::oC_PropertyKeyName() {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_ColumnDefinitionContext::SP() {
+tree::TerminalNode* CypherParser::RU_ColumnDefinitionContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::KU_ColumnDefinitionContext::kU_DataType() {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(0);
+CypherParser::RU_DataTypeContext* CypherParser::RU_ColumnDefinitionContext::rU_DataType() {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(0);
 }
 
 
-size_t CypherParser::KU_ColumnDefinitionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ColumnDefinition;
+size_t CypherParser::RU_ColumnDefinitionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ColumnDefinition;
 }
 
 
-CypherParser::KU_ColumnDefinitionContext* CypherParser::kU_ColumnDefinition() {
-  KU_ColumnDefinitionContext *_localctx = _tracker.createInstance<KU_ColumnDefinitionContext>(_ctx, getState());
-  enterRule(_localctx, 98, CypherParser::RuleKU_ColumnDefinition);
+CypherParser::RU_ColumnDefinitionContext* CypherParser::rU_ColumnDefinition() {
+  RU_ColumnDefinitionContext *_localctx = _tracker.createInstance<RU_ColumnDefinitionContext>(_ctx, getState());
+  enterRule(_localctx, 98, CypherParser::RuleRU_ColumnDefinition);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6551,7 +6551,7 @@ CypherParser::KU_ColumnDefinitionContext* CypherParser::kU_ColumnDefinition() {
     setState(1145);
     match(CypherParser::SP);
     setState(1146);
-    kU_DataType(0);
+    rU_DataType(0);
    
   }
   catch (RecognitionException &e) {
@@ -6563,37 +6563,37 @@ CypherParser::KU_ColumnDefinitionContext* CypherParser::kU_ColumnDefinition() {
   return _localctx;
 }
 
-//----------------- KU_PropertyDefinitionsContext ------------------------------------------------------------------
+//----------------- RU_PropertyDefinitionsContext ------------------------------------------------------------------
 
-CypherParser::KU_PropertyDefinitionsContext::KU_PropertyDefinitionsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_PropertyDefinitionsContext::RU_PropertyDefinitionsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_PropertyDefinitionContext *> CypherParser::KU_PropertyDefinitionsContext::kU_PropertyDefinition() {
-  return getRuleContexts<CypherParser::KU_PropertyDefinitionContext>();
+std::vector<CypherParser::RU_PropertyDefinitionContext *> CypherParser::RU_PropertyDefinitionsContext::rU_PropertyDefinition() {
+  return getRuleContexts<CypherParser::RU_PropertyDefinitionContext>();
 }
 
-CypherParser::KU_PropertyDefinitionContext* CypherParser::KU_PropertyDefinitionsContext::kU_PropertyDefinition(size_t i) {
-  return getRuleContext<CypherParser::KU_PropertyDefinitionContext>(i);
+CypherParser::RU_PropertyDefinitionContext* CypherParser::RU_PropertyDefinitionsContext::rU_PropertyDefinition(size_t i) {
+  return getRuleContext<CypherParser::RU_PropertyDefinitionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_PropertyDefinitionsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_PropertyDefinitionsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertyDefinitionsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_PropertyDefinitionsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_PropertyDefinitionsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_PropertyDefinitions;
+size_t CypherParser::RU_PropertyDefinitionsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_PropertyDefinitions;
 }
 
 
-CypherParser::KU_PropertyDefinitionsContext* CypherParser::kU_PropertyDefinitions() {
-  KU_PropertyDefinitionsContext *_localctx = _tracker.createInstance<KU_PropertyDefinitionsContext>(_ctx, getState());
-  enterRule(_localctx, 100, CypherParser::RuleKU_PropertyDefinitions);
+CypherParser::RU_PropertyDefinitionsContext* CypherParser::rU_PropertyDefinitions() {
+  RU_PropertyDefinitionsContext *_localctx = _tracker.createInstance<RU_PropertyDefinitionsContext>(_ctx, getState());
+  enterRule(_localctx, 100, CypherParser::RuleRU_PropertyDefinitions);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6607,7 +6607,7 @@ CypherParser::KU_PropertyDefinitionsContext* CypherParser::kU_PropertyDefinition
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(1148);
-    kU_PropertyDefinition();
+    rU_PropertyDefinition();
     setState(1159);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 133, _ctx);
@@ -6632,7 +6632,7 @@ CypherParser::KU_PropertyDefinitionsContext* CypherParser::kU_PropertyDefinition
           match(CypherParser::SP);
         }
         setState(1156);
-        kU_PropertyDefinition(); 
+        rU_PropertyDefinition(); 
       }
       setState(1161);
       _errHandler->sync(this);
@@ -6649,45 +6649,45 @@ CypherParser::KU_PropertyDefinitionsContext* CypherParser::kU_PropertyDefinition
   return _localctx;
 }
 
-//----------------- KU_PropertyDefinitionContext ------------------------------------------------------------------
+//----------------- RU_PropertyDefinitionContext ------------------------------------------------------------------
 
-CypherParser::KU_PropertyDefinitionContext::KU_PropertyDefinitionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_PropertyDefinitionContext::RU_PropertyDefinitionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_ColumnDefinitionContext* CypherParser::KU_PropertyDefinitionContext::kU_ColumnDefinition() {
-  return getRuleContext<CypherParser::KU_ColumnDefinitionContext>(0);
+CypherParser::RU_ColumnDefinitionContext* CypherParser::RU_PropertyDefinitionContext::rU_ColumnDefinition() {
+  return getRuleContext<CypherParser::RU_ColumnDefinitionContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_PropertyDefinitionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_PropertyDefinitionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertyDefinitionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_PropertyDefinitionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::KU_DefaultContext* CypherParser::KU_PropertyDefinitionContext::kU_Default() {
-  return getRuleContext<CypherParser::KU_DefaultContext>(0);
+CypherParser::RU_DefaultContext* CypherParser::RU_PropertyDefinitionContext::rU_Default() {
+  return getRuleContext<CypherParser::RU_DefaultContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertyDefinitionContext::PRIMARY() {
+tree::TerminalNode* CypherParser::RU_PropertyDefinitionContext::PRIMARY() {
   return getToken(CypherParser::PRIMARY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertyDefinitionContext::KEY() {
+tree::TerminalNode* CypherParser::RU_PropertyDefinitionContext::KEY() {
   return getToken(CypherParser::KEY, 0);
 }
 
 
-size_t CypherParser::KU_PropertyDefinitionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_PropertyDefinition;
+size_t CypherParser::RU_PropertyDefinitionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_PropertyDefinition;
 }
 
 
-CypherParser::KU_PropertyDefinitionContext* CypherParser::kU_PropertyDefinition() {
-  KU_PropertyDefinitionContext *_localctx = _tracker.createInstance<KU_PropertyDefinitionContext>(_ctx, getState());
-  enterRule(_localctx, 102, CypherParser::RuleKU_PropertyDefinition);
+CypherParser::RU_PropertyDefinitionContext* CypherParser::rU_PropertyDefinition() {
+  RU_PropertyDefinitionContext *_localctx = _tracker.createInstance<RU_PropertyDefinitionContext>(_ctx, getState());
+  enterRule(_localctx, 102, CypherParser::RuleRU_PropertyDefinition);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -6699,7 +6699,7 @@ CypherParser::KU_PropertyDefinitionContext* CypherParser::kU_PropertyDefinition(
   try {
     enterOuterAlt(_localctx, 1);
     setState(1162);
-    kU_ColumnDefinition();
+    rU_ColumnDefinition();
     setState(1165);
     _errHandler->sync(this);
 
@@ -6708,7 +6708,7 @@ CypherParser::KU_PropertyDefinitionContext* CypherParser::kU_PropertyDefinition(
       setState(1163);
       match(CypherParser::SP);
       setState(1164);
-      kU_Default();
+      rU_Default();
       break;
     }
 
@@ -6745,41 +6745,41 @@ CypherParser::KU_PropertyDefinitionContext* CypherParser::kU_PropertyDefinition(
   return _localctx;
 }
 
-//----------------- KU_CreateNodeConstraintContext ------------------------------------------------------------------
+//----------------- RU_CreateNodeConstraintContext ------------------------------------------------------------------
 
-CypherParser::KU_CreateNodeConstraintContext::KU_CreateNodeConstraintContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_CreateNodeConstraintContext::RU_CreateNodeConstraintContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeConstraintContext::PRIMARY() {
+tree::TerminalNode* CypherParser::RU_CreateNodeConstraintContext::PRIMARY() {
   return getToken(CypherParser::PRIMARY, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_CreateNodeConstraintContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_CreateNodeConstraintContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeConstraintContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_CreateNodeConstraintContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_CreateNodeConstraintContext::KEY() {
+tree::TerminalNode* CypherParser::RU_CreateNodeConstraintContext::KEY() {
   return getToken(CypherParser::KEY, 0);
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_CreateNodeConstraintContext::oC_PropertyKeyName() {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_CreateNodeConstraintContext::oC_PropertyKeyName() {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(0);
 }
 
 
-size_t CypherParser::KU_CreateNodeConstraintContext::getRuleIndex() const {
-  return CypherParser::RuleKU_CreateNodeConstraint;
+size_t CypherParser::RU_CreateNodeConstraintContext::getRuleIndex() const {
+  return CypherParser::RuleRU_CreateNodeConstraint;
 }
 
 
-CypherParser::KU_CreateNodeConstraintContext* CypherParser::kU_CreateNodeConstraint() {
-  KU_CreateNodeConstraintContext *_localctx = _tracker.createInstance<KU_CreateNodeConstraintContext>(_ctx, getState());
-  enterRule(_localctx, 104, CypherParser::RuleKU_CreateNodeConstraint);
+CypherParser::RU_CreateNodeConstraintContext* CypherParser::rU_CreateNodeConstraint() {
+  RU_CreateNodeConstraintContext *_localctx = _tracker.createInstance<RU_CreateNodeConstraintContext>(_ctx, getState());
+  enterRule(_localctx, 104, CypherParser::RuleRU_CreateNodeConstraint);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6838,37 +6838,37 @@ CypherParser::KU_CreateNodeConstraintContext* CypherParser::kU_CreateNodeConstra
   return _localctx;
 }
 
-//----------------- KU_UnionTypeContext ------------------------------------------------------------------
+//----------------- RU_UnionTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_UnionTypeContext::KU_UnionTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_UnionTypeContext::RU_UnionTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_UnionTypeContext::UNION() {
+tree::TerminalNode* CypherParser::RU_UnionTypeContext::UNION() {
   return getToken(CypherParser::UNION, 0);
 }
 
-CypherParser::KU_ColumnDefinitionsContext* CypherParser::KU_UnionTypeContext::kU_ColumnDefinitions() {
-  return getRuleContext<CypherParser::KU_ColumnDefinitionsContext>(0);
+CypherParser::RU_ColumnDefinitionsContext* CypherParser::RU_UnionTypeContext::rU_ColumnDefinitions() {
+  return getRuleContext<CypherParser::RU_ColumnDefinitionsContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_UnionTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_UnionTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_UnionTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_UnionTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_UnionTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_UnionType;
+size_t CypherParser::RU_UnionTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_UnionType;
 }
 
 
-CypherParser::KU_UnionTypeContext* CypherParser::kU_UnionType() {
-  KU_UnionTypeContext *_localctx = _tracker.createInstance<KU_UnionTypeContext>(_ctx, getState());
-  enterRule(_localctx, 106, CypherParser::RuleKU_UnionType);
+CypherParser::RU_UnionTypeContext* CypherParser::rU_UnionType() {
+  RU_UnionTypeContext *_localctx = _tracker.createInstance<RU_UnionTypeContext>(_ctx, getState());
+  enterRule(_localctx, 106, CypherParser::RuleRU_UnionType);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6901,7 +6901,7 @@ CypherParser::KU_UnionTypeContext* CypherParser::kU_UnionType() {
       match(CypherParser::SP);
     }
     setState(1197);
-    kU_ColumnDefinitions();
+    rU_ColumnDefinitions();
     setState(1199);
     _errHandler->sync(this);
 
@@ -6923,37 +6923,37 @@ CypherParser::KU_UnionTypeContext* CypherParser::kU_UnionType() {
   return _localctx;
 }
 
-//----------------- KU_StructTypeContext ------------------------------------------------------------------
+//----------------- RU_StructTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_StructTypeContext::KU_StructTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_StructTypeContext::RU_StructTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_StructTypeContext::STRUCT() {
+tree::TerminalNode* CypherParser::RU_StructTypeContext::STRUCT() {
   return getToken(CypherParser::STRUCT, 0);
 }
 
-CypherParser::KU_ColumnDefinitionsContext* CypherParser::KU_StructTypeContext::kU_ColumnDefinitions() {
-  return getRuleContext<CypherParser::KU_ColumnDefinitionsContext>(0);
+CypherParser::RU_ColumnDefinitionsContext* CypherParser::RU_StructTypeContext::rU_ColumnDefinitions() {
+  return getRuleContext<CypherParser::RU_ColumnDefinitionsContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_StructTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_StructTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_StructTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_StructTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_StructTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_StructType;
+size_t CypherParser::RU_StructTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_StructType;
 }
 
 
-CypherParser::KU_StructTypeContext* CypherParser::kU_StructType() {
-  KU_StructTypeContext *_localctx = _tracker.createInstance<KU_StructTypeContext>(_ctx, getState());
-  enterRule(_localctx, 108, CypherParser::RuleKU_StructType);
+CypherParser::RU_StructTypeContext* CypherParser::rU_StructType() {
+  RU_StructTypeContext *_localctx = _tracker.createInstance<RU_StructTypeContext>(_ctx, getState());
+  enterRule(_localctx, 108, CypherParser::RuleRU_StructType);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -6986,7 +6986,7 @@ CypherParser::KU_StructTypeContext* CypherParser::kU_StructType() {
       match(CypherParser::SP);
     }
     setState(1211);
-    kU_ColumnDefinitions();
+    rU_ColumnDefinitions();
     setState(1213);
     _errHandler->sync(this);
 
@@ -7008,41 +7008,41 @@ CypherParser::KU_StructTypeContext* CypherParser::kU_StructType() {
   return _localctx;
 }
 
-//----------------- KU_MapTypeContext ------------------------------------------------------------------
+//----------------- RU_MapTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_MapTypeContext::KU_MapTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_MapTypeContext::RU_MapTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_MapTypeContext::MAP() {
+tree::TerminalNode* CypherParser::RU_MapTypeContext::MAP() {
   return getToken(CypherParser::MAP, 0);
 }
 
-std::vector<CypherParser::KU_DataTypeContext *> CypherParser::KU_MapTypeContext::kU_DataType() {
-  return getRuleContexts<CypherParser::KU_DataTypeContext>();
+std::vector<CypherParser::RU_DataTypeContext *> CypherParser::RU_MapTypeContext::rU_DataType() {
+  return getRuleContexts<CypherParser::RU_DataTypeContext>();
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::KU_MapTypeContext::kU_DataType(size_t i) {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(i);
+CypherParser::RU_DataTypeContext* CypherParser::RU_MapTypeContext::rU_DataType(size_t i) {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_MapTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_MapTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_MapTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_MapTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_MapTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_MapType;
+size_t CypherParser::RU_MapTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_MapType;
 }
 
 
-CypherParser::KU_MapTypeContext* CypherParser::kU_MapType() {
-  KU_MapTypeContext *_localctx = _tracker.createInstance<KU_MapTypeContext>(_ctx, getState());
-  enterRule(_localctx, 110, CypherParser::RuleKU_MapType);
+CypherParser::RU_MapTypeContext* CypherParser::rU_MapType() {
+  RU_MapTypeContext *_localctx = _tracker.createInstance<RU_MapTypeContext>(_ctx, getState());
+  enterRule(_localctx, 110, CypherParser::RuleRU_MapType);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -7075,7 +7075,7 @@ CypherParser::KU_MapTypeContext* CypherParser::kU_MapType() {
       match(CypherParser::SP);
     }
     setState(1225);
-    kU_DataType(0);
+    rU_DataType(0);
     setState(1227);
     _errHandler->sync(this);
 
@@ -7095,7 +7095,7 @@ CypherParser::KU_MapTypeContext* CypherParser::kU_MapType() {
       match(CypherParser::SP);
     }
     setState(1233);
-    kU_DataType(0);
+    rU_DataType(0);
     setState(1235);
     _errHandler->sync(this);
 
@@ -7117,41 +7117,41 @@ CypherParser::KU_MapTypeContext* CypherParser::kU_MapType() {
   return _localctx;
 }
 
-//----------------- KU_DecimalTypeContext ------------------------------------------------------------------
+//----------------- RU_DecimalTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_DecimalTypeContext::KU_DecimalTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DecimalTypeContext::RU_DecimalTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_DecimalTypeContext::DECIMAL() {
+tree::TerminalNode* CypherParser::RU_DecimalTypeContext::DECIMAL() {
   return getToken(CypherParser::DECIMAL, 0);
 }
 
-std::vector<CypherParser::OC_IntegerLiteralContext *> CypherParser::KU_DecimalTypeContext::oC_IntegerLiteral() {
+std::vector<CypherParser::OC_IntegerLiteralContext *> CypherParser::RU_DecimalTypeContext::oC_IntegerLiteral() {
   return getRuleContexts<CypherParser::OC_IntegerLiteralContext>();
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_DecimalTypeContext::oC_IntegerLiteral(size_t i) {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_DecimalTypeContext::oC_IntegerLiteral(size_t i) {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_DecimalTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_DecimalTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_DecimalTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_DecimalTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_DecimalTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DecimalType;
+size_t CypherParser::RU_DecimalTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DecimalType;
 }
 
 
-CypherParser::KU_DecimalTypeContext* CypherParser::kU_DecimalType() {
-  KU_DecimalTypeContext *_localctx = _tracker.createInstance<KU_DecimalTypeContext>(_ctx, getState());
-  enterRule(_localctx, 112, CypherParser::RuleKU_DecimalType);
+CypherParser::RU_DecimalTypeContext* CypherParser::rU_DecimalType() {
+  RU_DecimalTypeContext *_localctx = _tracker.createInstance<RU_DecimalTypeContext>(_ctx, getState());
+  enterRule(_localctx, 112, CypherParser::RuleRU_DecimalType);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -7226,59 +7226,59 @@ CypherParser::KU_DecimalTypeContext* CypherParser::kU_DecimalType() {
   return _localctx;
 }
 
-//----------------- KU_DataTypeContext ------------------------------------------------------------------
+//----------------- RU_DataTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_DataTypeContext::KU_DataTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_DataTypeContext::RU_DataTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_DataTypeContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_DataTypeContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-CypherParser::KU_UnionTypeContext* CypherParser::KU_DataTypeContext::kU_UnionType() {
-  return getRuleContext<CypherParser::KU_UnionTypeContext>(0);
+CypherParser::RU_UnionTypeContext* CypherParser::RU_DataTypeContext::rU_UnionType() {
+  return getRuleContext<CypherParser::RU_UnionTypeContext>(0);
 }
 
-CypherParser::KU_StructTypeContext* CypherParser::KU_DataTypeContext::kU_StructType() {
-  return getRuleContext<CypherParser::KU_StructTypeContext>(0);
+CypherParser::RU_StructTypeContext* CypherParser::RU_DataTypeContext::rU_StructType() {
+  return getRuleContext<CypherParser::RU_StructTypeContext>(0);
 }
 
-CypherParser::KU_MapTypeContext* CypherParser::KU_DataTypeContext::kU_MapType() {
-  return getRuleContext<CypherParser::KU_MapTypeContext>(0);
+CypherParser::RU_MapTypeContext* CypherParser::RU_DataTypeContext::rU_MapType() {
+  return getRuleContext<CypherParser::RU_MapTypeContext>(0);
 }
 
-CypherParser::KU_DecimalTypeContext* CypherParser::KU_DataTypeContext::kU_DecimalType() {
-  return getRuleContext<CypherParser::KU_DecimalTypeContext>(0);
+CypherParser::RU_DecimalTypeContext* CypherParser::RU_DataTypeContext::rU_DecimalType() {
+  return getRuleContext<CypherParser::RU_DecimalTypeContext>(0);
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::KU_DataTypeContext::kU_DataType() {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(0);
+CypherParser::RU_DataTypeContext* CypherParser::RU_DataTypeContext::rU_DataType() {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(0);
 }
 
-CypherParser::KU_ListIdentifiersContext* CypherParser::KU_DataTypeContext::kU_ListIdentifiers() {
-  return getRuleContext<CypherParser::KU_ListIdentifiersContext>(0);
-}
-
-
-size_t CypherParser::KU_DataTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_DataType;
+CypherParser::RU_ListIdentifiersContext* CypherParser::RU_DataTypeContext::rU_ListIdentifiers() {
+  return getRuleContext<CypherParser::RU_ListIdentifiersContext>(0);
 }
 
 
-
-CypherParser::KU_DataTypeContext* CypherParser::kU_DataType() {
-   return kU_DataType(0);
+size_t CypherParser::RU_DataTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_DataType;
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::kU_DataType(int precedence) {
+
+
+CypherParser::RU_DataTypeContext* CypherParser::rU_DataType() {
+   return rU_DataType(0);
+}
+
+CypherParser::RU_DataTypeContext* CypherParser::rU_DataType(int precedence) {
   ParserRuleContext *parentContext = _ctx;
   size_t parentState = getState();
-  CypherParser::KU_DataTypeContext *_localctx = _tracker.createInstance<KU_DataTypeContext>(_ctx, parentState);
-  CypherParser::KU_DataTypeContext *previousContext = _localctx;
+  CypherParser::RU_DataTypeContext *_localctx = _tracker.createInstance<RU_DataTypeContext>(_ctx, parentState);
+  CypherParser::RU_DataTypeContext *previousContext = _localctx;
   (void)previousContext; // Silence compiler, in case the context is not used by generated code.
   size_t startState = 114;
-  enterRecursionRule(_localctx, 114, CypherParser::RuleKU_DataType, precedence);
+  enterRecursionRule(_localctx, 114, CypherParser::RuleRU_DataType, precedence);
 
     
 
@@ -7303,25 +7303,25 @@ CypherParser::KU_DataTypeContext* CypherParser::kU_DataType(int precedence) {
 
     case 2: {
       setState(1263);
-      kU_UnionType();
+      rU_UnionType();
       break;
     }
 
     case 3: {
       setState(1264);
-      kU_StructType();
+      rU_StructType();
       break;
     }
 
     case 4: {
       setState(1265);
-      kU_MapType();
+      rU_MapType();
       break;
     }
 
     case 5: {
       setState(1266);
-      kU_DecimalType();
+      rU_DecimalType();
       break;
     }
 
@@ -7337,13 +7337,13 @@ CypherParser::KU_DataTypeContext* CypherParser::kU_DataType(int precedence) {
         if (!_parseListeners.empty())
           triggerExitRuleEvent();
         previousContext = _localctx;
-        _localctx = _tracker.createInstance<KU_DataTypeContext>(parentContext, parentState);
-        pushNewRecursionContext(_localctx, startState, RuleKU_DataType);
+        _localctx = _tracker.createInstance<RU_DataTypeContext>(parentContext, parentState);
+        pushNewRecursionContext(_localctx, startState, RuleRU_DataType);
         setState(1269);
 
         if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
         setState(1270);
-        kU_ListIdentifiers(); 
+        rU_ListIdentifiers(); 
       }
       setState(1275);
       _errHandler->sync(this);
@@ -7358,29 +7358,29 @@ CypherParser::KU_DataTypeContext* CypherParser::kU_DataType(int precedence) {
   return _localctx;
 }
 
-//----------------- KU_ListIdentifiersContext ------------------------------------------------------------------
+//----------------- RU_ListIdentifiersContext ------------------------------------------------------------------
 
-CypherParser::KU_ListIdentifiersContext::KU_ListIdentifiersContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ListIdentifiersContext::RU_ListIdentifiersContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_ListIdentifierContext *> CypherParser::KU_ListIdentifiersContext::kU_ListIdentifier() {
-  return getRuleContexts<CypherParser::KU_ListIdentifierContext>();
+std::vector<CypherParser::RU_ListIdentifierContext *> CypherParser::RU_ListIdentifiersContext::rU_ListIdentifier() {
+  return getRuleContexts<CypherParser::RU_ListIdentifierContext>();
 }
 
-CypherParser::KU_ListIdentifierContext* CypherParser::KU_ListIdentifiersContext::kU_ListIdentifier(size_t i) {
-  return getRuleContext<CypherParser::KU_ListIdentifierContext>(i);
-}
-
-
-size_t CypherParser::KU_ListIdentifiersContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ListIdentifiers;
+CypherParser::RU_ListIdentifierContext* CypherParser::RU_ListIdentifiersContext::rU_ListIdentifier(size_t i) {
+  return getRuleContext<CypherParser::RU_ListIdentifierContext>(i);
 }
 
 
-CypherParser::KU_ListIdentifiersContext* CypherParser::kU_ListIdentifiers() {
-  KU_ListIdentifiersContext *_localctx = _tracker.createInstance<KU_ListIdentifiersContext>(_ctx, getState());
-  enterRule(_localctx, 116, CypherParser::RuleKU_ListIdentifiers);
+size_t CypherParser::RU_ListIdentifiersContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ListIdentifiers;
+}
+
+
+CypherParser::RU_ListIdentifiersContext* CypherParser::rU_ListIdentifiers() {
+  RU_ListIdentifiersContext *_localctx = _tracker.createInstance<RU_ListIdentifiersContext>(_ctx, getState());
+  enterRule(_localctx, 116, CypherParser::RuleRU_ListIdentifiers);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -7393,14 +7393,14 @@ CypherParser::KU_ListIdentifiersContext* CypherParser::kU_ListIdentifiers() {
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(1276);
-    kU_ListIdentifier();
+    rU_ListIdentifier();
     setState(1280);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 157, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         setState(1277);
-        kU_ListIdentifier(); 
+        rU_ListIdentifier(); 
       }
       setState(1282);
       _errHandler->sync(this);
@@ -7417,25 +7417,25 @@ CypherParser::KU_ListIdentifiersContext* CypherParser::kU_ListIdentifiers() {
   return _localctx;
 }
 
-//----------------- KU_ListIdentifierContext ------------------------------------------------------------------
+//----------------- RU_ListIdentifierContext ------------------------------------------------------------------
 
-CypherParser::KU_ListIdentifierContext::KU_ListIdentifierContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ListIdentifierContext::RU_ListIdentifierContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_IntegerLiteralContext* CypherParser::KU_ListIdentifierContext::oC_IntegerLiteral() {
+CypherParser::OC_IntegerLiteralContext* CypherParser::RU_ListIdentifierContext::oC_IntegerLiteral() {
   return getRuleContext<CypherParser::OC_IntegerLiteralContext>(0);
 }
 
 
-size_t CypherParser::KU_ListIdentifierContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ListIdentifier;
+size_t CypherParser::RU_ListIdentifierContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ListIdentifier;
 }
 
 
-CypherParser::KU_ListIdentifierContext* CypherParser::kU_ListIdentifier() {
-  KU_ListIdentifierContext *_localctx = _tracker.createInstance<KU_ListIdentifierContext>(_ctx, getState());
-  enterRule(_localctx, 118, CypherParser::RuleKU_ListIdentifier);
+CypherParser::RU_ListIdentifierContext* CypherParser::rU_ListIdentifier() {
+  RU_ListIdentifierContext *_localctx = _tracker.createInstance<RU_ListIdentifierContext>(_ctx, getState());
+  enterRule(_localctx, 118, CypherParser::RuleRU_ListIdentifier);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -7640,57 +7640,57 @@ CypherParser::OC_ProfileContext* CypherParser::oC_Profile() {
   return _localctx;
 }
 
-//----------------- KU_TransactionContext ------------------------------------------------------------------
+//----------------- RU_TransactionContext ------------------------------------------------------------------
 
-CypherParser::KU_TransactionContext::KU_TransactionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_TransactionContext::RU_TransactionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::BEGIN() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::BEGIN() {
   return getToken(CypherParser::BEGIN, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_TransactionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_TransactionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_TransactionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::TRANSACTION() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::TRANSACTION() {
   return getToken(CypherParser::TRANSACTION, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::READ() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::READ() {
   return getToken(CypherParser::READ, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::ONLY() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::ONLY() {
   return getToken(CypherParser::ONLY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::COMMIT() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::COMMIT() {
   return getToken(CypherParser::COMMIT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::ROLLBACK() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::ROLLBACK() {
   return getToken(CypherParser::ROLLBACK, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_TransactionContext::CHECKPOINT() {
+tree::TerminalNode* CypherParser::RU_TransactionContext::CHECKPOINT() {
   return getToken(CypherParser::CHECKPOINT, 0);
 }
 
 
-size_t CypherParser::KU_TransactionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Transaction;
+size_t CypherParser::RU_TransactionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Transaction;
 }
 
 
-CypherParser::KU_TransactionContext* CypherParser::kU_Transaction() {
-  KU_TransactionContext *_localctx = _tracker.createInstance<KU_TransactionContext>(_ctx, getState());
-  enterRule(_localctx, 126, CypherParser::RuleKU_Transaction);
+CypherParser::RU_TransactionContext* CypherParser::rU_Transaction() {
+  RU_TransactionContext *_localctx = _tracker.createInstance<RU_TransactionContext>(_ctx, getState());
+  enterRule(_localctx, 126, CypherParser::RuleRU_Transaction);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -7768,37 +7768,37 @@ CypherParser::KU_TransactionContext* CypherParser::kU_Transaction() {
   return _localctx;
 }
 
-//----------------- KU_ExtensionContext ------------------------------------------------------------------
+//----------------- RU_ExtensionContext ------------------------------------------------------------------
 
-CypherParser::KU_ExtensionContext::KU_ExtensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ExtensionContext::RU_ExtensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_LoadExtensionContext* CypherParser::KU_ExtensionContext::kU_LoadExtension() {
-  return getRuleContext<CypherParser::KU_LoadExtensionContext>(0);
+CypherParser::RU_LoadExtensionContext* CypherParser::RU_ExtensionContext::rU_LoadExtension() {
+  return getRuleContext<CypherParser::RU_LoadExtensionContext>(0);
 }
 
-CypherParser::KU_InstallExtensionContext* CypherParser::KU_ExtensionContext::kU_InstallExtension() {
-  return getRuleContext<CypherParser::KU_InstallExtensionContext>(0);
+CypherParser::RU_InstallExtensionContext* CypherParser::RU_ExtensionContext::rU_InstallExtension() {
+  return getRuleContext<CypherParser::RU_InstallExtensionContext>(0);
 }
 
-CypherParser::KU_UninstallExtensionContext* CypherParser::KU_ExtensionContext::kU_UninstallExtension() {
-  return getRuleContext<CypherParser::KU_UninstallExtensionContext>(0);
+CypherParser::RU_UninstallExtensionContext* CypherParser::RU_ExtensionContext::rU_UninstallExtension() {
+  return getRuleContext<CypherParser::RU_UninstallExtensionContext>(0);
 }
 
-CypherParser::KU_UpdateExtensionContext* CypherParser::KU_ExtensionContext::kU_UpdateExtension() {
-  return getRuleContext<CypherParser::KU_UpdateExtensionContext>(0);
-}
-
-
-size_t CypherParser::KU_ExtensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Extension;
+CypherParser::RU_UpdateExtensionContext* CypherParser::RU_ExtensionContext::rU_UpdateExtension() {
+  return getRuleContext<CypherParser::RU_UpdateExtensionContext>(0);
 }
 
 
-CypherParser::KU_ExtensionContext* CypherParser::kU_Extension() {
-  KU_ExtensionContext *_localctx = _tracker.createInstance<KU_ExtensionContext>(_ctx, getState());
-  enterRule(_localctx, 128, CypherParser::RuleKU_Extension);
+size_t CypherParser::RU_ExtensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Extension;
+}
+
+
+CypherParser::RU_ExtensionContext* CypherParser::rU_Extension() {
+  RU_ExtensionContext *_localctx = _tracker.createInstance<RU_ExtensionContext>(_ctx, getState());
+  enterRule(_localctx, 128, CypherParser::RuleRU_Extension);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -7814,7 +7814,7 @@ CypherParser::KU_ExtensionContext* CypherParser::kU_Extension() {
       case CypherParser::LOAD: {
         enterOuterAlt(_localctx, 1);
         setState(1315);
-        kU_LoadExtension();
+        rU_LoadExtension();
         break;
       }
 
@@ -7822,21 +7822,21 @@ CypherParser::KU_ExtensionContext* CypherParser::kU_Extension() {
       case CypherParser::INSTALL: {
         enterOuterAlt(_localctx, 2);
         setState(1316);
-        kU_InstallExtension();
+        rU_InstallExtension();
         break;
       }
 
       case CypherParser::UNINSTALL: {
         enterOuterAlt(_localctx, 3);
         setState(1317);
-        kU_UninstallExtension();
+        rU_UninstallExtension();
         break;
       }
 
       case CypherParser::UPDATE: {
         enterOuterAlt(_localctx, 4);
         setState(1318);
-        kU_UpdateExtension();
+        rU_UpdateExtension();
         break;
       }
 
@@ -7854,45 +7854,45 @@ CypherParser::KU_ExtensionContext* CypherParser::kU_Extension() {
   return _localctx;
 }
 
-//----------------- KU_LoadExtensionContext ------------------------------------------------------------------
+//----------------- RU_LoadExtensionContext ------------------------------------------------------------------
 
-CypherParser::KU_LoadExtensionContext::KU_LoadExtensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_LoadExtensionContext::RU_LoadExtensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_LoadExtensionContext::LOAD() {
+tree::TerminalNode* CypherParser::RU_LoadExtensionContext::LOAD() {
   return getToken(CypherParser::LOAD, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_LoadExtensionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_LoadExtensionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadExtensionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_LoadExtensionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadExtensionContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_LoadExtensionContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_LoadExtensionContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_LoadExtensionContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadExtensionContext::EXTENSION() {
+tree::TerminalNode* CypherParser::RU_LoadExtensionContext::EXTENSION() {
   return getToken(CypherParser::EXTENSION, 0);
 }
 
 
-size_t CypherParser::KU_LoadExtensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_LoadExtension;
+size_t CypherParser::RU_LoadExtensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_LoadExtension;
 }
 
 
-CypherParser::KU_LoadExtensionContext* CypherParser::kU_LoadExtension() {
-  KU_LoadExtensionContext *_localctx = _tracker.createInstance<KU_LoadExtensionContext>(_ctx, getState());
-  enterRule(_localctx, 130, CypherParser::RuleKU_LoadExtension);
+CypherParser::RU_LoadExtensionContext* CypherParser::rU_LoadExtension() {
+  RU_LoadExtensionContext *_localctx = _tracker.createInstance<RU_LoadExtensionContext>(_ctx, getState());
+  enterRule(_localctx, 130, CypherParser::RuleRU_LoadExtension);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -8015,49 +8015,49 @@ CypherParser::KU_LoadExtensionContext* CypherParser::kU_LoadExtension() {
   return _localctx;
 }
 
-//----------------- KU_InstallExtensionContext ------------------------------------------------------------------
+//----------------- RU_InstallExtensionContext ------------------------------------------------------------------
 
-CypherParser::KU_InstallExtensionContext::KU_InstallExtensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_InstallExtensionContext::RU_InstallExtensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_InstallExtensionContext::INSTALL() {
+tree::TerminalNode* CypherParser::RU_InstallExtensionContext::INSTALL() {
   return getToken(CypherParser::INSTALL, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_InstallExtensionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_InstallExtensionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_InstallExtensionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_InstallExtensionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_InstallExtensionContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_InstallExtensionContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_InstallExtensionContext::FORCE() {
+tree::TerminalNode* CypherParser::RU_InstallExtensionContext::FORCE() {
   return getToken(CypherParser::FORCE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_InstallExtensionContext::FROM() {
+tree::TerminalNode* CypherParser::RU_InstallExtensionContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_InstallExtensionContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_InstallExtensionContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
 
-size_t CypherParser::KU_InstallExtensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_InstallExtension;
+size_t CypherParser::RU_InstallExtensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_InstallExtension;
 }
 
 
-CypherParser::KU_InstallExtensionContext* CypherParser::kU_InstallExtension() {
-  KU_InstallExtensionContext *_localctx = _tracker.createInstance<KU_InstallExtensionContext>(_ctx, getState());
-  enterRule(_localctx, 132, CypherParser::RuleKU_InstallExtension);
+CypherParser::RU_InstallExtensionContext* CypherParser::rU_InstallExtension() {
+  RU_InstallExtensionContext *_localctx = _tracker.createInstance<RU_InstallExtensionContext>(_ctx, getState());
+  enterRule(_localctx, 132, CypherParser::RuleRU_InstallExtension);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -8115,33 +8115,33 @@ CypherParser::KU_InstallExtensionContext* CypherParser::kU_InstallExtension() {
   return _localctx;
 }
 
-//----------------- KU_UninstallExtensionContext ------------------------------------------------------------------
+//----------------- RU_UninstallExtensionContext ------------------------------------------------------------------
 
-CypherParser::KU_UninstallExtensionContext::KU_UninstallExtensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_UninstallExtensionContext::RU_UninstallExtensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_UninstallExtensionContext::UNINSTALL() {
+tree::TerminalNode* CypherParser::RU_UninstallExtensionContext::UNINSTALL() {
   return getToken(CypherParser::UNINSTALL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_UninstallExtensionContext::SP() {
+tree::TerminalNode* CypherParser::RU_UninstallExtensionContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_UninstallExtensionContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_UninstallExtensionContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
 
-size_t CypherParser::KU_UninstallExtensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_UninstallExtension;
+size_t CypherParser::RU_UninstallExtensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_UninstallExtension;
 }
 
 
-CypherParser::KU_UninstallExtensionContext* CypherParser::kU_UninstallExtension() {
-  KU_UninstallExtensionContext *_localctx = _tracker.createInstance<KU_UninstallExtensionContext>(_ctx, getState());
-  enterRule(_localctx, 134, CypherParser::RuleKU_UninstallExtension);
+CypherParser::RU_UninstallExtensionContext* CypherParser::rU_UninstallExtension() {
+  RU_UninstallExtensionContext *_localctx = _tracker.createInstance<RU_UninstallExtensionContext>(_ctx, getState());
+  enterRule(_localctx, 134, CypherParser::RuleRU_UninstallExtension);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -8169,33 +8169,33 @@ CypherParser::KU_UninstallExtensionContext* CypherParser::kU_UninstallExtension(
   return _localctx;
 }
 
-//----------------- KU_UpdateExtensionContext ------------------------------------------------------------------
+//----------------- RU_UpdateExtensionContext ------------------------------------------------------------------
 
-CypherParser::KU_UpdateExtensionContext::KU_UpdateExtensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_UpdateExtensionContext::RU_UpdateExtensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_UpdateExtensionContext::UPDATE() {
+tree::TerminalNode* CypherParser::RU_UpdateExtensionContext::UPDATE() {
   return getToken(CypherParser::UPDATE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_UpdateExtensionContext::SP() {
+tree::TerminalNode* CypherParser::RU_UpdateExtensionContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_UpdateExtensionContext::oC_Variable() {
+CypherParser::OC_VariableContext* CypherParser::RU_UpdateExtensionContext::oC_Variable() {
   return getRuleContext<CypherParser::OC_VariableContext>(0);
 }
 
 
-size_t CypherParser::KU_UpdateExtensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_UpdateExtension;
+size_t CypherParser::RU_UpdateExtensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_UpdateExtension;
 }
 
 
-CypherParser::KU_UpdateExtensionContext* CypherParser::kU_UpdateExtension() {
-  KU_UpdateExtensionContext *_localctx = _tracker.createInstance<KU_UpdateExtensionContext>(_ctx, getState());
-  enterRule(_localctx, 136, CypherParser::RuleKU_UpdateExtension);
+CypherParser::RU_UpdateExtensionContext* CypherParser::rU_UpdateExtension() {
+  RU_UpdateExtensionContext *_localctx = _tracker.createInstance<RU_UpdateExtensionContext>(_ctx, getState());
+  enterRule(_localctx, 136, CypherParser::RuleRU_UpdateExtension);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -8734,12 +8734,12 @@ CypherParser::OC_SinglePartQueryContext* CypherParser::OC_MultiPartQueryContext:
   return getRuleContext<CypherParser::OC_SinglePartQueryContext>(0);
 }
 
-std::vector<CypherParser::KU_QueryPartContext *> CypherParser::OC_MultiPartQueryContext::kU_QueryPart() {
-  return getRuleContexts<CypherParser::KU_QueryPartContext>();
+std::vector<CypherParser::RU_QueryPartContext *> CypherParser::OC_MultiPartQueryContext::rU_QueryPart() {
+  return getRuleContexts<CypherParser::RU_QueryPartContext>();
 }
 
-CypherParser::KU_QueryPartContext* CypherParser::OC_MultiPartQueryContext::kU_QueryPart(size_t i) {
-  return getRuleContext<CypherParser::KU_QueryPartContext>(i);
+CypherParser::RU_QueryPartContext* CypherParser::OC_MultiPartQueryContext::rU_QueryPart(size_t i) {
+  return getRuleContext<CypherParser::RU_QueryPartContext>(i);
 }
 
 std::vector<tree::TerminalNode *> CypherParser::OC_MultiPartQueryContext::SP() {
@@ -8778,7 +8778,7 @@ CypherParser::OC_MultiPartQueryContext* CypherParser::oC_MultiPartQuery() {
       switch (alt) {
         case 1: {
               setState(1432);
-              kU_QueryPart();
+              rU_QueryPart();
               setState(1434);
               _errHandler->sync(this);
 
@@ -8810,49 +8810,49 @@ CypherParser::OC_MultiPartQueryContext* CypherParser::oC_MultiPartQuery() {
   return _localctx;
 }
 
-//----------------- KU_QueryPartContext ------------------------------------------------------------------
+//----------------- RU_QueryPartContext ------------------------------------------------------------------
 
-CypherParser::KU_QueryPartContext::KU_QueryPartContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_QueryPartContext::RU_QueryPartContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_WithContext* CypherParser::KU_QueryPartContext::oC_With() {
+CypherParser::OC_WithContext* CypherParser::RU_QueryPartContext::oC_With() {
   return getRuleContext<CypherParser::OC_WithContext>(0);
 }
 
-std::vector<CypherParser::OC_ReadingClauseContext *> CypherParser::KU_QueryPartContext::oC_ReadingClause() {
+std::vector<CypherParser::OC_ReadingClauseContext *> CypherParser::RU_QueryPartContext::oC_ReadingClause() {
   return getRuleContexts<CypherParser::OC_ReadingClauseContext>();
 }
 
-CypherParser::OC_ReadingClauseContext* CypherParser::KU_QueryPartContext::oC_ReadingClause(size_t i) {
+CypherParser::OC_ReadingClauseContext* CypherParser::RU_QueryPartContext::oC_ReadingClause(size_t i) {
   return getRuleContext<CypherParser::OC_ReadingClauseContext>(i);
 }
 
-std::vector<CypherParser::OC_UpdatingClauseContext *> CypherParser::KU_QueryPartContext::oC_UpdatingClause() {
+std::vector<CypherParser::OC_UpdatingClauseContext *> CypherParser::RU_QueryPartContext::oC_UpdatingClause() {
   return getRuleContexts<CypherParser::OC_UpdatingClauseContext>();
 }
 
-CypherParser::OC_UpdatingClauseContext* CypherParser::KU_QueryPartContext::oC_UpdatingClause(size_t i) {
+CypherParser::OC_UpdatingClauseContext* CypherParser::RU_QueryPartContext::oC_UpdatingClause(size_t i) {
   return getRuleContext<CypherParser::OC_UpdatingClauseContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_QueryPartContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_QueryPartContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_QueryPartContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_QueryPartContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_QueryPartContext::getRuleIndex() const {
-  return CypherParser::RuleKU_QueryPart;
+size_t CypherParser::RU_QueryPartContext::getRuleIndex() const {
+  return CypherParser::RuleRU_QueryPart;
 }
 
 
-CypherParser::KU_QueryPartContext* CypherParser::kU_QueryPart() {
-  KU_QueryPartContext *_localctx = _tracker.createInstance<KU_QueryPartContext>(_ctx, getState());
-  enterRule(_localctx, 150, CypherParser::RuleKU_QueryPart);
+CypherParser::RU_QueryPartContext* CypherParser::rU_QueryPart() {
+  RU_QueryPartContext *_localctx = _tracker.createInstance<RU_QueryPartContext>(_ctx, getState());
+  enterRule(_localctx, 150, CypherParser::RuleRU_QueryPart);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -9015,12 +9015,12 @@ CypherParser::OC_UnwindContext* CypherParser::OC_ReadingClauseContext::oC_Unwind
   return getRuleContext<CypherParser::OC_UnwindContext>(0);
 }
 
-CypherParser::KU_InQueryCallContext* CypherParser::OC_ReadingClauseContext::kU_InQueryCall() {
-  return getRuleContext<CypherParser::KU_InQueryCallContext>(0);
+CypherParser::RU_InQueryCallContext* CypherParser::OC_ReadingClauseContext::rU_InQueryCall() {
+  return getRuleContext<CypherParser::RU_InQueryCallContext>(0);
 }
 
-CypherParser::KU_LoadFromContext* CypherParser::OC_ReadingClauseContext::kU_LoadFrom() {
-  return getRuleContext<CypherParser::KU_LoadFromContext>(0);
+CypherParser::RU_LoadFromContext* CypherParser::OC_ReadingClauseContext::rU_LoadFrom() {
+  return getRuleContext<CypherParser::RU_LoadFromContext>(0);
 }
 
 
@@ -9062,14 +9062,14 @@ CypherParser::OC_ReadingClauseContext* CypherParser::oC_ReadingClause() {
       case CypherParser::CALL: {
         enterOuterAlt(_localctx, 3);
         setState(1470);
-        kU_InQueryCall();
+        rU_InQueryCall();
         break;
       }
 
       case CypherParser::LOAD: {
         enterOuterAlt(_localctx, 4);
         setState(1471);
-        kU_LoadFrom();
+        rU_LoadFrom();
         break;
       }
 
@@ -9087,61 +9087,61 @@ CypherParser::OC_ReadingClauseContext* CypherParser::oC_ReadingClause() {
   return _localctx;
 }
 
-//----------------- KU_LoadFromContext ------------------------------------------------------------------
+//----------------- RU_LoadFromContext ------------------------------------------------------------------
 
-CypherParser::KU_LoadFromContext::KU_LoadFromContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_LoadFromContext::RU_LoadFromContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_LoadFromContext::LOAD() {
+tree::TerminalNode* CypherParser::RU_LoadFromContext::LOAD() {
   return getToken(CypherParser::LOAD, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_LoadFromContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_LoadFromContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadFromContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_LoadFromContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadFromContext::FROM() {
+tree::TerminalNode* CypherParser::RU_LoadFromContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-CypherParser::KU_ScanSourceContext* CypherParser::KU_LoadFromContext::kU_ScanSource() {
-  return getRuleContext<CypherParser::KU_ScanSourceContext>(0);
+CypherParser::RU_ScanSourceContext* CypherParser::RU_LoadFromContext::rU_ScanSource() {
+  return getRuleContext<CypherParser::RU_ScanSourceContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadFromContext::WITH() {
+tree::TerminalNode* CypherParser::RU_LoadFromContext::WITH() {
   return getToken(CypherParser::WITH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_LoadFromContext::HEADERS() {
+tree::TerminalNode* CypherParser::RU_LoadFromContext::HEADERS() {
   return getToken(CypherParser::HEADERS, 0);
 }
 
-CypherParser::KU_ColumnDefinitionsContext* CypherParser::KU_LoadFromContext::kU_ColumnDefinitions() {
-  return getRuleContext<CypherParser::KU_ColumnDefinitionsContext>(0);
+CypherParser::RU_ColumnDefinitionsContext* CypherParser::RU_LoadFromContext::rU_ColumnDefinitions() {
+  return getRuleContext<CypherParser::RU_ColumnDefinitionsContext>(0);
 }
 
-CypherParser::KU_OptionsContext* CypherParser::KU_LoadFromContext::kU_Options() {
-  return getRuleContext<CypherParser::KU_OptionsContext>(0);
+CypherParser::RU_OptionsContext* CypherParser::RU_LoadFromContext::rU_Options() {
+  return getRuleContext<CypherParser::RU_OptionsContext>(0);
 }
 
-CypherParser::OC_WhereContext* CypherParser::KU_LoadFromContext::oC_Where() {
+CypherParser::OC_WhereContext* CypherParser::RU_LoadFromContext::oC_Where() {
   return getRuleContext<CypherParser::OC_WhereContext>(0);
 }
 
 
-size_t CypherParser::KU_LoadFromContext::getRuleIndex() const {
-  return CypherParser::RuleKU_LoadFrom;
+size_t CypherParser::RU_LoadFromContext::getRuleIndex() const {
+  return CypherParser::RuleRU_LoadFrom;
 }
 
 
-CypherParser::KU_LoadFromContext* CypherParser::kU_LoadFrom() {
-  KU_LoadFromContext *_localctx = _tracker.createInstance<KU_LoadFromContext>(_ctx, getState());
-  enterRule(_localctx, 156, CypherParser::RuleKU_LoadFrom);
+CypherParser::RU_LoadFromContext* CypherParser::rU_LoadFrom() {
+  RU_LoadFromContext *_localctx = _tracker.createInstance<RU_LoadFromContext>(_ctx, getState());
+  enterRule(_localctx, 156, CypherParser::RuleRU_LoadFrom);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -9187,7 +9187,7 @@ CypherParser::KU_LoadFromContext* CypherParser::kU_LoadFrom() {
         match(CypherParser::SP);
       }
       setState(1486);
-      kU_ColumnDefinitions();
+      rU_ColumnDefinitions();
       setState(1488);
       _errHandler->sync(this);
 
@@ -9211,7 +9211,7 @@ CypherParser::KU_LoadFromContext* CypherParser::kU_LoadFrom() {
     setState(1496);
     match(CypherParser::SP);
     setState(1497);
-    kU_ScanSource();
+    rU_ScanSource();
     setState(1511);
     _errHandler->sync(this);
 
@@ -9236,7 +9236,7 @@ CypherParser::KU_LoadFromContext* CypherParser::kU_LoadFrom() {
         match(CypherParser::SP);
       }
       setState(1505);
-      kU_Options();
+      rU_Options();
       setState(1507);
       _errHandler->sync(this);
 
@@ -9448,49 +9448,49 @@ CypherParser::OC_YieldItemsContext* CypherParser::oC_YieldItems() {
   return _localctx;
 }
 
-//----------------- KU_InQueryCallContext ------------------------------------------------------------------
+//----------------- RU_InQueryCallContext ------------------------------------------------------------------
 
-CypherParser::KU_InQueryCallContext::KU_InQueryCallContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_InQueryCallContext::RU_InQueryCallContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_InQueryCallContext::CALL() {
+tree::TerminalNode* CypherParser::RU_InQueryCallContext::CALL() {
   return getToken(CypherParser::CALL, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_InQueryCallContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_InQueryCallContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_InQueryCallContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_InQueryCallContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_FunctionInvocationContext* CypherParser::KU_InQueryCallContext::oC_FunctionInvocation() {
+CypherParser::OC_FunctionInvocationContext* CypherParser::RU_InQueryCallContext::oC_FunctionInvocation() {
   return getRuleContext<CypherParser::OC_FunctionInvocationContext>(0);
 }
 
-CypherParser::OC_WhereContext* CypherParser::KU_InQueryCallContext::oC_Where() {
+CypherParser::OC_WhereContext* CypherParser::RU_InQueryCallContext::oC_Where() {
   return getRuleContext<CypherParser::OC_WhereContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_InQueryCallContext::YIELD() {
+tree::TerminalNode* CypherParser::RU_InQueryCallContext::YIELD() {
   return getToken(CypherParser::YIELD, 0);
 }
 
-CypherParser::OC_YieldItemsContext* CypherParser::KU_InQueryCallContext::oC_YieldItems() {
+CypherParser::OC_YieldItemsContext* CypherParser::RU_InQueryCallContext::oC_YieldItems() {
   return getRuleContext<CypherParser::OC_YieldItemsContext>(0);
 }
 
 
-size_t CypherParser::KU_InQueryCallContext::getRuleIndex() const {
-  return CypherParser::RuleKU_InQueryCall;
+size_t CypherParser::RU_InQueryCallContext::getRuleIndex() const {
+  return CypherParser::RuleRU_InQueryCall;
 }
 
 
-CypherParser::KU_InQueryCallContext* CypherParser::kU_InQueryCall() {
-  KU_InQueryCallContext *_localctx = _tracker.createInstance<KU_InQueryCallContext>(_ctx, getState());
-  enterRule(_localctx, 162, CypherParser::RuleKU_InQueryCall);
+CypherParser::RU_InQueryCallContext* CypherParser::rU_InQueryCall() {
+  RU_InQueryCallContext *_localctx = _tracker.createInstance<RU_InQueryCallContext>(_ctx, getState());
+  enterRule(_localctx, 162, CypherParser::RuleRU_InQueryCall);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -9595,8 +9595,8 @@ CypherParser::OC_WhereContext* CypherParser::OC_MatchContext::oC_Where() {
   return getRuleContext<CypherParser::OC_WhereContext>(0);
 }
 
-CypherParser::KU_HintContext* CypherParser::OC_MatchContext::kU_Hint() {
-  return getRuleContext<CypherParser::KU_HintContext>(0);
+CypherParser::RU_HintContext* CypherParser::OC_MatchContext::rU_Hint() {
+  return getRuleContext<CypherParser::RU_HintContext>(0);
 }
 
 
@@ -9664,7 +9664,7 @@ CypherParser::OC_MatchContext* CypherParser::oC_Match() {
       setState(1572);
       match(CypherParser::SP);
       setState(1573);
-      kU_Hint();
+      rU_Hint();
       break;
     }
 
@@ -9682,33 +9682,33 @@ CypherParser::OC_MatchContext* CypherParser::oC_Match() {
   return _localctx;
 }
 
-//----------------- KU_HintContext ------------------------------------------------------------------
+//----------------- RU_HintContext ------------------------------------------------------------------
 
-CypherParser::KU_HintContext::KU_HintContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_HintContext::RU_HintContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_HintContext::HINT() {
+tree::TerminalNode* CypherParser::RU_HintContext::HINT() {
   return getToken(CypherParser::HINT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_HintContext::SP() {
+tree::TerminalNode* CypherParser::RU_HintContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::KU_JoinNodeContext* CypherParser::KU_HintContext::kU_JoinNode() {
-  return getRuleContext<CypherParser::KU_JoinNodeContext>(0);
+CypherParser::RU_JoinNodeContext* CypherParser::RU_HintContext::rU_JoinNode() {
+  return getRuleContext<CypherParser::RU_JoinNodeContext>(0);
 }
 
 
-size_t CypherParser::KU_HintContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Hint;
+size_t CypherParser::RU_HintContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Hint;
 }
 
 
-CypherParser::KU_HintContext* CypherParser::kU_Hint() {
-  KU_HintContext *_localctx = _tracker.createInstance<KU_HintContext>(_ctx, getState());
-  enterRule(_localctx, 166, CypherParser::RuleKU_Hint);
+CypherParser::RU_HintContext* CypherParser::rU_Hint() {
+  RU_HintContext *_localctx = _tracker.createInstance<RU_HintContext>(_ctx, getState());
+  enterRule(_localctx, 166, CypherParser::RuleRU_Hint);
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -9724,7 +9724,7 @@ CypherParser::KU_HintContext* CypherParser::kU_Hint() {
     setState(1577);
     match(CypherParser::SP);
     setState(1578);
-    kU_JoinNode(0);
+    rU_JoinNode(0);
    
   }
   catch (RecognitionException &e) {
@@ -9736,67 +9736,67 @@ CypherParser::KU_HintContext* CypherParser::kU_Hint() {
   return _localctx;
 }
 
-//----------------- KU_JoinNodeContext ------------------------------------------------------------------
+//----------------- RU_JoinNodeContext ------------------------------------------------------------------
 
-CypherParser::KU_JoinNodeContext::KU_JoinNodeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_JoinNodeContext::RU_JoinNodeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_JoinNodeContext *> CypherParser::KU_JoinNodeContext::kU_JoinNode() {
-  return getRuleContexts<CypherParser::KU_JoinNodeContext>();
+std::vector<CypherParser::RU_JoinNodeContext *> CypherParser::RU_JoinNodeContext::rU_JoinNode() {
+  return getRuleContexts<CypherParser::RU_JoinNodeContext>();
 }
 
-CypherParser::KU_JoinNodeContext* CypherParser::KU_JoinNodeContext::kU_JoinNode(size_t i) {
-  return getRuleContext<CypherParser::KU_JoinNodeContext>(i);
+CypherParser::RU_JoinNodeContext* CypherParser::RU_JoinNodeContext::rU_JoinNode(size_t i) {
+  return getRuleContext<CypherParser::RU_JoinNodeContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_JoinNodeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_JoinNodeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_JoinNodeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_JoinNodeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::KU_JoinNodeContext::oC_SchemaName() {
+std::vector<CypherParser::OC_SchemaNameContext *> CypherParser::RU_JoinNodeContext::oC_SchemaName() {
   return getRuleContexts<CypherParser::OC_SchemaNameContext>();
 }
 
-CypherParser::OC_SchemaNameContext* CypherParser::KU_JoinNodeContext::oC_SchemaName(size_t i) {
+CypherParser::OC_SchemaNameContext* CypherParser::RU_JoinNodeContext::oC_SchemaName(size_t i) {
   return getRuleContext<CypherParser::OC_SchemaNameContext>(i);
 }
 
-tree::TerminalNode* CypherParser::KU_JoinNodeContext::JOIN() {
+tree::TerminalNode* CypherParser::RU_JoinNodeContext::JOIN() {
   return getToken(CypherParser::JOIN, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_JoinNodeContext::MULTI_JOIN() {
+std::vector<tree::TerminalNode *> CypherParser::RU_JoinNodeContext::MULTI_JOIN() {
   return getTokens(CypherParser::MULTI_JOIN);
 }
 
-tree::TerminalNode* CypherParser::KU_JoinNodeContext::MULTI_JOIN(size_t i) {
+tree::TerminalNode* CypherParser::RU_JoinNodeContext::MULTI_JOIN(size_t i) {
   return getToken(CypherParser::MULTI_JOIN, i);
 }
 
 
-size_t CypherParser::KU_JoinNodeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_JoinNode;
+size_t CypherParser::RU_JoinNodeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_JoinNode;
 }
 
 
 
-CypherParser::KU_JoinNodeContext* CypherParser::kU_JoinNode() {
-   return kU_JoinNode(0);
+CypherParser::RU_JoinNodeContext* CypherParser::rU_JoinNode() {
+   return rU_JoinNode(0);
 }
 
-CypherParser::KU_JoinNodeContext* CypherParser::kU_JoinNode(int precedence) {
+CypherParser::RU_JoinNodeContext* CypherParser::rU_JoinNode(int precedence) {
   ParserRuleContext *parentContext = _ctx;
   size_t parentState = getState();
-  CypherParser::KU_JoinNodeContext *_localctx = _tracker.createInstance<KU_JoinNodeContext>(_ctx, parentState);
-  CypherParser::KU_JoinNodeContext *previousContext = _localctx;
+  CypherParser::RU_JoinNodeContext *_localctx = _tracker.createInstance<RU_JoinNodeContext>(_ctx, parentState);
+  CypherParser::RU_JoinNodeContext *previousContext = _localctx;
   (void)previousContext; // Silence compiler, in case the context is not used by generated code.
   size_t startState = 168;
-  enterRecursionRule(_localctx, 168, CypherParser::RuleKU_JoinNode, precedence);
+  enterRecursionRule(_localctx, 168, CypherParser::RuleRU_JoinNode, precedence);
 
     size_t _la = 0;
 
@@ -9825,7 +9825,7 @@ CypherParser::KU_JoinNodeContext* CypherParser::kU_JoinNode(int precedence) {
           match(CypherParser::SP);
         }
         setState(1585);
-        kU_JoinNode(0);
+        rU_JoinNode(0);
         setState(1587);
         _errHandler->sync(this);
 
@@ -9925,8 +9925,8 @@ CypherParser::KU_JoinNodeContext* CypherParser::kU_JoinNode(int precedence) {
         _errHandler->sync(this);
         switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 219, _ctx)) {
         case 1: {
-          _localctx = _tracker.createInstance<KU_JoinNodeContext>(parentContext, parentState);
-          pushNewRecursionContext(_localctx, startState, RuleKU_JoinNode);
+          _localctx = _tracker.createInstance<RU_JoinNodeContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleRU_JoinNode);
           setState(1594);
 
           if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -9937,13 +9937,13 @@ CypherParser::KU_JoinNodeContext* CypherParser::kU_JoinNode(int precedence) {
           setState(1597);
           match(CypherParser::SP);
           setState(1598);
-          kU_JoinNode(5);
+          rU_JoinNode(5);
           break;
         }
 
         case 2: {
-          _localctx = _tracker.createInstance<KU_JoinNodeContext>(parentContext, parentState);
-          pushNewRecursionContext(_localctx, startState, RuleKU_JoinNode);
+          _localctx = _tracker.createInstance<RU_JoinNodeContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleRU_JoinNode);
           setState(1599);
 
           if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
@@ -10346,8 +10346,8 @@ CypherParser::OC_AtomContext* CypherParser::OC_SetContext::oC_Atom() {
   return getRuleContext<CypherParser::OC_AtomContext>(0);
 }
 
-CypherParser::KU_PropertiesContext* CypherParser::OC_SetContext::kU_Properties() {
-  return getRuleContext<CypherParser::KU_PropertiesContext>(0);
+CypherParser::RU_PropertiesContext* CypherParser::OC_SetContext::rU_Properties() {
+  return getRuleContext<CypherParser::RU_PropertiesContext>(0);
 }
 
 
@@ -10453,7 +10453,7 @@ CypherParser::OC_SetContext* CypherParser::oC_Set() {
         match(CypherParser::SP);
       }
       setState(1683);
-      kU_Properties();
+      rU_Properties();
       break;
     }
 
@@ -11981,8 +11981,8 @@ CypherParser::OC_NodeLabelsContext* CypherParser::OC_NodePatternContext::oC_Node
   return getRuleContext<CypherParser::OC_NodeLabelsContext>(0);
 }
 
-CypherParser::KU_PropertiesContext* CypherParser::OC_NodePatternContext::kU_Properties() {
-  return getRuleContext<CypherParser::KU_PropertiesContext>(0);
+CypherParser::RU_PropertiesContext* CypherParser::OC_NodePatternContext::rU_Properties() {
+  return getRuleContext<CypherParser::RU_PropertiesContext>(0);
 }
 
 
@@ -12056,7 +12056,7 @@ CypherParser::OC_NodePatternContext* CypherParser::oC_NodePattern() {
     _la = _input->LA(1);
     if (_la == CypherParser::T__8) {
       setState(1884);
-      kU_Properties();
+      rU_Properties();
       setState(1886);
       _errHandler->sync(this);
 
@@ -12366,12 +12366,12 @@ CypherParser::OC_RelationshipTypesContext* CypherParser::OC_RelationshipDetailCo
   return getRuleContext<CypherParser::OC_RelationshipTypesContext>(0);
 }
 
-CypherParser::KU_RecursiveDetailContext* CypherParser::OC_RelationshipDetailContext::kU_RecursiveDetail() {
-  return getRuleContext<CypherParser::KU_RecursiveDetailContext>(0);
+CypherParser::RU_RecursiveDetailContext* CypherParser::OC_RelationshipDetailContext::rU_RecursiveDetail() {
+  return getRuleContext<CypherParser::RU_RecursiveDetailContext>(0);
 }
 
-CypherParser::KU_PropertiesContext* CypherParser::OC_RelationshipDetailContext::kU_Properties() {
-  return getRuleContext<CypherParser::KU_PropertiesContext>(0);
+CypherParser::RU_PropertiesContext* CypherParser::OC_RelationshipDetailContext::rU_Properties() {
+  return getRuleContext<CypherParser::RU_PropertiesContext>(0);
 }
 
 
@@ -12445,7 +12445,7 @@ CypherParser::OC_RelationshipDetailContext* CypherParser::oC_RelationshipDetail(
     _la = _input->LA(1);
     if (_la == CypherParser::STAR) {
       setState(1960);
-      kU_RecursiveDetail();
+      rU_RecursiveDetail();
       setState(1962);
       _errHandler->sync(this);
 
@@ -12461,7 +12461,7 @@ CypherParser::OC_RelationshipDetailContext* CypherParser::oC_RelationshipDetail(
     _la = _input->LA(1);
     if (_la == CypherParser::T__8) {
       setState(1966);
-      kU_Properties();
+      rU_Properties();
       setState(1968);
       _errHandler->sync(this);
 
@@ -12484,53 +12484,53 @@ CypherParser::OC_RelationshipDetailContext* CypherParser::oC_RelationshipDetail(
   return _localctx;
 }
 
-//----------------- KU_PropertiesContext ------------------------------------------------------------------
+//----------------- RU_PropertiesContext ------------------------------------------------------------------
 
-CypherParser::KU_PropertiesContext::KU_PropertiesContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_PropertiesContext::RU_PropertiesContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_PropertiesContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_PropertiesContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertiesContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_PropertiesContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-std::vector<CypherParser::OC_PropertyKeyNameContext *> CypherParser::KU_PropertiesContext::oC_PropertyKeyName() {
+std::vector<CypherParser::OC_PropertyKeyNameContext *> CypherParser::RU_PropertiesContext::oC_PropertyKeyName() {
   return getRuleContexts<CypherParser::OC_PropertyKeyNameContext>();
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_PropertiesContext::oC_PropertyKeyName(size_t i) {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_PropertiesContext::oC_PropertyKeyName(size_t i) {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_PropertiesContext::COLON() {
+std::vector<tree::TerminalNode *> CypherParser::RU_PropertiesContext::COLON() {
   return getTokens(CypherParser::COLON);
 }
 
-tree::TerminalNode* CypherParser::KU_PropertiesContext::COLON(size_t i) {
+tree::TerminalNode* CypherParser::RU_PropertiesContext::COLON(size_t i) {
   return getToken(CypherParser::COLON, i);
 }
 
-std::vector<CypherParser::OC_ExpressionContext *> CypherParser::KU_PropertiesContext::oC_Expression() {
+std::vector<CypherParser::OC_ExpressionContext *> CypherParser::RU_PropertiesContext::oC_Expression() {
   return getRuleContexts<CypherParser::OC_ExpressionContext>();
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_PropertiesContext::oC_Expression(size_t i) {
+CypherParser::OC_ExpressionContext* CypherParser::RU_PropertiesContext::oC_Expression(size_t i) {
   return getRuleContext<CypherParser::OC_ExpressionContext>(i);
 }
 
 
-size_t CypherParser::KU_PropertiesContext::getRuleIndex() const {
-  return CypherParser::RuleKU_Properties;
+size_t CypherParser::RU_PropertiesContext::getRuleIndex() const {
+  return CypherParser::RuleRU_Properties;
 }
 
 
-CypherParser::KU_PropertiesContext* CypherParser::kU_Properties() {
-  KU_PropertiesContext *_localctx = _tracker.createInstance<KU_PropertiesContext>(_ctx, getState());
-  enterRule(_localctx, 220, CypherParser::RuleKU_Properties);
+CypherParser::RU_PropertiesContext* CypherParser::rU_Properties() {
+  RU_PropertiesContext *_localctx = _tracker.createInstance<RU_PropertiesContext>(_ctx, getState());
+  enterRule(_localctx, 220, CypherParser::RuleRU_Properties);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -12892,45 +12892,45 @@ CypherParser::OC_NodeLabelsContext* CypherParser::oC_NodeLabels() {
   return _localctx;
 }
 
-//----------------- KU_RecursiveDetailContext ------------------------------------------------------------------
+//----------------- RU_RecursiveDetailContext ------------------------------------------------------------------
 
-CypherParser::KU_RecursiveDetailContext::KU_RecursiveDetailContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RecursiveDetailContext::RU_RecursiveDetailContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveDetailContext::STAR() {
+tree::TerminalNode* CypherParser::RU_RecursiveDetailContext::STAR() {
   return getToken(CypherParser::STAR, 0);
 }
 
-CypherParser::KU_RecursiveTypeContext* CypherParser::KU_RecursiveDetailContext::kU_RecursiveType() {
-  return getRuleContext<CypherParser::KU_RecursiveTypeContext>(0);
+CypherParser::RU_RecursiveTypeContext* CypherParser::RU_RecursiveDetailContext::rU_RecursiveType() {
+  return getRuleContext<CypherParser::RU_RecursiveTypeContext>(0);
 }
 
-CypherParser::OC_RangeLiteralContext* CypherParser::KU_RecursiveDetailContext::oC_RangeLiteral() {
+CypherParser::OC_RangeLiteralContext* CypherParser::RU_RecursiveDetailContext::oC_RangeLiteral() {
   return getRuleContext<CypherParser::OC_RangeLiteralContext>(0);
 }
 
-CypherParser::KU_RecursiveComprehensionContext* CypherParser::KU_RecursiveDetailContext::kU_RecursiveComprehension() {
-  return getRuleContext<CypherParser::KU_RecursiveComprehensionContext>(0);
+CypherParser::RU_RecursiveComprehensionContext* CypherParser::RU_RecursiveDetailContext::rU_RecursiveComprehension() {
+  return getRuleContext<CypherParser::RU_RecursiveComprehensionContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RecursiveDetailContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RecursiveDetailContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveDetailContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RecursiveDetailContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_RecursiveDetailContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RecursiveDetail;
+size_t CypherParser::RU_RecursiveDetailContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RecursiveDetail;
 }
 
 
-CypherParser::KU_RecursiveDetailContext* CypherParser::kU_RecursiveDetail() {
-  KU_RecursiveDetailContext *_localctx = _tracker.createInstance<KU_RecursiveDetailContext>(_ctx, getState());
-  enterRule(_localctx, 226, CypherParser::RuleKU_RecursiveDetail);
+CypherParser::RU_RecursiveDetailContext* CypherParser::rU_RecursiveDetail() {
+  RU_RecursiveDetailContext *_localctx = _tracker.createInstance<RU_RecursiveDetailContext>(_ctx, getState());
+  enterRule(_localctx, 226, CypherParser::RuleRU_RecursiveDetail);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -12958,7 +12958,7 @@ CypherParser::KU_RecursiveDetailContext* CypherParser::kU_RecursiveDetail() {
         match(CypherParser::SP);
       }
       setState(2064);
-      kU_RecursiveType();
+      rU_RecursiveType();
       break;
     }
 
@@ -13005,7 +13005,7 @@ CypherParser::KU_RecursiveDetailContext* CypherParser::kU_RecursiveDetail() {
         match(CypherParser::SP);
       }
       setState(2076);
-      kU_RecursiveComprehension();
+      rU_RecursiveComprehension();
       break;
     }
 
@@ -13023,53 +13023,53 @@ CypherParser::KU_RecursiveDetailContext* CypherParser::kU_RecursiveDetail() {
   return _localctx;
 }
 
-//----------------- KU_RecursiveTypeContext ------------------------------------------------------------------
+//----------------- RU_RecursiveTypeContext ------------------------------------------------------------------
 
-CypherParser::KU_RecursiveTypeContext::KU_RecursiveTypeContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RecursiveTypeContext::RU_RecursiveTypeContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::WSHORTEST() {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::WSHORTEST() {
   return getToken(CypherParser::WSHORTEST, 0);
 }
 
-CypherParser::OC_PropertyKeyNameContext* CypherParser::KU_RecursiveTypeContext::oC_PropertyKeyName() {
+CypherParser::OC_PropertyKeyNameContext* CypherParser::RU_RecursiveTypeContext::oC_PropertyKeyName() {
   return getRuleContext<CypherParser::OC_PropertyKeyNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::ALL() {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::ALL() {
   return getToken(CypherParser::ALL, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RecursiveTypeContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RecursiveTypeContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::SHORTEST() {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::SHORTEST() {
   return getToken(CypherParser::SHORTEST, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::TRAIL() {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::TRAIL() {
   return getToken(CypherParser::TRAIL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveTypeContext::ACYCLIC() {
+tree::TerminalNode* CypherParser::RU_RecursiveTypeContext::ACYCLIC() {
   return getToken(CypherParser::ACYCLIC, 0);
 }
 
 
-size_t CypherParser::KU_RecursiveTypeContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RecursiveType;
+size_t CypherParser::RU_RecursiveTypeContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RecursiveType;
 }
 
 
-CypherParser::KU_RecursiveTypeContext* CypherParser::kU_RecursiveType() {
-  KU_RecursiveTypeContext *_localctx = _tracker.createInstance<KU_RecursiveTypeContext>(_ctx, getState());
-  enterRule(_localctx, 228, CypherParser::RuleKU_RecursiveType);
+CypherParser::RU_RecursiveTypeContext* CypherParser::rU_RecursiveType() {
+  RU_RecursiveTypeContext *_localctx = _tracker.createInstance<RU_RecursiveTypeContext>(_ctx, getState());
+  enterRule(_localctx, 228, CypherParser::RuleRU_RecursiveType);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -13293,49 +13293,49 @@ CypherParser::OC_RangeLiteralContext* CypherParser::oC_RangeLiteral() {
   return _localctx;
 }
 
-//----------------- KU_RecursiveComprehensionContext ------------------------------------------------------------------
+//----------------- RU_RecursiveComprehensionContext ------------------------------------------------------------------
 
-CypherParser::KU_RecursiveComprehensionContext::KU_RecursiveComprehensionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RecursiveComprehensionContext::RU_RecursiveComprehensionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::OC_VariableContext *> CypherParser::KU_RecursiveComprehensionContext::oC_Variable() {
+std::vector<CypherParser::OC_VariableContext *> CypherParser::RU_RecursiveComprehensionContext::oC_Variable() {
   return getRuleContexts<CypherParser::OC_VariableContext>();
 }
 
-CypherParser::OC_VariableContext* CypherParser::KU_RecursiveComprehensionContext::oC_Variable(size_t i) {
+CypherParser::OC_VariableContext* CypherParser::RU_RecursiveComprehensionContext::oC_Variable(size_t i) {
   return getRuleContext<CypherParser::OC_VariableContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RecursiveComprehensionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RecursiveComprehensionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveComprehensionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RecursiveComprehensionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_WhereContext* CypherParser::KU_RecursiveComprehensionContext::oC_Where() {
+CypherParser::OC_WhereContext* CypherParser::RU_RecursiveComprehensionContext::oC_Where() {
   return getRuleContext<CypherParser::OC_WhereContext>(0);
 }
 
-std::vector<CypherParser::KU_RecursiveProjectionItemsContext *> CypherParser::KU_RecursiveComprehensionContext::kU_RecursiveProjectionItems() {
-  return getRuleContexts<CypherParser::KU_RecursiveProjectionItemsContext>();
+std::vector<CypherParser::RU_RecursiveProjectionItemsContext *> CypherParser::RU_RecursiveComprehensionContext::rU_RecursiveProjectionItems() {
+  return getRuleContexts<CypherParser::RU_RecursiveProjectionItemsContext>();
 }
 
-CypherParser::KU_RecursiveProjectionItemsContext* CypherParser::KU_RecursiveComprehensionContext::kU_RecursiveProjectionItems(size_t i) {
-  return getRuleContext<CypherParser::KU_RecursiveProjectionItemsContext>(i);
-}
-
-
-size_t CypherParser::KU_RecursiveComprehensionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RecursiveComprehension;
+CypherParser::RU_RecursiveProjectionItemsContext* CypherParser::RU_RecursiveComprehensionContext::rU_RecursiveProjectionItems(size_t i) {
+  return getRuleContext<CypherParser::RU_RecursiveProjectionItemsContext>(i);
 }
 
 
-CypherParser::KU_RecursiveComprehensionContext* CypherParser::kU_RecursiveComprehension() {
-  KU_RecursiveComprehensionContext *_localctx = _tracker.createInstance<KU_RecursiveComprehensionContext>(_ctx, getState());
-  enterRule(_localctx, 232, CypherParser::RuleKU_RecursiveComprehension);
+size_t CypherParser::RU_RecursiveComprehensionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RecursiveComprehension;
+}
+
+
+CypherParser::RU_RecursiveComprehensionContext* CypherParser::rU_RecursiveComprehension() {
+  RU_RecursiveComprehensionContext *_localctx = _tracker.createInstance<RU_RecursiveComprehensionContext>(_ctx, getState());
+  enterRule(_localctx, 232, CypherParser::RuleRU_RecursiveComprehension);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -13447,7 +13447,7 @@ CypherParser::KU_RecursiveComprehensionContext* CypherParser::kU_RecursiveCompre
         match(CypherParser::SP);
       }
       setState(2154);
-      kU_RecursiveProjectionItems();
+      rU_RecursiveProjectionItems();
       setState(2156);
       _errHandler->sync(this);
 
@@ -13467,7 +13467,7 @@ CypherParser::KU_RecursiveComprehensionContext* CypherParser::kU_RecursiveCompre
         match(CypherParser::SP);
       }
       setState(2162);
-      kU_RecursiveProjectionItems();
+      rU_RecursiveProjectionItems();
       setState(2164);
       _errHandler->sync(this);
 
@@ -13490,33 +13490,33 @@ CypherParser::KU_RecursiveComprehensionContext* CypherParser::kU_RecursiveCompre
   return _localctx;
 }
 
-//----------------- KU_RecursiveProjectionItemsContext ------------------------------------------------------------------
+//----------------- RU_RecursiveProjectionItemsContext ------------------------------------------------------------------
 
-CypherParser::KU_RecursiveProjectionItemsContext::KU_RecursiveProjectionItemsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_RecursiveProjectionItemsContext::RU_RecursiveProjectionItemsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_RecursiveProjectionItemsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_RecursiveProjectionItemsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_RecursiveProjectionItemsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_RecursiveProjectionItemsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::OC_ProjectionItemsContext* CypherParser::KU_RecursiveProjectionItemsContext::oC_ProjectionItems() {
+CypherParser::OC_ProjectionItemsContext* CypherParser::RU_RecursiveProjectionItemsContext::oC_ProjectionItems() {
   return getRuleContext<CypherParser::OC_ProjectionItemsContext>(0);
 }
 
 
-size_t CypherParser::KU_RecursiveProjectionItemsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_RecursiveProjectionItems;
+size_t CypherParser::RU_RecursiveProjectionItemsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_RecursiveProjectionItems;
 }
 
 
-CypherParser::KU_RecursiveProjectionItemsContext* CypherParser::kU_RecursiveProjectionItems() {
-  KU_RecursiveProjectionItemsContext *_localctx = _tracker.createInstance<KU_RecursiveProjectionItemsContext>(_ctx, getState());
-  enterRule(_localctx, 234, CypherParser::RuleKU_RecursiveProjectionItems);
+CypherParser::RU_RecursiveProjectionItemsContext* CypherParser::rU_RecursiveProjectionItems() {
+  RU_RecursiveProjectionItemsContext *_localctx = _tracker.createInstance<RU_RecursiveProjectionItemsContext>(_ctx, getState());
+  enterRule(_localctx, 234, CypherParser::RuleRU_RecursiveProjectionItems);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14111,20 +14111,20 @@ CypherParser::OC_ComparisonExpressionContext::OC_ComparisonExpressionContext(Par
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_BitwiseOrOperatorExpressionContext *> CypherParser::OC_ComparisonExpressionContext::kU_BitwiseOrOperatorExpression() {
-  return getRuleContexts<CypherParser::KU_BitwiseOrOperatorExpressionContext>();
+std::vector<CypherParser::RU_BitwiseOrOperatorExpressionContext *> CypherParser::OC_ComparisonExpressionContext::rU_BitwiseOrOperatorExpression() {
+  return getRuleContexts<CypherParser::RU_BitwiseOrOperatorExpressionContext>();
 }
 
-CypherParser::KU_BitwiseOrOperatorExpressionContext* CypherParser::OC_ComparisonExpressionContext::kU_BitwiseOrOperatorExpression(size_t i) {
-  return getRuleContext<CypherParser::KU_BitwiseOrOperatorExpressionContext>(i);
+CypherParser::RU_BitwiseOrOperatorExpressionContext* CypherParser::OC_ComparisonExpressionContext::rU_BitwiseOrOperatorExpression(size_t i) {
+  return getRuleContext<CypherParser::RU_BitwiseOrOperatorExpressionContext>(i);
 }
 
-std::vector<CypherParser::KU_ComparisonOperatorContext *> CypherParser::OC_ComparisonExpressionContext::kU_ComparisonOperator() {
-  return getRuleContexts<CypherParser::KU_ComparisonOperatorContext>();
+std::vector<CypherParser::RU_ComparisonOperatorContext *> CypherParser::OC_ComparisonExpressionContext::rU_ComparisonOperator() {
+  return getRuleContexts<CypherParser::RU_ComparisonOperatorContext>();
 }
 
-CypherParser::KU_ComparisonOperatorContext* CypherParser::OC_ComparisonExpressionContext::kU_ComparisonOperator(size_t i) {
-  return getRuleContext<CypherParser::KU_ComparisonOperatorContext>(i);
+CypherParser::RU_ComparisonOperatorContext* CypherParser::OC_ComparisonExpressionContext::rU_ComparisonOperator(size_t i) {
+  return getRuleContext<CypherParser::RU_ComparisonOperatorContext>(i);
 }
 
 std::vector<tree::TerminalNode *> CypherParser::OC_ComparisonExpressionContext::SP() {
@@ -14165,7 +14165,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(2233);
-      kU_BitwiseOrOperatorExpression();
+      rU_BitwiseOrOperatorExpression();
       setState(2243);
       _errHandler->sync(this);
 
@@ -14180,7 +14180,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
           match(CypherParser::SP);
         }
         setState(2237);
-        kU_ComparisonOperator();
+        rU_ComparisonOperator();
         setState(2239);
         _errHandler->sync(this);
 
@@ -14190,7 +14190,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
           match(CypherParser::SP);
         }
         setState(2241);
-        kU_BitwiseOrOperatorExpression();
+        rU_BitwiseOrOperatorExpression();
         break;
       }
 
@@ -14203,7 +14203,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(2245);
-      kU_BitwiseOrOperatorExpression();
+      rU_BitwiseOrOperatorExpression();
 
       setState(2247);
       _errHandler->sync(this);
@@ -14224,7 +14224,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
         match(CypherParser::SP);
       }
       setState(2253);
-      kU_BitwiseOrOperatorExpression();
+      rU_BitwiseOrOperatorExpression();
        notifyInvalidNotEqualOperator(antlrcpp::downCast<OC_ComparisonExpressionContext *>(_localctx)->invalid_not_equalToken); 
       break;
     }
@@ -14232,7 +14232,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
     case 3: {
       enterOuterAlt(_localctx, 3);
       setState(2257);
-      kU_BitwiseOrOperatorExpression();
+      rU_BitwiseOrOperatorExpression();
       setState(2259);
       _errHandler->sync(this);
 
@@ -14242,7 +14242,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
         match(CypherParser::SP);
       }
       setState(2261);
-      kU_ComparisonOperator();
+      rU_ComparisonOperator();
       setState(2263);
       _errHandler->sync(this);
 
@@ -14252,7 +14252,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
         match(CypherParser::SP);
       }
       setState(2265);
-      kU_BitwiseOrOperatorExpression();
+      rU_BitwiseOrOperatorExpression();
       setState(2275); 
       _errHandler->sync(this);
       alt = 1;
@@ -14268,7 +14268,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
                   match(CypherParser::SP);
                 }
                 setState(2269);
-                kU_ComparisonOperator();
+                rU_ComparisonOperator();
                 setState(2271);
                 _errHandler->sync(this);
 
@@ -14278,7 +14278,7 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
                   match(CypherParser::SP);
                 }
                 setState(2273);
-                kU_BitwiseOrOperatorExpression();
+                rU_BitwiseOrOperatorExpression();
                 break;
               }
 
@@ -14307,21 +14307,21 @@ CypherParser::OC_ComparisonExpressionContext* CypherParser::oC_ComparisonExpress
   return _localctx;
 }
 
-//----------------- KU_ComparisonOperatorContext ------------------------------------------------------------------
+//----------------- RU_ComparisonOperatorContext ------------------------------------------------------------------
 
-CypherParser::KU_ComparisonOperatorContext::KU_ComparisonOperatorContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ComparisonOperatorContext::RU_ComparisonOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t CypherParser::KU_ComparisonOperatorContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ComparisonOperator;
+size_t CypherParser::RU_ComparisonOperatorContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ComparisonOperator;
 }
 
 
-CypherParser::KU_ComparisonOperatorContext* CypherParser::kU_ComparisonOperator() {
-  KU_ComparisonOperatorContext *_localctx = _tracker.createInstance<KU_ComparisonOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 256, CypherParser::RuleKU_ComparisonOperator);
+CypherParser::RU_ComparisonOperatorContext* CypherParser::rU_ComparisonOperator() {
+  RU_ComparisonOperatorContext *_localctx = _tracker.createInstance<RU_ComparisonOperatorContext>(_ctx, getState());
+  enterRule(_localctx, 256, CypherParser::RuleRU_ComparisonOperator);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14354,37 +14354,37 @@ CypherParser::KU_ComparisonOperatorContext* CypherParser::kU_ComparisonOperator(
   return _localctx;
 }
 
-//----------------- KU_BitwiseOrOperatorExpressionContext ------------------------------------------------------------------
+//----------------- RU_BitwiseOrOperatorExpressionContext ------------------------------------------------------------------
 
-CypherParser::KU_BitwiseOrOperatorExpressionContext::KU_BitwiseOrOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_BitwiseOrOperatorExpressionContext::RU_BitwiseOrOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_BitwiseAndOperatorExpressionContext *> CypherParser::KU_BitwiseOrOperatorExpressionContext::kU_BitwiseAndOperatorExpression() {
-  return getRuleContexts<CypherParser::KU_BitwiseAndOperatorExpressionContext>();
+std::vector<CypherParser::RU_BitwiseAndOperatorExpressionContext *> CypherParser::RU_BitwiseOrOperatorExpressionContext::rU_BitwiseAndOperatorExpression() {
+  return getRuleContexts<CypherParser::RU_BitwiseAndOperatorExpressionContext>();
 }
 
-CypherParser::KU_BitwiseAndOperatorExpressionContext* CypherParser::KU_BitwiseOrOperatorExpressionContext::kU_BitwiseAndOperatorExpression(size_t i) {
-  return getRuleContext<CypherParser::KU_BitwiseAndOperatorExpressionContext>(i);
+CypherParser::RU_BitwiseAndOperatorExpressionContext* CypherParser::RU_BitwiseOrOperatorExpressionContext::rU_BitwiseAndOperatorExpression(size_t i) {
+  return getRuleContext<CypherParser::RU_BitwiseAndOperatorExpressionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_BitwiseOrOperatorExpressionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_BitwiseOrOperatorExpressionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_BitwiseOrOperatorExpressionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_BitwiseOrOperatorExpressionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_BitwiseOrOperatorExpressionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_BitwiseOrOperatorExpression;
+size_t CypherParser::RU_BitwiseOrOperatorExpressionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_BitwiseOrOperatorExpression;
 }
 
 
-CypherParser::KU_BitwiseOrOperatorExpressionContext* CypherParser::kU_BitwiseOrOperatorExpression() {
-  KU_BitwiseOrOperatorExpressionContext *_localctx = _tracker.createInstance<KU_BitwiseOrOperatorExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 258, CypherParser::RuleKU_BitwiseOrOperatorExpression);
+CypherParser::RU_BitwiseOrOperatorExpressionContext* CypherParser::rU_BitwiseOrOperatorExpression() {
+  RU_BitwiseOrOperatorExpressionContext *_localctx = _tracker.createInstance<RU_BitwiseOrOperatorExpressionContext>(_ctx, getState());
+  enterRule(_localctx, 258, CypherParser::RuleRU_BitwiseOrOperatorExpression);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14398,7 +14398,7 @@ CypherParser::KU_BitwiseOrOperatorExpressionContext* CypherParser::kU_BitwiseOrO
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(2285);
-    kU_BitwiseAndOperatorExpression();
+    rU_BitwiseAndOperatorExpression();
     setState(2296);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 369, _ctx);
@@ -14423,7 +14423,7 @@ CypherParser::KU_BitwiseOrOperatorExpressionContext* CypherParser::kU_BitwiseOrO
           match(CypherParser::SP);
         }
         setState(2293);
-        kU_BitwiseAndOperatorExpression(); 
+        rU_BitwiseAndOperatorExpression(); 
       }
       setState(2298);
       _errHandler->sync(this);
@@ -14440,37 +14440,37 @@ CypherParser::KU_BitwiseOrOperatorExpressionContext* CypherParser::kU_BitwiseOrO
   return _localctx;
 }
 
-//----------------- KU_BitwiseAndOperatorExpressionContext ------------------------------------------------------------------
+//----------------- RU_BitwiseAndOperatorExpressionContext ------------------------------------------------------------------
 
-CypherParser::KU_BitwiseAndOperatorExpressionContext::KU_BitwiseAndOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_BitwiseAndOperatorExpressionContext::RU_BitwiseAndOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_BitShiftOperatorExpressionContext *> CypherParser::KU_BitwiseAndOperatorExpressionContext::kU_BitShiftOperatorExpression() {
-  return getRuleContexts<CypherParser::KU_BitShiftOperatorExpressionContext>();
+std::vector<CypherParser::RU_BitShiftOperatorExpressionContext *> CypherParser::RU_BitwiseAndOperatorExpressionContext::rU_BitShiftOperatorExpression() {
+  return getRuleContexts<CypherParser::RU_BitShiftOperatorExpressionContext>();
 }
 
-CypherParser::KU_BitShiftOperatorExpressionContext* CypherParser::KU_BitwiseAndOperatorExpressionContext::kU_BitShiftOperatorExpression(size_t i) {
-  return getRuleContext<CypherParser::KU_BitShiftOperatorExpressionContext>(i);
+CypherParser::RU_BitShiftOperatorExpressionContext* CypherParser::RU_BitwiseAndOperatorExpressionContext::rU_BitShiftOperatorExpression(size_t i) {
+  return getRuleContext<CypherParser::RU_BitShiftOperatorExpressionContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_BitwiseAndOperatorExpressionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_BitwiseAndOperatorExpressionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_BitwiseAndOperatorExpressionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_BitwiseAndOperatorExpressionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_BitwiseAndOperatorExpressionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_BitwiseAndOperatorExpression;
+size_t CypherParser::RU_BitwiseAndOperatorExpressionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_BitwiseAndOperatorExpression;
 }
 
 
-CypherParser::KU_BitwiseAndOperatorExpressionContext* CypherParser::kU_BitwiseAndOperatorExpression() {
-  KU_BitwiseAndOperatorExpressionContext *_localctx = _tracker.createInstance<KU_BitwiseAndOperatorExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 260, CypherParser::RuleKU_BitwiseAndOperatorExpression);
+CypherParser::RU_BitwiseAndOperatorExpressionContext* CypherParser::rU_BitwiseAndOperatorExpression() {
+  RU_BitwiseAndOperatorExpressionContext *_localctx = _tracker.createInstance<RU_BitwiseAndOperatorExpressionContext>(_ctx, getState());
+  enterRule(_localctx, 260, CypherParser::RuleRU_BitwiseAndOperatorExpression);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14484,7 +14484,7 @@ CypherParser::KU_BitwiseAndOperatorExpressionContext* CypherParser::kU_BitwiseAn
     size_t alt;
     enterOuterAlt(_localctx, 1);
     setState(2299);
-    kU_BitShiftOperatorExpression();
+    rU_BitShiftOperatorExpression();
     setState(2310);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 372, _ctx);
@@ -14509,7 +14509,7 @@ CypherParser::KU_BitwiseAndOperatorExpressionContext* CypherParser::kU_BitwiseAn
           match(CypherParser::SP);
         }
         setState(2307);
-        kU_BitShiftOperatorExpression(); 
+        rU_BitShiftOperatorExpression(); 
       }
       setState(2312);
       _errHandler->sync(this);
@@ -14526,45 +14526,45 @@ CypherParser::KU_BitwiseAndOperatorExpressionContext* CypherParser::kU_BitwiseAn
   return _localctx;
 }
 
-//----------------- KU_BitShiftOperatorExpressionContext ------------------------------------------------------------------
+//----------------- RU_BitShiftOperatorExpressionContext ------------------------------------------------------------------
 
-CypherParser::KU_BitShiftOperatorExpressionContext::KU_BitShiftOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_BitShiftOperatorExpressionContext::RU_BitShiftOperatorExpressionContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::OC_AddOrSubtractExpressionContext *> CypherParser::KU_BitShiftOperatorExpressionContext::oC_AddOrSubtractExpression() {
+std::vector<CypherParser::OC_AddOrSubtractExpressionContext *> CypherParser::RU_BitShiftOperatorExpressionContext::oC_AddOrSubtractExpression() {
   return getRuleContexts<CypherParser::OC_AddOrSubtractExpressionContext>();
 }
 
-CypherParser::OC_AddOrSubtractExpressionContext* CypherParser::KU_BitShiftOperatorExpressionContext::oC_AddOrSubtractExpression(size_t i) {
+CypherParser::OC_AddOrSubtractExpressionContext* CypherParser::RU_BitShiftOperatorExpressionContext::oC_AddOrSubtractExpression(size_t i) {
   return getRuleContext<CypherParser::OC_AddOrSubtractExpressionContext>(i);
 }
 
-std::vector<CypherParser::KU_BitShiftOperatorContext *> CypherParser::KU_BitShiftOperatorExpressionContext::kU_BitShiftOperator() {
-  return getRuleContexts<CypherParser::KU_BitShiftOperatorContext>();
+std::vector<CypherParser::RU_BitShiftOperatorContext *> CypherParser::RU_BitShiftOperatorExpressionContext::rU_BitShiftOperator() {
+  return getRuleContexts<CypherParser::RU_BitShiftOperatorContext>();
 }
 
-CypherParser::KU_BitShiftOperatorContext* CypherParser::KU_BitShiftOperatorExpressionContext::kU_BitShiftOperator(size_t i) {
-  return getRuleContext<CypherParser::KU_BitShiftOperatorContext>(i);
+CypherParser::RU_BitShiftOperatorContext* CypherParser::RU_BitShiftOperatorExpressionContext::rU_BitShiftOperator(size_t i) {
+  return getRuleContext<CypherParser::RU_BitShiftOperatorContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_BitShiftOperatorExpressionContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_BitShiftOperatorExpressionContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_BitShiftOperatorExpressionContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_BitShiftOperatorExpressionContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_BitShiftOperatorExpressionContext::getRuleIndex() const {
-  return CypherParser::RuleKU_BitShiftOperatorExpression;
+size_t CypherParser::RU_BitShiftOperatorExpressionContext::getRuleIndex() const {
+  return CypherParser::RuleRU_BitShiftOperatorExpression;
 }
 
 
-CypherParser::KU_BitShiftOperatorExpressionContext* CypherParser::kU_BitShiftOperatorExpression() {
-  KU_BitShiftOperatorExpressionContext *_localctx = _tracker.createInstance<KU_BitShiftOperatorExpressionContext>(_ctx, getState());
-  enterRule(_localctx, 262, CypherParser::RuleKU_BitShiftOperatorExpression);
+CypherParser::RU_BitShiftOperatorExpressionContext* CypherParser::rU_BitShiftOperatorExpression() {
+  RU_BitShiftOperatorExpressionContext *_localctx = _tracker.createInstance<RU_BitShiftOperatorExpressionContext>(_ctx, getState());
+  enterRule(_localctx, 262, CypherParser::RuleRU_BitShiftOperatorExpression);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14593,7 +14593,7 @@ CypherParser::KU_BitShiftOperatorExpressionContext* CypherParser::kU_BitShiftOpe
           match(CypherParser::SP);
         }
         setState(2317);
-        kU_BitShiftOperator();
+        rU_BitShiftOperator();
         setState(2319);
         _errHandler->sync(this);
 
@@ -14620,21 +14620,21 @@ CypherParser::KU_BitShiftOperatorExpressionContext* CypherParser::kU_BitShiftOpe
   return _localctx;
 }
 
-//----------------- KU_BitShiftOperatorContext ------------------------------------------------------------------
+//----------------- RU_BitShiftOperatorContext ------------------------------------------------------------------
 
-CypherParser::KU_BitShiftOperatorContext::KU_BitShiftOperatorContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_BitShiftOperatorContext::RU_BitShiftOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
 
-size_t CypherParser::KU_BitShiftOperatorContext::getRuleIndex() const {
-  return CypherParser::RuleKU_BitShiftOperator;
+size_t CypherParser::RU_BitShiftOperatorContext::getRuleIndex() const {
+  return CypherParser::RuleRU_BitShiftOperator;
 }
 
 
-CypherParser::KU_BitShiftOperatorContext* CypherParser::kU_BitShiftOperator() {
-  KU_BitShiftOperatorContext *_localctx = _tracker.createInstance<KU_BitShiftOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 264, CypherParser::RuleKU_BitShiftOperator);
+CypherParser::RU_BitShiftOperatorContext* CypherParser::rU_BitShiftOperator() {
+  RU_BitShiftOperatorContext *_localctx = _tracker.createInstance<RU_BitShiftOperatorContext>(_ctx, getState());
+  enterRule(_localctx, 264, CypherParser::RuleRU_BitShiftOperator);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14682,12 +14682,12 @@ CypherParser::OC_MultiplyDivideModuloExpressionContext* CypherParser::OC_AddOrSu
   return getRuleContext<CypherParser::OC_MultiplyDivideModuloExpressionContext>(i);
 }
 
-std::vector<CypherParser::KU_AddOrSubtractOperatorContext *> CypherParser::OC_AddOrSubtractExpressionContext::kU_AddOrSubtractOperator() {
-  return getRuleContexts<CypherParser::KU_AddOrSubtractOperatorContext>();
+std::vector<CypherParser::RU_AddOrSubtractOperatorContext *> CypherParser::OC_AddOrSubtractExpressionContext::rU_AddOrSubtractOperator() {
+  return getRuleContexts<CypherParser::RU_AddOrSubtractOperatorContext>();
 }
 
-CypherParser::KU_AddOrSubtractOperatorContext* CypherParser::OC_AddOrSubtractExpressionContext::kU_AddOrSubtractOperator(size_t i) {
-  return getRuleContext<CypherParser::KU_AddOrSubtractOperatorContext>(i);
+CypherParser::RU_AddOrSubtractOperatorContext* CypherParser::OC_AddOrSubtractExpressionContext::rU_AddOrSubtractOperator(size_t i) {
+  return getRuleContext<CypherParser::RU_AddOrSubtractOperatorContext>(i);
 }
 
 std::vector<tree::TerminalNode *> CypherParser::OC_AddOrSubtractExpressionContext::SP() {
@@ -14735,7 +14735,7 @@ CypherParser::OC_AddOrSubtractExpressionContext* CypherParser::oC_AddOrSubtractE
           match(CypherParser::SP);
         }
         setState(2334);
-        kU_AddOrSubtractOperator();
+        rU_AddOrSubtractOperator();
         setState(2336);
         _errHandler->sync(this);
 
@@ -14762,25 +14762,25 @@ CypherParser::OC_AddOrSubtractExpressionContext* CypherParser::oC_AddOrSubtractE
   return _localctx;
 }
 
-//----------------- KU_AddOrSubtractOperatorContext ------------------------------------------------------------------
+//----------------- RU_AddOrSubtractOperatorContext ------------------------------------------------------------------
 
-CypherParser::KU_AddOrSubtractOperatorContext::KU_AddOrSubtractOperatorContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_AddOrSubtractOperatorContext::RU_AddOrSubtractOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_AddOrSubtractOperatorContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_AddOrSubtractOperatorContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
 
-size_t CypherParser::KU_AddOrSubtractOperatorContext::getRuleIndex() const {
-  return CypherParser::RuleKU_AddOrSubtractOperator;
+size_t CypherParser::RU_AddOrSubtractOperatorContext::getRuleIndex() const {
+  return CypherParser::RuleRU_AddOrSubtractOperator;
 }
 
 
-CypherParser::KU_AddOrSubtractOperatorContext* CypherParser::kU_AddOrSubtractOperator() {
-  KU_AddOrSubtractOperatorContext *_localctx = _tracker.createInstance<KU_AddOrSubtractOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 268, CypherParser::RuleKU_AddOrSubtractOperator);
+CypherParser::RU_AddOrSubtractOperatorContext* CypherParser::rU_AddOrSubtractOperator() {
+  RU_AddOrSubtractOperatorContext *_localctx = _tracker.createInstance<RU_AddOrSubtractOperatorContext>(_ctx, getState());
+  enterRule(_localctx, 268, CypherParser::RuleRU_AddOrSubtractOperator);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -14826,12 +14826,12 @@ CypherParser::OC_PowerOfExpressionContext* CypherParser::OC_MultiplyDivideModulo
   return getRuleContext<CypherParser::OC_PowerOfExpressionContext>(i);
 }
 
-std::vector<CypherParser::KU_MultiplyDivideModuloOperatorContext *> CypherParser::OC_MultiplyDivideModuloExpressionContext::kU_MultiplyDivideModuloOperator() {
-  return getRuleContexts<CypherParser::KU_MultiplyDivideModuloOperatorContext>();
+std::vector<CypherParser::RU_MultiplyDivideModuloOperatorContext *> CypherParser::OC_MultiplyDivideModuloExpressionContext::rU_MultiplyDivideModuloOperator() {
+  return getRuleContexts<CypherParser::RU_MultiplyDivideModuloOperatorContext>();
 }
 
-CypherParser::KU_MultiplyDivideModuloOperatorContext* CypherParser::OC_MultiplyDivideModuloExpressionContext::kU_MultiplyDivideModuloOperator(size_t i) {
-  return getRuleContext<CypherParser::KU_MultiplyDivideModuloOperatorContext>(i);
+CypherParser::RU_MultiplyDivideModuloOperatorContext* CypherParser::OC_MultiplyDivideModuloExpressionContext::rU_MultiplyDivideModuloOperator(size_t i) {
+  return getRuleContext<CypherParser::RU_MultiplyDivideModuloOperatorContext>(i);
 }
 
 std::vector<tree::TerminalNode *> CypherParser::OC_MultiplyDivideModuloExpressionContext::SP() {
@@ -14879,7 +14879,7 @@ CypherParser::OC_MultiplyDivideModuloExpressionContext* CypherParser::oC_Multipl
           match(CypherParser::SP);
         }
         setState(2351);
-        kU_MultiplyDivideModuloOperator();
+        rU_MultiplyDivideModuloOperator();
         setState(2353);
         _errHandler->sync(this);
 
@@ -14906,25 +14906,25 @@ CypherParser::OC_MultiplyDivideModuloExpressionContext* CypherParser::oC_Multipl
   return _localctx;
 }
 
-//----------------- KU_MultiplyDivideModuloOperatorContext ------------------------------------------------------------------
+//----------------- RU_MultiplyDivideModuloOperatorContext ------------------------------------------------------------------
 
-CypherParser::KU_MultiplyDivideModuloOperatorContext::KU_MultiplyDivideModuloOperatorContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_MultiplyDivideModuloOperatorContext::RU_MultiplyDivideModuloOperatorContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_MultiplyDivideModuloOperatorContext::STAR() {
+tree::TerminalNode* CypherParser::RU_MultiplyDivideModuloOperatorContext::STAR() {
   return getToken(CypherParser::STAR, 0);
 }
 
 
-size_t CypherParser::KU_MultiplyDivideModuloOperatorContext::getRuleIndex() const {
-  return CypherParser::RuleKU_MultiplyDivideModuloOperator;
+size_t CypherParser::RU_MultiplyDivideModuloOperatorContext::getRuleIndex() const {
+  return CypherParser::RuleRU_MultiplyDivideModuloOperator;
 }
 
 
-CypherParser::KU_MultiplyDivideModuloOperatorContext* CypherParser::kU_MultiplyDivideModuloOperator() {
-  KU_MultiplyDivideModuloOperatorContext *_localctx = _tracker.createInstance<KU_MultiplyDivideModuloOperatorContext>(_ctx, getState());
-  enterRule(_localctx, 272, CypherParser::RuleKU_MultiplyDivideModuloOperator);
+CypherParser::RU_MultiplyDivideModuloOperatorContext* CypherParser::rU_MultiplyDivideModuloOperator() {
+  RU_MultiplyDivideModuloOperatorContext *_localctx = _tracker.createInstance<RU_MultiplyDivideModuloOperatorContext>(_ctx, getState());
+  enterRule(_localctx, 272, CypherParser::RuleRU_MultiplyDivideModuloOperator);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -16241,8 +16241,8 @@ CypherParser::OC_ListLiteralContext* CypherParser::OC_LiteralContext::oC_ListLit
   return getRuleContext<CypherParser::OC_ListLiteralContext>(0);
 }
 
-CypherParser::KU_StructLiteralContext* CypherParser::OC_LiteralContext::kU_StructLiteral() {
-  return getRuleContext<CypherParser::KU_StructLiteralContext>(0);
+CypherParser::RU_StructLiteralContext* CypherParser::OC_LiteralContext::rU_StructLiteral() {
+  return getRuleContext<CypherParser::RU_StructLiteralContext>(0);
 }
 
 
@@ -16307,7 +16307,7 @@ CypherParser::OC_LiteralContext* CypherParser::oC_Literal() {
       case CypherParser::T__8: {
         enterOuterAlt(_localctx, 6);
         setState(2554);
-        kU_StructLiteral();
+        rU_StructLiteral();
         break;
       }
 
@@ -16399,12 +16399,12 @@ CypherParser::OC_ExpressionContext* CypherParser::OC_ListLiteralContext::oC_Expr
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-std::vector<CypherParser::KU_ListEntryContext *> CypherParser::OC_ListLiteralContext::kU_ListEntry() {
-  return getRuleContexts<CypherParser::KU_ListEntryContext>();
+std::vector<CypherParser::RU_ListEntryContext *> CypherParser::OC_ListLiteralContext::rU_ListEntry() {
+  return getRuleContexts<CypherParser::RU_ListEntryContext>();
 }
 
-CypherParser::KU_ListEntryContext* CypherParser::OC_ListLiteralContext::kU_ListEntry(size_t i) {
-  return getRuleContext<CypherParser::KU_ListEntryContext>(i);
+CypherParser::RU_ListEntryContext* CypherParser::OC_ListLiteralContext::rU_ListEntry(size_t i) {
+  return getRuleContext<CypherParser::RU_ListEntryContext>(i);
 }
 
 
@@ -16460,7 +16460,7 @@ CypherParser::OC_ListLiteralContext* CypherParser::oC_ListLiteral() {
       _la = _input->LA(1);
       while (_la == CypherParser::T__3) {
         setState(2567);
-        kU_ListEntry();
+        rU_ListEntry();
         setState(2569);
         _errHandler->sync(this);
 
@@ -16487,29 +16487,29 @@ CypherParser::OC_ListLiteralContext* CypherParser::oC_ListLiteral() {
   return _localctx;
 }
 
-//----------------- KU_ListEntryContext ------------------------------------------------------------------
+//----------------- RU_ListEntryContext ------------------------------------------------------------------
 
-CypherParser::KU_ListEntryContext::KU_ListEntryContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_ListEntryContext::RU_ListEntryContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_ListEntryContext::SP() {
+tree::TerminalNode* CypherParser::RU_ListEntryContext::SP() {
   return getToken(CypherParser::SP, 0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_ListEntryContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_ListEntryContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
 
-size_t CypherParser::KU_ListEntryContext::getRuleIndex() const {
-  return CypherParser::RuleKU_ListEntry;
+size_t CypherParser::RU_ListEntryContext::getRuleIndex() const {
+  return CypherParser::RuleRU_ListEntry;
 }
 
 
-CypherParser::KU_ListEntryContext* CypherParser::kU_ListEntry() {
-  KU_ListEntryContext *_localctx = _tracker.createInstance<KU_ListEntryContext>(_ctx, getState());
-  enterRule(_localctx, 304, CypherParser::RuleKU_ListEntry);
+CypherParser::RU_ListEntryContext* CypherParser::rU_ListEntry() {
+  RU_ListEntryContext *_localctx = _tracker.createInstance<RU_ListEntryContext>(_ctx, getState());
+  enterRule(_localctx, 304, CypherParser::RuleRU_ListEntry);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -16558,37 +16558,37 @@ CypherParser::KU_ListEntryContext* CypherParser::kU_ListEntry() {
   return _localctx;
 }
 
-//----------------- KU_StructLiteralContext ------------------------------------------------------------------
+//----------------- RU_StructLiteralContext ------------------------------------------------------------------
 
-CypherParser::KU_StructLiteralContext::KU_StructLiteralContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_StructLiteralContext::RU_StructLiteralContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::KU_StructFieldContext *> CypherParser::KU_StructLiteralContext::kU_StructField() {
-  return getRuleContexts<CypherParser::KU_StructFieldContext>();
+std::vector<CypherParser::RU_StructFieldContext *> CypherParser::RU_StructLiteralContext::rU_StructField() {
+  return getRuleContexts<CypherParser::RU_StructFieldContext>();
 }
 
-CypherParser::KU_StructFieldContext* CypherParser::KU_StructLiteralContext::kU_StructField(size_t i) {
-  return getRuleContext<CypherParser::KU_StructFieldContext>(i);
+CypherParser::RU_StructFieldContext* CypherParser::RU_StructLiteralContext::rU_StructField(size_t i) {
+  return getRuleContext<CypherParser::RU_StructFieldContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_StructLiteralContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_StructLiteralContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_StructLiteralContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_StructLiteralContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_StructLiteralContext::getRuleIndex() const {
-  return CypherParser::RuleKU_StructLiteral;
+size_t CypherParser::RU_StructLiteralContext::getRuleIndex() const {
+  return CypherParser::RuleRU_StructLiteral;
 }
 
 
-CypherParser::KU_StructLiteralContext* CypherParser::kU_StructLiteral() {
-  KU_StructLiteralContext *_localctx = _tracker.createInstance<KU_StructLiteralContext>(_ctx, getState());
-  enterRule(_localctx, 306, CypherParser::RuleKU_StructLiteral);
+CypherParser::RU_StructLiteralContext* CypherParser::rU_StructLiteral() {
+  RU_StructLiteralContext *_localctx = _tracker.createInstance<RU_StructLiteralContext>(_ctx, getState());
+  enterRule(_localctx, 306, CypherParser::RuleRU_StructLiteral);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -16611,7 +16611,7 @@ CypherParser::KU_StructLiteralContext* CypherParser::kU_StructLiteral() {
       match(CypherParser::SP);
     }
     setState(2591);
-    kU_StructField();
+    rU_StructField();
     setState(2593);
     _errHandler->sync(this);
 
@@ -16635,7 +16635,7 @@ CypherParser::KU_StructLiteralContext* CypherParser::kU_StructLiteral() {
         match(CypherParser::SP);
       }
       setState(2599);
-      kU_StructField();
+      rU_StructField();
       setState(2601);
       _errHandler->sync(this);
 
@@ -16661,45 +16661,45 @@ CypherParser::KU_StructLiteralContext* CypherParser::kU_StructLiteral() {
   return _localctx;
 }
 
-//----------------- KU_StructFieldContext ------------------------------------------------------------------
+//----------------- RU_StructFieldContext ------------------------------------------------------------------
 
-CypherParser::KU_StructFieldContext::KU_StructFieldContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_StructFieldContext::RU_StructFieldContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_StructFieldContext::COLON() {
+tree::TerminalNode* CypherParser::RU_StructFieldContext::COLON() {
   return getToken(CypherParser::COLON, 0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_StructFieldContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_StructFieldContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_StructFieldContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_StructFieldContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_StructFieldContext::StringLiteral() {
+tree::TerminalNode* CypherParser::RU_StructFieldContext::StringLiteral() {
   return getToken(CypherParser::StringLiteral, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_StructFieldContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_StructFieldContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_StructFieldContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_StructFieldContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_StructFieldContext::getRuleIndex() const {
-  return CypherParser::RuleKU_StructField;
+size_t CypherParser::RU_StructFieldContext::getRuleIndex() const {
+  return CypherParser::RuleRU_StructField;
 }
 
 
-CypherParser::KU_StructFieldContext* CypherParser::kU_StructField() {
-  KU_StructFieldContext *_localctx = _tracker.createInstance<KU_StructFieldContext>(_ctx, getState());
-  enterRule(_localctx, 308, CypherParser::RuleKU_StructField);
+CypherParser::RU_StructFieldContext* CypherParser::rU_StructField() {
+  RU_StructFieldContext *_localctx = _tracker.createInstance<RU_StructFieldContext>(_ctx, getState());
+  enterRule(_localctx, 308, CypherParser::RuleRU_StructField);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -16921,20 +16921,20 @@ tree::TerminalNode* CypherParser::OC_FunctionInvocationContext::CAST() {
   return getToken(CypherParser::CAST, 0);
 }
 
-std::vector<CypherParser::KU_FunctionParameterContext *> CypherParser::OC_FunctionInvocationContext::kU_FunctionParameter() {
-  return getRuleContexts<CypherParser::KU_FunctionParameterContext>();
+std::vector<CypherParser::RU_FunctionParameterContext *> CypherParser::OC_FunctionInvocationContext::rU_FunctionParameter() {
+  return getRuleContexts<CypherParser::RU_FunctionParameterContext>();
 }
 
-CypherParser::KU_FunctionParameterContext* CypherParser::OC_FunctionInvocationContext::kU_FunctionParameter(size_t i) {
-  return getRuleContext<CypherParser::KU_FunctionParameterContext>(i);
+CypherParser::RU_FunctionParameterContext* CypherParser::OC_FunctionInvocationContext::rU_FunctionParameter(size_t i) {
+  return getRuleContext<CypherParser::RU_FunctionParameterContext>(i);
 }
 
 tree::TerminalNode* CypherParser::OC_FunctionInvocationContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-CypherParser::KU_DataTypeContext* CypherParser::OC_FunctionInvocationContext::kU_DataType() {
-  return getRuleContext<CypherParser::KU_DataTypeContext>(0);
+CypherParser::RU_DataTypeContext* CypherParser::OC_FunctionInvocationContext::rU_DataType() {
+  return getRuleContext<CypherParser::RU_DataTypeContext>(0);
 }
 
 CypherParser::OC_FunctionNameContext* CypherParser::OC_FunctionInvocationContext::oC_FunctionName() {
@@ -17027,7 +17027,7 @@ CypherParser::OC_FunctionInvocationContext* CypherParser::oC_FunctionInvocation(
         match(CypherParser::SP);
       }
       setState(2654);
-      kU_FunctionParameter();
+      rU_FunctionParameter();
       setState(2656);
       _errHandler->sync(this);
 
@@ -17051,7 +17051,7 @@ CypherParser::OC_FunctionInvocationContext* CypherParser::oC_FunctionInvocation(
             match(CypherParser::SP);
           }
           setState(2662);
-          kU_DataType(0);
+          rU_DataType(0);
           break;
         }
 
@@ -17067,7 +17067,7 @@ CypherParser::OC_FunctionInvocationContext* CypherParser::oC_FunctionInvocation(
             match(CypherParser::SP);
           }
           setState(2667);
-          kU_FunctionParameter();
+          rU_FunctionParameter();
           break;
         }
 
@@ -17134,7 +17134,7 @@ CypherParser::OC_FunctionInvocationContext* CypherParser::oC_FunctionInvocation(
         ((1ULL << (_la - 65)) & -286014905805559497) != 0) || ((((_la - 130) & ~ 0x3fULL) == 0) &&
         ((1ULL << (_la - 130)) & 5492410606132523) != 0)) {
         setState(2689);
-        kU_FunctionParameter();
+        rU_FunctionParameter();
         setState(2691);
         _errHandler->sync(this);
 
@@ -17158,7 +17158,7 @@ CypherParser::OC_FunctionInvocationContext* CypherParser::oC_FunctionInvocation(
             match(CypherParser::SP);
           }
           setState(2697);
-          kU_FunctionParameter();
+          rU_FunctionParameter();
           setState(2699);
           _errHandler->sync(this);
 
@@ -17233,45 +17233,45 @@ CypherParser::OC_FunctionNameContext* CypherParser::oC_FunctionName() {
   return _localctx;
 }
 
-//----------------- KU_FunctionParameterContext ------------------------------------------------------------------
+//----------------- RU_FunctionParameterContext ------------------------------------------------------------------
 
-CypherParser::KU_FunctionParameterContext::KU_FunctionParameterContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_FunctionParameterContext::RU_FunctionParameterContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_FunctionParameterContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_FunctionParameterContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_FunctionParameterContext::oC_SymbolicName() {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_FunctionParameterContext::oC_SymbolicName() {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_FunctionParameterContext::COLON() {
+tree::TerminalNode* CypherParser::RU_FunctionParameterContext::COLON() {
   return getToken(CypherParser::COLON, 0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_FunctionParameterContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_FunctionParameterContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_FunctionParameterContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_FunctionParameterContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
-CypherParser::KU_LambdaParameterContext* CypherParser::KU_FunctionParameterContext::kU_LambdaParameter() {
-  return getRuleContext<CypherParser::KU_LambdaParameterContext>(0);
+CypherParser::RU_LambdaParameterContext* CypherParser::RU_FunctionParameterContext::rU_LambdaParameter() {
+  return getRuleContext<CypherParser::RU_LambdaParameterContext>(0);
 }
 
 
-size_t CypherParser::KU_FunctionParameterContext::getRuleIndex() const {
-  return CypherParser::RuleKU_FunctionParameter;
+size_t CypherParser::RU_FunctionParameterContext::getRuleIndex() const {
+  return CypherParser::RuleRU_FunctionParameter;
 }
 
 
-CypherParser::KU_FunctionParameterContext* CypherParser::kU_FunctionParameter() {
-  KU_FunctionParameterContext *_localctx = _tracker.createInstance<KU_FunctionParameterContext>(_ctx, getState());
-  enterRule(_localctx, 316, CypherParser::RuleKU_FunctionParameter);
+CypherParser::RU_FunctionParameterContext* CypherParser::rU_FunctionParameter() {
+  RU_FunctionParameterContext *_localctx = _tracker.createInstance<RU_FunctionParameterContext>(_ctx, getState());
+  enterRule(_localctx, 316, CypherParser::RuleRU_FunctionParameter);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -17328,7 +17328,7 @@ CypherParser::KU_FunctionParameterContext* CypherParser::kU_FunctionParameter() 
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(2726);
-      kU_LambdaParameter();
+      rU_LambdaParameter();
       break;
     }
 
@@ -17346,41 +17346,41 @@ CypherParser::KU_FunctionParameterContext* CypherParser::kU_FunctionParameter() 
   return _localctx;
 }
 
-//----------------- KU_LambdaParameterContext ------------------------------------------------------------------
+//----------------- RU_LambdaParameterContext ------------------------------------------------------------------
 
-CypherParser::KU_LambdaParameterContext::KU_LambdaParameterContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_LambdaParameterContext::RU_LambdaParameterContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-CypherParser::KU_LambdaVarsContext* CypherParser::KU_LambdaParameterContext::kU_LambdaVars() {
-  return getRuleContext<CypherParser::KU_LambdaVarsContext>(0);
+CypherParser::RU_LambdaVarsContext* CypherParser::RU_LambdaParameterContext::rU_LambdaVars() {
+  return getRuleContext<CypherParser::RU_LambdaVarsContext>(0);
 }
 
-tree::TerminalNode* CypherParser::KU_LambdaParameterContext::MINUS() {
+tree::TerminalNode* CypherParser::RU_LambdaParameterContext::MINUS() {
   return getToken(CypherParser::MINUS, 0);
 }
 
-CypherParser::OC_ExpressionContext* CypherParser::KU_LambdaParameterContext::oC_Expression() {
+CypherParser::OC_ExpressionContext* CypherParser::RU_LambdaParameterContext::oC_Expression() {
   return getRuleContext<CypherParser::OC_ExpressionContext>(0);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_LambdaParameterContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_LambdaParameterContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_LambdaParameterContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_LambdaParameterContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_LambdaParameterContext::getRuleIndex() const {
-  return CypherParser::RuleKU_LambdaParameter;
+size_t CypherParser::RU_LambdaParameterContext::getRuleIndex() const {
+  return CypherParser::RuleRU_LambdaParameter;
 }
 
 
-CypherParser::KU_LambdaParameterContext* CypherParser::kU_LambdaParameter() {
-  KU_LambdaParameterContext *_localctx = _tracker.createInstance<KU_LambdaParameterContext>(_ctx, getState());
-  enterRule(_localctx, 318, CypherParser::RuleKU_LambdaParameter);
+CypherParser::RU_LambdaParameterContext* CypherParser::rU_LambdaParameter() {
+  RU_LambdaParameterContext *_localctx = _tracker.createInstance<RU_LambdaParameterContext>(_ctx, getState());
+  enterRule(_localctx, 318, CypherParser::RuleRU_LambdaParameter);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -17393,7 +17393,7 @@ CypherParser::KU_LambdaParameterContext* CypherParser::kU_LambdaParameter() {
   try {
     enterOuterAlt(_localctx, 1);
     setState(2729);
-    kU_LambdaVars();
+    rU_LambdaVars();
     setState(2731);
     _errHandler->sync(this);
 
@@ -17440,37 +17440,37 @@ CypherParser::KU_LambdaParameterContext* CypherParser::kU_LambdaParameter() {
   return _localctx;
 }
 
-//----------------- KU_LambdaVarsContext ------------------------------------------------------------------
+//----------------- RU_LambdaVarsContext ------------------------------------------------------------------
 
-CypherParser::KU_LambdaVarsContext::KU_LambdaVarsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_LambdaVarsContext::RU_LambdaVarsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<CypherParser::OC_SymbolicNameContext *> CypherParser::KU_LambdaVarsContext::oC_SymbolicName() {
+std::vector<CypherParser::OC_SymbolicNameContext *> CypherParser::RU_LambdaVarsContext::oC_SymbolicName() {
   return getRuleContexts<CypherParser::OC_SymbolicNameContext>();
 }
 
-CypherParser::OC_SymbolicNameContext* CypherParser::KU_LambdaVarsContext::oC_SymbolicName(size_t i) {
+CypherParser::OC_SymbolicNameContext* CypherParser::RU_LambdaVarsContext::oC_SymbolicName(size_t i) {
   return getRuleContext<CypherParser::OC_SymbolicNameContext>(i);
 }
 
-std::vector<tree::TerminalNode *> CypherParser::KU_LambdaVarsContext::SP() {
+std::vector<tree::TerminalNode *> CypherParser::RU_LambdaVarsContext::SP() {
   return getTokens(CypherParser::SP);
 }
 
-tree::TerminalNode* CypherParser::KU_LambdaVarsContext::SP(size_t i) {
+tree::TerminalNode* CypherParser::RU_LambdaVarsContext::SP(size_t i) {
   return getToken(CypherParser::SP, i);
 }
 
 
-size_t CypherParser::KU_LambdaVarsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_LambdaVars;
+size_t CypherParser::RU_LambdaVarsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_LambdaVars;
 }
 
 
-CypherParser::KU_LambdaVarsContext* CypherParser::kU_LambdaVars() {
-  KU_LambdaVarsContext *_localctx = _tracker.createInstance<KU_LambdaVarsContext>(_ctx, getState());
-  enterRule(_localctx, 320, CypherParser::RuleKU_LambdaVars);
+CypherParser::RU_LambdaVarsContext* CypherParser::rU_LambdaVars() {
+  RU_LambdaVarsContext *_localctx = _tracker.createInstance<RU_LambdaVarsContext>(_ctx, getState());
+  enterRule(_localctx, 320, CypherParser::RuleRU_LambdaVars);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -17744,8 +17744,8 @@ CypherParser::OC_WhereContext* CypherParser::OC_ExistCountSubqueryContext::oC_Wh
   return getRuleContext<CypherParser::OC_WhereContext>(0);
 }
 
-CypherParser::KU_HintContext* CypherParser::OC_ExistCountSubqueryContext::kU_Hint() {
-  return getRuleContext<CypherParser::KU_HintContext>(0);
+CypherParser::RU_HintContext* CypherParser::OC_ExistCountSubqueryContext::rU_Hint() {
+  return getRuleContext<CypherParser::RU_HintContext>(0);
 }
 
 
@@ -17844,7 +17844,7 @@ CypherParser::OC_ExistCountSubqueryContext* CypherParser::oC_ExistCountSubquery(
         match(CypherParser::SP);
       }
       setState(2799);
-      kU_Hint();
+      rU_Hint();
       break;
     }
 
@@ -18796,8 +18796,8 @@ tree::TerminalNode* CypherParser::OC_SymbolicNameContext::HexLetter() {
   return getToken(CypherParser::HexLetter, 0);
 }
 
-CypherParser::KU_NonReservedKeywordsContext* CypherParser::OC_SymbolicNameContext::kU_NonReservedKeywords() {
-  return getRuleContext<CypherParser::KU_NonReservedKeywordsContext>(0);
+CypherParser::RU_NonReservedKeywordsContext* CypherParser::OC_SymbolicNameContext::rU_NonReservedKeywords() {
+  return getRuleContext<CypherParser::RU_NonReservedKeywordsContext>(0);
 }
 
 
@@ -18907,7 +18907,7 @@ CypherParser::OC_SymbolicNameContext* CypherParser::oC_SymbolicName() {
       case CypherParser::L_SKIP: {
         enterOuterAlt(_localctx, 4);
         setState(2897);
-        kU_NonReservedKeywords();
+        rU_NonReservedKeywords();
         break;
       }
 
@@ -18925,269 +18925,269 @@ CypherParser::OC_SymbolicNameContext* CypherParser::oC_SymbolicName() {
   return _localctx;
 }
 
-//----------------- KU_NonReservedKeywordsContext ------------------------------------------------------------------
+//----------------- RU_NonReservedKeywordsContext ------------------------------------------------------------------
 
-CypherParser::KU_NonReservedKeywordsContext::KU_NonReservedKeywordsContext(ParserRuleContext *parent, size_t invokingState)
+CypherParser::RU_NonReservedKeywordsContext::RU_NonReservedKeywordsContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::COMMENT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::COMMENT() {
   return getToken(CypherParser::COMMENT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::ADD() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::ADD() {
   return getToken(CypherParser::ADD, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::ALTER() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::ALTER() {
   return getToken(CypherParser::ALTER, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::AS() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::AS() {
   return getToken(CypherParser::AS, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::ATTACH() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::ATTACH() {
   return getToken(CypherParser::ATTACH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::BEGIN() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::BEGIN() {
   return getToken(CypherParser::BEGIN, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::BY() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::BY() {
   return getToken(CypherParser::BY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::CALL() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::CALL() {
   return getToken(CypherParser::CALL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::CHECKPOINT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::CHECKPOINT() {
   return getToken(CypherParser::CHECKPOINT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::COMMIT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::COMMIT() {
   return getToken(CypherParser::COMMIT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::CONTAINS() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::CONTAINS() {
   return getToken(CypherParser::CONTAINS, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::COPY() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::COPY() {
   return getToken(CypherParser::COPY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::COUNT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::COUNT() {
   return getToken(CypherParser::COUNT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::CYCLE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::CYCLE() {
   return getToken(CypherParser::CYCLE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::DATABASE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::DATABASE() {
   return getToken(CypherParser::DATABASE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::DECIMAL() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::DECIMAL() {
   return getToken(CypherParser::DECIMAL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::DELETE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::DELETE() {
   return getToken(CypherParser::DELETE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::DETACH() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::DETACH() {
   return getToken(CypherParser::DETACH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::DROP() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::DROP() {
   return getToken(CypherParser::DROP, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::EXPLAIN() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::EXPLAIN() {
   return getToken(CypherParser::EXPLAIN, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::EXPORT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::EXPORT() {
   return getToken(CypherParser::EXPORT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::EXTENSION() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::EXTENSION() {
   return getToken(CypherParser::EXTENSION, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::FORCE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::FORCE() {
   return getToken(CypherParser::FORCE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::GRAPH() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::GRAPH() {
   return getToken(CypherParser::GRAPH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::IF() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::IF() {
   return getToken(CypherParser::IF, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::IS() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::IS() {
   return getToken(CypherParser::IS, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::IMPORT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::IMPORT() {
   return getToken(CypherParser::IMPORT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::INCREMENT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::INCREMENT() {
   return getToken(CypherParser::INCREMENT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::KEY() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::KEY() {
   return getToken(CypherParser::KEY, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::LOAD() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::LOAD() {
   return getToken(CypherParser::LOAD, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::LOGICAL() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::LOGICAL() {
   return getToken(CypherParser::LOGICAL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::MATCH() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::MATCH() {
   return getToken(CypherParser::MATCH, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::MAXVALUE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::MAXVALUE() {
   return getToken(CypherParser::MAXVALUE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::MERGE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::MERGE() {
   return getToken(CypherParser::MERGE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::MINVALUE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::MINVALUE() {
   return getToken(CypherParser::MINVALUE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::NO() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::NO() {
   return getToken(CypherParser::NO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::NODE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::NODE() {
   return getToken(CypherParser::NODE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::PROJECT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::PROJECT() {
   return getToken(CypherParser::PROJECT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::READ() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::READ() {
   return getToken(CypherParser::READ, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::REL() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::REL() {
   return getToken(CypherParser::REL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::RENAME() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::RENAME() {
   return getToken(CypherParser::RENAME, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::RETURN() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::RETURN() {
   return getToken(CypherParser::RETURN, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::ROLLBACK() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::ROLLBACK() {
   return getToken(CypherParser::ROLLBACK, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::ROLE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::ROLE() {
   return getToken(CypherParser::ROLE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::SEQUENCE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::SEQUENCE() {
   return getToken(CypherParser::SEQUENCE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::SET() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::SET() {
   return getToken(CypherParser::SET, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::START() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::START() {
   return getToken(CypherParser::START, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::STRUCT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::STRUCT() {
   return getToken(CypherParser::STRUCT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::L_SKIP() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::L_SKIP() {
   return getToken(CypherParser::L_SKIP, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::LIMIT() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::LIMIT() {
   return getToken(CypherParser::LIMIT, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::TRANSACTION() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::TRANSACTION() {
   return getToken(CypherParser::TRANSACTION, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::TYPE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::TYPE() {
   return getToken(CypherParser::TYPE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::USE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::USE() {
   return getToken(CypherParser::USE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::UNINSTALL() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::UNINSTALL() {
   return getToken(CypherParser::UNINSTALL, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::UPDATE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::UPDATE() {
   return getToken(CypherParser::UPDATE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::WRITE() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::WRITE() {
   return getToken(CypherParser::WRITE, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::FROM() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::FROM() {
   return getToken(CypherParser::FROM, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::TO() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::TO() {
   return getToken(CypherParser::TO, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::YIELD() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::YIELD() {
   return getToken(CypherParser::YIELD, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::USER() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::USER() {
   return getToken(CypherParser::USER, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::PASSWORD() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::PASSWORD() {
   return getToken(CypherParser::PASSWORD, 0);
 }
 
-tree::TerminalNode* CypherParser::KU_NonReservedKeywordsContext::MAP() {
+tree::TerminalNode* CypherParser::RU_NonReservedKeywordsContext::MAP() {
   return getToken(CypherParser::MAP, 0);
 }
 
 
-size_t CypherParser::KU_NonReservedKeywordsContext::getRuleIndex() const {
-  return CypherParser::RuleKU_NonReservedKeywords;
+size_t CypherParser::RU_NonReservedKeywordsContext::getRuleIndex() const {
+  return CypherParser::RuleRU_NonReservedKeywords;
 }
 
 
-CypherParser::KU_NonReservedKeywordsContext* CypherParser::kU_NonReservedKeywords() {
-  KU_NonReservedKeywordsContext *_localctx = _tracker.createInstance<KU_NonReservedKeywordsContext>(_ctx, getState());
-  enterRule(_localctx, 350, CypherParser::RuleKU_NonReservedKeywords);
+CypherParser::RU_NonReservedKeywordsContext* CypherParser::rU_NonReservedKeywords() {
+  RU_NonReservedKeywordsContext *_localctx = _tracker.createInstance<RU_NonReservedKeywordsContext>(_ctx, getState());
+  enterRule(_localctx, 350, CypherParser::RuleRU_NonReservedKeywords);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -19368,8 +19368,8 @@ CypherParser::OC_DashContext* CypherParser::oC_Dash() {
 
 bool CypherParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
-    case 57: return kU_DataTypeSempred(antlrcpp::downCast<KU_DataTypeContext *>(context), predicateIndex);
-    case 84: return kU_JoinNodeSempred(antlrcpp::downCast<KU_JoinNodeContext *>(context), predicateIndex);
+    case 57: return rU_DataTypeSempred(antlrcpp::downCast<RU_DataTypeContext *>(context), predicateIndex);
+    case 84: return rU_JoinNodeSempred(antlrcpp::downCast<RU_JoinNodeContext *>(context), predicateIndex);
 
   default:
     break;
@@ -19377,7 +19377,7 @@ bool CypherParser::sempred(RuleContext *context, size_t ruleIndex, size_t predic
   return true;
 }
 
-bool CypherParser::kU_DataTypeSempred(KU_DataTypeContext *_localctx, size_t predicateIndex) {
+bool CypherParser::rU_DataTypeSempred(RU_DataTypeContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
     case 0: return precpred(_ctx, 5);
 
@@ -19387,7 +19387,7 @@ bool CypherParser::kU_DataTypeSempred(KU_DataTypeContext *_localctx, size_t pred
   return true;
 }
 
-bool CypherParser::kU_JoinNodeSempred(KU_JoinNodeContext *_localctx, size_t predicateIndex) {
+bool CypherParser::rU_JoinNodeSempred(RU_JoinNodeContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
     case 1: return precpred(_ctx, 4);
     case 2: return precpred(_ctx, 3);
