@@ -9,7 +9,7 @@
 // This header is generated at build time. See CMakeLists.txt.
 #include <vector>
 
-#include "com_ryugraph_Native.h"
+#include "io_ryugraph_Native.h"
 #include "common/constants.h"
 #include "common/exception/exception.h"
 #include "common/exception/not_implemented.h"
@@ -340,7 +340,7 @@ std::unordered_map<std::string, std::unique_ptr<Value>> javaMapToCPPMap(JNIEnv* 
  * All Database native functions
  */
 //     protected static native void ryuNativeReloadLibrary(String libPath);
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuNativeReloadLibrary(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuNativeReloadLibrary(JNIEnv* env, jclass,
     jstring libPath) {
     try {
 #ifdef _WIN32
@@ -362,7 +362,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuNativeReloadLibrary(JNIEnv* e
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDatabaseInit(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuDatabaseInit(JNIEnv* env, jclass,
     jstring databasePath, jlong bufferPoolSize, jboolean enableCompression, jboolean readOnly,
     jlong maxDbSize, jboolean autoCheckpoint, jlong checkpointThreshold,
     jboolean throwOnWalReplayFailure, jboolean enableChecksums) {
@@ -397,7 +397,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDatabaseInit(JNIEnv* env, jc
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuDatabaseDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuDatabaseDestroy(JNIEnv* env, jclass,
     jobject thisDB) {
     try {
         Database* db = getDatabase(env, thisDB);
@@ -413,7 +413,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuDatabaseDestroy(JNIEnv* env, 
  * All Connection native functions
  */
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass,
     jobject db) {
 
     try {
@@ -429,7 +429,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionInit(JNIEnv* env, 
     return 0;
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuConnectionDestroy(JNIEnv* env, jclass,
     jobject thisConn) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -441,7 +441,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionDestroy(JNIEnv* env
     }
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionSetMaxNumThreadForExec(JNIEnv* env,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuConnectionSetMaxNumThreadForExec(JNIEnv* env,
     jclass, jobject thisConn, jlong numThreads) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -454,7 +454,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionSetMaxNumThreadForE
     }
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionGetMaxNumThreadForExec(JNIEnv* env,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuConnectionGetMaxNumThreadForExec(JNIEnv* env,
     jclass, jobject thisConn) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -469,7 +469,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuConnectionGetMaxNumThreadFor
     return 0;
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionQuery(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuConnectionQuery(JNIEnv* env, jclass,
     jobject thisConn, jstring query) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -490,7 +490,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionQuery(JNIEnv* en
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionPrepare(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuConnectionPrepare(JNIEnv* env, jclass,
     jobject thisConn, jstring query) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -512,7 +512,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionPrepare(JNIEnv* 
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionExecute(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuConnectionExecute(JNIEnv* env, jclass,
     jobject thisConn, jobject preStm, jobject paramMap) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -536,7 +536,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuConnectionExecute(JNIEnv* 
     return jobject();
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionInterrupt(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuConnectionInterrupt(JNIEnv* env, jclass,
     jobject thisConn) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -548,7 +548,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionInterrupt(JNIEnv* e
     }
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionSetQueryTimeout(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuConnectionSetQueryTimeout(JNIEnv* env, jclass,
     jobject thisConn, jlong timeoutInMs) {
     try {
         Connection* conn = getConnection(env, thisConn);
@@ -565,7 +565,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuConnectionSetQueryTimeout(JNI
  * All PreparedStatement native functions
  */
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuPreparedStatementDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuPreparedStatementDestroy(JNIEnv* env, jclass,
     jobject thisPS) {
     try {
         PreparedStatement* ps = getPreparedStatement(env, thisPS);
@@ -577,7 +577,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuPreparedStatementDestroy(JNIE
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuPreparedStatementIsSuccess(JNIEnv* env,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuPreparedStatementIsSuccess(JNIEnv* env,
     jclass, jobject thisPS) {
     try {
         PreparedStatement* ps = getPreparedStatement(env, thisPS);
@@ -590,7 +590,7 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuPreparedStatementIsSucces
     return jboolean();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuPreparedStatementGetErrorMessage(JNIEnv* env,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuPreparedStatementGetErrorMessage(JNIEnv* env,
     jclass, jobject thisPS) {
     try {
         PreparedStatement* ps = getPreparedStatement(env, thisPS);
@@ -609,7 +609,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuPreparedStatementGetErrorM
  * All QueryResult native functions
  */
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuQueryResultDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuQueryResultDestroy(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -621,7 +621,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuQueryResultDestroy(JNIEnv* en
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultIsSuccess(JNIEnv* env, jclass,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuQueryResultIsSuccess(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -634,7 +634,7 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultIsSuccess(JNIE
     return jboolean();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env,
     jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -649,7 +649,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetErrorMessage
     return jstring();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNumColumns(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuQueryResultGetNumColumns(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -662,7 +662,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNumColumns(JNI
     return jlong();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetColumnName(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuQueryResultGetColumnName(JNIEnv* env, jclass,
     jobject thisQR, jlong index) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -682,7 +682,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultGetColumnName(J
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetColumnDataType(JNIEnv* env,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetColumnDataType(JNIEnv* env,
     jclass, jobject thisQR, jlong index) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -708,7 +708,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetColumnDataTy
     return jobject();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNumTuples(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuQueryResultGetNumTuples(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -721,7 +721,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNumTuples(JNIE
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env,
     jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -741,7 +741,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetQuerySummary
     return jobject();
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultHasNext(JNIEnv* env, jclass,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuQueryResultHasNext(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -754,7 +754,7 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultHasNext(JNIEnv
     return jboolean();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNext(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetNext(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -775,7 +775,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNext(JNIEnv*
     return jobject();
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultHasNextQueryResult(JNIEnv* env,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuQueryResultHasNextQueryResult(JNIEnv* env,
     jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -788,7 +788,7 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuQueryResultHasNextQueryRe
     return jboolean();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNextQueryResult(JNIEnv* env,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetNextQueryResult(JNIEnv* env,
     jclass, jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -808,7 +808,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuQueryResultGetNextQueryRes
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultToString(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuQueryResultToString(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -823,7 +823,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuQueryResultToString(JNIEnv
     return jstring();
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuQueryResultResetIterator(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuQueryResultResetIterator(JNIEnv* env, jclass,
     jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
@@ -839,7 +839,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuQueryResultResetIterator(JNIE
  * All FlatTuple native functions
  */
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuFlatTupleDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuFlatTupleDestroy(JNIEnv* env, jclass,
     jobject thisFT) {
     try {
         jlong fieldValue = env->GetLongField(thisFT, J_C_FlatTuple_F_ft_ref);
@@ -856,7 +856,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuFlatTupleDestroy(JNIEnv* env,
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuFlatTupleGetValue(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuFlatTupleGetValue(JNIEnv* env, jclass,
     jobject thisFT, jlong index) {
     try {
         FlatTuple* ft = getFlatTuple(env, thisFT);
@@ -879,7 +879,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuFlatTupleGetValue(JNIEnv* 
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuFlatTupleToString(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuFlatTupleToString(JNIEnv* env, jclass,
     jobject thisFT) {
     try {
         FlatTuple* ft = getFlatTuple(env, thisFT);
@@ -907,7 +907,7 @@ struct JavaAPIHelper {
 };
 } // namespace ryu::common
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDataTypeCreate(JNIEnv* env, jclass, jobject id,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuDataTypeCreate(JNIEnv* env, jclass, jobject id,
     jobject childType, jlong numElementsInArray) {
     try {
         jint fieldValue = env->GetIntField(id, J_C_DataTypeID_F_value);
@@ -935,7 +935,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDataTypeCreate(JNIEnv* env, 
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeClone(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuDataTypeClone(JNIEnv* env, jclass,
     jobject thisDT) {
     try {
         auto* oldDT = getDataType(env, thisDT);
@@ -951,7 +951,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeClone(JNIEnv* env,
     return jobject();
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuDataTypeDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuDataTypeDestroy(JNIEnv* env, jclass,
     jobject thisDT) {
     try {
         auto* dt = getDataType(env, thisDT);
@@ -963,7 +963,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuDataTypeDestroy(JNIEnv* env, 
     }
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuDataTypeEquals(JNIEnv* env, jclass,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuDataTypeEquals(JNIEnv* env, jclass,
     jobject dt1, jobject dt2) {
     try {
         auto* cppdt1 = getDataType(env, dt1);
@@ -978,13 +978,13 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuDataTypeEquals(JNIEnv* en
     return jboolean();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeGetId(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuDataTypeGetId(JNIEnv* env, jclass,
     jobject thisDT) {
     try {
         auto* dt = getDataType(env, thisDT);
         std::string idStr = dataTypeToString(*dt);
         jfieldID idField =
-            env->GetStaticFieldID(J_C_DataTypeID, idStr.c_str(), "Lcom/ryugraph/DataTypeID;");
+            env->GetStaticFieldID(J_C_DataTypeID, idStr.c_str(), "Lio/ryugraph/DataTypeID;");
         jobject id = env->GetStaticObjectField(J_C_DataTypeID, idField);
         return id;
     } catch (const Exception& e) {
@@ -995,7 +995,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeGetId(JNIEnv* env,
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeGetChildType(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuDataTypeGetChildType(JNIEnv* env, jclass,
     jobject thisDT) {
     try {
         auto* parentType = getDataType(env, thisDT);
@@ -1018,7 +1018,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuDataTypeGetChildType(JNIEn
     return jobject();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDataTypeGetNumElementsInArray(JNIEnv* env,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuDataTypeGetNumElementsInArray(JNIEnv* env,
     jclass, jobject thisDT) {
     try {
         auto* dt = getDataType(env, thisDT);
@@ -1038,7 +1038,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuDataTypeGetNumElementsInArra
  * All Value native functions
  */
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateNull(JNIEnv* env, jclass) {
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueCreateNull(JNIEnv* env, jclass) {
     try {
         Value* v = new Value(Value::createNullValue());
         jobject ret = createJavaObject(env, v, J_C_Value, J_C_Value_F_v_ref);
@@ -1051,7 +1051,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateNull(JNIEnv* en
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateNullWithDataType(JNIEnv* env,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueCreateNullWithDataType(JNIEnv* env,
     jclass, jobject dataType) {
     try {
         auto* dt = getDataType(env, dataType);
@@ -1066,7 +1066,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateNullWithDataTyp
     return jobject();
 }
 
-JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuValueIsNull(JNIEnv* env, jclass,
+JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuValueIsNull(JNIEnv* env, jclass,
     jobject thisV) {
     try {
         Value* v = getValue(env, thisV);
@@ -1079,7 +1079,7 @@ JNIEXPORT jboolean JNICALL Java_com_ryugraph_Native_ryuValueIsNull(JNIEnv* env, 
     return jboolean();
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueSetNull(JNIEnv* env, jclass, jobject thisV,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuValueSetNull(JNIEnv* env, jclass, jobject thisV,
     jboolean isNull) {
     try {
         Value* v = getValue(env, thisV);
@@ -1091,7 +1091,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueSetNull(JNIEnv* env, jcl
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateDefault(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueCreateDefault(JNIEnv* env, jclass,
     jobject dataType) {
     try {
         auto* dt = getDataType(env, dataType);
@@ -1106,7 +1106,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueCreateDefault(JNIEnv*
     return jobject();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueCreateValue(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuValueCreateValue(JNIEnv* env, jclass,
     jobject val) {
     try {
         Value* v = nullptr;
@@ -1203,7 +1203,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueCreateValue(JNIEnv* env
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueClone(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueClone(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1217,7 +1217,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueClone(JNIEnv* env, jc
     return jobject();
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueCopy(JNIEnv* env, jclass, jobject thisValue,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuValueCopy(JNIEnv* env, jclass, jobject thisValue,
     jobject otherValue) {
     try {
         Value* thisV = getValue(env, thisValue);
@@ -1230,7 +1230,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueCopy(JNIEnv* env, jclass
     }
 }
 
-JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueDestroy(JNIEnv* env, jclass,
+JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuValueDestroy(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1242,7 +1242,7 @@ JNIEXPORT void JNICALL Java_com_ryugraph_Native_ryuValueDestroy(JNIEnv* env, jcl
     }
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList___3Lcom_ryugraph_Value_2(
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateList___3Lio_ryugraph_Value_2(
     JNIEnv* env, jclass, jobjectArray listValues) {
     try {
         jsize len = env->GetArrayLength(listValues);
@@ -1267,7 +1267,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList___3Lcom_ryugrap
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList__Lcom_ryugraph_DataType_2J(
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateList__Lio_ryugraph_DataType_2J(
     JNIEnv* env, jclass, jobject dataType, jlong numElements) {
     try {
         LogicalType* logicalType = getDataType(env, dataType);
@@ -1287,7 +1287,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateList__Lcom_ryugraph_
     return jobject();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueGetListSize(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuValueGetListSize(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1300,7 +1300,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueGetListSize(JNIEnv* env
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetListElement(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueGetListElement(JNIEnv* env, jclass,
     jobject thisValue, jlong index) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1324,7 +1324,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetListElement(JNIEnv
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetDataType(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueGetDataType(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1338,7 +1338,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetDataType(JNIEnv* e
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetValue(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuValueGetValue(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1502,7 +1502,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuValueGetValue(JNIEnv* env,
     return nullptr;
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuValueToString(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuValueToString(JNIEnv* env, jclass,
     jobject thisValue) {
     try {
         Value* v = getValue(env, thisValue);
@@ -1517,7 +1517,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuValueToString(JNIEnv* env,
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuNodeValGetId(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuNodeValGetId(JNIEnv* env, jclass,
     jobject thisNV) {
     try {
         auto nv = getValue(env, thisNV);
@@ -1536,7 +1536,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuNodeValGetId(JNIEnv* env, 
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValGetLabelName(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuNodeValGetLabelName(JNIEnv* env, jclass,
     jobject thisNV) {
     try {
         auto* nv = getValue(env, thisNV);
@@ -1554,7 +1554,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValGetLabelName(JNIEnv
     return jstring();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertySize(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuNodeValGetPropertySize(JNIEnv* env, jclass,
     jobject thisNV) {
     try {
         auto* nv = getValue(env, thisNV);
@@ -1568,7 +1568,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertySize(JNIEn
     return jlong();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertyNameAt(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuNodeValGetPropertyNameAt(JNIEnv* env, jclass,
     jobject thisNV, jlong index) {
     try {
         auto* nv = getValue(env, thisNV);
@@ -1582,7 +1582,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertyNameAt(J
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertyValueAt(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuNodeValGetPropertyValueAt(JNIEnv* env, jclass,
     jobject thisNV, jlong index) {
     try {
         auto* nv = getValue(env, thisNV);
@@ -1598,7 +1598,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuNodeValGetPropertyValueAt(
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValToString(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuNodeValToString(JNIEnv* env, jclass,
     jobject thisNV) {
     try {
         auto* nv = getValue(env, thisNV);
@@ -1613,7 +1613,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuNodeValToString(JNIEnv* en
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetId(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuRelValGetId(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1632,7 +1632,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetId(JNIEnv* env, j
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetSrcId(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuRelValGetSrcId(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1651,7 +1651,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetSrcId(JNIEnv* env
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetDstId(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuRelValGetDstId(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1670,7 +1670,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetDstId(JNIEnv* env
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValGetLabelName(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuRelValGetLabelName(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1688,7 +1688,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValGetLabelName(JNIEnv*
     return jstring();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertySize(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuRelValGetPropertySize(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1702,7 +1702,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertySize(JNIEnv
     return jlong();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertyNameAt(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuRelValGetPropertyNameAt(JNIEnv* env, jclass,
     jobject thisRV, jlong index) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1716,7 +1716,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertyNameAt(JN
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertyValueAt(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuRelValGetPropertyValueAt(JNIEnv* env, jclass,
     jobject thisRV, jlong index) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1734,7 +1734,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuRelValGetPropertyValueAt(J
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValToString(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuRelValToString(JNIEnv* env, jclass,
     jobject thisRV) {
     try {
         auto* rv = getValue(env, thisRV);
@@ -1749,7 +1749,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuRelValToString(JNIEnv* env
     return jstring();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateMap(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateMap(JNIEnv* env, jclass,
     jobjectArray keys, jobjectArray values) {
     try {
         jsize len = env->GetArrayLength(keys);
@@ -1798,7 +1798,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateMap(JNIEnv* env, jcl
     return jobject();
 }
 
-JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateStruct(JNIEnv* env, jclass,
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateStruct(JNIEnv* env, jclass,
     jobjectArray fieldNames, jobjectArray fieldValues) {
     try {
         jsize len = env->GetArrayLength(fieldNames);
@@ -1828,7 +1828,7 @@ JNIEXPORT jobject JNICALL Java_com_ryugraph_Native_ryuCreateStruct(JNIEnv* env, 
     return jobject();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuValueGetStructFieldName(JNIEnv* env, jclass,
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuValueGetStructFieldName(JNIEnv* env, jclass,
     jobject thisSV, jlong index) {
     try {
         auto* sv = getValue(env, thisSV);
@@ -1847,7 +1847,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuValueGetStructFieldName(JN
     return jstring();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueGetStructIndex(JNIEnv* env, jclass,
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuValueGetStructIndex(JNIEnv* env, jclass,
     jobject thisSV, jstring fieldName) {
     try {
         auto* sv = getValue(env, thisSV);
@@ -1867,7 +1867,7 @@ JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuValueGetStructIndex(JNIEnv* 
     return jlong();
 }
 
-JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuGetVersion(JNIEnv* env, jclass) {
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuGetVersion(JNIEnv* env, jclass) {
     try {
         return env->NewStringUTF(Version::getVersion());
 
@@ -1879,7 +1879,7 @@ JNIEXPORT jstring JNICALL Java_com_ryugraph_Native_ryuGetVersion(JNIEnv* env, jc
     return jstring();
 }
 
-JNIEXPORT jlong JNICALL Java_com_ryugraph_Native_ryuGetStorageVersion(JNIEnv* env, jclass) {
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuGetStorageVersion(JNIEnv* env, jclass) {
     try {
         return static_cast<jlong>(Version::getStorageVersion());
 
@@ -1915,19 +1915,19 @@ void initGlobalClassRef(JNIEnv* env) {
 
         createGlobalClassRef(env, J_C_Exception, "java/lang/Exception");
 
-        createGlobalClassRef(env, J_C_QueryResult, "com/ryugraph/QueryResult");
+        createGlobalClassRef(env, J_C_QueryResult, "io/ryugraph/QueryResult");
 
-        createGlobalClassRef(env, J_C_PreparedStatement, "com/ryugraph/PreparedStatement");
+        createGlobalClassRef(env, J_C_PreparedStatement, "io/ryugraph/PreparedStatement");
 
-        createGlobalClassRef(env, J_C_DataType, "com/ryugraph/DataType");
+        createGlobalClassRef(env, J_C_DataType, "io/ryugraph/DataType");
 
-        createGlobalClassRef(env, J_C_QuerySummary, "com/ryugraph/QuerySummary");
+        createGlobalClassRef(env, J_C_QuerySummary, "io/ryugraph/QuerySummary");
 
-        createGlobalClassRef(env, J_C_FlatTuple, "com/ryugraph/FlatTuple");
+        createGlobalClassRef(env, J_C_FlatTuple, "io/ryugraph/FlatTuple");
 
-        createGlobalClassRef(env, J_C_Value, "com/ryugraph/Value");
+        createGlobalClassRef(env, J_C_Value, "io/ryugraph/Value");
 
-        createGlobalClassRef(env, J_C_DataTypeID, "com/ryugraph/DataTypeID");
+        createGlobalClassRef(env, J_C_DataTypeID, "io/ryugraph/DataTypeID");
 
         createGlobalClassRef(env, J_C_Boolean, "java/lang/Boolean");
 
@@ -1935,7 +1935,7 @@ void initGlobalClassRef(JNIEnv* env) {
 
         createGlobalClassRef(env, J_C_Integer, "java/lang/Integer");
 
-        createGlobalClassRef(env, J_C_InternalID, "com/ryugraph/InternalID");
+        createGlobalClassRef(env, J_C_InternalID, "io/ryugraph/InternalID");
 
         createGlobalClassRef(env, J_C_Double, "java/lang/Double");
 
@@ -1957,9 +1957,9 @@ void initGlobalClassRef(JNIEnv* env) {
 
         createGlobalClassRef(env, J_C_UUID, "java/util/UUID");
 
-        createGlobalClassRef(env, J_C_Connection, "com/ryugraph/Connection");
+        createGlobalClassRef(env, J_C_Connection, "io/ryugraph/Connection");
 
-        createGlobalClassRef(env, J_C_Database, "com/ryugraph/Database");
+        createGlobalClassRef(env, J_C_Database, "io/ryugraph/Database");
 
         createGlobalClassRef(env, J_C_String, "java/lang/String");
     } catch (const Exception& e) {
