@@ -182,10 +182,14 @@ jobs:
       - name: Deploy to Maven Central
         if: ${{ github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly != 'true' }}
         working-directory: tools/java_api
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
         run: |
+          AUTH_TOKEN=$(echo -n "${MAVEN_CENTRAL_USERNAME}:${MAVEN_CENTRAL_PASSWORD}" | base64)
           curl --request POST \
           --verbose \
-          --header 'Authorization: Bearer ${{ secrets.MAVEN_CENTRAL_PORTAL_TOKEN }}' \
+          --header "Authorization: Basic ${AUTH_TOKEN}" \
           --form bundle=@ryu-java-bundle.zip \
           https://central.sonatype.com/api/v1/publisher/upload?publishingType=AUTOMATIC
         
