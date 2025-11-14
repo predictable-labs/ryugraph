@@ -170,7 +170,7 @@ jobs:
             ORIGINAL_PWD=$(pwd)
             ./gradlew publishMavenJavaToLocalRepo -i
             cd build/repo
-            zip -r ryu-java-bundle.zip com
+            zip -r ryu-java-bundle.zip io
             mv ryu-java-bundle.zip $ORIGINAL_PWD
       
       - name: Upload Maven Central bundle
