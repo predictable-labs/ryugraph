@@ -4,13 +4,39 @@ on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: 'Workflow run ID to download artifacts from (leave empty to use latest)'
+        description: 'Workflow run ID to download artifacts from (leave empty to use current run)'
         required: false
         type: string
+      deploy_python:
+        description: 'Deploy Python packages'
+        type: boolean
+        required: false
+        default: false
+      deploy_nodejs:
+        description: 'Deploy Node.js packages'
+        type: boolean
+        required: false
+        default: false
+      deploy_wasm:
+        description: 'Deploy WASM packages'
+        type: boolean
+        required: false
+        default: false
+      deploy_rust:
+        description: 'Deploy Rust crate'
+        type: boolean
+        required: false
+        default: false
+      deploy_extensions:
+        description: 'Deploy Extensions'
+        type: boolean
+        required: false
+        default: true
   workflow_call:
 
 jobs:
   deploy-extensions:
+    if: ${{ inputs.deploy_extensions == true }}
     runs-on: self-hosted
     permissions:
       packages: write
@@ -39,14 +65,14 @@ jobs:
         with:
           workflow: build-and-deploy-extension.yml
           run_id: ${{ inputs.run_id }}
-          name: ryu-extensions
+          name: ryugraph-extensions
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download artifacts from current run
         if: ${{ inputs.run_id == '' }}
         uses: actions/download-artifact@v4
         with:
-          name: ryu-extensions
+          name: ryugraph-extensions
 
       - name: Ensure dataset directory exists
         run: |
@@ -82,3 +108,114 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/predictable-labs/extension-repo:latest
+
+  deploy-python:
+    if: ${{ inputs.deploy_python == true }}
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - name: Download artifacts from previous run
+        if: ${{ inputs.run_id != '' }}
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          path: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name_is_regexp: true
+          name: '(macos-wheels|linux-wheels|windows-wheels|python-sdist).*'
+
+      - name: Download artifacts from current run
+        if: ${{ inputs.run_id == '' }}
+        uses: actions/download-artifact@v4
+        with:
+          pattern: '(macos-wheels|linux-wheels|windows-wheels|python-sdist)*'
+          path: dist
+          merge-multiple: true
+
+      - name: List wheels
+        run: ls -la dist/
+
+      - name: Deploy to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+  deploy-nodejs:
+    if: ${{ inputs.deploy_nodejs == true }}
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_JS_TOKEN }}
+    steps:
+      - name: Download artifacts from previous run
+        if: ${{ inputs.run_id != '' }}
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          name: ryugraph-deploy-nodejs
+          path: tools/nodejs_api
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download artifacts from current run
+        if: ${{ inputs.run_id == '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ryugraph-deploy-nodejs
+          path: tools/nodejs_api
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Deploy to npm.js
+        run: npm publish ryugraph-source.tar.gz --access public --tag latest
+        working-directory: tools/nodejs_api
+
+  deploy-wasm:
+    if: ${{ inputs.deploy_wasm == true }}
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_JS_TOKEN }}
+    steps:
+      - name: Download artifacts from previous run
+        if: ${{ inputs.run_id != '' }}
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          name: ryugraph-deploy-wasm
+          path: tools/wasm
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download artifacts from current run
+        if: ${{ inputs.run_id == '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: ryugraph-deploy-wasm
+          path: tools/wasm
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Deploy to npm.js
+        run: npm publish ryugraph-wasm.tar.gz --access public --tag latest
+        working-directory: tools/wasm
+
+  deploy-rust:
+    if: ${{ inputs.deploy_rust == true }}
+    runs-on: ubuntu-latest
+    env:
+      CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update Cargo.toml version
+        run: python3 update_version.py
+        working-directory: tools/rust_api
+
+      - name: Deploy crate to Crates.io
+        run: cargo publish --allow-dirty
+        working-directory: tools/rust_api

@@ -4,12 +4,12 @@
   "description": "An in-process property graph database management system built for query speed and scalability.",
   "main": "index.js",
   "module": "./index.mjs",
-  "types": "./ryu.d.ts",
+  "types": "./ryugraph.d.ts",
   "exports":{
     ".":{
       "require": "./index.js",
       "import": "./index.mjs",
-      "types": "./ryu.d.ts"
+      "types": "./ryugraph.d.ts"
     }
   },
   "type": "commonjs",
@@ -24,7 +24,7 @@
     "clean-all": "node clean.js all",
     "build": "node build.js"
   },
-  "author": "Ryu Team",
+  "author": "RyuGraph Team",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.4.1",

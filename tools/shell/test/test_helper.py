@@ -22,7 +22,7 @@ def _get_ryu_version():
     cmake_file = os.path.join(RYU_ROOT, "CMakeLists.txt")
     with open(cmake_file) as f:
         for line in f:
-            if line.startswith("project(Ryu VERSION"):
+            if line.startswith("project(RyuGraph VERSION"):
                 return line.split(" ")[2].strip()
         return None
 

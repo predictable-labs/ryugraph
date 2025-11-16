@@ -5,13 +5,13 @@ const path = require("path");
 
 const RYU_ROOT = path.resolve(path.join(__dirname, "..", ".."));
 const CURRENT_DIR = path.resolve(__dirname);
-const ARCHIVE_PATH = path.resolve(path.join(__dirname, "ryu-source.tar"));
+const ARCHIVE_PATH = path.resolve(path.join(__dirname, "ryugraph-source.tar"));
 const PREBUILT_DIR = path.join(CURRENT_DIR, "prebuilt");
 const ARCHIVE_DIR_PATH = path.join(CURRENT_DIR, "package");
-const RYU_VERSION_TEXT = "Ryu VERSION";
+const RYU_VERSION_TEXT = "RyuGraph VERSION";
 
 (async () => {
-  console.log("Gathering Ryu source code...");
+  console.log("Gathering RyuGraph source code...");
   // Create the git archive
   await new Promise((resolve, reject) => {
     childProcess.execFile(
@@ -30,21 +30,21 @@ const RYU_VERSION_TEXT = "Ryu VERSION";
     );
   });
 
-  // Remove the old ryu-source directory
+  // Remove the old ryugraph-source directory
   try {
-    await fs.rm(path.join(CURRENT_DIR, "ryu-source"), { recursive: true });
+    await fs.rm(path.join(CURRENT_DIR, "ryugraph-source"), { recursive: true });
   } catch (e) {
     // Ignore
   }
 
-  // Create the ryu-source directory
-  await fs.mkdir(path.join(CURRENT_DIR, "ryu-source"));
+  // Create the ryugraph-source directory
+  await fs.mkdir(path.join(CURRENT_DIR, "ryugraph-source"));
 
-  // Extract the archive to ryu-source
+  // Extract the archive to ryugraph-source
   await new Promise((resolve, reject) => {
     childProcess.execFile(
       "tar",
-      ["-xf", ARCHIVE_PATH, "-C", "ryu-source"],
+      ["-xf", ARCHIVE_PATH, "-C", "ryugraph-source"],
       { cwd: CURRENT_DIR },
       (err) => {
         if (err) {
@@ -69,10 +69,10 @@ const RYU_VERSION_TEXT = "Ryu VERSION";
   // Create the archive directory
   await fs.mkdir(ARCHIVE_DIR_PATH);
 
-  // Move ryu-source to archive
+  // Move ryugraph-source to archive
   await fs.rename(
-    path.join(CURRENT_DIR, "ryu-source"),
-    path.join(ARCHIVE_DIR_PATH, "ryu-source")
+    path.join(CURRENT_DIR, "ryugraph-source"),
+    path.join(ARCHIVE_DIR_PATH, "ryugraph-source")
   );
 
   // Copy package.json to archive
@@ -181,7 +181,7 @@ const RYU_VERSION_TEXT = "Ryu VERSION";
   // There is a symlink in the rust_api directory, so we need to remove it.
   // Otherwise, the tarball will be rejected by npm.
   await fs.unlink(
-    path.join(ARCHIVE_DIR_PATH, "ryu-source", "tools", "rust_api", "ryu-src")
+    path.join(ARCHIVE_DIR_PATH, "ryugraph-source", "tools", "rust_api", "ryu-src")
   );
 
   console.log("Creating tarball...");
@@ -189,7 +189,7 @@ const RYU_VERSION_TEXT = "Ryu VERSION";
   await new Promise((resolve, reject) => {
     childProcess.execFile(
       "tar",
-      ["-czf", "ryu-source.tar.gz", "package"],
+      ["-czf", "ryugraph-source.tar.gz", "package"],
       { cwd: CURRENT_DIR },
       (err) => {
         if (err) {

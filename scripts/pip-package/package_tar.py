@@ -14,7 +14,7 @@ def _get_ryu_version():
     cmake_file = os.path.abspath(os.path.join(base_dir, "..", "CMakeLists.txt"))
     with open(cmake_file) as f:
         for line in f:
-            if line.startswith("project(Ryu VERSION"):
+            if line.startswith("project(RyuGraph VERSION"):
                 raw_version = line.split(" ")[2].strip()
                 version_nums = raw_version.split(".")
                 if len(version_nums) <= 3:
@@ -58,7 +58,7 @@ if __name__ == "__main__":
             if os.path.exists(dir_path):
                 shutil.rmtree(dir_path)
 
-        os.makedirs(os.path.join(tempdir, "ryu"))
+        os.makedirs(os.path.join(tempdir, "ryugraph"))
         for path in ["setup.py", "setup.cfg", "MANIFEST.in"]:
             shutil.copy2(path, os.path.join(tempdir, path))
         shutil.copy2("../../LICENSE", os.path.join(tempdir, "LICENSE"))
