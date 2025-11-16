@@ -525,7 +525,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          VERSION=$(cat CMakeLists.txt | grep "project(Ryu VERSION" | cut -d ' ' -f 3 | cut -d ')' -f 1)
+          VERSION=$(cat CMakeLists.txt | grep "project(RyuGraph VERSION" | cut -d ' ' -f 3 | cut -d ')' -f 1)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version: $VERSION"
 

@@ -8,10 +8,10 @@ const CURRENT_DIR = path.resolve(__dirname);
 const ARCHIVE_PATH = path.resolve(path.join(__dirname, "ryu-source.tar"));
 const PREBUILT_DIR = path.join(CURRENT_DIR, "prebuilt");
 const ARCHIVE_DIR_PATH = path.join(CURRENT_DIR, "package");
-const RYU_VERSION_TEXT = "Ryu VERSION";
+const RYU_VERSION_TEXT = "RyuGraph VERSION";
 
 (async () => {
-  console.log("Gathering Ryu source code...");
+  console.log("Gathering RyuGraph source code...");
   // Create the git archive
   await new Promise((resolve, reject) => {
     childProcess.execFile(
