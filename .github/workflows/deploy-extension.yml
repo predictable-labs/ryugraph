@@ -115,27 +115,47 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - name: Download artifacts from previous run
+      - name: Download ryu-deploy-wheels artifact (old name)
         if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v3
         with:
           workflow: build-and-deploy.yml
           run_id: ${{ inputs.run_id }}
+          name: ryu-deploy-wheels
           path: dist
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          name_is_regexp: true
-          name: '(macos-wheels|linux-wheels|windows-wheels|python-sdist).*'
+
+      - name: Download ryugraph-deploy-wheels artifact (new name)
+        if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          name: ryugraph-deploy-wheels
+          path: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download artifacts from current run
         if: ${{ inputs.run_id == '' }}
         uses: actions/download-artifact@v4
         with:
-          pattern: '(macos-wheels|linux-wheels|windows-wheels|python-sdist)*'
+          pattern: '*-wheels-*'
           path: dist
           merge-multiple: true
 
+      - name: Download sdist from current run
+        if: ${{ inputs.run_id == '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: python-sdist
+          path: dist
+
       - name: List wheels
-        run: ls -la dist/
+        run: |
+          echo "Contents of dist/:"
+          ls -laR dist/
 
       - name: Deploy to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -146,8 +166,20 @@ jobs:
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_JS_TOKEN }}
     steps:
-      - name: Download artifacts from previous run
+      - name: Download nodejs artifact (old name)
         if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          name: ryu-deploy-nodejs
+          path: tools/nodejs_api
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download nodejs artifact (new name)
+        if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v3
         with:
           workflow: build-and-deploy.yml
@@ -178,8 +210,20 @@ jobs:
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_JS_TOKEN }}
     steps:
-      - name: Download artifacts from previous run
+      - name: Download wasm artifact (old name)
         if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: build-and-deploy.yml
+          run_id: ${{ inputs.run_id }}
+          name: ryu-deploy-wasm
+          path: tools/wasm
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download wasm artifact (new name)
+        if: ${{ inputs.run_id != '' }}
+        continue-on-error: true
         uses: dawidd6/action-download-artifact@v3
         with:
           workflow: build-and-deploy.yml
