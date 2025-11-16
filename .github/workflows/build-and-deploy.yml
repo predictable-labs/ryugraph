@@ -122,10 +122,11 @@ jobs:
           python3 update-nightly-build-version.py
         working-directory: scripts
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: java-lib-osx-x86_64
-          path: tools/java_api/src/main/resources
+      # Temporarily disabled - Mac Intel build takes too long
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: java-lib-osx-x86_64
+      #     path: tools/java_api/src/main/resources
 
       - uses: actions/download-artifact@v4
         with:
@@ -169,7 +170,7 @@ jobs:
             ORIGINAL_PWD=$(pwd)
             ./gradlew publishMavenJavaToLocalRepo -i
             cd build/repo
-            zip -r ryu-java-bundle.zip com
+            zip -r ryu-java-bundle.zip io
             mv ryu-java-bundle.zip $ORIGINAL_PWD
       
       - name: Upload Maven Central bundle
@@ -181,10 +182,14 @@ jobs:
       - name: Deploy to Maven Central
         if: ${{ github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly != 'true' }}
         working-directory: tools/java_api
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
         run: |
+          AUTH_TOKEN=$(echo -n "${MAVEN_CENTRAL_USERNAME}:${MAVEN_CENTRAL_PASSWORD}" | base64)
           curl --request POST \
           --verbose \
-          --header 'Authorization: Bearer ${{ secrets.MAVEN_CENTRAL_PORTAL_TOKEN }}' \
+          --header "Authorization: Basic ${AUTH_TOKEN}" \
           --form bundle=@ryu-java-bundle.zip \
           https://central.sonatype.com/api/v1/publisher/upload?publishingType=AUTOMATIC
         

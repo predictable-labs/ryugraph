@@ -1,4 +1,4 @@
-import com.ryugraph.*;
+import io.ryugraph.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -4,7 +4,7 @@ import pytest
 
 pytest.importorskip("torch")
 
-import ryu
+import ryugraph as ryu
 
 TINY_SNB_KNOWS_GROUND_TRUTH = {
     0: [2, 3, 5],
