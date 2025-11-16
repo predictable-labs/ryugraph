@@ -22,14 +22,14 @@ class Dispatcher {
       return this.workerPath;
     }
     if (isNodeJs) {
-      return "./ryu_wasm_worker.js";
+      return "./ryugraph_wasm_worker.js";
     }
     // Hack: importMeta will be replaced by esbuild with "import.meta"
-    // This is a workaround for "This file is considered to be an ECMAScript 
+    // This is a workaround for "This file is considered to be an ECMAScript
     // module because of the use of "import.meta" here:"
     const scriptPath = importMeta.url;
     const basePath = scriptPath.substring(0, scriptPath.lastIndexOf("/"));
-    return `${basePath}/ryu_wasm_worker.js`;
+    return `${basePath}/ryugraph_wasm_worker.js`;
   }
 
   async init() {
