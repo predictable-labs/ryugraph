@@ -9,11 +9,11 @@
 // This header is generated at build time. See CMakeLists.txt.
 #include <vector>
 
-#include "io_ryugraph_Native.h"
 #include "common/constants.h"
 #include "common/exception/exception.h"
 #include "common/exception/not_implemented.h"
 #include "function/cast/functions/cast_string_non_nested_functions.h"
+#include "io_ryugraph_Native.h"
 #include "main/ryu.h"
 #include <jni.h>
 
@@ -413,8 +413,7 @@ JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuDatabaseDestroy(JNIEnv* env, j
  * All Connection native functions
  */
 
-JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass,
-    jobject db) {
+JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuConnectionInit(JNIEnv* env, jclass, jobject db) {
 
     try {
         Database* conn_db = getDatabase(env, db);
@@ -634,8 +633,8 @@ JNIEXPORT jboolean JNICALL Java_io_ryugraph_Native_ryuQueryResultIsSuccess(JNIEn
     return jboolean();
 }
 
-JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env,
-    jclass, jobject thisQR) {
+JNIEXPORT jstring JNICALL Java_io_ryugraph_Native_ryuQueryResultGetErrorMessage(JNIEnv* env, jclass,
+    jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
         std::string errorMessage = qr->getErrorMessage();
@@ -721,8 +720,8 @@ JNIEXPORT jlong JNICALL Java_io_ryugraph_Native_ryuQueryResultGetNumTuples(JNIEn
     return jlong();
 }
 
-JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env,
-    jclass, jobject thisQR) {
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuQueryResultGetQuerySummary(JNIEnv* env, jclass,
+    jobject thisQR) {
     try {
         QueryResult* qr = getQueryResult(env, thisQR);
         auto querySummary = qr->getQuerySummary();
@@ -1242,8 +1241,8 @@ JNIEXPORT void JNICALL Java_io_ryugraph_Native_ryuValueDestroy(JNIEnv* env, jcla
     }
 }
 
-JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateList___3Lio_ryugraph_Value_2(
-    JNIEnv* env, jclass, jobjectArray listValues) {
+JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateList___3Lio_ryugraph_Value_2(JNIEnv* env,
+    jclass, jobjectArray listValues) {
     try {
         jsize len = env->GetArrayLength(listValues);
         if (len == 0) {
