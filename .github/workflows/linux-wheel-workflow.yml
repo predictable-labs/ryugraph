@@ -47,7 +47,7 @@ jobs:
       - name: Build wheels for Linux x86_64
         uses: pypa/cibuildwheel@v2.22
         env:
-          CIBW_SKIP: pp*
+          CIBW_SKIP: pp* cp36* cp37*
           CIBW_ARCHS_LINUX: x86_64
           CIBW_BUILD_VERBOSITY: 3
         with:
@@ -85,7 +85,7 @@ jobs:
       - name: Build wheels for Linux aarch64
         uses: pypa/cibuildwheel@v2.22
         env:
-          CIBW_SKIP: pp*
+          CIBW_SKIP: pp* cp36* cp37*
           CIBW_ARCHS_LINUX: aarch64
           CIBW_BUILD_VERBOSITY: 3
         with:
