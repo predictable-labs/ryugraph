@@ -50,6 +50,8 @@ jobs:
           CIBW_SKIP: pp* cp36* cp37*
           CIBW_ARCHS_LINUX: x86_64
           CIBW_BUILD_VERBOSITY: 3
+          CIBW_ENVIRONMENT: "NUM_THREADS=8"
+          CIBW_BEFORE_ALL_LINUX: "yum install -y libtool libedit-devel openssl-devel || apt-get install -y libtool libedit-dev libssl-dev"
         with:
           package-dir: ./scripts/pip-package/ryugraph.tar.gz
           output-dir: ./scripts/pip-package/wheelhouse
@@ -88,6 +90,8 @@ jobs:
           CIBW_SKIP: pp* cp36* cp37*
           CIBW_ARCHS_LINUX: aarch64
           CIBW_BUILD_VERBOSITY: 3
+          CIBW_ENVIRONMENT: "NUM_THREADS=8"
+          CIBW_BEFORE_ALL_LINUX: "yum install -y libtool libedit-devel openssl-devel || apt-get install -y libtool libedit-dev libssl-dev"
         with:
           package-dir: ./scripts/pip-package/ryugraph.tar.gz
           output-dir: ./scripts/pip-package/wheelhouse
