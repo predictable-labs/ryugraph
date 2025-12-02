@@ -2,6 +2,17 @@ name: Build Linux Wheels
 
 on:
   workflow_dispatch:
+    inputs:
+      isNightly:
+        description: "Whether the build is a nightly build?"
+        type: boolean
+        required: true
+        default: false
+      isDeploy:
+        description: "Deploy to PyPI? (if false, deploys to test PyPI)"
+        type: boolean
+        required: true
+        default: false
   workflow_call:
     inputs:
       isNightly:
@@ -50,7 +61,6 @@ jobs:
           path: ./scripts/pip-package/wheelhouse/*.whl
 
   build-linux-wheels-aarch64:
-    # Make sure this job runs on the larger self-hosted Linux ARM64 machine
     runs-on: blacksmith-4vcpu-ubuntu-2404-arm
     steps:
       - uses: actions/checkout@v4
@@ -86,3 +96,35 @@ jobs:
         with:
           name: linux-wheels-aarch64
           path: ./scripts/pip-package/wheelhouse/*.whl
+
+  deploy-linux-wheels:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    needs: [build-linux-wheels-x86_64, build-linux-wheels-aarch64]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-wheels-x86_64
+          path: dist
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: linux-wheels-aarch64
+          path: dist
+
+      - name: List wheels
+        run: ls -lh dist/
+
+      - name: Deploy to PyPI test
+        if: ${{ inputs.isDeploy != true }}
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          skip-existing: true
+
+      - name: Deploy to PyPI
+        if: ${{ inputs.isDeploy == true }}
+        uses: pypa/gh-action-pypi-publish@release/v1
