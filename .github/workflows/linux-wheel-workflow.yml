@@ -57,7 +57,7 @@ jobs:
             for whl in wheelhouse/*.whl; do
               if [[ ! "$whl" =~ manylinux ]]; then
                 echo "Repairing $whl"
-                auditwheel repair "$whl" -w wheelhouse/
+                auditwheel repair "$whl" --plat manylinux_2_28_x86_64 -w wheelhouse/
                 rm "$whl"
               fi
             done
@@ -121,7 +121,7 @@ jobs:
             for whl in wheelhouse/*.whl; do
               if [[ ! "$whl" =~ manylinux ]]; then
                 echo "Repairing $whl"
-                auditwheel repair "$whl" -w wheelhouse/
+                auditwheel repair "$whl" --plat manylinux_2_28_aarch64 -w wheelhouse/
                 rm "$whl"
               fi
             done
