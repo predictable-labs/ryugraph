@@ -2,17 +2,6 @@ name: Build Linux Wheels
 
 on:
   workflow_dispatch:
-    inputs:
-      isNightly:
-        description: "Whether the build is a nightly build?"
-        type: boolean
-        required: true
-        default: false
-      isDeploy:
-        description: "Deploy to PyPI? (if false, deploys to test PyPI)"
-        type: boolean
-        required: true
-        default: false
   workflow_call:
     inputs:
       isNightly:
@@ -22,13 +11,14 @@ on:
 
 jobs:
   build-linux-wheels-x86_64:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
 
       - name: Install build dependencies
         run: |
-          pip3 install -U pip setuptools wheel
+          sudo apt-get update && sudo apt-get install -y patchelf
+          python3 -m pip install --break-system-packages -U pip setuptools wheel auditwheel
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
@@ -40,22 +30,43 @@ jobs:
       - name: Create source distribution
         working-directory: ./scripts/pip-package/
         run: |
-          rm -rf wheelhouse ryugraph.tar.gz
-          mkdir wheelhouse
           python3 package_tar.py ryugraph.tar.gz
 
-      - name: Build wheels for Linux x86_64
-        uses: pypa/cibuildwheel@v2.22
-        env:
-          CIBW_SKIP: pp* cp36* cp37*
-          CIBW_ARCHS_LINUX: x86_64
-          CIBW_BUILD_VERBOSITY: 3
-          CIBW_ENVIRONMENT: "NUM_THREADS=8"
-          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
-          CIBW_BEFORE_ALL_LINUX: "yum install -y libtool libedit-devel openssl-devel || apt-get install -y libtool libedit-dev libssl-dev"
-        with:
-          package-dir: ./scripts/pip-package/ryugraph.tar.gz
-          output-dir: ./scripts/pip-package/wheelhouse
+      - name: Build wheels
+        working-directory: ./scripts/pip-package/
+        run: |
+          mkdir -p wheelhouse
+
+          # Build wheels for multiple Python versions if manylinux paths exist
+          if [ -d "/opt/python" ]; then
+            echo "Found manylinux Python installations"
+            for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
+              if [ -d "$PYBIN" ]; then
+                echo "Building wheel with $PYBIN/python"
+                "${PYBIN}/pip" install -U pip setuptools wheel
+                "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+              fi
+            done
+          else
+            echo "No manylinux Python found, using system Python"
+            python3 -m pip wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+          fi
+
+          # Repair wheels to make them manylinux compatible if any were built
+          if ls wheelhouse/*.whl 1> /dev/null 2>&1; then
+            for whl in wheelhouse/*.whl; do
+              if [[ ! "$whl" =~ manylinux ]]; then
+                echo "Repairing $whl"
+                auditwheel repair "$whl" -w wheelhouse/
+                rm "$whl"
+              fi
+            done
+          else
+            echo "No wheels found to repair"
+          fi
+
+      - name: List built wheels
+        run: ls -la ./scripts/pip-package/wheelhouse/
 
       - uses: actions/upload-artifact@v4
         with:
@@ -63,74 +74,65 @@ jobs:
           path: ./scripts/pip-package/wheelhouse/*.whl
 
   build-linux-wheels-aarch64:
+    # Make sure this job runs on the larger self-hosted Linux ARM64 machine
     runs-on: blacksmith-4vcpu-ubuntu-2404-arm
     steps:
       - uses: actions/checkout@v4
 
       - name: Install build dependencies
         run: |
-          pip3 install -U pip setuptools wheel
+          sudo apt-get update && sudo apt-get install -y patchelf
+          python3 -m pip install --break-system-packages -U pip setuptools wheel auditwheel
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          pip3 install packaging
+          python3 -m pip install --break-system-packages packaging
           python3 update-nightly-build-version.py
         working-directory: scripts
 
       - name: Create source distribution
         working-directory: ./scripts/pip-package/
         run: |
-          rm -rf wheelhouse ryugraph.tar.gz
-          mkdir wheelhouse
           python3 package_tar.py ryugraph.tar.gz
 
-      - name: Build wheels for Linux aarch64
-        uses: pypa/cibuildwheel@v2.22
-        env:
-          CIBW_SKIP: pp* cp36* cp37*
-          CIBW_ARCHS_LINUX: aarch64
-          CIBW_BUILD_VERBOSITY: 3
-          CIBW_ENVIRONMENT: "NUM_THREADS=8"
-          CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
-          CIBW_BEFORE_ALL_LINUX: "yum install -y libtool libedit-devel openssl-devel || apt-get install -y libtool libedit-dev libssl-dev"
-        with:
-          package-dir: ./scripts/pip-package/ryugraph.tar.gz
-          output-dir: ./scripts/pip-package/wheelhouse
+      - name: Build wheels
+        working-directory: ./scripts/pip-package/
+        run: |
+          mkdir -p wheelhouse
+
+          # Build wheels for multiple Python versions if manylinux paths exist
+          if [ -d "/opt/python" ]; then
+            echo "Found manylinux Python installations"
+            for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
+              if [ -d "$PYBIN" ]; then
+                echo "Building wheel with $PYBIN/python"
+                "${PYBIN}/pip" install -U pip setuptools wheel
+                "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+              fi
+            done
+          else
+            echo "No manylinux Python found, using system Python"
+            python3 -m pip wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+          fi
+
+          # Repair wheels to make them manylinux compatible if any were built
+          if ls wheelhouse/*.whl 1> /dev/null 2>&1; then
+            for whl in wheelhouse/*.whl; do
+              if [[ ! "$whl" =~ manylinux ]]; then
+                echo "Repairing $whl"
+                auditwheel repair "$whl" -w wheelhouse/
+                rm "$whl"
+              fi
+            done
+          else
+            echo "No wheels found to repair"
+          fi
+
+      - name: List built wheels
+        run: ls -la ./scripts/pip-package/wheelhouse/
 
       - uses: actions/upload-artifact@v4
         with:
           name: linux-wheels-aarch64
           path: ./scripts/pip-package/wheelhouse/*.whl
-
-  deploy-linux-wheels:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
-    needs: [build-linux-wheels-x86_64, build-linux-wheels-aarch64]
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: linux-wheels-x86_64
-          path: dist
-
-      - uses: actions/download-artifact@v4
-        with:
-          name: linux-wheels-aarch64
-          path: dist
-
-      - name: List wheels
-        run: ls -lh dist/
-
-      - name: Deploy to PyPI test
-        if: ${{ inputs.isDeploy != true }}
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
-          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-          skip-existing: true
-
-      - name: Deploy to PyPI
-        if: ${{ inputs.isDeploy == true }}
-        uses: pypa/gh-action-pypi-publish@release/v1
