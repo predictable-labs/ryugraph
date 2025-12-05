@@ -18,12 +18,12 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install --break-system-packages -U pip setuptools wheel auditwheel
+          python3 -m pip install -U pip setuptools wheel auditwheel
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          python3 -m pip install --break-system-packages packaging
+          python3 -m pip install packaging
           python3 update-nightly-build-version.py
         working-directory: scripts
 
@@ -82,12 +82,12 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install --break-system-packages -U pip setuptools wheel auditwheel
+          python3 -m pip install -U pip setuptools wheel auditwheel
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          python3 -m pip install --break-system-packages packaging
+          python3 -m pip install packaging
           python3 update-nightly-build-version.py
         working-directory: scripts
 
