@@ -18,12 +18,12 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install -U pip setuptools wheel auditwheel
+          python3 -m pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          python3 -m pip install packaging
+          python3 -m pip install "packaging>=24.2"
           python3 update-nightly-build-version.py
         working-directory: scripts
 
@@ -74,15 +74,15 @@ jobs:
           path: ./scripts/pip-package/wheelhouse/*.whl
 
   build-linux-wheels-aarch64:
-    # Make sure this job runs on Ubuntu 22.04 ARM64 for manylinux_2_35 compatibility
-    runs-on: blacksmith-4vcpu-ubuntu-2204-arm
+    # Make sure this job runs on Ubuntu 24.04 ARM64 for manylinux compatibility
+    runs-on: blacksmith-4vcpu-ubuntu-2404-arm
     steps:
       - uses: actions/checkout@v4
 
       - name: Install build dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install -U pip setuptools wheel auditwheel
+          python3 -m pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
