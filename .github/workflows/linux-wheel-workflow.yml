@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-linux-wheels-x86_64:
-    runs-on: self-hosted
+    runs-on: [self-hosted, ubuntu22]
     steps:
       - uses: actions/checkout@v4
 
@@ -57,7 +57,7 @@ jobs:
             for whl in wheelhouse/*.whl; do
               if [[ ! "$whl" =~ manylinux ]]; then
                 echo "Repairing $whl"
-                auditwheel repair "$whl" --plat manylinux_2_28_x86_64 -w wheelhouse/
+                auditwheel repair "$whl" -w wheelhouse/
                 rm "$whl"
               fi
             done
@@ -74,8 +74,8 @@ jobs:
           path: ./scripts/pip-package/wheelhouse/*.whl
 
   build-linux-wheels-aarch64:
-    # Make sure this job runs on the larger self-hosted Linux ARM64 machine
-    runs-on: blacksmith-4vcpu-ubuntu-2404-arm
+    # Make sure this job runs on Ubuntu 22.04 ARM64 for manylinux_2_35 compatibility
+    runs-on: blacksmith-4vcpu-ubuntu-2204-arm
     steps:
       - uses: actions/checkout@v4
 
