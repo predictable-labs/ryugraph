@@ -12,58 +12,50 @@ on:
 jobs:
   build-linux-wheels-x86_64:
     runs-on: [self-hosted, ubuntu22]
+    container:
+      image: quay.io/pypa/manylinux_2_28_x86_64
     steps:
       - uses: actions/checkout@v4
 
       - name: Install build dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
+          yum install -y cmake gcc gcc-c++ patchelf
+          /opt/python/cp310-cp310/bin/pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          python3 -m pip install "packaging>=24.2"
-          python3 update-nightly-build-version.py
+          /opt/python/cp310-cp310/bin/pip install "packaging>=24.2"
+          /opt/python/cp310-cp310/bin/python update-nightly-build-version.py
         working-directory: scripts
 
       - name: Create source distribution
         working-directory: ./scripts/pip-package/
         run: |
-          python3 package_tar.py ryugraph.tar.gz
+          /opt/python/cp310-cp310/bin/python package_tar.py ryugraph.tar.gz
 
       - name: Build wheels
         working-directory: ./scripts/pip-package/
         run: |
           mkdir -p wheelhouse
 
-          # Build wheels for multiple Python versions if manylinux paths exist
-          if [ -d "/opt/python" ]; then
-            echo "Found manylinux Python installations"
-            for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
-              if [ -d "$PYBIN" ]; then
-                echo "Building wheel with $PYBIN/python"
-                "${PYBIN}/pip" install -U pip setuptools wheel
-                "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
-              fi
-            done
-          else
-            echo "No manylinux Python found, using system Python"
-            python3 -m pip wheel ryugraph.tar.gz --no-deps -w wheelhouse/
-          fi
+          # Build wheels for multiple Python versions
+          for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
+            if [ -d "$PYBIN" ]; then
+              echo "Building wheel with $PYBIN/python"
+              "${PYBIN}/pip" install -U pip setuptools wheel "packaging>=24.2"
+              "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+            fi
+          done
 
-          # Repair wheels to make them manylinux compatible if any were built
-          if ls wheelhouse/*.whl 1> /dev/null 2>&1; then
-            for whl in wheelhouse/*.whl; do
-              if [[ ! "$whl" =~ manylinux ]]; then
-                echo "Repairing $whl"
-                python3 -m auditwheel repair "$whl" -w wheelhouse/
-                rm "$whl"
-              fi
-            done
-          else
-            echo "No wheels found to repair"
-          fi
+          # Repair wheels to make them manylinux_2_28 compatible
+          for whl in wheelhouse/*.whl; do
+            if [[ -f "$whl" && ! "$whl" =~ manylinux ]]; then
+              echo "Repairing $whl"
+              auditwheel repair "$whl" --plat manylinux_2_28_x86_64 -w wheelhouse/
+              rm "$whl"
+            fi
+          done
 
       - name: List built wheels
         run: ls -la ./scripts/pip-package/wheelhouse/
@@ -74,60 +66,52 @@ jobs:
           path: ./scripts/pip-package/wheelhouse/*.whl
 
   build-linux-wheels-aarch64:
-    # Make sure this job runs on Ubuntu 24.04 ARM64 for manylinux compatibility
+    # Build manylinux_2_28 wheels for ARM64
     runs-on: blacksmith-4vcpu-ubuntu-2404-arm
+    container:
+      image: quay.io/pypa/manylinux_2_28_aarch64
     steps:
       - uses: actions/checkout@v4
 
       - name: Install build dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y patchelf python3-pip
-          python3 -m pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
+          yum install -y cmake gcc gcc-c++ patchelf
+          /opt/python/cp310-cp310/bin/pip install -U pip setuptools wheel auditwheel "packaging>=24.2"
 
       - name: Update nightly version
         if: ${{ inputs.isNightly == true }}
         run: |
-          python3 -m pip install packaging
-          python3 update-nightly-build-version.py
+          /opt/python/cp310-cp310/bin/pip install "packaging>=24.2"
+          /opt/python/cp310-cp310/bin/python update-nightly-build-version.py
         working-directory: scripts
 
       - name: Create source distribution
         working-directory: ./scripts/pip-package/
         run: |
-          python3 package_tar.py ryugraph.tar.gz
+          /opt/python/cp310-cp310/bin/python package_tar.py ryugraph.tar.gz
 
       - name: Build wheels
         working-directory: ./scripts/pip-package/
         run: |
           mkdir -p wheelhouse
 
-          # Build wheels for multiple Python versions if manylinux paths exist
-          if [ -d "/opt/python" ]; then
-            echo "Found manylinux Python installations"
-            for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
-              if [ -d "$PYBIN" ]; then
-                echo "Building wheel with $PYBIN/python"
-                "${PYBIN}/pip" install -U pip setuptools wheel
-                "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
-              fi
-            done
-          else
-            echo "No manylinux Python found, using system Python"
-            python3 -m pip wheel ryugraph.tar.gz --no-deps -w wheelhouse/
-          fi
+          # Build wheels for multiple Python versions
+          for PYBIN in /opt/python/cp3{8,9,10,11,12}*/bin; do
+            if [ -d "$PYBIN" ]; then
+              echo "Building wheel with $PYBIN/python"
+              "${PYBIN}/pip" install -U pip setuptools wheel "packaging>=24.2"
+              "${PYBIN}/pip" wheel ryugraph.tar.gz --no-deps -w wheelhouse/
+            fi
+          done
 
-          # Repair wheels to make them manylinux compatible if any were built
-          if ls wheelhouse/*.whl 1> /dev/null 2>&1; then
-            for whl in wheelhouse/*.whl; do
-              if [[ ! "$whl" =~ manylinux ]]; then
-                echo "Repairing $whl"
-                python3 -m auditwheel repair "$whl" --plat manylinux_2_28_aarch64 -w wheelhouse/
-                rm "$whl"
-              fi
-            done
-          else
-            echo "No wheels found to repair"
-          fi
+          # Repair wheels to make them manylinux_2_28 compatible
+          for whl in wheelhouse/*.whl; do
+            if [[ -f "$whl" && ! "$whl" =~ manylinux ]]; then
+              echo "Repairing $whl"
+              auditwheel repair "$whl" --plat manylinux_2_28_aarch64 -w wheelhouse/
+              rm "$whl"
+            fi
+          done
 
       - name: List built wheels
         run: ls -la ./scripts/pip-package/wheelhouse/
