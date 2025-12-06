@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(RyuGraph VERSION 25.9.1 LANGUAGES CXX C)
+project(RyuGraph VERSION 25.9.2 LANGUAGES CXX C)
 
 # Add cmake modules directory to module path
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")

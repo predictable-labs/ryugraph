@@ -114,7 +114,7 @@ setup(name='ryugraph',
       long_description=open(os.path.join(base_dir, "README.md"), 'r').read(),
       long_description_content_type="text/markdown",
       packages=["ryugraph"],
-      zip_safe=True,
+      zip_safe=False,
       include_package_data=True,
       cmdclass={
           'build_py': BuildExtFirst,
