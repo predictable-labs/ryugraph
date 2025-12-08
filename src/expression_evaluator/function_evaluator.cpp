@@ -34,7 +34,7 @@ void FunctionExpressionEvaluator::evaluate() {
 
 void FunctionExpressionEvaluator::evaluate(common::sel_t count) {
     RYU_ASSERT(expression->constCast<ScalarFunctionExpression>().getFunction().name ==
-              NextValFunction::name);
+               NextValFunction::name);
     for (auto& child : children) {
         child->evaluate(count);
     }

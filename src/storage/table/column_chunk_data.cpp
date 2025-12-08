@@ -394,8 +394,8 @@ void ColumnChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
 void ColumnChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets,
     RelMultiplicity multiplicity) {
     RYU_ASSERT(chunk->dataType.getPhysicalType() == dataType.getPhysicalType() &&
-              dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
-              chunk->getNumValues() == dstOffsets->getNumValues());
+               dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
+               chunk->getNumValues() == dstOffsets->getNumValues());
     for (auto i = 0u; i < dstOffsets->getNumValues(); i++) {
         const auto dstOffset = dstOffsets->getValue<offset_t>(i);
         RYU_ASSERT(dstOffset < capacity);
@@ -428,8 +428,8 @@ void ColumnChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets,
 void ColumnChunkData::write(const ValueVector* vector, offset_t offsetInVector,
     offset_t offsetInChunk) {
     RYU_ASSERT(dataType.getPhysicalType() != PhysicalTypeID::BOOL &&
-              dataType.getPhysicalType() != PhysicalTypeID::LIST &&
-              dataType.getPhysicalType() != PhysicalTypeID::ARRAY);
+               dataType.getPhysicalType() != PhysicalTypeID::LIST &&
+               dataType.getPhysicalType() != PhysicalTypeID::ARRAY);
     if (nullData) {
         nullData->setNull(offsetInChunk, vector->isNull(offsetInVector));
     }
@@ -680,8 +680,8 @@ void BoolChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
 
 void BoolChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets, RelMultiplicity) {
     RYU_ASSERT(chunk->getDataType().getPhysicalType() == PhysicalTypeID::BOOL &&
-              dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
-              chunk->getNumValues() == dstOffsets->getNumValues());
+               dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
+               chunk->getNumValues() == dstOffsets->getNumValues());
     for (auto i = 0u; i < dstOffsets->getNumValues(); i++) {
         const auto dstOffset = dstOffsets->getValue<offset_t>(i);
         RYU_ASSERT(dstOffset < capacity);

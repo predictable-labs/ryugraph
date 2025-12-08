@@ -23,8 +23,8 @@ public:
         const ryu_parquet::format::SchemaElement& schema_p, uint64_t file_idx_p,
         uint64_t max_define_p, uint64_t max_repeat_p)
         : TemplatedColumnReader<RYU_PHYSICAL_TYPE,
-              CallbackParquetValueConversion<PARQUET_PHYSICAL_TYPE, RYU_PHYSICAL_TYPE, FUNC>>(reader,
-              std::move(type_p), schema_p, file_idx_p, max_define_p, max_repeat_p) {}
+              CallbackParquetValueConversion<PARQUET_PHYSICAL_TYPE, RYU_PHYSICAL_TYPE, FUNC>>(
+              reader, std::move(type_p), schema_p, file_idx_p, max_define_p, max_repeat_p) {}
 
 protected:
     void dictionary(const std::shared_ptr<ResizeableBuffer>& dictionaryData,

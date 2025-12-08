@@ -284,7 +284,7 @@ private:
 
     bool nextChainedSlot(const transaction::Transaction* transaction, SlotIterator& iter) const {
         RYU_ASSERT(iter.slotInfo.slotType == SlotType::PRIMARY ||
-                  iter.slotInfo.slotId != iter.slot.header.nextOvfSlotId);
+                   iter.slotInfo.slotId != iter.slot.header.nextOvfSlotId);
         if (iter.slot.header.nextOvfSlotId != SlotHeader::INVALID_OVERFLOW_SLOT_ID) {
             iter.slotInfo.slotId = iter.slot.header.nextOvfSlotId;
             iter.slotInfo.slotType = SlotType::OVF;

@@ -12,7 +12,7 @@ namespace processor {
 
 // A ReadHead for prefetching data in a specific range
 struct ReadHead {
-    ReadHead(uint64_t location, uint64_t size) : location(location), size(size){};
+    ReadHead(uint64_t location, uint64_t size) : location(location), size(size) {};
     // Hint info
     uint64_t location;
     uint64_t size;
@@ -141,7 +141,7 @@ public:
                                        handle->getFileSize() - location));
                 auto prefetch_buffer_fallback = ra_buffer.GetReadHead(location);
                 RYU_ASSERT(location - prefetch_buffer_fallback->location + len <=
-                          prefetch_buffer_fallback->size);
+                           prefetch_buffer_fallback->size);
                 memcpy(buf,
                     prefetch_buffer_fallback->data.get() + location -
                         prefetch_buffer_fallback->location,

@@ -224,7 +224,7 @@ void Date::convert(date_t date, int32_t& out_year, int32_t& out_month, int32_t& 
     }
     out_day++;
     RYU_ASSERT(out_day > 0 && out_day <= (is_leap_year ? Date::LEAP_DAYS[out_month] :
-                                                        Date::NORMAL_DAYS[out_month]));
+                                                         Date::NORMAL_DAYS[out_month]));
     RYU_ASSERT(out_month > 0 && out_month <= 12);
     RYU_ASSERT(Date::isValid(out_year, out_month, out_day));
 }

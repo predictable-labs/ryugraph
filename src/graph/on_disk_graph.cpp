@@ -275,7 +275,8 @@ void OnDiskGraphNbrScanState::InnerIterator::initScan() const {
 
 void OnDiskGraphNbrScanState::startScan(RelDataDirection direction) {
     auto idx = RelDirectionUtils::relDirectionToKeyIdx(direction);
-    RYU_ASSERT(idx < directedIterators.size() && directedIterators[idx].getDirection() == direction);
+    RYU_ASSERT(
+        idx < directedIterators.size() && directedIterators[idx].getDirection() == direction);
     currentIter = &directedIterators[idx];
     currentIter->initScan();
 }

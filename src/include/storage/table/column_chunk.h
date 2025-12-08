@@ -214,7 +214,8 @@ public:
 
     ResidencyState getResidencyState() const {
         auto state = data.front()->getResidencyState();
-        RUNTIME_CHECK(for (auto& chunk : data) { RYU_ASSERT(chunk->getResidencyState() == state); });
+        RUNTIME_CHECK(for (auto& chunk
+                           : data) { RYU_ASSERT(chunk->getResidencyState() == state); });
         return state;
     }
     bool hasUpdates() const { return updateInfo.isSet(); }

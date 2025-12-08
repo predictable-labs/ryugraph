@@ -192,8 +192,8 @@ void StringColumn::scanSegment(const SegmentState& state, ColumnChunkData* resul
             getChildState(state, ChildStateIndex::INDEX).metadata);
     }
     RYU_ASSERT(resultChunk->getNumValues() == startOffsetInResult + numValuesToScan &&
-              stringResultChunk->getIndexColumnChunk()->getNumValues() ==
-                  startOffsetInResult + numValuesToScan);
+               stringResultChunk->getIndexColumnChunk()->getNumValues() ==
+                   startOffsetInResult + numValuesToScan);
     RUNTIME_CHECK({
         auto dictionarySize =
             stringResultChunk->getDictionaryChunk().getOffsetChunk()->getNumValues();

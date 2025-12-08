@@ -21,7 +21,7 @@ std::string PartitionerPrintInfo::toString() const {
 
 void PartitionerFunctions::partitionRelData(ValueVector* key, ValueVector* partitionIdxes) {
     RYU_ASSERT(key->state == partitionIdxes->state &&
-              key->dataType.getPhysicalType() == PhysicalTypeID::INT64);
+               key->dataType.getPhysicalType() == PhysicalTypeID::INT64);
     for (auto i = 0u; i < key->state->getSelVector().getSelSize(); i++) {
         const auto pos = key->state->getSelVector()[i];
         const partition_idx_t partitionIdx =

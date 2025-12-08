@@ -139,7 +139,7 @@ std::unique_ptr<KeyBlockMergeMorsel> KeyBlockMergeTask::getMorsel() {
 
 void KeyBlockMerger::mergeKeyBlocks(KeyBlockMergeMorsel& keyBlockMergeMorsel) const {
     RYU_ASSERT(keyBlockMergeMorsel.leftKeyBlockStartIdx < keyBlockMergeMorsel.leftKeyBlockEndIdx ||
-              keyBlockMergeMorsel.rightKeyBlockStartIdx < keyBlockMergeMorsel.rightKeyBlockEndIdx);
+               keyBlockMergeMorsel.rightKeyBlockStartIdx < keyBlockMergeMorsel.rightKeyBlockEndIdx);
 
     auto leftBlockPtrInfo = BlockPtrInfo(keyBlockMergeMorsel.leftKeyBlockStartIdx,
         keyBlockMergeMorsel.leftKeyBlockEndIdx,

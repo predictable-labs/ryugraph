@@ -113,7 +113,7 @@ uint32_t DecimalType::getScale(const LogicalType& type) {
 
 const LogicalType& ListType::getChildType(const ryu::common::LogicalType& type) {
     RYU_ASSERT(type.getPhysicalType() == PhysicalTypeID::LIST ||
-              type.getPhysicalType() == PhysicalTypeID::ARRAY);
+               type.getPhysicalType() == PhysicalTypeID::ARRAY);
     auto listTypeInfo = type.extraTypeInfo->constPtrCast<ListTypeInfo>();
     return listTypeInfo->getChildType();
 }

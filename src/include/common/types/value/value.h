@@ -498,8 +498,8 @@ RYU_API inline uint128_t Value::getValue() const {
 template<>
 RYU_API inline std::string Value::getValue() const {
     RYU_ASSERT(dataType.getLogicalTypeID() == LogicalTypeID::STRING ||
-              dataType.getLogicalTypeID() == LogicalTypeID::BLOB ||
-              dataType.getLogicalTypeID() == LogicalTypeID::UUID);
+               dataType.getLogicalTypeID() == LogicalTypeID::BLOB ||
+               dataType.getLogicalTypeID() == LogicalTypeID::UUID);
     return strVal;
 }
 

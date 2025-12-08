@@ -124,7 +124,7 @@ void DuckDBResultConverter::convertDuckDBResultToVector(duckdb::DataChunk& duckD
             continue;
         }
         RYU_ASSERT(duckDBResult.data[duckdbResultColIdx].GetVectorType() ==
-                  duckdb::VectorType::FLAT_VECTOR);
+                   duckdb::VectorType::FLAT_VECTOR);
         conversionFunctions[i](duckDBResult.data[duckdbResultColIdx],
             result.getValueVectorMutable(i), result.state->getSelVector().getSelSize());
         duckdbResultColIdx++;

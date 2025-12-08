@@ -180,7 +180,7 @@ void RelTable::checkRelMultiplicityConstraint(Transaction* transaction,
     const TableInsertState& state) const {
     const auto& insertState = state.constCast<RelTableInsertState>();
     RYU_ASSERT(insertState.srcNodeIDVector.state->getSelVector().getSelSize() == 1 &&
-              insertState.dstNodeIDVector.state->getSelVector().getSelSize() == 1);
+               insertState.dstNodeIDVector.state->getSelVector().getSelSize() == 1);
 
     for (auto& relData : directedRelData) {
         if (relData->getMultiplicity() == RelMultiplicity::ONE) {

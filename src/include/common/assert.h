@@ -28,7 +28,7 @@ namespace common {
 #endif
 
 #define RYU_UNREACHABLE                                                                            \
-    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::ryuAssertFailureInternal("RYU_UNREACHABLE",   \
+    /* LCOV_EXCL_START */ [[unlikely]] ryu::common::ryuAssertFailureInternal("RYU_UNREACHABLE",    \
         __FILE__, __LINE__) /* LCOV_EXCL_STOP */
 #define RYU_UNUSED(expr) (void)(expr)
 

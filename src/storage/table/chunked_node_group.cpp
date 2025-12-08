@@ -101,7 +101,7 @@ ChunkedNodeGroup::ChunkedNodeGroup(MemoryManager& mm, ChunkedNodeGroup& base,
         chunks[baseColumnID] = base.moveColumnChunk(i);
         enableCompression = chunks[baseColumnID]->isCompressionEnabled();
         RYU_ASSERT(chunks[baseColumnID]->getDataType().getPhysicalType() ==
-                  columnTypes[baseColumnID].getPhysicalType());
+                   columnTypes[baseColumnID].getPhysicalType());
     }
 
     for (column_id_t i = 0; i < columnTypes.size(); ++i) {

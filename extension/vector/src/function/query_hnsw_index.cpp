@@ -153,7 +153,7 @@ static std::unique_ptr<TableFuncBindData> bindFunc(main::ClientContext* context,
     RYU_ASSERT(indexEntry->getPropertyIDs().size() == 1);
     auto propertyID = indexEntry->getPropertyIDs()[0];
     RYU_ASSERT(nodeTableEntry->getProperty(propertyID).getType().getLogicalTypeID() ==
-              LogicalTypeID::ARRAY);
+               LogicalTypeID::ARRAY);
     bindData->indexColumnID = nodeTableEntry->getColumnID(propertyID);
     bindData->queryExpression = input->params[2];
     bindData->kExpression = input->params[3];

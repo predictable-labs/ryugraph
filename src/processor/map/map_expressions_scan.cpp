@@ -30,7 +30,8 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapExpressionsScan(
     RYU_ASSERT(logicalOpToPhysicalOpMap.contains(outerAccumulate));
     auto physicalOp = logicalOpToPhysicalOpMap.at(outerAccumulate);
     RYU_ASSERT(physicalOp->getOperatorType() == PhysicalOperatorType::TABLE_FUNCTION_CALL);
-    RYU_ASSERT(physicalOp->getChild(0)->getOperatorType() == PhysicalOperatorType::RESULT_COLLECTOR);
+    RYU_ASSERT(
+        physicalOp->getChild(0)->getOperatorType() == PhysicalOperatorType::RESULT_COLLECTOR);
     auto resultCollector = physicalOp->getChild(0)->ptrCast<ResultCollector>();
     auto table = resultCollector->getResultFTable();
     return createFTableScan(expressionsToScan, colIndicesToScan, schema, table,
