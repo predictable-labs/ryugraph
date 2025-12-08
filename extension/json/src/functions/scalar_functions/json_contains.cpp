@@ -12,8 +12,8 @@ using namespace common;
 static bool jsonFuzzyEquals(yyjson_val* haystack, yyjson_val* needle);
 
 static bool jsonArrayFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
-    KU_ASSERT(yyjson_get_tag(haystack) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE) &&
-              yyjson_get_tag(needle) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE));
+    RYU_ASSERT(yyjson_get_tag(haystack) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE) &&
+               yyjson_get_tag(needle) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE));
 
     size_t needleIdx = 0, needleMax = 0, haystackIdx = 0, haystackMax = 0;
     yyjson_val *needleChild = nullptr, *haystackChild = nullptr;
@@ -33,8 +33,8 @@ static bool jsonArrayFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
 }
 
 static bool JSONObjectFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
-    KU_ASSERT(yyjson_get_tag(haystack) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE) &&
-              yyjson_get_tag(needle) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE));
+    RYU_ASSERT(yyjson_get_tag(haystack) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE) &&
+               yyjson_get_tag(needle) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE));
 
     size_t idx = 0, max = 0;
     yyjson_val *key = nullptr, *needleChild = nullptr;
@@ -49,8 +49,8 @@ static bool JSONObjectFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
 }
 
 static bool jsonFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
-    KU_ASSERT(haystack != nullptr);
-    KU_ASSERT(needle != nullptr);
+    RYU_ASSERT(haystack != nullptr);
+    RYU_ASSERT(needle != nullptr);
 
     // Strict equality
     if (unsafe_yyjson_equals(haystack, needle)) {
@@ -76,7 +76,7 @@ static bool jsonFuzzyEquals(yyjson_val* haystack, yyjson_val* needle) {
 static bool jsonContains(yyjson_val* haystack, yyjson_val* needle);
 
 static bool JSONArrayContains(yyjson_val* haystackArray, yyjson_val* needle) {
-    KU_ASSERT(yyjson_get_tag(haystackArray) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE));
+    RYU_ASSERT(yyjson_get_tag(haystackArray) == (YYJSON_TYPE_ARR | YYJSON_SUBTYPE_NONE));
 
     size_t idx = 0, max = 0;
     yyjson_val* childHaystack = nullptr;
@@ -89,7 +89,7 @@ static bool JSONArrayContains(yyjson_val* haystackArray, yyjson_val* needle) {
 }
 
 static bool jsonObjectContains(yyjson_val* haystackObject, yyjson_val* needle) {
-    KU_ASSERT(yyjson_get_tag(haystackObject) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE));
+    RYU_ASSERT(yyjson_get_tag(haystackObject) == (YYJSON_TYPE_OBJ | YYJSON_SUBTYPE_NONE));
 
     size_t idx = 0, max = 0;
     yyjson_val *key = nullptr, *childHaystack = nullptr;

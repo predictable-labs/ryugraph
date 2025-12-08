@@ -86,7 +86,7 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapScanNodeTable(
             std::move(evaluator), std::move(sharedState), getOperatorID(), std::move(printInfo));
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

@@ -14,7 +14,7 @@ std::unique_ptr<BoundStatement> Binder::bindExtensionClause(const parser::Statem
             return boundStatement;
         }
     }
-    KU_UNREACHABLE;
+    RYU_UNREACHABLE;
 }
 
 } // namespace binder

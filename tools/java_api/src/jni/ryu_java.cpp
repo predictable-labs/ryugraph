@@ -1752,8 +1752,8 @@ JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateMap(JNIEnv* env, jcla
     jobjectArray keys, jobjectArray values) {
     try {
         jsize len = env->GetArrayLength(keys);
-        KU_ASSERT(env->GetArrayLength(values) == len);
-        KU_ASSERT(len > 0);
+        RYU_ASSERT(env->GetArrayLength(values) == len);
+        RYU_ASSERT(len > 0);
 
         std::optional<LogicalType> keyType;
         std::optional<LogicalType> valueType;
@@ -1767,7 +1767,7 @@ JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateMap(JNIEnv* env, jcla
                 keyType = key->getDataType().copy();
                 valueType = value->getDataType().copy();
             } else {
-                KU_ASSERT(valueType.has_value());
+                RYU_ASSERT(valueType.has_value());
                 if (key->getDataType() != *keyType || value->getDataType() != *valueType) {
                     return nullptr;
                 }
@@ -1784,8 +1784,8 @@ JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateMap(JNIEnv* env, jcla
                 LogicalType::STRUCT(std::move(structFields)), std::move(structVals)));
         }
 
-        KU_ASSERT(keyType.has_value());
-        KU_ASSERT(valueType.has_value());
+        RYU_ASSERT(keyType.has_value());
+        RYU_ASSERT(valueType.has_value());
         Value* mapValue = new Value(LogicalType::MAP(std::move(*keyType), std::move(*valueType)),
             std::move(children));
         return createJavaObject(env, mapValue, J_C_Value, J_C_Value_F_v_ref);
@@ -1801,8 +1801,8 @@ JNIEXPORT jobject JNICALL Java_io_ryugraph_Native_ryuCreateStruct(JNIEnv* env, j
     jobjectArray fieldNames, jobjectArray fieldValues) {
     try {
         jsize len = env->GetArrayLength(fieldNames);
-        KU_ASSERT(env->GetArrayLength(fieldValues) == len);
-        KU_ASSERT(len > 0);
+        RYU_ASSERT(env->GetArrayLength(fieldValues) == len);
+        RYU_ASSERT(len > 0);
 
         std::vector<std::unique_ptr<Value>> children;
         auto structFields = std::vector<StructField>{};

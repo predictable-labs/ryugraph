@@ -22,7 +22,7 @@ std::unique_ptr<TableCatalogEntry> DuckDBTableCatalogEntry::copy() const {
 
 std::unique_ptr<binder::BoundExtraCreateCatalogEntryInfo>
 DuckDBTableCatalogEntry::getBoundExtraCreateInfo(transaction::Transaction*) const {
-    KU_UNREACHABLE;
+    RYU_UNREACHABLE;
 }
 
 } // namespace catalog

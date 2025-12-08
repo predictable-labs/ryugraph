@@ -13,7 +13,7 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapNoop(const LogicalOperator* log
     }
     auto noop = logicalOperator->constPtrCast<LogicalNoop>();
     auto idx = noop->getMessageChildIdx();
-    KU_ASSERT(idx < children.size());
+    RYU_ASSERT(idx < children.size());
     auto child = children[idx].get();
     // LCOV_EXCL_START
     if (!child->isSink()) {

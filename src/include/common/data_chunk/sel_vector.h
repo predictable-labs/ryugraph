@@ -66,7 +66,7 @@ public:
     sel_t getSelSize() const { return selectedSize; }
 
     sel_t operator[](sel_t index) const {
-        KU_ASSERT(index < selectedSize);
+        RYU_ASSERT(index < selectedSize);
         return selectedPositions[index];
     }
 
@@ -113,7 +113,7 @@ public:
     RYU_API void setToUnfiltered();
     RYU_API void setToUnfiltered(sel_t size);
     void setRange(sel_t startPos, sel_t size) {
-        KU_ASSERT(startPos + size <= capacity);
+        RYU_ASSERT(startPos + size <= capacity);
         selectedPositions = selectedPositionsBuffer.get();
         for (auto i = 0u; i < size; ++i) {
             selectedPositionsBuffer[i] = startPos + i;
@@ -128,7 +128,7 @@ public:
         state = State::DYNAMIC;
     }
     void setToFiltered(sel_t size) {
-        KU_ASSERT(size <= capacity && selectedPositionsBuffer);
+        RYU_ASSERT(size <= capacity && selectedPositionsBuffer);
         setToFiltered();
         selectedSize = size;
     }
@@ -145,20 +145,20 @@ public:
     }
 
     void setSelSize(sel_t size) {
-        KU_ASSERT(size <= capacity);
+        RYU_ASSERT(size <= capacity);
         selectedSize = size;
     }
     void incrementSelSize(sel_t increment = 1) {
-        KU_ASSERT(selectedSize < capacity);
+        RYU_ASSERT(selectedSize < capacity);
         selectedSize += increment;
     }
 
     sel_t operator[](sel_t index) const {
-        KU_ASSERT(index < capacity);
+        RYU_ASSERT(index < capacity);
         return const_cast<sel_t&>(selectedPositions[index]);
     }
     sel_t& operator[](sel_t index) {
-        KU_ASSERT(index < capacity);
+        RYU_ASSERT(index < capacity);
         return const_cast<sel_t&>(selectedPositions[index]);
     }
 

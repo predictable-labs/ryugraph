@@ -146,8 +146,8 @@ public:
 
     // Leaves the slot pointer pointing at the last slot to make it easier to add a new one
     bool nextChainedSlot(SlotIterator& iter) const {
-        KU_ASSERT(iter.slotInfo.slotType == SlotType::PRIMARY ||
-                  iter.slotInfo.slotId != iter.slot->header.nextOvfSlotId);
+        RYU_ASSERT(iter.slotInfo.slotType == SlotType::PRIMARY ||
+                   iter.slotInfo.slotId != iter.slot->header.nextOvfSlotId);
         if (iter.slot->header.nextOvfSlotId != SlotHeader::INVALID_OVERFLOW_SLOT_ID) {
             iter.slotInfo.slotId = iter.slot->header.nextOvfSlotId;
             iter.slotInfo.slotType = SlotType::OVF;
@@ -193,7 +193,7 @@ public:
             while (nextChainedSlot(newIter)) {}
             if (newIter.slotInfo != iter.slotInfo ||
                 *deletedPos != newIter.slot->header.numEntries() - 1) {
-                KU_ASSERT(newIter.slot->header.numEntries() > 0);
+                RYU_ASSERT(newIter.slot->header.numEntries() > 0);
                 auto lastEntryPos = newIter.slot->header.numEntries() - 1;
                 iter.slot->entries[*deletedPos] = newIter.slot->entries[lastEntryPos];
                 iter.slot->header.setEntryValid(*deletedPos,
@@ -261,7 +261,7 @@ private:
 
     void insert(OwnedType&& key, InMemSlotType* slot, uint8_t entryPos, common::offset_t value,
         uint8_t fingerprint) {
-        KU_ASSERT(HashIndexUtils::getFingerprintForHash(HashIndexUtils::hash(key)) == fingerprint);
+        RYU_ASSERT(HashIndexUtils::getFingerprintForHash(HashIndexUtils::hash(key)) == fingerprint);
         auto& entry = slot->entries[entryPos];
         entry = SlotEntry<OwnedType>(std::move(key), value);
         slot->header.setEntryValid(entryPos, fingerprint);
@@ -285,7 +285,7 @@ private:
         visible_func isVisible) {
         do {
             auto numEntries = iter.slot->header.numEntries();
-            KU_ASSERT(numEntries == std::countr_one(iter.slot->header.validityMask));
+            RYU_ASSERT(numEntries == std::countr_one(iter.slot->header.validityMask));
             for (auto entryPos = 0u; entryPos < numEntries; entryPos++) {
                 if (iter.slot->header.fingerprints[entryPos] == fingerprint &&
                     equals(key, iter.slot->entries[entryPos].key) &&

@@ -55,7 +55,7 @@ std::string TypeUtils::entryToString(const LogicalType& dataType, const uint8_t*
                 DecimalType::getScale(dataType));
         default:
             // decimals should always be backed by one of these four
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     case LogicalTypeID::DATE:
         return TypeUtils::toString(*reinterpret_cast<const date_t*>(value));

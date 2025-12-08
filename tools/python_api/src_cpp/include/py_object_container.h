@@ -22,7 +22,7 @@ public:
     }
 
     const py::object& getLastAddedObject() {
-        KU_ASSERT(!pyObjects.empty());
+        RYU_ASSERT(!pyObjects.empty());
         return pyObjects.back();
     }
 

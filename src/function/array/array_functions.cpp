@@ -144,7 +144,7 @@ scalar_func_exec_t getScalarExecFunc(LogicalType type) {
         execFunc = getBinaryArrayExecFuncSwitchResultType<OPERATION, double>();
         break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return execFunc;
 }

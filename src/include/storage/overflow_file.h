@@ -111,14 +111,14 @@ public:
     common::page_idx_t getHeaderPageIdx() const { return headerPageIdx; }
 
     OverflowFileHandle* addHandle() {
-        KU_ASSERT(handles.size() < NUM_HASH_INDEXES);
+        RYU_ASSERT(handles.size() < NUM_HASH_INDEXES);
         handles.emplace_back(
             std::make_unique<OverflowFileHandle>(*this, header.entries[handles.size()]));
         return handles.back().get();
     }
 
     FileHandle* getFileHandle() const {
-        KU_ASSERT(fileHandle);
+        RYU_ASSERT(fileHandle);
         return fileHandle;
     }
 

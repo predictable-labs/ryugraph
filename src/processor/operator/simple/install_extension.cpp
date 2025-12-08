@@ -36,7 +36,7 @@ void InstallExtension::executeInternal(ExecutionContext* context) {
     bool installResult = installer.install();
     setOutputMessage(installResult, storage::MemoryManager::Get(*clientContext));
     if (info.forceInstall) {
-        KU_ASSERT(installResult);
+        RYU_ASSERT(installResult);
     }
 }
 

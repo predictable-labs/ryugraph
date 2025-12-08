@@ -211,7 +211,7 @@ LogicalType inferMinimalTypeFromString(std::string_view str) {
             if (NumericLimits<int64_t>::isInBounds(int128val)) {
                 return LogicalType::INT64();
             }
-            KU_ASSERT(NumericLimits<int128_t>::isInBounds(int128val));
+            RYU_ASSERT(NumericLimits<int128_t>::isInBounds(int128val));
             return LogicalType::INT128();
         } else if (trySimpleIntegerCast<uint128_t, false>(cpy.data(), cpy.length(), uint128val)) {
             return LogicalType::UINT128();
@@ -225,7 +225,7 @@ LogicalType inferMinimalTypeFromString(std::string_view str) {
         }
         if (cpy.size() <= DECIMAL_PRECISION_LIMIT) {
             auto decimalPoint = cpy.find('.');
-            KU_ASSERT(decimalPoint != std::string::npos);
+            RYU_ASSERT(decimalPoint != std::string::npos);
             return LogicalType::DECIMAL(cpy.size() - 1, cpy.size() - decimalPoint - 1);
         } else {
             return LogicalType::DOUBLE();

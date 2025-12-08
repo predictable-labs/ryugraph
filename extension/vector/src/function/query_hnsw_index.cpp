@@ -95,12 +95,12 @@ static std::unique_ptr<TableFuncBindData> bindFunc(main::ClientContext* context,
             cypherQuery = stringFormat("MATCH (n:`{}`) WHERE {} RETURN n", nodeInfo.tableName,
                 nodeInfo.predicate);
         } else {
-            KU_ASSERT(graphEntry->type == graph::GraphEntryType::CYPHER);
+            RYU_ASSERT(graphEntry->type == graph::GraphEntryType::CYPHER);
             cypherQuery = graphEntry->cast<graph::ParsedCypherGraphEntry>().cypherQuery;
         }
         try {
             auto parsedStatements = parser::Parser::parseQuery(cypherQuery);
-            KU_ASSERT(parsedStatements.size() == 1);
+            RYU_ASSERT(parsedStatements.size() == 1);
             auto binder = Binder(context);
             boundStatement = binder.bind(*parsedStatements[0]);
         } catch (Exception& e) {
@@ -150,10 +150,10 @@ static std::unique_ptr<TableFuncBindData> bindFunc(main::ClientContext* context,
     bindData->nodeTableEntry = nodeTableEntry;
     auto indexEntry = catalog->getIndex(transaction, nodeTableEntry->getTableID(), indexName);
     bindData->indexEntry = indexEntry;
-    KU_ASSERT(indexEntry->getPropertyIDs().size() == 1);
+    RYU_ASSERT(indexEntry->getPropertyIDs().size() == 1);
     auto propertyID = indexEntry->getPropertyIDs()[0];
-    KU_ASSERT(nodeTableEntry->getProperty(propertyID).getType().getLogicalTypeID() ==
-              LogicalTypeID::ARRAY);
+    RYU_ASSERT(nodeTableEntry->getProperty(propertyID).getType().getLogicalTypeID() ==
+               LogicalTypeID::ARRAY);
     bindData->indexColumnID = nodeTableEntry->getColumnID(propertyID);
     bindData->queryExpression = input->params[2];
     bindData->kExpression = input->params[3];
@@ -192,7 +192,7 @@ static std::vector<T> getQueryVector(main::ClientContext* context,
     std::shared_ptr<Expression> queryExpression, const LogicalType& indexType, uint64_t dimension) {
     auto value = evaluateParamExpr(queryExpression, context,
         LogicalType::ARRAY(indexType.copy(), dimension));
-    KU_ASSERT(NestedVal::getChildVal(&value, 0)->getDataType() == indexType);
+    RYU_ASSERT(NestedVal::getChildVal(&value, 0)->getDataType() == indexType);
     return convertQueryVector<T>(value);
 }
 
@@ -211,8 +211,8 @@ struct HNSWQueryVector : GetEmbeddingsScanState {
         : data(getQueryVector<T>(context, std::move(queryExpression), indexType, dimension)) {}
 
     void* getEmbeddingPtr([[maybe_unused]] const EmbeddingHandle& handle) override {
-        KU_ASSERT(!handle.isNull());
-        KU_ASSERT(handle.offsetInData == 0);
+        RYU_ASSERT(!handle.isNull());
+        RYU_ASSERT(handle.offsetInData == 0);
         return reinterpret_cast<void*>(data.data());
     }
 
@@ -232,7 +232,7 @@ static offset_t tableFunc(const TableFuncInput& input, TableFuncOutput& output) 
                                    ->getTable(bindData->nodeTableEntry->getTableID())
                                    ->ptrCast<storage::NodeTable>();
         auto indexOpt = nodeTable->getIndex(bindData->indexEntry->getIndexName());
-        KU_ASSERT(indexOpt.has_value());
+        RYU_ASSERT(indexOpt.has_value());
         auto& index = indexOpt.value()->cast<OnDiskHNSWIndex>();
         const auto dimension = ArrayType::getNumElements(
             getIndexColumnType(*bindData->nodeTableEntry, *bindData->indexEntry));
@@ -247,9 +247,9 @@ static offset_t tableFunc(const TableFuncInput& input, TableFuncOutput& output) 
                     index.search(transaction::Transaction::Get(*input.context->clientContext),
                         queryVectorHandle, localState->searchState);
             },
-            [&](auto) { KU_UNREACHABLE; });
+            [&](auto) { RYU_UNREACHABLE; });
     }
-    KU_ASSERT(localState->result.has_value());
+    RYU_ASSERT(localState->result.has_value());
     if (localState->numRowsOutput >= localState->result->size()) {
         return 0;
     }
@@ -320,11 +320,11 @@ static void getLogicalPlan(Planner* planner, const BoundReadingClause& readingCl
         auto& node = bindData->filterStatement->getSingleColumnExpr()->constCast<NodeExpression>();
         auto filterPlan = planner->planStatement(*bindData->filterStatement);
         auto root = filterPlan.getLastOperator();
-        KU_ASSERT(root->getOperatorType() == LogicalOperatorType::PROJECTION);
+        RYU_ASSERT(root->getOperatorType() == LogicalOperatorType::PROJECTION);
         auto projection = root->ptrCast<LogicalProjection>();
-        KU_ASSERT(projection->getExpressionsToProject().size() == 1);
+        RYU_ASSERT(projection->getExpressionsToProject().size() == 1);
         auto expr = projection->getExpressionsToProject()[0];
-        KU_ASSERT(expr->getDataType().getLogicalTypeID() == LogicalTypeID::NODE);
+        RYU_ASSERT(expr->getDataType().getLogicalTypeID() == LogicalTypeID::NODE);
         auto nodeID = expr->constCast<NodeExpression>().getInternalID();
         projection->setExpressionsToProject({nodeID});
         // Pre-append semi mask before projection
@@ -341,7 +341,7 @@ static void getLogicalPlan(Planner* planner, const BoundReadingClause& readingCl
     op->computeFactorizedSchema();
     planner->planReadOp(op, predicates, plan);
     auto nodeOutput = bindData->outputNode->ptrCast<NodeExpression>();
-    KU_ASSERT(nodeOutput != nullptr);
+    RYU_ASSERT(nodeOutput != nullptr);
     planner->getCardinliatyEstimatorUnsafe().init(*nodeOutput);
     auto scanPlan = planner->getNodePropertyScanPlan(*nodeOutput);
     if (scanPlan.isEmpty()) {
@@ -366,7 +366,7 @@ static std::unique_ptr<PhysicalOperator> getPhysicalPlan(PlanMapper* planMapper,
         sharedState->semiMasks.addMask(bindData->nodeTableEntry->getTableID(),
             SemiMaskUtil::createMask(bindData->numRows));
         planMapper->addOperatorMapping(logicalOp, op.get());
-        KU_ASSERT(logicalOp->getNumChildren() == 1);
+        RYU_ASSERT(logicalOp->getNumChildren() == 1);
         auto logicalRoot = logicalOp->getChild(0);
         auto root = planMapper->mapOperator(logicalRoot.get());
         op->addChild(std::move(root));

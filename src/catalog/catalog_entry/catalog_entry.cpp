@@ -55,7 +55,7 @@ std::unique_ptr<CatalogEntry> CatalogEntry::deserialize(common::Deserializer& de
         entry = IndexCatalogEntry::deserialize(deserializer);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     entry->type = type;
     entry->name = std::move(name);

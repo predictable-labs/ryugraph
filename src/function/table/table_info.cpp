@@ -191,7 +191,7 @@ static std::unique_ptr<TableFuncBindData> bindFunc(const main::ClientContext* co
                 type = CatalogEntryType::REL_GROUP_ENTRY;
             } break;
             default:
-                KU_UNREACHABLE;
+                RYU_UNREACHABLE;
             }
         } else {
             throw CatalogException(stringFormat("{} does not exist in catalog.", tableName));

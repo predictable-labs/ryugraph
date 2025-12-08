@@ -39,7 +39,7 @@ std::string FTSIndexAuxInfo::getStopWordsName(const common::FileScanInfo& export
         }
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return stopWordsName;
 }

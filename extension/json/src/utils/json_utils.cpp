@@ -263,7 +263,7 @@ common::LogicalType jsonSchema(yyjson_val* val, int64_t depth, int64_t breadth) 
         case YYJSON_SUBTYPE_REAL:
             return LogicalType::DOUBLE();
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     case YYJSON_TYPE_STR: {
         auto value = yyjson_get_str(val);
@@ -280,7 +280,7 @@ common::LogicalType jsonSchema(yyjson_val* val, int64_t depth, int64_t breadth) 
         return LogicalType::STRING();
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -494,7 +494,7 @@ static void readFromJsonNum(NUM_TYPE val, common::ValueVector& vec, uint64_t pos
             function::CastToDecimal::operation(val, vec.getValue<int128_t>(pos), vec, vec);
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
         break;
     case LogicalTypeID::STRING: {
@@ -562,14 +562,14 @@ void readJsonToValueVector(yyjson_val* val, common::ValueVector& vec, uint64_t p
             readFromJsonNum(yyjson_get_real(val), vec, pos);
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
         break;
     case YYJSON_TYPE_STR:
         readFromJsonStr(yyjson_get_str(val), vec, pos);
         break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

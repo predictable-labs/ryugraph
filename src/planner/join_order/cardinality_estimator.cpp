@@ -53,13 +53,13 @@ void CardinalityEstimator::init(const NodeExpression& node) {
 }
 
 void CardinalityEstimator::rectifyCardinality(const Expression& nodeID, cardinality_t card) {
-    KU_ASSERT(nodeIDName2dom.contains(nodeID.getUniqueName()));
+    RYU_ASSERT(nodeIDName2dom.contains(nodeID.getUniqueName()));
     auto newCard = std::min(nodeIDName2dom.at(nodeID.getUniqueName()), card);
     nodeIDName2dom[nodeID.getUniqueName()] = newCard;
 }
 
 cardinality_t CardinalityEstimator::getNodeIDDom(const std::string& nodeIDName) const {
-    KU_ASSERT(nodeIDName2dom.contains(nodeIDName));
+    RYU_ASSERT(nodeIDName2dom.contains(nodeIDName));
     return nodeIDName2dom.at(nodeIDName);
 }
 
@@ -153,7 +153,7 @@ static bool isSingleLabelledProperty(const Expression& expression) {
 static std::optional<cardinality_t> getTableStatsIfPossible(main::ClientContext* context,
     const Expression& predicate,
     const std::unordered_map<common::table_id_t, storage::TableStats>& nodeTableStats) {
-    KU_ASSERT(predicate.getNumChildren() >= 1);
+    RYU_ASSERT(predicate.getNumChildren() >= 1);
     if (isSingleLabelledProperty(*predicate.getChild(0))) {
         auto& propertyExpr = predicate.getChild(0)->cast<PropertyExpression>();
         auto tableID = propertyExpr.getSingleTableID();
@@ -195,7 +195,7 @@ uint64_t CardinalityEstimator::getNumNodes(const Transaction*,
     const std::vector<table_id_t>& tableIDs) const {
     cardinality_t numNodes = 0u;
     for (auto& tableID : tableIDs) {
-        KU_ASSERT(nodeTableStats.contains(tableID));
+        RYU_ASSERT(nodeTableStats.contains(tableID));
         numNodes += nodeTableStats.at(tableID).getTableCard();
     }
     return atLeastOne(numNodes);
@@ -215,7 +215,7 @@ double CardinalityEstimator::getExtensionRate(const RelExpression& rel,
     const NodeExpression& boundNode, const Transaction* transaction) const {
     auto numBoundNodes = static_cast<double>(getNumNodes(transaction, boundNode.getTableIDs()));
     auto numRels = static_cast<double>(getNumRels(transaction, rel.getInnerRelTableIDs()));
-    KU_ASSERT(numBoundNodes > 0);
+    RYU_ASSERT(numBoundNodes > 0);
     auto oneHopExtensionRate = numRels / atLeastOne(numBoundNodes);
     switch (rel.getRelType()) {
     case QueryRelType::NON_RECURSIVE: {
@@ -239,7 +239,7 @@ double CardinalityEstimator::getExtensionRate(const RelExpression& rel,
         return rate * context->getClientConfig()->recursivePatternCardinalityScaleFactor;
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

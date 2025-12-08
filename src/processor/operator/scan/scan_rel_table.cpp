@@ -42,7 +42,7 @@ std::string ScanRelTablePrintInfo::toString() const {
         result += "]->";
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     result += "(";
     result += nbrNode->toString();

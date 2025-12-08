@@ -10,7 +10,7 @@ using namespace common;
 
 bool JsonFileHandle::getPositionAndSize(uint64_t& position, uint64_t& size,
     uint64_t requestedSize) {
-    KU_ASSERT(requestedSize != 0);
+    RYU_ASSERT(requestedSize != 0);
     if (lastReadRequested) {
         return false;
     }
@@ -42,7 +42,7 @@ BufferedJsonReader::BufferedJsonReader(main::ClientContext& context, std::string
 }
 
 std::string BufferedJsonReader::reconstructLine(uint64_t startPosition, uint64_t endPosition) {
-    KU_ASSERT(endPosition >= startPosition);
+    RYU_ASSERT(endPosition >= startPosition);
 
     std::lock_guard<std::mutex> lockGuard{lock};
 
@@ -59,7 +59,7 @@ std::string BufferedJsonReader::reconstructLine(uint64_t startPosition, uint64_t
 std::unique_ptr<storage::MemoryBuffer> BufferedJsonReader::removeBuffer(
     const JsonScanBufferHandle& handle) {
     std::lock_guard<std::mutex> guard(lock);
-    KU_ASSERT(bufferMap.contains(handle.bufferIdx));
+    RYU_ASSERT(bufferMap.contains(handle.bufferIdx));
     auto result = std::move(bufferMap.at(handle.bufferIdx)->buffer);
     bufferMap.erase(handle.bufferIdx);
     return result;

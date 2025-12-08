@@ -14,7 +14,7 @@ namespace catalog {
 
 std::unique_ptr<TableCatalogEntry> TableCatalogEntry::alter(transaction_t timestamp,
     const BoundAlterInfo& alterInfo, CatalogSet* tables) const {
-    KU_ASSERT(!deleted);
+    RYU_ASSERT(!deleted);
     auto newEntry = copy();
     switch (alterInfo.alterType) {
     case AlterType::RENAME: {
@@ -50,7 +50,7 @@ std::unique_ptr<TableCatalogEntry> TableCatalogEntry::alter(transaction_t timest
             connectionInfo.toTableID);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     newEntry->setOID(oid);
@@ -128,7 +128,7 @@ std::unique_ptr<TableCatalogEntry> TableCatalogEntry::deserialize(Deserializer& 
         result = RelGroupCatalogEntry::deserialize(deserializer);
         break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     result->comment = std::move(comment);
     result->propertyCollection = std::move(propertyCollection);

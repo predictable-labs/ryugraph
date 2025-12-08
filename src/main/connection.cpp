@@ -15,7 +15,7 @@ namespace ryu {
 namespace main {
 
 Connection::Connection(Database* database) {
-    KU_ASSERT(database != nullptr);
+    RYU_ASSERT(database != nullptr);
     this->database = database;
     this->dbLifeCycleManager = database->dbLifeCycleManager;
     clientContext = std::make_unique<ClientContext>(database);

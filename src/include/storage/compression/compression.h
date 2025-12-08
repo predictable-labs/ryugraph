@@ -81,7 +81,7 @@ union StorageValue {
         } else if constexpr (std::is_floating_point<T>()) {
             return floatVal;
         } else {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     }
 
@@ -180,11 +180,11 @@ struct RYU_API CompressionMetadata {
 
     // accessors for additionalMetadata
     inline const ExtraMetadata* getExtraMetadata() const {
-        KU_ASSERT(extraMetadata.has_value());
+        RYU_ASSERT(extraMetadata.has_value());
         return extraMetadata.value().get();
     }
     inline ExtraMetadata* getExtraMetadata() {
-        KU_ASSERT(extraMetadata.has_value());
+        RYU_ASSERT(extraMetadata.has_value());
         return extraMetadata.value().get();
     }
     inline const ALPMetadata* floatMetadata() const {
@@ -320,7 +320,7 @@ public:
         }
         uint64_t numValues = std::min(numValuesRemaining, dstBufferSize / numBytesPerValue);
         uint64_t sizeToCopy = numValues * numBytesPerValue;
-        KU_ASSERT(sizeToCopy <= dstBufferSize);
+        RYU_ASSERT(sizeToCopy <= dstBufferSize);
         std::memcpy(dstBuffer, srcBuffer, sizeToCopy);
         srcBuffer += sizeToCopy;
         return sizeToCopy;

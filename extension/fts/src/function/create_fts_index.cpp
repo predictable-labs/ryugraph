@@ -129,7 +129,7 @@ static std::string createStopWordsTable(const ClientContext& context,
         query += stringFormat("COPY `{}` FROM '{}';", info.tableName, info.stopWords);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return query;
 }

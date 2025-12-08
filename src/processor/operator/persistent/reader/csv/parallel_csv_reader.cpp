@@ -56,7 +56,7 @@ void ParallelCSVReader::reportFinishedBlock() {
 }
 
 uint64_t ParallelCSVReader::continueBlock(DataChunk& resultChunk) {
-    KU_ASSERT(hasMoreToRead());
+    RYU_ASSERT(hasMoreToRead());
     ParallelParsingDriver driver(resultChunk, this);
     const auto [numRowsParsed, numErrors] = parseCSV(driver);
     increaseNumRowsInCurrentBlock(numRowsParsed, numErrors);

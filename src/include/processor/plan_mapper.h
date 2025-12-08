@@ -236,11 +236,11 @@ public:
 
     void addOperatorMapping(const planner::LogicalOperator* logicalOp,
         PhysicalOperator* physicalOp) {
-        KU_ASSERT(!logicalOpToPhysicalOpMap.contains(logicalOp));
+        RYU_ASSERT(!logicalOpToPhysicalOpMap.contains(logicalOp));
         logicalOpToPhysicalOpMap.insert({logicalOp, physicalOp});
     }
     void eraseOperatorMapping(const planner::LogicalOperator* logicalOp) {
-        KU_ASSERT(logicalOpToPhysicalOpMap.contains(logicalOp));
+        RYU_ASSERT(logicalOpToPhysicalOpMap.contains(logicalOp));
         logicalOpToPhysicalOpMap.erase(logicalOp);
     }
 

@@ -7,17 +7,17 @@ namespace ryu {
 namespace parser {
 
 std::unique_ptr<Statement> Transformer::transformExportDatabase(
-    CypherParser::KU_ExportDatabaseContext& ctx) {
+    CypherParser::RU_ExportDatabaseContext& ctx) {
     std::string filePath = transformStringLiteral(*ctx.StringLiteral());
     auto exportDB = std::make_unique<ExportDB>(std::move(filePath));
-    if (ctx.kU_Options()) {
-        exportDB->setParsingOption(transformOptions(*ctx.kU_Options()));
+    if (ctx.rU_Options()) {
+        exportDB->setParsingOption(transformOptions(*ctx.rU_Options()));
     }
     return exportDB;
 }
 
 std::unique_ptr<Statement> Transformer::transformImportDatabase(
-    CypherParser::KU_ImportDatabaseContext& ctx) {
+    CypherParser::RU_ImportDatabaseContext& ctx) {
     std::string filePath = transformStringLiteral(*ctx.StringLiteral());
     return std::make_unique<ImportDB>(std::move(filePath));
 }

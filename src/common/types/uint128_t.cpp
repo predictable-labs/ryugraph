@@ -642,7 +642,7 @@ uint128_t::operator double() const {
     double result = NAN;
     [[maybe_unused]] bool success =
         UInt128_t::tryCast(*this, result); // casting to double should always succeed
-    KU_ASSERT(success);
+    RYU_ASSERT(success);
     return result;
 }
 
@@ -650,7 +650,7 @@ uint128_t::operator float() const {
     float result = NAN;
     [[maybe_unused]] bool success = UInt128_t::tryCast(*this,
         result); // casting overly large values to float currently returns inf
-    KU_ASSERT(success);
+    RYU_ASSERT(success);
     return result;
 }
 

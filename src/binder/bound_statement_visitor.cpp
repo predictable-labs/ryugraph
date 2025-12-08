@@ -74,7 +74,7 @@ void BoundStatementVisitor::visit(const BoundStatement& statement) {
         visitExtensionClause(statement);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -176,7 +176,7 @@ void BoundStatementVisitor::visitReadingClause(const BoundReadingClause& reading
         visitLoadFrom(readingClause);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -195,7 +195,7 @@ void BoundStatementVisitor::visitReadingClauseUnsafe(BoundReadingClause& reading
         visitLoadFrom(readingClause);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -214,7 +214,7 @@ void BoundStatementVisitor::visitUpdatingClause(const BoundUpdatingClause& updat
         visitMerge(updatingClause);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

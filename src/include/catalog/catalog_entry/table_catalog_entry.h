@@ -41,7 +41,7 @@ public:
     std::string getComment() const { return comment; }
     void setComment(std::string newComment) { comment = std::move(newComment); }
 
-    virtual function::TableFunction getScanFunction() { KU_UNREACHABLE; }
+    virtual function::TableFunction getScanFunction() { RYU_UNREACHABLE; }
 
     common::column_id_t getMaxColumnID() const;
     void vacuumColumnIDs(common::column_id_t nextColumnID);

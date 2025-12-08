@@ -195,7 +195,7 @@ std::unique_ptr<PhysicalOperator> PlanMapper::mapOperator(const LogicalOperator*
         physicalOperator = mapExtensionClause(logicalOperator);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     if (!logicalOpToPhysicalOpMap.contains(logicalOperator)) {
         logicalOpToPhysicalOpMap.insert({logicalOperator, physicalOperator.get()});

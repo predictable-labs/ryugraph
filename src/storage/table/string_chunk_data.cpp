@@ -74,7 +74,7 @@ void StringChunkData::resetToEmpty() {
 void StringChunkData::append(ValueVector* vector, const SelectionView& selView) {
     selView.forEach([&](auto pos) {
         // index is stored in main chunk, data is stored in the data chunk
-        KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+        RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
         // index is stored in main chunk, data is stored in the data chunk
         nullData->setNull(numValues, vector->isNull(pos));
         auto dstPos = numValues;
@@ -96,14 +96,14 @@ void StringChunkData::append(const ColumnChunkData* other, offset_t startPosInOt
         appendStringColumnChunk(&otherChunk, startPosInOtherChunk, numValuesToAppend);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
 
 void StringChunkData::scan(ValueVector& output, offset_t offset, length_t length,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offset + length <= numValues && nullData);
+    RYU_ASSERT(offset + length <= numValues && nullData);
     nullData->scan(output, offset, length, posInOutputVector);
     if (!nullData->noNullsGuaranteedInMem()) {
         for (auto i = 0u; i < length; i++) {
@@ -122,7 +122,7 @@ void StringChunkData::scan(ValueVector& output, offset_t offset, length_t length
 
 void StringChunkData::lookup(offset_t offsetInChunk, ValueVector& output,
     sel_t posInOutputVector) const {
-    KU_ASSERT(offsetInChunk < numValues);
+    RYU_ASSERT(offsetInChunk < numValues);
     output.setNull(posInOutputVector, nullData->isNull(offsetInChunk));
     if (nullData->isNull(offsetInChunk)) {
         return;
@@ -148,7 +148,7 @@ void StringChunkData::initializeScanState(SegmentState& state, const Column* col
 
 void StringChunkData::write(const ValueVector* vector, offset_t offsetInVector,
     offset_t offsetInChunk) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     if (!needFinalize && offsetInChunk < numValues) [[unlikely]] {
         needFinalize = true;
     }
@@ -163,9 +163,9 @@ void StringChunkData::write(const ValueVector* vector, offset_t offsetInVector,
 }
 
 void StringChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets, RelMultiplicity) {
-    KU_ASSERT(chunk->getDataType().getPhysicalType() == PhysicalTypeID::STRING &&
-              dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
-              chunk->getNumValues() == dstOffsets->getNumValues());
+    RYU_ASSERT(chunk->getDataType().getPhysicalType() == PhysicalTypeID::STRING &&
+               dstOffsets->getDataType().getPhysicalType() == PhysicalTypeID::INTERNAL_ID &&
+               chunk->getNumValues() == dstOffsets->getNumValues());
     auto& stringChunk = chunk->cast<StringChunkData>();
     for (auto i = 0u; i < chunk->getNumValues(); i++) {
         auto offsetInChunk = dstOffsets->getValue<offset_t>(i);
@@ -185,7 +185,7 @@ void StringChunkData::write(ColumnChunkData* chunk, ColumnChunkData* dstOffsets,
 
 void StringChunkData::write(const ColumnChunkData* srcChunk, offset_t srcOffsetInChunk,
     offset_t dstOffsetInChunk, offset_t numValuesToCopy) {
-    KU_ASSERT(srcChunk->getDataType().getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(srcChunk->getDataType().getPhysicalType() == PhysicalTypeID::STRING);
     if ((dstOffsetInChunk + numValuesToCopy) >= numValues) {
         updateNumValues(dstOffsetInChunk + numValuesToCopy);
     }
@@ -304,14 +304,14 @@ void StringChunkData::deserialize(Deserializer& deSer, ColumnChunkData& chunkDat
 
 template<>
 ku_string_t StringChunkData::getValue<ku_string_t>(offset_t) const {
-    KU_UNREACHABLE;
+    RYU_UNREACHABLE;
 }
 
 // STRING
 template<>
 std::string_view StringChunkData::getValue<std::string_view>(offset_t pos) const {
-    KU_ASSERT(pos < numValues);
-    KU_ASSERT(!nullData->isNull(pos));
+    RYU_ASSERT(pos < numValues);
+    RYU_ASSERT(!nullData->isNull(pos));
     auto index = indexColumnChunk->getValue<DictionaryChunk::string_index_t>(pos);
     return dictionaryChunk->getString(index);
 }

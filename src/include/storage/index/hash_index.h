@@ -107,7 +107,7 @@ public:
         if (localLookupState == HashIndexLocalLookupState::KEY_FOUND) {
             return true;
         }
-        KU_ASSERT(localLookupState == HashIndexLocalLookupState::KEY_NOT_EXIST);
+        RYU_ASSERT(localLookupState == HashIndexLocalLookupState::KEY_NOT_EXIST);
         return lookupInPersistentIndex(transaction, key, result, isVisible);
     }
 
@@ -283,8 +283,8 @@ private:
     }
 
     bool nextChainedSlot(const transaction::Transaction* transaction, SlotIterator& iter) const {
-        KU_ASSERT(iter.slotInfo.slotType == SlotType::PRIMARY ||
-                  iter.slotInfo.slotId != iter.slot.header.nextOvfSlotId);
+        RYU_ASSERT(iter.slotInfo.slotType == SlotType::PRIMARY ||
+                   iter.slotInfo.slotId != iter.slot.header.nextOvfSlotId);
         if (iter.slot.header.nextOvfSlotId != SlotHeader::INVALID_OVERFLOW_SLOT_ID) {
             iter.slotInfo.slotId = iter.slot.header.nextOvfSlotId;
             iter.slotInfo.slotType = SlotType::OVF;
@@ -382,7 +382,7 @@ public:
     template<common::IndexHashable T>
     inline bool lookup(const transaction::Transaction* trx, T key, common::offset_t& result,
         visible_func isVisible) {
-        KU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
         return getTypedHashIndex(key)->lookupInternal(trx, key, result, isVisible);
     }
 
@@ -406,7 +406,7 @@ public:
     template<common::IndexHashable T>
     inline bool insert(const transaction::Transaction* transaction, T key, common::offset_t value,
         visible_func isVisible) {
-        KU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
         return getTypedHashIndex(key)->insertInternal(transaction, std::move(key), value,
             isVisible);
     }
@@ -424,8 +424,8 @@ public:
     template<common::IndexHashable T>
     size_t appendWithIndexPosNoLock(const transaction::Transaction* transaction,
         IndexBuffer<T>& buffer, uint64_t bufferOffset, uint64_t indexPos, visible_func isVisible) {
-        KU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
-        KU_ASSERT(std::all_of(buffer.begin(), buffer.end(), [&](auto& elem) {
+        RYU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(std::all_of(buffer.begin(), buffer.end(), [&](auto& elem) {
             return HashIndexUtils::getHashIndexPosition(elem.first) == indexPos;
         }));
         return getTypedHashIndexByPos<HashIndexType<T>>(indexPos)->appendNoLock(transaction, buffer,
@@ -450,14 +450,14 @@ public:
     }
     template<common::IndexHashable T>
     inline void delete_(T key) {
-        KU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
         return getTypedHashIndex(key)->deleteInternal(key);
     }
 
     bool discardLocal(common::ku_string_t key) { return discardLocal(key.getAsStringView()); }
     template<common::IndexHashable T>
     inline bool discardLocal(T key) {
-        KU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
+        RYU_ASSERT(indexInfo.keyDataTypes[0] == common::TypeUtils::getPhysicalTypeIDForType<T>());
         return getTypedHashIndex(key)->discardLocal(key);
     }
 
@@ -470,7 +470,7 @@ public:
     void rollbackCheckpoint() override;
 
     common::PhysicalTypeID keyTypeID() const {
-        KU_ASSERT(indexInfo.keyDataTypes.size() == 1);
+        RYU_ASSERT(indexInfo.keyDataTypes.size() == 1);
         return indexInfo.keyDataTypes[0];
     }
     void reclaimStorage(PageAllocator& pageAllocator) const;

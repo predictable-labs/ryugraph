@@ -450,7 +450,7 @@ TEST_F(CompressChunkTest, TestDoubleInPlaceUpdateNoExceptions) {
 
                 // finalize after each update so that we can still update in place
                 if (state.metadata.compMeta.compression == CompressionType::ALP) {
-                    KU_ASSERT(nullptr != state.getExceptionChunk<double>());
+                    RYU_ASSERT(nullptr != state.getExceptionChunk<double>());
                     state.getExceptionChunk<double>()->finalizeAndFlushToDisk(state);
                 }
 
@@ -468,7 +468,7 @@ TEST_F(CompressChunkTest, TestDoubleInPlaceUpdateNoExceptions) {
 
                     // finalize after each update so that we can still update in place
                     if (state.metadata.compMeta.compression == CompressionType::ALP) {
-                        KU_ASSERT(nullptr != state.getExceptionChunk<double>());
+                        RYU_ASSERT(nullptr != state.getExceptionChunk<double>());
                         state.getExceptionChunk<double>()->finalizeAndFlushToDisk(state);
                     }
                 }

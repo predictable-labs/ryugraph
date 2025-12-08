@@ -4,7 +4,7 @@ namespace ryu::storage {
 void LazySegmentScanner::Iterator::advance(common::offset_t n) {
     segmentScanner.rangeSegments(*this, n,
         [this](auto& segmentData, auto, auto lengthInSegment, auto) {
-            KU_ASSERT(segmentData.length > offsetInSegment);
+            RYU_ASSERT(segmentData.length > offsetInSegment);
             if (segmentData.length - offsetInSegment == lengthInSegment) {
                 ++segmentIdx;
                 offsetInSegment = 0;
@@ -23,7 +23,7 @@ void LazySegmentScanner::scanSegment(common::offset_t offsetInSegment,
 void LazySegmentScanner::applyCommittedUpdates(const UpdateInfo& updateInfo,
     const transaction::Transaction* transaction, common::offset_t startRow,
     common::offset_t numRows) {
-    KU_ASSERT(numRows == numValues);
+    RYU_ASSERT(numRows == numValues);
     rangeSegments(begin(), numRows,
         [&](auto& segment, common::offset_t, common::offset_t lengthInSegment,
             common::offset_t offsetInChunk) {

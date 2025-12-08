@@ -7,7 +7,7 @@ using namespace ryu::testing;
 
 // This class starts database without initializing graph.
 class APIEmptyDBTest : public BaseGraphTest {
-    std::string getInputDir() override { KU_UNREACHABLE; }
+    std::string getInputDir() override { RYU_UNREACHABLE; }
 };
 
 class CApiDatabaseTest : public APIEmptyDBTest {

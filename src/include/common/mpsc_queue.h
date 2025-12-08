@@ -90,7 +90,7 @@ public:
 
         T dummy;
         while (pop(dummy)) {}
-        KU_ASSERT(head == tail.load(std::memory_order_relaxed));
+        RYU_ASSERT(head == tail.load(std::memory_order_relaxed));
         delete head;
     }
 

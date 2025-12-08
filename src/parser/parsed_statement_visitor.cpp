@@ -72,7 +72,7 @@ void StatementVisitor::visit(const Statement& statement) {
         visitExtensionClause(statement);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -128,7 +128,7 @@ void StatementVisitor::visitReadingClause(const ReadingClause* readingClause) {
         visitLoadFrom(readingClause);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -147,7 +147,7 @@ void StatementVisitor::visitUpdatingClause(const UpdatingClause* updatingClause)
         visitMerge(updatingClause);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 

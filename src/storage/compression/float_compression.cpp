@@ -62,7 +62,7 @@ FloatCompression<T>::FloatCompression()
 template<std::floating_point T>
 uint64_t FloatCompression<T>::compressNextPage(const uint8_t*&, uint64_t, uint8_t*, uint64_t,
     const struct CompressionMetadata&) const {
-    KU_UNREACHABLE;
+    RYU_UNREACHABLE;
 }
 
 template<std::floating_point T>
@@ -70,7 +70,7 @@ uint64_t FloatCompression<T>::compressNextPageWithExceptions(const uint8_t*& src
     uint64_t srcOffset, uint64_t numValuesRemaining, uint8_t* dstBuffer, uint64_t dstBufferSize,
     EncodeExceptionView<T> exceptionBuffer, [[maybe_unused]] uint64_t exceptionBufferSize,
     uint64_t& exceptionCount, const struct CompressionMetadata& metadata) const {
-    KU_ASSERT(metadata.compression == CompressionType::ALP);
+    RYU_ASSERT(metadata.compression == CompressionType::ALP);
 
     const size_t numValuesToCompress =
         std::min(numValuesRemaining, numValues(dstBufferSize, metadata));
@@ -85,7 +85,7 @@ uint64_t FloatCompression<T>::compressNextPageWithExceptions(const uint8_t*& src
             alp::AlpDecode<T>::decode_value(encodedValue, floatMetadata->fac, floatMetadata->exp);
 
         if (floatValue != decodedValue) {
-            KU_ASSERT(
+            RYU_ASSERT(
                 (exceptionCount + 1) * EncodeException<T>::sizeInBytes() <= exceptionBufferSize);
             exceptionBuffer.setValue(
                 {.value = floatValue,
@@ -145,14 +145,14 @@ void FloatCompression<T>::setValuesFromUncompressed(const uint8_t* srcBuffer,
     const common::NullMask* nullMask) const {
     // each individual value that is being updated should be able to be updated in place
     RUNTIME_CHECK(InPlaceUpdateLocalState localUpdateState{});
-    KU_ASSERT(numValues ==
-              static_cast<common::offset_t>(
-                  std::ranges::count_if(std::ranges::iota_view{srcOffset, srcOffset + numValues},
-                      [&localUpdateState, srcBuffer, &metadata, nullMask](common::offset_t i) {
-                          auto value = reinterpret_cast<const T*>(srcBuffer)[i];
-                          return (nullMask && nullMask->isNull(i)) ||
-                                 canUpdateInPlace(std::span(&value, 1), metadata, localUpdateState);
-                      })));
+    RYU_ASSERT(numValues ==
+               static_cast<common::offset_t>(std::ranges::count_if(
+                   std::ranges::iota_view{srcOffset, srcOffset + numValues},
+                   [&localUpdateState, srcBuffer, &metadata, nullMask](common::offset_t i) {
+                       auto value = reinterpret_cast<const T*>(srcBuffer)[i];
+                       return (nullMask && nullMask->isNull(i)) ||
+                              canUpdateInPlace(std::span(&value, 1), metadata, localUpdateState);
+                   })));
 
     std::vector<EncodedType> integerEncodedValues(numValues);
     for (size_t i = 0; i < numValues; ++i) {

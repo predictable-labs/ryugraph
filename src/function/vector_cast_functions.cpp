@@ -155,7 +155,7 @@ static void nestedTypesCastExecFunction(
     const std::vector<std::shared_ptr<common::ValueVector>>& params,
     const std::vector<common::SelectionVector*>& paramSelVectors, common::ValueVector& result,
     common::SelectionVector* resultSelVector, void*) {
-    KU_ASSERT(params.size() == 1);
+    RYU_ASSERT(params.size() == 1);
     result.resetAuxiliaryBuffer();
     const auto& inputVector = params[0];
     const auto* inputVectorSelVector = paramSelVectors[0];
@@ -278,7 +278,7 @@ bool CastFunction::hasImplicitCast(const LogicalType& srcType, const LogicalType
             return hasImplicitCastMap(srcType, dstType);
         default:
             // LCOV_EXCL_START
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
             // LCOV_EXCL_END
         }
     } else if (dstType.getLogicalTypeID() == LogicalTypeID::UNION) {
@@ -372,7 +372,7 @@ static std::unique_ptr<ScalarFunction> bindCastFromStringFunction(const std::str
                 ScalarFunction::UnaryExecNestedTypeFunction<ku_string_t, int128_t, CastToDecimal>;
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     case LogicalTypeID::INT128: {
@@ -503,7 +503,7 @@ static std::unique_ptr<ScalarFunction> bindCastToStringFunction(const std::strin
                 ScalarFunction::UnaryExecNestedTypeFunction<int128_t, ku_string_t, CastDecimalTo>;
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     case LogicalTypeID::DATE: {
@@ -571,7 +571,7 @@ static std::unique_ptr<ScalarFunction> bindCastToStringFunction(const std::strin
             EXECUTOR>;
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return std::make_unique<ScalarFunction>(functionName,
         std::vector<LogicalTypeID>{sourceType.getLogicalTypeID()}, LogicalTypeID::STRING, func);
@@ -588,14 +588,14 @@ static std::unique_ptr<ScalarFunction> bindCastToDecimalFunction(const std::stri
                 func = ScalarFunction::UnaryCastExecFunction<T, DST_TYPE, CastBetweenDecimal,
                     EXECUTOR>;
             },
-            [&](auto) { KU_UNREACHABLE; });
+            [&](auto) { RYU_UNREACHABLE; });
     } else {
         TypeUtils::visit(
             sourceType,
             [&]<NumericTypes T>(T) {
                 func = ScalarFunction::UnaryCastExecFunction<T, DST_TYPE, CastToDecimal, EXECUTOR>;
             },
-            [&](auto) { KU_UNREACHABLE; });
+            [&](auto) { RYU_UNREACHABLE; });
     }
     return std::make_unique<ScalarFunction>(functionName,
         std::vector<LogicalTypeID>{sourceType.getLogicalTypeID()}, targetType.getLogicalTypeID(),
@@ -664,7 +664,7 @@ static std::unique_ptr<ScalarFunction> bindCastToNumericFunction(const std::stri
                 EXECUTOR>;
             break;
         default:
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
     } break;
     default:
@@ -823,7 +823,7 @@ static std::unique_ptr<ScalarFunction> bindCastBetweenDecimalFunction(
         func = ScalarFunction::UnaryExecNestedTypeFunction<int128_t, DST_TYPE, CastBetweenDecimal>;
         break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     return std::make_unique<ScalarFunction>(functionName,
         std::vector<LogicalTypeID>{LogicalTypeID::DECIMAL}, LogicalTypeID::DECIMAL, func);
@@ -857,7 +857,7 @@ std::unique_ptr<ScalarFunction> CastFunction::bindCastFunction(const std::string
                 scalarFunc =
                     bindCastToDecimalFunction<T, EXECUTOR>(functionName, sourceType, targetType);
             },
-            [](auto) { KU_UNREACHABLE; });
+            [](auto) { RYU_UNREACHABLE; });
         return scalarFunc;
     }
     case LogicalTypeID::INT128: {
@@ -1145,7 +1145,7 @@ function_set CastToUInt8Function::getFunctionSet() {
 }
 
 static std::unique_ptr<FunctionBindData> castBindFunc(ScalarBindFuncInput input) {
-    KU_ASSERT(input.arguments.size() == 2);
+    RYU_ASSERT(input.arguments.size() == 2);
     // Bind target type.
     if (input.arguments[1]->expressionType != ExpressionType::LITERAL) {
         throw BinderException(stringFormat("Second parameter of CAST function must be a literal."));

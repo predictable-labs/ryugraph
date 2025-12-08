@@ -47,7 +47,7 @@ static void validate(ConflictAction action, const on_conflict_throw_action& thro
     case ConflictAction::ON_CONFLICT_DO_NOTHING:
         break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -88,7 +88,7 @@ static bool skipAlter(ConflictAction action, const skip_alter_on_conflict& skipA
     case ConflictAction::ON_CONFLICT_DO_NOTHING:
         return skipAlterOnConflict();
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -288,7 +288,7 @@ void Alter::alterTable(main::ClientContext* clientContext, const TableCatalogEnt
         appendMessage(stringFormat("Comment added to table {}.", tableName), memoryManager);
     } break;
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 
     // Handle storage changes
@@ -300,7 +300,7 @@ void Alter::alterTable(main::ClientContext* clientContext, const TableCatalogEnt
     switch (info.alterType) {
     case AlterType::ADD_PROPERTY: {
         auto& boundAddPropInfo = info.extraInfo->constCast<BoundExtraAddPropertyInfo>();
-        KU_ASSERT(defaultValueEvaluator);
+        RYU_ASSERT(defaultValueEvaluator);
         auto* alteredEntry = catalog->getTableCatalogEntry(transaction, alterInfo.tableName);
         auto& addedProp = alteredEntry->getProperty(boundAddPropInfo.propertyDefinition.getName());
         storage::TableAddColumnState state{addedProp, *defaultValueEvaluator};
@@ -317,7 +317,7 @@ void Alter::alterTable(main::ClientContext* clientContext, const TableCatalogEnt
             }
         } break;
         default: {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
         }
     } break;
@@ -335,7 +335,7 @@ void Alter::alterTable(main::ClientContext* clientContext, const TableCatalogEnt
             }
         } break;
         default: {
-            KU_UNREACHABLE;
+            RYU_UNREACHABLE;
         }
         }
     } break;

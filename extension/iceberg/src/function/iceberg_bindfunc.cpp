@@ -69,7 +69,7 @@ std::unique_ptr<TableFuncBindData> bindFuncHelper(main::ClientContext* context,
             returnColumnNames.push_back(name);
         }
     }
-    KU_ASSERT(returnTypes.size() == returnColumnNames.size());
+    RYU_ASSERT(returnTypes.size() == returnColumnNames.size());
     returnColumnNames =
         TableFunction::extractYieldVariables(returnColumnNames, input->yieldVariables);
     auto columns = input->binder->createVariables(returnColumnNames, returnTypes);

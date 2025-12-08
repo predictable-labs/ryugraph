@@ -36,7 +36,7 @@ ShadowPageRecord ShadowPageRecord::deserialize(Deserializer& deserializer) {
 ShadowFile::ShadowFile(BufferManager& bm, VirtualFileSystem* vfs, const std::string& databasePath)
     : bm{bm}, shadowFilePath{StorageUtils::getShadowFilePath(databasePath)}, vfs{vfs},
       shadowingFH{nullptr} {
-    KU_ASSERT(vfs);
+    RYU_ASSERT(vfs);
 }
 
 void ShadowFile::clearShadowPage(file_idx_t originalFile, page_idx_t originalPage) {
@@ -59,7 +59,7 @@ page_idx_t ShadowFile::getOrCreateShadowPage(file_idx_t originalFile, page_idx_t
 }
 
 page_idx_t ShadowFile::getShadowPage(file_idx_t originalFile, page_idx_t originalPage) const {
-    KU_ASSERT(hasShadowPage(originalFile, originalPage));
+    RYU_ASSERT(hasShadowPage(originalFile, originalPage));
     return shadowPagesMap.at(originalFile).at(originalPage);
 }
 
@@ -67,7 +67,7 @@ void ShadowFile::applyShadowPages(ClientContext& context) const {
     const auto pageBuffer = std::make_unique<uint8_t[]>(RYU_PAGE_SIZE);
     page_idx_t shadowPageIdx = 1; // Skip header page.
     auto dataFileInfo = StorageManager::Get(context)->getDataFH()->getFileInfo();
-    KU_ASSERT(shadowingFH);
+    RYU_ASSERT(shadowingFH);
     for (const auto& record : shadowPageRecords) {
         shadowingFH->readPageFromDisk(pageBuffer.get(), shadowPageIdx++);
         dataFileInfo->writeFile(pageBuffer.get(), RYU_PAGE_SIZE,
@@ -145,7 +145,7 @@ void ShadowFile::flushAll(main::ClientContext& context) const {
     header.databaseID = StorageManager::Get(context)->getOrInitDatabaseID(context);
     const auto headerBuffer = std::make_unique<uint8_t[]>(RYU_PAGE_SIZE);
     memcpy(headerBuffer.get(), &header, sizeof(ShadowFileHeader));
-    KU_ASSERT(shadowingFH && !shadowingFH->isInMemoryMode());
+    RYU_ASSERT(shadowingFH && !shadowingFH->isInMemoryMode());
     shadowingFH->writePageToFile(headerBuffer.get(), 0);
     // Flush shadow pages to file.
     shadowingFH->flushAllDirtyPagesInFrames();
@@ -153,7 +153,7 @@ void ShadowFile::flushAll(main::ClientContext& context) const {
     const auto writer = std::make_shared<BufferedFileWriter>(*shadowingFH->getFileInfo());
     writer->setFileOffset(shadowingFH->getNumPages() * RYU_PAGE_SIZE);
     Serializer ser(writer);
-    KU_ASSERT(shadowPageRecords.size() + 1 == shadowingFH->getNumPages());
+    RYU_ASSERT(shadowPageRecords.size() + 1 == shadowingFH->getNumPages());
     ser.serializeVector(shadowPageRecords);
     writer->flush();
     // Sync the file to disk.
@@ -161,7 +161,7 @@ void ShadowFile::flushAll(main::ClientContext& context) const {
 }
 
 void ShadowFile::clear(BufferManager& bm) {
-    KU_ASSERT(shadowingFH);
+    RYU_ASSERT(shadowingFH);
     // TODO(Guodong): We should remove shadow file here. This requires changes:
     // 1. We need to make shadow file not going through BM.
     // 2. We need to remove fileHandles held in BM, so that BM only keeps FH for the data file.

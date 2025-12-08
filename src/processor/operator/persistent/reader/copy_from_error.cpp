@@ -15,7 +15,7 @@ static PhysicalTypeID getPhysicalTypeFromDataSource(T* data) {
     } else if constexpr (std::is_same_v<T, ValueVector>) {
         return data->dataType.getPhysicalType();
     } else {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
@@ -28,19 +28,19 @@ WarningSourceData::DataType getValueFromData(T* data, common::idx_t pos) {
     case common::PhysicalTypeID::UINT32:
         return data->template getValue<uint32_t>(pos);
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
 WarningSourceData::WarningSourceData(uint64_t numValues) : numValues(numValues) {
-    KU_ASSERT(numValues <= values.size());
+    RYU_ASSERT(numValues <= values.size());
 }
 
 template<DataSource T>
 WarningSourceData WarningSourceData::constructFromData(const std::vector<T*>& data,
     common::idx_t pos) {
-    KU_ASSERT(data.size() >= CopyConstants::SHARED_WARNING_DATA_NUM_COLUMNS &&
-              data.size() <= CopyConstants::MAX_NUM_WARNING_DATA_COLUMNS);
+    RYU_ASSERT(data.size() >= CopyConstants::SHARED_WARNING_DATA_NUM_COLUMNS &&
+               data.size() <= CopyConstants::MAX_NUM_WARNING_DATA_COLUMNS);
     WarningSourceData ret{data.size()};
     for (idx_t i = 0; i < data.size(); ++i) {
         ret.values[i] = getValueFromData(data[i], pos);

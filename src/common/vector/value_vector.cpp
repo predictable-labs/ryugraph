@@ -130,7 +130,7 @@ void ValueVector::copyToRowData(uint32_t pos, uint8_t* rowData,
 
 void ValueVector::copyFromVectorData(uint8_t* dstData, const ValueVector* srcVector,
     const uint8_t* srcVectorData) {
-    KU_ASSERT(srcVector->dataType.getPhysicalType() == dataType.getPhysicalType());
+    RYU_ASSERT(srcVector->dataType.getPhysicalType() == dataType.getPhysicalType());
     switch (srcVector->dataType.getPhysicalType()) {
     case PhysicalTypeID::STRUCT: {
         StructVector::copyFromVectorData(this, dstData, srcVector, srcVectorData);
@@ -236,7 +236,7 @@ void ValueVector::copyFromValue(uint64_t pos, const Value& value) {
         memcpy(dstValue, &value.val.uint128Val, numBytesPerValue);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
 }
@@ -320,7 +320,7 @@ std::unique_ptr<Value> ValueVector::getAsValue(uint64_t pos) const {
         value->val.uint128Val = getValue<uint128_t>(pos);
     } break;
     default: {
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
     }
     return value;
@@ -408,7 +408,7 @@ std::unique_ptr<ValueVector> ValueVector::deSerialize(Deserializer& deSer,
     sel_t numValues = 0;
     deSer.deserializeValue<sel_t>(numValues);
     result->state->getSelVectorUnsafe().setSelSize(numValues);
-    KU_ASSERT(result->state->getSelVector().isUnfiltered());
+    RYU_ASSERT(result->state->getSelVector().isUnfiltered());
     bool isNull = false;
     for (auto i = 0u; i < numValues; i++) {
         deSer.deserializeValue<bool>(isNull);
@@ -464,7 +464,7 @@ void ValueVector::setNull(uint32_t pos, bool isNull) {
 }
 
 void StringVector::addString(ValueVector* vector, uint32_t vectorPos, ku_string_t& srcStr) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     auto& dstStr = vector->getValue<ku_string_t>(vectorPos);
     if (ku_string_t::isShortString(srcStr.len)) {
@@ -477,7 +477,7 @@ void StringVector::addString(ValueVector* vector, uint32_t vectorPos, ku_string_
 
 void StringVector::addString(ValueVector* vector, uint32_t vectorPos, const char* srcStr,
     uint64_t length) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     auto& dstStr = vector->getValue<ku_string_t>(vectorPos);
     if (ku_string_t::isShortString(length)) {
@@ -493,7 +493,7 @@ void StringVector::addString(ValueVector* vector, uint32_t vectorPos, std::strin
 }
 
 ku_string_t& StringVector::reserveString(ValueVector* vector, uint32_t vectorPos, uint64_t length) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     auto& dstStr = vector->getValue<ku_string_t>(vectorPos);
     dstStr.len = length;
@@ -504,7 +504,7 @@ ku_string_t& StringVector::reserveString(ValueVector* vector, uint32_t vectorPos
 }
 
 void StringVector::reserveString(ValueVector* vector, ku_string_t& dstStr, uint64_t length) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     dstStr.len = length;
     if (!ku_string_t::isShortString(length)) {
@@ -513,7 +513,7 @@ void StringVector::reserveString(ValueVector* vector, ku_string_t& dstStr, uint6
 }
 
 void StringVector::addString(ValueVector* vector, ku_string_t& dstStr, ku_string_t& srcStr) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     if (ku_string_t::isShortString(srcStr.len)) {
         dstStr.setShortString(srcStr);
@@ -525,7 +525,7 @@ void StringVector::addString(ValueVector* vector, ku_string_t& dstStr, ku_string
 
 void StringVector::addString(ValueVector* vector, ku_string_t& dstStr, const char* srcStr,
     uint64_t length) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRING);
     auto stringBuffer = ku_dynamic_cast<StringAuxiliaryBuffer*>(vector->auxiliaryBuffer.get());
     if (ku_string_t::isShortString(length)) {
         dstStr.setShortString(srcStr, length);
@@ -556,7 +556,7 @@ void StringVector::copyToRowData(const ValueVector* vector, uint32_t pos, uint8_
 void ListVector::copyListEntryAndBufferMetaData(ValueVector& vector,
     const SelectionVector& selVector, const ValueVector& other,
     const SelectionVector& otherSelVector) {
-    KU_ASSERT(selVector.getSelSize() == otherSelVector.getSelSize());
+    RYU_ASSERT(selVector.getSelSize() == otherSelVector.getSelSize());
     // Copy list entries
     for (auto i = 0u; i < otherSelVector.getSelSize(); ++i) {
         auto pos = selVector[i];
@@ -574,7 +574,7 @@ void ListVector::copyListEntryAndBufferMetaData(ValueVector& vector,
 }
 
 void ListVector::copyFromRowData(ValueVector* vector, uint32_t pos, const uint8_t* rowData) {
-    KU_ASSERT(validateType(*vector));
+    RYU_ASSERT(validateType(*vector));
     auto& srcKuList = *(ku_list_t*)rowData;
     auto srcNullBytes = reinterpret_cast<uint8_t*>(srcKuList.overflowPtr);
     auto srcListValues = srcNullBytes + NullBuffer::getNumBytesForNullValues(srcKuList.size);
@@ -652,7 +652,7 @@ void ListVector::sliceDataVector(ValueVector* vectorToSlice, uint64_t offset, ui
 }
 
 void StructVector::copyFromRowData(ValueVector* vector, uint32_t pos, const uint8_t* rowData) {
-    KU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRUCT);
+    RYU_ASSERT(vector->dataType.getPhysicalType() == PhysicalTypeID::STRUCT);
     auto& structFields = getFieldVectors(vector);
     auto structNullBytes = rowData;
     auto structValues = structNullBytes + NullBuffer::getNumBytesForNullValues(structFields.size());

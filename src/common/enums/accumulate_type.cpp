@@ -14,7 +14,7 @@ std::string AccumulateTypeUtil::toString(AccumulateType type) {
         return "OPTIONAL";
     }
     default:
-        KU_UNREACHABLE;
+        RYU_UNREACHABLE;
     }
 }
 
