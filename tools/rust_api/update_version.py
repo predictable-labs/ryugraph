@@ -12,7 +12,7 @@ def get_ryu_version():
     cmake_file = RYU_ROOT / "CMakeLists.txt"
     with open(cmake_file) as f:
         for line in f:
-            if line.startswith("project(Ryu VERSION"):
+            if line.startswith("project(RyuGraph VERSION"):
                 version = line.split(" ")[2].strip()
                 # Make version semver-compatible
                 components = version.split(".")

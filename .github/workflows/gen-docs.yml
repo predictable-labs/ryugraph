@@ -117,7 +117,7 @@ jobs:
         shell: bash
         run: |
           mkdir docs
-          cd docs && javadoc ../tools/java_api/src/main/java/com/ryugraph/*.java
+          cd docs && javadoc ../tools/java_api/src/main/java/io/ryugraph/*.java
 
       - name: Upload Java docs
         uses: actions/upload-artifact@v4

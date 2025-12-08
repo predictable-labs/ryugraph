@@ -122,10 +122,11 @@ jobs:
           python3 update-nightly-build-version.py
         working-directory: scripts
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: java-lib-osx-x86_64
-          path: tools/java_api/src/main/resources
+      # Temporarily disabled - Mac Intel build takes too long
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: java-lib-osx-x86_64
+      #     path: tools/java_api/src/main/resources
 
       - uses: actions/download-artifact@v4
         with:
@@ -169,7 +170,7 @@ jobs:
             ORIGINAL_PWD=$(pwd)
             ./gradlew publishMavenJavaToLocalRepo -i
             cd build/repo
-            zip -r ryu-java-bundle.zip com
+            zip -r ryu-java-bundle.zip io
             mv ryu-java-bundle.zip $ORIGINAL_PWD
       
       - name: Upload Maven Central bundle
@@ -181,10 +182,14 @@ jobs:
       - name: Deploy to Maven Central
         if: ${{ github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly != 'true' }}
         working-directory: tools/java_api
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
         run: |
+          AUTH_TOKEN=$(echo -n "${MAVEN_CENTRAL_USERNAME}:${MAVEN_CENTRAL_PASSWORD}" | base64)
           curl --request POST \
           --verbose \
-          --header 'Authorization: Bearer ${{ secrets.MAVEN_CENTRAL_PORTAL_TOKEN }}' \
+          --header "Authorization: Basic ${AUTH_TOKEN}" \
           --form bundle=@ryu-java-bundle.zip \
           https://central.sonatype.com/api/v1/publisher/upload?publishingType=AUTOMATIC
         
@@ -269,28 +274,28 @@ jobs:
         working-directory: tools/nodejs_api
 
       - name: Show tarball contents
-        run: tar -tvf ryu-source.tar.gz
+        run: tar -tvf ryugraph-source.tar.gz
         working-directory: tools/nodejs_api
 
       - name: Upload tarball
         uses: actions/upload-artifact@v4
         with:
-          name: ryu-deploy-nodejs
-          path: tools/nodejs_api/ryu-source.tar.gz
+          name: ryugraph-deploy-nodejs
+          path: tools/nodejs_api/ryugraph-source.tar.gz
 
       - name: Deploy to npm.js dry run
         if: ${{ github.event_name != 'schedule' && github.event.inputs.isDeploy != 'true' }}
-        run: npm publish ryu-source.tar.gz --access public --dry-run
+        run: npm publish ryugraph-source.tar.gz --access public --dry-run
         working-directory: tools/nodejs_api
 
       - name: Deploy nightly to npm.js
         if: ${{ github.event_name == 'schedule' || (github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly == 'true') }}
-        run: npm publish ryu-source.tar.gz --access public --tag next
+        run: npm publish ryugraph-source.tar.gz --access public --tag next
         working-directory: tools/nodejs_api
 
       - name: Deploy to npm.js
         if: ${{ github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly != 'true' }}
-        run: npm publish ryu-source.tar.gz --access public --tag latest
+        run: npm publish ryugraph-source.tar.gz --access public --tag latest
         working-directory: tools/nodejs_api
   
   build-wasm:
@@ -311,7 +316,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: ryu-deploy-wasm
+          name: ryugraph-deploy-wasm
           path: tools/wasm
 
       - uses: actions/setup-node@v3
@@ -320,22 +325,22 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Show tarball contents
-        run: tar -tvf ryu-wasm.tar.gz
+        run: tar -tvf ryugraph-wasm.tar.gz
         working-directory: tools/wasm
 
       - name: Deploy to npm.js dry run
         if: ${{ github.event_name != 'schedule' && github.event.inputs.isDeploy != 'true' }}
-        run: npm publish ryu-wasm.tar.gz --access public --dry-run
+        run: npm publish ryugraph-wasm.tar.gz --access public --dry-run
         working-directory: tools/wasm
 
       - name: Deploy nightly to npm.js
         if: ${{ github.event_name == 'schedule' || (github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly == 'true') }}
-        run: npm publish ryu-wasm.tar.gz --access public --tag next
+        run: npm publish ryugraph-wasm.tar.gz --access public --tag next
         working-directory: tools/wasm
 
       - name: Deploy to npm.js
         if: ${{ github.event.inputs.isDeploy == 'true' && github.event.inputs.isNightly != 'true' }}
-        run: npm publish ryu-wasm.tar.gz --access public --tag latest
+        run: npm publish ryugraph-wasm.tar.gz --access public --tag latest
         working-directory: tools/wasm
 
   build-wheel-mac:
@@ -432,7 +437,7 @@ jobs:
       - name: Upload wheels
         uses: actions/upload-artifact@v4
         with:
-          name: ryu-deploy-wheels
+          name: ryugraph-deploy-wheels
           path: dist/*
 
       - name: Deploy to PyPI test
@@ -477,7 +482,7 @@ jobs:
       - name: Upload crate
         uses: actions/upload-artifact@v4
         with:
-          name: ryu-deploy-crate
+          name: ryugraph-deploy-crate
           path: tools/rust_api/target/package/*.crate
 
   build-precompiled-bin-mac:
@@ -520,7 +525,7 @@ jobs:
       - name: Get version
         id: version
         run: |
-          VERSION=$(cat CMakeLists.txt | grep "project(Ryu VERSION" | cut -d ' ' -f 3 | cut -d ')' -f 1)
+          VERSION=$(cat CMakeLists.txt | grep "project(RyuGraph VERSION" | cut -d ' ' -f 3 | cut -d ')' -f 1)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version: $VERSION"
 

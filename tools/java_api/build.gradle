@@ -9,10 +9,10 @@ java {
     withJavadocJar()
 }
 
-group = 'com.ryugraph'
+group = 'io.ryugraph'
 def projectRoot = projectDir.parentFile.parentFile
 def cmakeFile = new File(projectRoot, 'CMakeLists.txt').text
-def versionLine = cmakeFile.readLines().find { it.startsWith('project(Ryu VERSION ') }
+def versionLine = cmakeFile.readLines().find { it.startsWith('project(RyuGraph VERSION ') }
 def cmakeVersion = versionLine.split(' ')[2]
 def versionParts = cmakeVersion.split('\\.')
 if (versionParts.length > 3) {

@@ -9,5 +9,5 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation 'com.ryugraph:ryu:0.6.0'
+    implementation 'io.ryugraph:ryugraph:0.6.0'
 }

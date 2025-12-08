@@ -18,7 +18,7 @@ def _get_ryu_version():
     cmake_file = os.path.join(base_dir, 'ryu-source', 'CMakeLists.txt')
     with open(cmake_file) as f:
         for line in f:
-            if line.startswith('project(Ryu VERSION'):
+            if line.startswith('project(RyuGraph VERSION'):
                 raw_version = line.split(' ')[2].strip()
                 version_nums = raw_version.split('.')
                 if len(version_nums) <= 3:
@@ -114,7 +114,7 @@ setup(name='ryugraph',
       long_description=open(os.path.join(base_dir, "README.md"), 'r').read(),
       long_description_content_type="text/markdown",
       packages=["ryugraph"],
-      zip_safe=True,
+      zip_safe=False,
       include_package_data=True,
       cmdclass={
           'build_py': BuildExtFirst,

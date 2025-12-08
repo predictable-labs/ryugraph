@@ -6,9 +6,9 @@ import fs from 'fs';
 
 const SRC_PATH = path.resolve("..", "..");
 const THREADS = os.cpus().length;
-const RYU_VERSION_TEXT = "Ryu VERSION";
+const RYU_VERSION_TEXT = "RyuGraph VERSION";
 const ES_BUILD_CONFIG = {
-  entryPoints: ['./build/sync/index.js', './build/index.js', 'build/ryu_wasm_worker.js'],
+  entryPoints: ['./build/sync/index.js', './build/index.js', 'build/ryugraph_wasm_worker.js'],
   bundle: true,
   format: 'esm',
   external: ['fs', 'path', 'ws', 'crypto', "worker_threads", "os", "util", "perf_hooks"],
@@ -19,10 +19,10 @@ const ES_BUILD_CONFIG = {
   }
 };
 
-console.log(`Using ${THREADS} threads to build Ryu.`);
+console.log(`Using ${THREADS} threads to build RyuGraph.`);
 console.log('Cleaning up...');
 execSync("npm run clean", { stdio: "inherit" });
-console.log('Building single-threaded version of Ryu WebAssembly module...')
+console.log('Building single-threaded version of RyuGraph WebAssembly module...')
 execSync(`make wasm NUM_THREADS=${THREADS} SINGLE_THREADED=true`, {
   cwd: SRC_PATH,
   stdio: "inherit",
@@ -33,7 +33,7 @@ await esbuild.build(ES_BUILD_CONFIG);
 
 console.log('Cleaning up...');
 execSync("npm run clean exclude-package", { stdio: "inherit" });
-console.log("Building multi-threaded version of Ryu WebAssembly module...");
+console.log("Building multi-threaded version of RyuGraph WebAssembly module...");
 execSync(`make wasm NUM_THREADS=${THREADS} SINGLE_THREADED=false`, {
   cwd: SRC_PATH,
   stdio: "inherit",
@@ -45,7 +45,7 @@ await esbuild.build(ES_BUILD_CONFIG_MULTI);
 
 console.log('Cleaning up...');
 execSync("npm run clean exclude-package", { stdio: "inherit" });
-console.log("Building Node.js version of Ryu WebAssembly module...");
+console.log("Building Node.js version of RyuGraph WebAssembly module...");
 execSync(`make wasm NUM_THREADS=${THREADS} SINGLE_THREADED=false WASM_NODEFS=true`, {
   cwd: SRC_PATH,
   stdio: "inherit",
@@ -89,6 +89,6 @@ console.log('Copying README.md...');
 await fs.promises.copyFile(path.resolve('.', 'README.md'), path.resolve(".", 'package', 'README.md'));
 
 console.log('Creating tarball...');
-execSync("tar -czf ryu-wasm.tar.gz package", { cwd: path.resolve("."), stdio: "inherit" });
+execSync("tar -czf ryugraph-wasm.tar.gz package", { cwd: path.resolve("."), stdio: "inherit" });
 
 console.log('All done!');

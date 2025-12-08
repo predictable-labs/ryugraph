@@ -1,5 +1,5 @@
 PYPI_URL = "https://pypi.org/pypi/ryugraph/json"
-CMAKE_KEYWORD = "project(Ryu VERSION "
+CMAKE_KEYWORD = "project(RyuGraph VERSION "
 CMAKE_SUFFIX = " LANGUAGES CXX C)\n"
 EXTENSION_KEYWORD = 'add_definitions(-DRYU_EXTENSION_VERSION="'
 EXTENSION_SUFFIX = '")\n'
@@ -62,7 +62,7 @@ def main():
     print("Committing changes...")
     sys.stdout.flush()
     os.system("git config user.email ci@ryugraph.io")
-    os.system("git config user.name \"Ryu CI\"")
+    os.system("git config user.name \"RyuGraph CI\"")
     os.system("git add %s" % cmake_lists_path)
     os.system("git commit -m \"Update CMake version to %s and change extension version to dev.\"" % cmake_version)
     sys.stdout.flush()

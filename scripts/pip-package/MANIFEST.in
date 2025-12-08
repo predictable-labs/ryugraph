@@ -1,2 +1,2 @@
-include ryu/*.so
-include ryu/*.pyd
+include ryugraph/*.so
+include ryugraph/*.pyd
