@@ -17,11 +17,11 @@ RyuGraph is a fork of [Kuzu](https://github.com/kuzudb/kuzu), which was original
 
 ## Docs and Blog
 
-To learn more about RyuGraph, see our [Documentation](https://ryugraph.io/docs) and [Blog](https://ryugraph.io/blog) page.
+To learn more about RyuGraph, see our [Documentation](https://ryugraph-docs.vercel.app/) and [Blog](https://ryugraph.io/blog) page.
 
 ## Getting Started
 
-Refer to our [Getting Started](https://ryugraph.io/docs/get-started/) page for your first example.
+Refer to our [Getting Started](https://ryugraph-docs.vercel.app/get-started/) page for your first example.
 
 ## Extensions
 RyuGraph has an extension framework that users can dynamically load the functionality you need at runtime.
@@ -53,7 +53,7 @@ INSTALL <EXTENSION_NAME> FROM 'http://localhost:8080/';
 
 ## Build from Source
 
-You can build from source using the instructions provided in the [developer guide](https://ryugraph.io/docs/developer-guide).
+You can build from source using the instructions provided in the [developer guide](https://ryugraph-docs.vercel.app/developer-guide/).
 
 ## License
 RyuGraph is licensed under the [MIT License](LICENSE).
