@@ -11,6 +11,7 @@ add_library(ryu_processor_mapper
         map_table_function_call.cpp
         map_copy_to.cpp
         map_copy_from.cpp
+        map_count_rel_table.cpp
         map_insert.cpp
         map_create_macro.cpp
         map_cross_product.cpp
