@@ -1,5 +1,6 @@
 #include "processor/operator/scan/count_rel_table.h"
 
+#include "common/data_chunk/data_chunk_state.h"
 #include "common/system_config.h"
 #include "main/client_context.h"
 #include "main/database.h"
@@ -25,6 +26,13 @@ void CountRelTable::initLocalStateInternal(ResultSet* resultSet, ExecutionContex
     countVector = resultSet->getValueVector(countOutputPos).get();
     hasExecuted = false;
     totalCount = 0;
+
+    // Create a dedicated output state for rel table scanning.
+    // This MUST be separate from nodeIDVector->state because:
+    // 1. The child ScanNodeTable modifies nodeIDVector->state during its scan
+    // 2. The rel table scan also needs to modify the output state's selection vector
+    // Using the same state would cause conflicts and assertion failures.
+    relScanOutState = std::make_shared<DataChunkState>();
 }
 
 // Count rels by using CSR metadata, accounting for deletions and uncommitted data.
